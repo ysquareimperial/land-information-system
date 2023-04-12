@@ -35,9 +35,8 @@ export default function Application_form() {
     setForm((p) => ({ ...p, [name]: value }));
   };
   const handleSubmit = () => {
-    setForm = (_form);
-    console.log(_form);
-  };
+    console.log(_form)
+  }
   return (
     <div>
       <Card className="p-3">

@@ -7,6 +7,7 @@ import Dashboard from '../componens/Dashboard'
 import RecommendationLetter from '../componens/RecommendationLetter'
 import Require_documents from '../componens/Require_documents'
 import List_doc from '../componens/List_doc'
+import Application_form from '../componens/Application_form'
 
 function AppNavigation() {
   let element = useRoutes([
