@@ -4,6 +4,7 @@ import Neww from '../componens/Neww'
 import Bbb from '../componens/Bbb'
 import Landing from '../componens/Landing'
 import Dashboard from '../componens/Dashboard'
+import Application_form from '../componens/Application_form'
 
 function AppNavigation() {
   let element = useRoutes([
@@ -23,6 +24,10 @@ function AppNavigation() {
         {
           path: '/new',
           element: <Neww />,
+        },
+        {
+          path: '/application_form',
+          element: <Application_form />,
         },
         {
           path: '/bbb',

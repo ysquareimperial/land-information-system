@@ -2,15 +2,18 @@ import React from 'react'
 import { GoDashboard } from 'react-icons/go'
 import { TbBrandGoogleAnalytics } from 'react-icons/tb'
 import { BsPencilSquare } from 'react-icons/bs'
+import { useNavigate } from 'react-router-dom'
 export default function Sidebar() {
+  const navigate = useNavigate()
   const menuItems = [
     { id: 1, label: 'Dashboard', icon: GoDashboard, link: '/dashboard' },
     { id: 2, label: 'Side Item', icon: BsPencilSquare, link: '/publish' },
     {
       id: 3,
-      label: 'Side Item',
+      label: 'Application Form',
       icon: TbBrandGoogleAnalytics,
-      link: '/analytics',
+      link: '/application_form',
+     
     },
     {
       id: 4,
