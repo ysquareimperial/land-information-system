@@ -36,7 +36,7 @@ export default function Application_form() {
     setForm((p) => ({ ...p, [name]: value }));
   };
   const [loading, setLoading] = useState(false);
-  
+
   const handleSubmit = () => {
     setLoading(true);
     _postApi(
