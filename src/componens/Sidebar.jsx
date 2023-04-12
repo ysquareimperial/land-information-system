@@ -5,22 +5,22 @@ import { BsPencilSquare } from 'react-icons/bs'
 export default function Sidebar() {
   const menuItems = [
     { id: 1, label: 'Dashboard', icon: GoDashboard, link: '/dashboard' },
-    { id: 2, label: 'Side Item', icon: BsPencilSquare, link: '/publish' },
+    { id: 2, label: 'Permanent Secretary', icon: BsPencilSquare, link: '/publish' },
     {
       id: 3,
-      label: 'Side Item',
+      label: 'Director Land',
       icon: TbBrandGoogleAnalytics,
       link: '/analytics',
     },
     {
       id: 4,
-      label: 'Side Item',
+      label: 'Director Cadastral',
       icon: TbBrandGoogleAnalytics,
       link: '/analytics',
     },
     {   
       id: 5,
-      label: 'Side Item',
+      label: 'Director Fianance',
       icon: TbBrandGoogleAnalytics,
       link: '/analytics',
     },
@@ -33,9 +33,11 @@ export default function Sidebar() {
   ]
   return (
     <div className="sidebar">
+        <div className='sidebar_cont'>
+
       <p className="items_head mt-3">LAND INFORMATION SYSTEM</p>
       {menuItems.map((menu) => {
-        return (
+          return (
           <div>
             <div className="d-flex">
               <span className={`sidebar_item_`}>
@@ -45,7 +47,8 @@ export default function Sidebar() {
             </div>
           </div>
         )
-      })}
+    })}
+    </div>
     </div>
   )
 }

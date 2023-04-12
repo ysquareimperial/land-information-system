@@ -4,6 +4,7 @@ import Neww from '../componens/Neww'
 import Bbb from '../componens/Bbb'
 import Landing from '../componens/Landing'
 import Dashboard from '../componens/Dashboard'
+import RecommendationLetter from '../componens/RecommendationLetter'
 
 function AppNavigation() {
   let element = useRoutes([
@@ -21,8 +22,8 @@ function AppNavigation() {
             element: <Dashboard />,
           },
         {
-          path: '/new',
-          element: <Neww />,
+          path: '/recommendation-letter',
+          element: <RecommendationLetter />,
         },
         {
           path: '/bbb',
