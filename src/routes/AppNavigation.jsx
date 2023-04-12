@@ -4,7 +4,9 @@ import Neww from '../componens/Neww'
 import Bbb from '../componens/Bbb'
 import Landing from '../componens/Landing'
 import Dashboard from '../componens/Dashboard'
-import Application_form from '../componens/Application_form'
+import RecommendationLetter from '../componens/RecommendationLetter'
+import Require_documents from '../componens/Require_documents'
+import List_doc from '../componens/List_doc'
 
 function AppNavigation() {
   let element = useRoutes([
@@ -21,9 +23,17 @@ function AppNavigation() {
             path: '/dashboard',
             element: <Dashboard />,
           },
+          {
+            path:"/requireed-docs",
+            element:<Require_documents />
+          },
+          {
+            path:'/list-docs',
+            element:<List_doc />
+          },
         {
-          path: '/new',
-          element: <Neww />,
+          path: '/recommendation-letter',
+          element: <RecommendationLetter />,
         },
         {
           path: '/application_form',

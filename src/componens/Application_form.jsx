@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Card, CardBody, Col, Input, Label, Row } from "reactstrap";
+import { Button, Card, CardBody, Col, input, Label, Row } from "reactstrap";
 
 export default function Application_form() {
   const _form = {
@@ -34,7 +34,7 @@ export default function Application_form() {
   const handleChange = ({ target: { name, value } }) => {
     setForm((p) => ({ ...p, [name]: value }));
   };
-  const handleSUbmit = () => {
+  const handleSubmit = () => {
     setForm = (_form);
     console.log(_form);
   };
@@ -47,8 +47,9 @@ export default function Application_form() {
           <CardBody>
             <Row>
               <Col md={3}>
-                <Label size="sm">Applicant Full Name</Label>
-                <Input
+                <label className="input_label">Applicant Full Name</label>
+                <input
+                className="input_field"
                   type="text"
                   name="Applicant_full_name"
                   value={form.Applicant_full_name}
@@ -56,8 +57,9 @@ export default function Application_form() {
                 />
               </Col>
               <Col md={3}>
-                <Label size="sm">Registration Particulars</Label>
-                <Input
+                <label className="input_label">Registration Particulars</label>
+                <input
+                className="input_field"
                   type="text"
                   name="registration_particulars"
                   value={form.registration_particulars}
@@ -65,8 +67,9 @@ export default function Application_form() {
                 />
               </Col>
               <Col md={3}>
-                <Label size="sm">Business Location</Label>
-                <Input
+                <label className="input_label">Business Location</label>
+                <input
+                className="input_field"
                   type="text"
                   name="Business_location"
                   value={form.Business_location}
@@ -74,8 +77,9 @@ export default function Application_form() {
                 />
               </Col>
               <Col md={3}>
-                <Label size="sm">Correspondance Address</Label>
-                <Input
+                <label className="input_label">Correspondance Address</label>
+                <input
+                className="input_field"
                   type="text"
                   name="correspondance_address"
                   value={form.correspondance_address}
@@ -83,8 +87,9 @@ export default function Application_form() {
                 />
               </Col>
               <Col md={3}>
-                <Label size="sm">Annual Income</Label>
-                <Input
+                <label className="input_label">Annual Income</label>
+                <input
+                className="input_field"
                   type="text"
                   name="Annual_income"
                   value={form.Annual_income}
@@ -92,8 +97,9 @@ export default function Application_form() {
                 />
               </Col>
               <Col md={3}>
-                <Label size="sm">Allocated Before</Label>
-                <Input
+                <label className="input_label">Allocated Before</label>
+                <input
+                className="input_field"
                   type="text"
                   name="Allocated_before"
                   value={form.Allocated_before}
@@ -101,8 +107,9 @@ export default function Application_form() {
                 />
               </Col>
               <Col md={3}>
-                <Label size="sm">Applicant Nationality</Label>
-                <Input
+                <label className="input_label">Applicant Nationality</label>
+                <input
+                className="input_field"
                   type="text"
                   name="Applicant_nationality"
                   value={form.Applicant_nationality}
@@ -110,8 +117,9 @@ export default function Application_form() {
                 />
               </Col>
               <Col md={3}>
-                <Label size="sm">State Of Origin</Label>
-                <Input
+                <label className="input_label">State Of Origin</label>
+                <input
+                className="input_field"
                   type="text"
                   name="State_of_origin"
                   value={form.State_of_origin}
@@ -119,8 +127,9 @@ export default function Application_form() {
                 />
               </Col>
               <Col md={3}>
-                <Label size="sm">Occupation Business</Label>
-                <Input
+                <label className="input_label">Occupation Business</label>
+                <input
+                className="input_field"
                   type="text"
                   name="occupation_business"
                   value={form.occupation_business}
@@ -128,8 +137,9 @@ export default function Application_form() {
                 />
               </Col>
               <Col md={3}>
-                <Label size="sm">Nature Of Business</Label>
-                <Input
+                <label className="input_label">Nature Of Business</label>
+                <input
+                className="input_field"
                   type="text"
                   name="nature_of_business"
                   value={form.nature_of_business}
@@ -137,8 +147,9 @@ export default function Application_form() {
                 />
               </Col>
               <Col md={3}>
-                <Label size="sm">Company Registered Under</Label>
-                <Input
+                <label className="input_label">Company Registered Under</label>
+                <input
+                className="input_field"
                   type="text"
                   name="company_registered_under"
                   value={form.company_registered_under}
@@ -146,8 +157,9 @@ export default function Application_form() {
                 />
               </Col>
               <Col md={3}>
-                <Label size="sm">When Where Occupancy N</Label>
-                <Input
+                <label className="input_label">When Where Occupancy N</label>
+                <input
+                className="input_field"
                   type="text"
                   name="when_where_occupancy_no"
                   value={form.when_where_occupancy_no}
@@ -155,8 +167,9 @@ export default function Application_form() {
                 />
               </Col>
               <Col md={3}>
-                <Label size="sm">Purpose Of Land Use</Label>
-                <Input
+                <label className="input_label">Purpose Of Land Use</label>
+                <input
+                className="input_field"
                   type="text"
                   name="purpose_of_land_use"
                   value={form.purpose_of_land_use}
@@ -164,8 +177,9 @@ export default function Application_form() {
                 />
               </Col>
               <Col md={3}>
-                <Label size="sm">Purpose Of Land Use</Label>
-                <Input
+                <label className="input_label">Purpose Of Land Use</label>
+                <input
+                className="input_field"
                   type="text"
                   name="purpose_of_land_use"
                   value={form.purpose_of_land_use}
@@ -173,8 +187,9 @@ export default function Application_form() {
                 />
               </Col>
               <Col md={3}>
-                <Label size="sm">Acitivity Intended To Undertake</Label>
-                <Input
+                <label className="input_label">Acitivity Intended To Undertake</label>
+                <input
+                className="input_field"
                   type="text"
                   name="acitivity_intended_to_undertake"
                   value={form.acitivity_intended_to_undertake}
@@ -182,8 +197,9 @@ export default function Application_form() {
                 />
               </Col>
               <Col md={3}>
-                <Label size="sm">Type Of Building Erected</Label>
-                <Input
+                <label className="input_label">Type Of Building Erected</label>
+                <input
+                className="input_field"
                   type="text"
                   name="type_of_building_erected"
                   value={form.type_of_building_erected}
@@ -191,8 +207,9 @@ export default function Application_form() {
                 />
               </Col>
               <Col md={3}>
-                <Label size="sm">Estimated Amount To Spenr</Label>
-                <Input
+                <label className="input_label">Estimated Amount To Spenr</label>
+                <input
+                className="input_field"
                   type="text"
                   name="estimated_amount_to_spenr"
                   value={form.estimated_amount_to_spenr}
@@ -200,8 +217,9 @@ export default function Application_form() {
                 />
               </Col>
               <Col md={3}>
-                <Label size="sm">Source Financing </Label>
-                <Input
+                <label className="input_label">Source Financing </label>
+                <input
+                className="input_field"
                   type="text"
                   name="source_financing"
                   value={form.source_financing}
@@ -210,8 +228,9 @@ export default function Application_form() {
               </Col>
 
               <Col md={3}>
-                <Label size="sm">Length Of Term Required</Label>
-                <Input
+                <label className="input_label">Length Of Term Required</label>
+                <input
+                className="input_field"
                   type="text"
                   name="length_of_term_required"
                   value={form.length_of_term_required}
@@ -219,8 +238,9 @@ export default function Application_form() {
                 />
               </Col>
               <Col md={3}>
-                <Label size="sm">Do You Have Biz In Kano</Label>
-                <Input
+                <label className="input_label">Do You Have Biz In Kano</label>
+                <input
+                className="input_field"
                   type="text"
                   name="do_you_have_biz_in_kano"
                   value={form.do_you_have_biz_in_kano}
@@ -228,8 +248,9 @@ export default function Application_form() {
                 />
               </Col>
               <Col md={3}>
-                <Label size="sm">Address Of Local Rep</Label>
-                <Input
+                <label className="input_label">Address Of Local Rep</label>
+                <input
+                className="input_field"
                   type="text"
                   name="address_of_local_rep"
                   value={form.address_of_local_rep}
@@ -237,8 +258,9 @@ export default function Application_form() {
                 />
               </Col>
               <Col md={3}>
-                <Label size="sm">Power Of Attorney If Any</Label>
-                <Input
+                <label className="input_label">Power Of Attorney If Any</label>
+                <input
+                className="input_field"
                   type="text"
                   name="power_of_attorney_if_any"
                   value={form.power_of_attorney_if_any}
@@ -246,8 +268,9 @@ export default function Application_form() {
                 />
               </Col>
               <Col md={3}>
-                <Label size="sm">Location Of Land Required</Label>
-                <Input
+                <label className="input_label">Location Of Land Required</label>
+                <input
+                className="input_field"
                   type="text"
                   name="location_of_land_required"
                   value={form.location_of_land_required}
@@ -255,8 +278,9 @@ export default function Application_form() {
                 />
               </Col>
               <Col md={3}>
-                <Label size="sm">Application Date</Label>
-                <Input
+                <label className="input_label">Application Date</label>
+                <input
+                className="input_field"
                   type="date"
                   name="application_date"
                   value={form.application_date}
@@ -265,9 +289,9 @@ export default function Application_form() {
               </Col>
             </Row>
             <center>
-              <Button onClick={handleSUbmit} size="sm" className="mt-3">
-                Submit
-              </Button>
+            <button className="app_btn mt-2" onClick={handleSubmit}>
+            Submit
+          </button> 
             </center>
           </CardBody>
         </Row>
