@@ -37,7 +37,7 @@ function AppNavigation() {
           element: <RecommendationLetter />,
         },
         {
-          path: '/application_form',
+          path: '/application-form',
           element: <Application_form />,
         },
         {

@@ -305,14 +305,14 @@ export default function RecommendationLetter() {
         <div>
           {loading ? (
             <button
-              className="app_btn mt-2"
+              className="app_btn mt-3"
               disabled
               style={{ cursor: 'not-allowed', backgroundColor: '#A9A9A9' }}
             >
               Loading...
             </button>
           ) : (
-            <button className="app_btn mt-2" onClick={handleSubmit}>
+            <button className="app_btn mt-3" onClick={handleSubmit}>
               Submit
             </button>
           )}

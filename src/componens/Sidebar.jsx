@@ -1,7 +1,13 @@
 import React from 'react'
 import { GoDashboard } from 'react-icons/go'
 import { TbBrandGoogleAnalytics } from 'react-icons/tb'
-import { BsPencilSquare } from 'react-icons/bs'
+import {
+  BsPencilSquare,
+  BsFileEarmarkText,
+  BsFileEarmarkPlus,
+} from 'react-icons/bs'
+import { TiDocumentText } from 'react-icons/ti'
+import { AiOutlineUnorderedList } from 'react-icons/ai'
 import { useLocation, useNavigate } from 'react-router-dom'
 export default function Sidebar() {
   const navigate = useNavigate()
@@ -9,27 +15,27 @@ export default function Sidebar() {
     { id: 1, label: 'Dashboard', icon: GoDashboard, link: '/dashboard' },
     {
       id: 2,
-      label: 'Require Documents',
+      label: 'Required Documents',
       icon: BsPencilSquare,
       link: '/required-docs',
     },
     {
       id: 3,
       label: 'List Documents',
-      icon: TbBrandGoogleAnalytics,
+      icon: AiOutlineUnorderedList,
       link: '/list-docs',
     },
     {
       id: 4,
       label: 'Recommendation Letter',
-      icon: TbBrandGoogleAnalytics,
+      icon: BsFileEarmarkText,
       link: '/recommendation-letter',
     },
     {
       id: 5,
-      label: 'Side Item',
-      icon: TbBrandGoogleAnalytics,
-      link: '',
+      label: 'Application Form',
+      icon: BsFileEarmarkPlus,
+      link: '/application-form',
     },
   ]
   const location = useLocation()
