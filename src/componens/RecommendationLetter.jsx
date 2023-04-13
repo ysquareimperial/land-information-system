@@ -1,7 +1,9 @@
 import React, { useState } from 'react'
 import { Card, Col, Row } from 'reactstrap'
+import { _postApi } from '../helpers/helper'
 
 export default function RecommendationLetter() {
+  const [loading, setLoading] = useState(false)
   const form = {
     Application_file_number: '',
     location: '',
@@ -31,7 +33,19 @@ export default function RecommendationLetter() {
   }
 
   const handleSubmit = () => {
-    console.log(recLetteForm)
+    setLoading(true)
+    _postApi('/api/create-recommendation-letter', recLetteForm, (res) => {
+      setLoading(false)
+      console.log(res)
+      if (res.success) {
+        alert('success')
+        setRecLetterForm(form)
+      }
+    }),
+      (err) => {
+        setLoading(false)
+        console.log(err)
+      }
   }
   return (
     <div>
@@ -193,7 +207,7 @@ export default function RecommendationLetter() {
             <label className="input_label">Dir Land Signature Date</label>
             <div>
               <input
-                type=""
+                type="date"
                 className="input_field"
                 name="Dland_sign_date"
                 value={recLetteForm.Dland_sign_date}
@@ -229,7 +243,7 @@ export default function RecommendationLetter() {
             <label className="input_label">PSec Signature Date</label>
             <div>
               <input
-                type=""
+                type="date"
                 className="input_field"
                 name="PermSec_sign_date"
                 value={recLetteForm.PermSec_sign_date}
@@ -267,7 +281,7 @@ export default function RecommendationLetter() {
             <label className="input_label">Gov/Comm Signature Date</label>
             <div>
               <input
-                type=""
+                type="date"
                 className="input_field"
                 name="Comm_govt_signature_date"
                 value={recLetteForm.Comm_govt_signature_date}
@@ -289,9 +303,19 @@ export default function RecommendationLetter() {
           </Col>
         </Row>
         <div>
-          <button className="app_btn mt-2" onClick={handleSubmit}>
-            Submit
-          </button>
+          {loading ? (
+            <button
+              className="app_btn mt-3"
+              disabled
+              style={{ cursor: 'not-allowed', backgroundColor: '#A9A9A9' }}
+            >
+              Loading...
+            </button>
+          ) : (
+            <button className="app_btn mt-3" onClick={handleSubmit}>
+              Submit
+            </button>
+          )}
         </div>
       </Card>
     </div>

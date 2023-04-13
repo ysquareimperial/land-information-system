@@ -25,7 +25,7 @@ function AppNavigation() {
             element: <Dashboard />,
           },
           {
-            path:"/requireed-docs",
+            path:"/required-docs",
             element:<Require_documents />
           },
           {
@@ -37,7 +37,7 @@ function AppNavigation() {
           element: <RecommendationLetter />,
         },
         {
-          path: '/application_form',
+          path: '/application-form',
           element: <Application_form />,
         },
         {

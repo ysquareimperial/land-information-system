@@ -1,64 +1,62 @@
-import React, { useState } from "react";
-import { Button, Card, CardBody, Col, input, Label, Row } from "reactstrap";
-import { _postApi } from "../helpers/helper";
+import React, { useState } from 'react'
+import { Button, Card, CardBody, Col, input, Label, Row } from 'reactstrap'
+import { _postApi } from '../helpers/helper'
 
 export default function Application_form() {
   const _form = {
-    Applicant_full_name: "",
-    registration_particulars: "",
-    Business_location: "",
-    correspondance_address: "",
-    Annual_income: "",
-    Allocated_before: "",
-    Applicant_nationality: "",
-    State_of_origin: "",
-    occupation_business: "",
-    nature_of_business: "",
-    company_registered_under: "",
-    when_where_occupancy_no: "",
-    purpose_of_land_use: "",
-    purpose_for_application_required: "",
-    acitivity_intended_to_undertake: "",
-    type_of_building_erected: "",
-    estimated_amount_to_spenr: "",
-    source_financing: "",
-    length_of_term_required: "",
-    do_you_have_biz_in_kano: "",
-    address_of_local_rep: "",
-    power_of_attorney_if_any: "",
-    location_of_land_required: "",
-    application_date: "",
+    Applicant_full_name: '',
+    registration_particulars: '',
+    Business_location: '',
+    correspondance_address: '',
+    Annual_income: '',
+    Allocated_before: '',
+    Applicant_nationality: '',
+    State_of_origin: '',
+    occupation_business: '',
+    nature_of_business: '',
+    company_registered_under: '',
+    when_where_occupancy_no: '',
+    purpose_of_land_use: '',
+    purpose_for_application_required: '',
+    acitivity_intended_to_undertake: '',
+    type_of_building_erected: '',
+    estimated_amount_to_spenr: '',
+    source_financing: '',
+    length_of_term_required: '',
+    do_you_have_biz_in_kano: '',
+    address_of_local_rep: '',
+    power_of_attorney_if_any: '',
+    location_of_land_required: '',
+    application_date: '',
     // query_type: "Insert",
-  };
-  const [form, setForm] = useState(_form);
+  }
+  const [form, setForm] = useState(_form)
   const handleChange = ({ target: { name, value } }) => {
-    setForm((p) => ({ ...p, [name]: value }));
-  };
-  const [loading, setLoading] = useState(false);
+    setForm((p) => ({ ...p, [name]: value }))
+  }
+  const [loading, setLoading] = useState(false)
 
   const handleSubmit = () => {
-    // 
-    setLoading(true);
-    _postApi(
-      "/api/Application_form",
-      form,
-      (res) => {
-        setLoading(false);
-        alert('Submitted')
-      },
-      (err) => {
-        setLoading(false);
-        console.log(err);
-        alert('Error')
+    setLoading(true)
+    _postApi('/api/Application_form', form, (res) => {
+      setLoading(false)
+      console.log(res)
+      if (res.success) {
+        alert('success')
+        setForm(_form)
       }
-    );
-    // console.log(form)
-  };
+    }),
+      (err) => {
+        setLoading(false)
+        console.log(err)
+      }
+  }
+
   return (
     <div>
-      <Card className="p-3">
+      <Card className="app_primary_card m-2 shadow p-4">
         <h5>Application Form</h5>
-        {JSON.stringify(form)}
+        {/* {JSON.stringify(form)} */}
         <Row>
           <CardBody>
             <Row>
@@ -193,7 +191,9 @@ export default function Application_form() {
                 />
               </Col>
               <Col md={3}>
-                <label className="input_label">Purpose For Application Required</label>
+                <label className="input_label">
+                  Purpose For Application Required
+                </label>
                 <input
                   className="input_field"
                   type="text"
@@ -306,14 +306,24 @@ export default function Application_form() {
                 />
               </Col>
             </Row>
-            <center>
-              <button className="app_btn mt-2" onClick={handleSubmit}>
-                Submit
-              </button>
-            </center>
+            <div>
+              {loading ? (
+                <button
+                  className="app_btn mt-3"
+                  disabled
+                  style={{ cursor: 'not-allowed', backgroundColor: '#A9A9A9' }}
+                >
+                  Loading...
+                </button>
+              ) : (
+                <button className="app_btn mt-3" onClick={handleSubmit}>
+                  Submit
+                </button>
+              )}
+            </div>
           </CardBody>
         </Row>
       </Card>
     </div>
-  );
+  )
 }
