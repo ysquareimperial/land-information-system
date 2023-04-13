@@ -4,16 +4,15 @@ import { TbBrandGoogleAnalytics } from 'react-icons/tb'
 import { BsPencilSquare } from 'react-icons/bs'
 import { useLocation, useNavigate } from 'react-router-dom'
 export default function Sidebar() {
-  const navigate = useNavigate()
+  // const navigate = useNavigate()
   const menuItems = [
     { id: 1, label: 'Dashboard', icon: GoDashboard, link: '/dashboard' },
-    { id: 2, label: 'Require Documents', icon: BsPencilSquare, link: '/requireed-docs' },
+    { id: 2, label: 'Require Documents', icon: BsPencilSquare, link: '/required-docs' },
     {
       id: 3,
-      label: 'Application Form',
+      label: 'List Documents',
       icon: TbBrandGoogleAnalytics,
-      link: '/application_form',
-     
+      link: '/list-docs',
     },
     {
       id: 4,
