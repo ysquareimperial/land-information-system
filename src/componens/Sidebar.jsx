@@ -35,7 +35,7 @@ export default function Sidebar() {
       id: 5,
       label: 'Application Form',
       icon: BsFileEarmarkPlus,
-      link: '/application-form',
+      link: '/application-table',
     },
   ]
   const location = useLocation()

@@ -8,6 +8,7 @@ import RecommendationLetter from '../componens/RecommendationLetter'
 import Require_documents from '../componens/Require_documents'
 import List_doc from '../componens/List_doc'
 import Application_form from '../componens/Application_form'
+import Application_Table from '../componens/Application_Table'
 
 function AppNavigation() {
   let element = useRoutes([
@@ -44,6 +45,10 @@ function AppNavigation() {
           path: '/bbb',
           element: <Bbb />,
         },
+        {
+          path:"/application-table",
+          element:<Application_Table />
+        }
       ],
     },
   ])
