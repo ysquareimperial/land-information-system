@@ -37,28 +37,26 @@ export default function Application_form() {
   const [loading, setLoading] = useState(false)
 
   const handleSubmit = () => {
-    //
     setLoading(true)
-    _postApi(
-      '/api/Application_form',
-      form,
-      (res) => {
-        setLoading(false)
-        alert('Submitted')
-      },
+    _postApi('/api/Application_form', form, (res) => {
+      setLoading(false)
+      console.log(res)
+      if (res.success) {
+        alert('success')
+        setForm(_form)
+      }
+    }),
       (err) => {
         setLoading(false)
         console.log(err)
-        alert('Error')
-      },
-    )
-    // console.log(form)
+      }
   }
+
   return (
     <div>
       <Card className="app_primary_card m-2 shadow p-4">
         <h5>Application Form</h5>
-        {/* {JSON.stringify(form)} */}
+        {JSON.stringify(form)}
         <Row>
           <CardBody>
             <Row>
@@ -309,9 +307,19 @@ export default function Application_form() {
               </Col>
             </Row>
             <div>
-              <button className="app_btn mt-3" onClick={handleSubmit}>
-                Submit
-              </button>
+              {loading ? (
+                <button
+                  className="app_btn mt-3"
+                  disabled
+                  style={{ cursor: 'not-allowed', backgroundColor: '#A9A9A9' }}
+                >
+                  Loading...
+                </button>
+              ) : (
+                <button className="app_btn mt-3" onClick={handleSubmit}>
+                  Submit
+                </button>
+              )}
             </div>
           </CardBody>
         </Row>
