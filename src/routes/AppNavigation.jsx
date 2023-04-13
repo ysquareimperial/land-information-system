@@ -7,6 +7,7 @@ import Dashboard from '../componens/Dashboard'
 import RecommendationLetter from '../componens/RecommendationLetter'
 import Require_documents from '../componens/Require_documents'
 import List_doc from '../componens/List_doc'
+import Application_form from '../componens/Application_form'
 
 function AppNavigation() {
   let element = useRoutes([
@@ -34,6 +35,10 @@ function AppNavigation() {
         {
           path: '/recommendation-letter',
           element: <RecommendationLetter />,
+        },
+        {
+          path: '/application_form',
+          element: <Application_form />,
         },
         {
           path: '/bbb',
