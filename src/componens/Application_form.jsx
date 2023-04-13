@@ -55,7 +55,7 @@ export default function Application_form() {
   return (
     <div>
       <Card className="app_primary_card m-2 shadow p-4">
-        <h5 className='mb-3'>Application Form</h5>
+        <h5 className="mb-3">Application Form</h5>
         {/* {JSON.stringify(form)} */}
 
         <Row>
