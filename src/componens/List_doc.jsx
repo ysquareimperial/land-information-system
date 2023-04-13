@@ -38,9 +38,9 @@ export default function List_doc() {
       <Card className="app_primary_card m-2 shadow p-4">
         <h5 className="mb-3">List Documents</h5>
         {/* {JSON.stringify(list)} */}
-        <Row className="">
+        <Row className="mb-1">
           <Col md={6}>
-            <label className='input_label'>Document ID</label>
+            <label className="input_label">Document ID</label>
             <div>
               <input
                 className="input_field"
@@ -51,7 +51,7 @@ export default function List_doc() {
             </div>
           </Col>
           <Col md={6}>
-            <label className='input_label'>Application Type</label>
+            <label className="input_label">Application Type</label>
             <div>
               <input
                 className="input_field"
@@ -64,7 +64,7 @@ export default function List_doc() {
         </Row>
         <Row>
           <Col md={6}>
-            <label className='input_label'>Document Name</label>
+            <label className="input_label">Document Name</label>
             <div>
               <input
                 className="input_field"
@@ -75,7 +75,7 @@ export default function List_doc() {
             </div>
           </Col>
           <Col md={6}>
-            <label className='input_label'>Description</label>
+            <label className="input_label">Description</label>
             <div>
               <input
                 className="input_field"
@@ -87,7 +87,7 @@ export default function List_doc() {
           </Col>
         </Row>
         <div>
-          <button className="mt-2 app_btn" onClick={handleSubmit}>
+          <button className="mt-3 app_btn" onClick={handleSubmit}>
             {loading ? '...loading' : 'Submit'}
           </button>
         </div>
