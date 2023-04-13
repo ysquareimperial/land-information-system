@@ -37,6 +37,12 @@ export default function Sidebar() {
       icon: BsFileEarmarkPlus,
       link: '/application-form',
     },
+    {
+      id: 5,
+      label: 'Layout Policies',
+      icon: BsFileEarmarkPlus,
+      link: '/layoutl-policies',
+    },
   ]
   const location = useLocation()
   return (

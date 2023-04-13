@@ -8,6 +8,7 @@ import RecommendationLetter from '../componens/RecommendationLetter'
 import Require_documents from '../componens/Require_documents'
 import List_doc from '../componens/List_doc'
 import Application_form from '../componens/Application_form'
+import LayoutPolicies from '../componens/LayoutPolicies'
 
 function AppNavigation() {
   let element = useRoutes([
@@ -41,8 +42,8 @@ function AppNavigation() {
           element: <Application_form />,
         },
         {
-          path: '/bbb',
-          element: <Bbb />,
+          path: '/layoutl-policies',
+          element: <LayoutPolicies />,
         },
       ],
     },

@@ -1,61 +1,65 @@
-import React, { useState } from 'react'
-import { Button, Card, CardBody, Col, input, Label, Row } from 'reactstrap'
-import { _postApi } from '../helpers/helper'
+import React, { useState } from "react";
+import { Button, Card, CardBody, Col, input, Label, Row } from "reactstrap";
+import { _postApi } from "../helpers/helper";
 
 export default function Application_form() {
   const _form = {
-    Applicant_full_name: '',
-    registration_particulars: '',
-    Business_location: '',
-    correspondance_address: '',
-    Annual_income: '',
-    Allocated_before: '',
-    Applicant_nationality: '',
-    State_of_origin: '',
-    occupation_business: '',
-    nature_of_business: '',
-    company_registered_under: '',
-    when_where_occupancy_no: '',
-    purpose_of_land_use: '',
-    purpose_for_application_required: '',
-    acitivity_intended_to_undertake: '',
-    type_of_building_erected: '',
-    estimated_amount_to_spenr: '',
-    source_financing: '',
-    length_of_term_required: '',
-    do_you_have_biz_in_kano: '',
-    address_of_local_rep: '',
-    power_of_attorney_if_any: '',
-    location_of_land_required: '',
-    application_date: '',
+    Applicant_full_name: "",
+    registration_particulars: "",
+    Business_location: "",
+    correspondance_address: "",
+    age: "",
+    sex: "",
+    marital_stataus: "",
+    residential:"",
+    Annual_income: "",
+    Allocated_before: "",
+    Applicant_nationality: "",
+    State_of_origin: "",
+    occupation_business: "",
+    nature_of_business: "",
+    company_registered_under: "",
+    when_where_occupancy_no: "",
+    purpose_of_land_use: "",
+    purpose_for_application_required: "",
+    acitivity_intended_to_undertake: "",
+    type_of_building_erected: "",
+    estimated_amount_to_spenr: "",
+    source_financing: "",
+    length_of_term_required: "",
+    do_you_have_biz_in_kano: "",
+    address_of_local_rep: "",
+    power_of_attorney_if_any: "",
+    location_of_land_required: "",
+    application_date: "",
     // query_type: "Insert",
-  }
-  const [form, setForm] = useState(_form)
+  };
+  const [form, setForm] = useState(_form);
   const handleChange = ({ target: { name, value } }) => {
-    setForm((p) => ({ ...p, [name]: value }))
-  }
-  const [loading, setLoading] = useState(false)
+    setForm((p) => ({ ...p, [name]: value }));
+  };
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = () => {
-    setLoading(true)
-    _postApi('/api/Application_form', form, (res) => {
-      setLoading(false)
-      console.log(res)
+    setLoading(true);
+    _postApi("/api/Application_form", form, (res) => {
+      setLoading(false);
+      console.log(res);
       if (res.success) {
-        alert('success')
-        setForm(_form)
+        alert("success");
+        setForm(_form);
       }
     }),
       (err) => {
-        setLoading(false)
-        console.log(err)
-      }
-  }
+        setLoading(false);
+        console.log(err);
+      };
+  };
 
   return (
     <div>
       <Card className="app_primary_card m-2 shadow p-4">
-        <h5 className='mb-3'>Application Form</h5>
+        <h5 className="mb-3">Application Form</h5>
         {/* {JSON.stringify(form)} */}
 
         <Row>
@@ -108,6 +112,57 @@ export default function Application_form() {
               />
             </div>
           </Col>
+          {/* CHANGESSSSSSSSSSS */}
+          <Col md={3}>
+            <label className="input_label">Age</label>
+            <div>
+              <input
+                className="input_field"
+                type="number"
+                name="age"
+                value={form.age}
+                onChange={handleChange}
+              />
+            </div>
+          </Col><Col md={3}>
+            <label className="input_label">Sex</label>
+            <div>
+              <select
+                className="input_field"
+                type="select"
+                name="sex"
+                value={form.sex}
+                onChange={handleChange}
+              >
+                <option>Select</option>
+                <option>Male</option>
+                <option>Female</option>
+                </select>
+            </div>
+          </Col><Col md={3}>
+            <label className="input_label">Marital Status</label>
+            <div>
+              <input
+                className="input_field"
+                type="text"
+                name="marital_stataus"
+                value={form.marital_stataus}
+                onChange={handleChange}
+              />
+            </div>
+          </Col><Col md={3}>
+            <label className="input_label">Residential Address (P O B)</label>
+            <div>
+              <input
+                className="input_field"
+                type="text"
+                name="residential"
+                value={form.residential}
+                onChange={handleChange}
+              />
+            </div>
+          </Col>
+          {/* CHANGESSSSSSSSSSS */}
         </Row>
         <Row>
           <Col md={3}>
@@ -208,7 +263,7 @@ export default function Application_form() {
                 onChange={handleChange}
               />
             </div>
-          </Col>{' '}
+          </Col>{" "}
         </Row>
         <Row>
           <Col md={3}>
@@ -262,7 +317,7 @@ export default function Application_form() {
                 onChange={handleChange}
               />
             </div>
-          </Col>{' '}
+          </Col>{" "}
         </Row>
         <Row>
           <Col md={3}>
@@ -312,7 +367,7 @@ export default function Application_form() {
                 onChange={handleChange}
               />
             </div>
-          </Col>{' '}
+          </Col>{" "}
         </Row>
         <Row>
           <Col md={3}>
@@ -370,7 +425,7 @@ export default function Application_form() {
             <button
               className="app_btn mt-3"
               disabled
-              style={{ cursor: 'not-allowed', backgroundColor: '#A9A9A9' }}
+              style={{ cursor: "not-allowed", backgroundColor: "#A9A9A9" }}
             >
               Loading...
             </button>
@@ -382,5 +437,5 @@ export default function Application_form() {
         </div>
       </Card>
     </div>
-  )
+  );
 }
