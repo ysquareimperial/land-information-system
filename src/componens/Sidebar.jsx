@@ -2,7 +2,7 @@ import React from 'react'
 import { GoDashboard } from 'react-icons/go'
 import { TbBrandGoogleAnalytics } from 'react-icons/tb'
 import {
-  BsPencilSquare,
+  BsFiles,
   BsFileEarmarkText,
   BsFileEarmarkPlus,
 } from 'react-icons/bs'
@@ -16,7 +16,7 @@ export default function Sidebar() {
     {
       id: 2,
       label: 'Required Documents',
-      icon: BsPencilSquare,
+      icon: BsFiles,
       link: '/required-docs',
     },
     {
