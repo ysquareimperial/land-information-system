@@ -86,7 +86,7 @@ export default function Require_documents() {
           </Col>
         </Row>
         <div>
-          <button className="mt-2 app_btn" onClick={handleSubmit}>
+          <button className="mt-3 app_btn" onClick={handleSubmit}>
             {loading ? '...loading' : 'Submit'}
           </button>
         </div>
