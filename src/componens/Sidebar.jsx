@@ -38,7 +38,7 @@ export default function Sidebar() {
     <div className="sidebar">
         <div className='sidebar_cont'>
 
-      <p className="items_head mt-3">LAND INFORMATION SYSTEM</p>
+      <p className="items_head pt-3">LAND INFORMATION SYSTEM</p>
       {/* {JSON.stringify(location.pathname)} */}
       {menuItems.map((menu) => {
           return (

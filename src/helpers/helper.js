@@ -50,7 +50,7 @@ const _fetchExtApi = (url, success = (f) => f, error = (f) => f) => {
 
 export const capitalizeAllFirstLetter = (str) => {
   // converting first letter to uppercase
-  return typeof str === 'string' ? str.length>0 && str.replace(/^./, str[0].toUpperCase()) : '';
+  return typeof str === 'string' ? str.length > 0 && str.replace(/^./, str[0].toUpperCase()) : '';
 }
 export const capitalizeFirstLetter = (str) => {
   // converting first letter to uppercase
@@ -92,7 +92,7 @@ export function unflatten(arr) {
 }
 
 export function useQuery() {
-const { useLocation } = require("react-router");
+  const { useLocation } = require("react-router");
   return new URLSearchParams(useLocation().search);
 }
 export default useQuery;
