@@ -4,8 +4,8 @@ import { _postApi } from '../helpers/helper'
 
 export default function LetterOfGrant() {
   const _form = {
-    letter_id: '',
-    file_no: '',
+    letter_id: 0,
+    file_no: 0,
     date_of_issue: '',
     serial_no: 0,
     permsec_signature: '',
