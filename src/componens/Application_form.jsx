@@ -17,7 +17,7 @@ export default function Application_form() {
     company_registered_under: "",
     when_where_occupancy_no: "",
     purpose_of_land_use: "",
-    purpose_of_land_use: "",
+    purpose_for_application_required: "",
     acitivity_intended_to_undertake: "",
     type_of_building_erected: "",
     estimated_amount_to_spenr: "",
@@ -28,8 +28,7 @@ export default function Application_form() {
     power_of_attorney_if_any: "",
     location_of_land_required: "",
     application_date: "",
-    application_id: "",
-    query_type: "",
+    // query_type: "Insert",
   };
   const [form, setForm] = useState(_form);
   const handleChange = ({ target: { name, value } }) => {
@@ -38,17 +37,19 @@ export default function Application_form() {
   const [loading, setLoading] = useState(false);
 
   const handleSubmit = () => {
+    // 
     setLoading(true);
     _postApi(
-      "api/Application_form",
+      "/api/Application_form",
       form,
       (res) => {
         setLoading(false);
-        console.log(res);
+        alert('Submitted')
       },
       (err) => {
         setLoading(false);
         console.log(err);
+        alert('Error')
       }
     );
     // console.log(form)
@@ -57,7 +58,7 @@ export default function Application_form() {
     <div>
       <Card className="p-3">
         <h5>Application Form</h5>
-        {/* {JSON.stringify(form)} */}
+        {JSON.stringify(form)}
         <Row>
           <CardBody>
             <Row>
@@ -105,7 +106,7 @@ export default function Application_form() {
                 <label className="input_label">Annual Income</label>
                 <input
                   className="input_field"
-                  type="text"
+                  type="number"
                   name="Annual_income"
                   value={form.Annual_income}
                   onChange={handleChange}
@@ -192,12 +193,12 @@ export default function Application_form() {
                 />
               </Col>
               <Col md={3}>
-                <label className="input_label">Purpose Of Land Use</label>
+                <label className="input_label">Purpose For Application Required</label>
                 <input
                   className="input_field"
                   type="text"
-                  name="purpose_of_land_use"
-                  value={form.purpose_of_land_use}
+                  name="purpose_for_application_required"
+                  value={form.purpose_for_application_required}
                   onChange={handleChange}
                 />
               </Col>
@@ -227,7 +228,7 @@ export default function Application_form() {
                 <label className="input_label">Estimated Amount To Spenr</label>
                 <input
                   className="input_field"
-                  type="text"
+                  type="number"
                   name="estimated_amount_to_spenr"
                   value={form.estimated_amount_to_spenr}
                   onChange={handleChange}
