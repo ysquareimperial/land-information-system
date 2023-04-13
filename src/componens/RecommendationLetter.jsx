@@ -33,10 +33,17 @@ export default function RecommendationLetter() {
   }
 
   const handleSubmit = () => {
+    setLoading(true)
     _postApi('/api/create-recommendation-letter', recLetteForm, (res) => {
+      setLoading(false)
       console.log(res)
+      if (res.success) {
+        alert('success')
+        setRecLetterForm(form)
+      }
     }),
       (err) => {
+        setLoading(false)
         console.log(err)
       }
   }
