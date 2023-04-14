@@ -3,7 +3,7 @@ import { GoDashboard } from 'react-icons/go'
 import { TbBrandGoogleAnalytics } from 'react-icons/tb'
 import { BsFiles, BsFileEarmarkText, BsFileEarmarkPlus } from 'react-icons/bs'
 import { TiDocumentText } from 'react-icons/ti'
-import { AiOutlineUnorderedList } from 'react-icons/ai'
+import { AiFillMoneyCollect, AiOutlineUnorderedList } from 'react-icons/ai'
 import { useLocation, useNavigate } from 'react-router-dom'
 export default function Sidebar() {
   const navigate = useNavigate()
@@ -32,7 +32,7 @@ export default function Sidebar() {
       id: 5,
       label: 'Application Form',
       icon: BsFileEarmarkPlus,
-      link: '/application-form',
+      link: '/application-table',
     },
     {
       id: 6,
@@ -58,6 +58,7 @@ export default function Sidebar() {
       icon: BsFileEarmarkText,
       link: '/conversion',
     },
+    { id: 6, label: 'Finance', icon: AiFillMoneyCollect, link: '/finance' },
   ]
   const location = useLocation()
   return (

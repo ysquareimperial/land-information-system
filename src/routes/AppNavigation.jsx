@@ -12,6 +12,9 @@ import LetterOfGrant from '../componens/LetterOfGrant'
 import Extension from '../componens/Extension'
 import ReGrant from '../componens/ReGrant'
 import Conversion from '../componens/Conversion'
+import Application_Table from '../componens/Application_Table'
+import FinanceTable from '../componens/FinanceTable'
+import FinanceForm from '../componens/FinanceForm'
 
 function AppNavigation() {
   let element = useRoutes([
@@ -60,6 +63,18 @@ function AppNavigation() {
         {
           path: '/re-grant',
           element: <ReGrant />,
+        },
+        {
+          path: '/application-table',
+          element: <Application_Table />,
+        },
+        {
+          path: '/finance',
+          element: <FinanceTable />,
+        },
+        {
+          path: '/finance-form',
+          element: <FinanceForm />,
         },
       ],
     },
