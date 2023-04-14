@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Button, Card, Col, Row } from "reactstrap";
 import { _postApi } from "../helpers/helper";
 
-export default function ExecutiveGovermor() {
+export default function ApplicationForConseent() {
   const [list, setList] = useState({
     right_of_occupancy_number: "",
     name_of_applicant: "",
@@ -38,7 +38,7 @@ export default function ExecutiveGovermor() {
   return (
     <div>
       <Card className="app_primary_card m-2 shadow p-4">
-        <h5 className="mb-3">Executive Governor</h5>
+        <h5 className="mb-3">Application For Consent To Mortgate</h5>
         {/* {JSON.stringify(list)} */}
         <Row className="mb-1">
           <Col md={6}>

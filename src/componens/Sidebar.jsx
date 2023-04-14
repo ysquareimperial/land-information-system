@@ -39,7 +39,7 @@ export default function Sidebar() {
       link: '/layoutl-policies',
     },
     {
-      label: 'ExecutiveGovermor',
+      label: 'Application For Conseent',
       icon: BsFileEarmarkPlus,
       link: '/executive-govermor',
     },

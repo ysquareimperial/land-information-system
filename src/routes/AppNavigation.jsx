@@ -10,7 +10,7 @@ import List_doc from '../componens/List_doc'
 import Application_form from '../componens/Application_form'
 import LayoutPolicies from '../componens/LayoutPolicies'
 import LetterOfGrant from '../componens/LetterofGrant'
-import ExecutiveGovermor from '../componens/ExecutiveGovermor'
+import ApplicationForConseent from '../componens/ApplicationForConseent'
 
 function AppNavigation() {
   let element = useRoutes([
@@ -53,7 +53,7 @@ function AppNavigation() {
         },
         {
           path: '/executive-govermor',
-          element: <ExecutiveGovermor />,
+          element: <ApplicationForConseent />,
         },
       ],
     },
