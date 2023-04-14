@@ -14,10 +14,25 @@ import ReGrant from '../componens/ReGrant'
 import Conversion from '../componens/Conversion'
 import Application_Table from '../componens/Application_Table'
 import FinanceTable from '../componens/FinanceTable'
-import FinanceForm from '../componens/FinanceForm'
+import FinanceForm from '../componens/FinanceFOrm'
 import LayoutPolicies from '../componens/LayoutPolicies'
 import ApplicationForConseent from '../componens/ApplicationForConseent'
+<<<<<<< HEAD
 import ApplicationForConseentTable from '../componens/ApplicationForConseentTable'
+=======
+<<<<<<< HEAD
+import LayoutPoliciesTable from '../componens/LayoutPoliciesTable'
+import ExtensionForm from '../componens/ExtensionForm'
+=======
+import ReGrantForm from '../componens/ReGrantForm'
+import ConversionForm from '../componens/ConversionForm'
+import RecommendationLetterList from '../componens/RecommendationLetterList'
+<<<<<<< HEAD
+>>>>>>> dc38266c8f538090f414b3ffd78059d34e34f2b5
+=======
+import ListTable from '../componens/ListTable'
+>>>>>>> 44c95e5c72e2f784a069fb6942eade24b17de02a
+>>>>>>> 11c241d1be86cd1598a5710aa9e4838c7c855562
 
 function AppNavigation() {
   let element = useRoutes([
@@ -59,13 +74,21 @@ function AppNavigation() {
           element: <Extension />,
         },
         {
+          path: '/extension-form',
+          element: <ExtensionForm />,
+        },
+        {
           path: '/conversion',
           element: <Conversion />,
         },
 
         {
-          path: '/re-grant',
+          path: '/re-grant-list',
           element: <ReGrant />,
+        },
+        {
+          path: '/re-grant-form',
+          element: <ReGrantForm />,
         },
         {
           path: '/application-table',
@@ -80,18 +103,35 @@ function AppNavigation() {
           element: <FinanceForm />,
         },
         {
-          path: '/layoutl-policies',
+          path: '/layoutl-policies-form',
           element: <LayoutPolicies />,
+        },
+        {
+          path: '/layoutl-policies',
+          element: <LayoutPoliciesTable />,
         },
         {
           path: '/executive-govermor',
           element: <ApplicationForConseent />,
         },
         {
+<<<<<<< HEAD
           path: '/executive-govermor-table',
           element: <ApplicationForConseentTable />,
         },
         
+=======
+          path: '/conversion-form',
+          element: <ConversionForm />,
+        },
+        {
+          path: '/recommendation-letter-list',
+          element: <RecommendationLetterList />,
+        },{
+          path:'/list-table',
+          element:<ListTable />
+        }
+>>>>>>> 11c241d1be86cd1598a5710aa9e4838c7c855562
       ],
       
     },
