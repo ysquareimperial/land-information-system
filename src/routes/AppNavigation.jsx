@@ -8,7 +8,10 @@ import RecommendationLetter from '../componens/RecommendationLetter'
 import Require_documents from '../componens/Require_documents'
 import List_doc from '../componens/List_doc'
 import Application_form from '../componens/Application_form'
-import LetterOfGrant from '../componens/LetterofGrant'
+import LetterOfGrant from '../componens/LetterOfGrant'
+import Extension from '../componens/Extension'
+import ReGrant from '../componens/ReGrant'
+import Conversion from '../componens/Conversion'
 
 function AppNavigation() {
   let element = useRoutes([
@@ -46,8 +49,17 @@ function AppNavigation() {
           element: <Application_form />,
         },
         {
-          path: '/bbb',
-          element: <Bbb />,
+          path: '/extension',
+          element: <Extension />,
+        },
+        {
+          path: '/conversion',
+          element: <Conversion />,
+        },
+
+        {
+          path: '/re-grant',
+          element: <ReGrant />,
         },
       ],
     },

@@ -40,6 +40,24 @@ export default function Sidebar() {
       icon: BsFileEarmarkText,
       link: '/letter-of-grant',
     },
+    {
+      id: 7,
+      label: 'Extension',
+      icon: BsFileEarmarkText,
+      link: '/extension',
+    },
+    {
+      id: 8,
+      label: 'Re-Grant',
+      icon: BsFileEarmarkText,
+      link: '/re-grant',
+    },
+    {
+      id: 9,
+      label: 'Conversion',
+      icon: BsFileEarmarkText,
+      link: '/conversion',
+    },
   ]
   const location = useLocation()
   return (

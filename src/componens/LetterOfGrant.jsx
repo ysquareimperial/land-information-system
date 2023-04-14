@@ -4,27 +4,27 @@ import { _postApi } from '../helpers/helper'
 
 export default function LetterOfGrant() {
   const _form = {
-    letter_id: 0,
-    file_no: 0,
+    letter_id: '',
+    file_no: '',
     date_of_issue: '',
-    serial_no: 0,
+    serial_no: '',
     permsec_signature: '',
     signature_date: '',
   }
-  const [letterOfGrant, setLetterOfGrant] = useState(_form)
+  const [letterOfGrantForm, setLetterOfGrantForm] = useState(_form)
   const [loading, setLoading] = useState(false)
   const handleChange = ({ target: { name, value } }) => {
-    setLetterOfGrant((p) => ({ ...p, [name]: value }))
+    setLetterOfGrantForm((p) => ({ ...p, [name]: value }))
   }
 
   const handleSubmit = () => {
     setLoading(true)
-    _postApi('/api/create-letter-of-grant', letterOfGrant, (res) => {
+    _postApi('/api/create-letter-of-grant', letterOfGrantForm, (res) => {
       setLoading(false)
       console.log(res)
       if (res.success) {
         alert('success')
-        setLetterOfGrant(_form)
+        setLetterOfGrantForm(_form)
       }
     }),
       (err) => {
@@ -37,7 +37,7 @@ export default function LetterOfGrant() {
     <div>
       <Card className="app_primary_card m-2 shadow p-4">
         <h5 className="mb-3">Letter of Grant</h5>
-        {/* {JSON.stringify(letterOfGrant)} */}
+        {/* {JSON.stringify(letterOfGrantForm)} */}
 
         <Row>
           <Col md={3}>
@@ -47,7 +47,7 @@ export default function LetterOfGrant() {
                 className="input_field"
                 type="number"
                 name="letter_id"
-                value={letterOfGrant.letter_id}
+                value={letterOfGrantForm.letter_id}
                 onChange={handleChange}
               />
             </div>
@@ -59,7 +59,7 @@ export default function LetterOfGrant() {
                 className="input_field"
                 type="number"
                 name="file_no"
-                value={letterOfGrant.file_no}
+                value={letterOfGrantForm.file_no}
                 onChange={handleChange}
               />
             </div>
@@ -71,7 +71,7 @@ export default function LetterOfGrant() {
                 className="input_field"
                 type="date"
                 name="date_of_issue"
-                value={letterOfGrant.date_of_issue}
+                value={letterOfGrantForm.date_of_issue}
                 onChange={handleChange}
               />
             </div>
@@ -84,7 +84,7 @@ export default function LetterOfGrant() {
                 className="input_field"
                 type="number"
                 name="serial_no"
-                value={letterOfGrant.serial_no}
+                value={letterOfGrantForm.serial_no}
                 onChange={handleChange}
               />
             </div>
@@ -98,7 +98,7 @@ export default function LetterOfGrant() {
                 className="input_field"
                 type="text"
                 name="permsec_signature"
-                value={letterOfGrant.permsec_signature}
+                value={letterOfGrantForm.permsec_signature}
                 onChange={handleChange}
               />
             </div>
@@ -110,7 +110,7 @@ export default function LetterOfGrant() {
                 className="input_field"
                 type="date"
                 name="signature_date"
-                value={letterOfGrant.signature_date}
+                value={letterOfGrantForm.signature_date}
                 onChange={handleChange}
               />
             </div>
