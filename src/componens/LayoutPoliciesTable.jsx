@@ -4,17 +4,17 @@ import { Card } from 'reactstrap'
 import SearchBar from './SearchBar'
 import { useNavigate } from 'react-router-dom'
 
-function Extension() {
+function LayoutPoliciesTable() {
   const navigate = useNavigate()
   return (
     <div>
       <Card className="app_primary_card m-2 shadow p-4">
         <center>
-          <h5 className="mb-3">Extension Table</h5>
+          <h5 className="mb-3">Layout Policies Table</h5>
         </center>
         <button
           className="mt-2 app_btn col-md-2"
-          onClick={() => navigate('/extension-form')}
+          onClick={() => navigate('/layoutl-policies-form')}
         >
           <BsPlusLg /> Add New
         </button>
@@ -30,7 +30,7 @@ function Extension() {
                   textAlign: 'center',
                 }}
               >
-                Applicant FullName
+                Layout Number
               </th>
               <th
                 style={{
@@ -40,7 +40,7 @@ function Extension() {
                   textAlign: 'center',
                 }}
               >
-                Residential Address
+                Policy Item ID
               </th>
               <th
                 style={{
@@ -50,7 +50,7 @@ function Extension() {
                   textAlign: 'center',
                 }}
               >
-                Correspondence Address
+                Policy Name
               </th>
               <th
                 style={{
@@ -60,7 +60,7 @@ function Extension() {
                   textAlign: 'center',
                 }}
               >
-                Nationality
+                Item Description
               </th>
               <th
                 style={{
@@ -70,7 +70,7 @@ function Extension() {
                   textAlign: 'center',
                 }}
               >
-                Occupation
+                Item Value
               </th>
               <th
                 style={{
@@ -92,4 +92,5 @@ function Extension() {
   )
 }
 
-export default Extension
+export default LayoutPoliciesTable
+
