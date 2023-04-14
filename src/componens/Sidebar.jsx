@@ -21,7 +21,8 @@ export default function Sidebar() {
     {
       label: 'List Documents',
       icon: AiOutlineUnorderedList,
-      link: '/list-docs',
+     
+      link: '/list-table',
     },
     {
       label: 'Recommendation Letter',

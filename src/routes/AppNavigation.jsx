@@ -14,9 +14,10 @@ import ReGrant from '../componens/ReGrant'
 import Conversion from '../componens/Conversion'
 import Application_Table from '../componens/Application_Table'
 import FinanceTable from '../componens/FinanceTable'
-import FinanceForm from '../componens/FinanceForm'
+import FinanceForm from '../componens/FinanceFOrm'
 import LayoutPolicies from '../componens/LayoutPolicies'
 import ApplicationForConseent from '../componens/ApplicationForConseent'
+import ListTable from '../componens/ListTable'
 
 function AppNavigation() {
   let element = useRoutes([
@@ -86,6 +87,10 @@ function AppNavigation() {
           path: '/executive-govermor',
           element: <ApplicationForConseent />,
         },
+        {
+          path:'/list-table',
+          element:<ListTable />
+        }
       ],
     },
   ])
