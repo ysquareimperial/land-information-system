@@ -66,13 +66,16 @@ const handleChanges = ({target:{name,value}})=>{
   return (
     <div>
       <Card className="app_primary_card m-2 shadow p-4">
-        {JSON.stringify(radios)}
+        {/* {JSON.stringify(radios)} */}
         <h5 className="mb-3">Attach Document</h5>
        {
        data[0]?.map((item,index)=>(
+        
           <Row className='mb-3'>
+
         <Col md={1}>
-            <Input  name={item.document_name} value={item.document_name} type='checkbox' onChange={handleChanges} />
+          {radios.lenth}
+            <Input  name={item.document_name} value={true} type='checkbox' onChange={handleChanges} />
             </Col>
             <Col md={3}>
               <p>{item.document_name}</p>
