@@ -97,14 +97,70 @@ export default function ApplicationForConseent() {
           </Col>
           <Col md={6}>
             <label className="input_label">
-              Location Of Right Of Occupancy
+              Date Of Grant
+            </label>
+            <div>
+              <input
+                className="input_field"
+                type="date"
+                name="date_of_grant"
+                value={list.date_of_grant}
+                onChange={handleChange}
+              />
+            </div>
+          </Col>
+          <Col md={6}>
+            <label className="input_label">
+              Purpose
+            </label>
+            <div>
+              <input
+                className="input_field"
+                type="text"
+                name="purpose"
+                value={list.purpose}
+                onChange={handleChange}
+              />
+            </div>
+          </Col>
+          <Col md={6}>
+            <label className="input_label">
+             Mortgagor Institution
+            </label>
+            <div>
+              <input
+                className="input_field"
+                type="text"
+                name="mortgagor_institution"
+                value={list.mortgagor_institution}
+                onChange={handleChange}
+              />
+            </div>
+          </Col>
+          <Col md={6}>
+            <label className="input_label">
+              Location And Correspondence Address
+            </label>
+            <div>
+              <input
+                className="input_field"
+                type="text"
+                name="lacation_and_correspondence_address"
+                value={list.lacation_and_correspondence_address}
+                onChange={handleChange}
+              />
+            </div>
+          </Col>
+          <Col md={6}>
+            <label className="input_label">
+             GSM
             </label>
             <div>
               <input
                 className="input_field"
                 type="number"
-                name="local_of_right_of_occupancy"
-                value={list.local_of_right_of_occupancy}
+                name="gsm"
+                value={list.gsm}
                 onChange={handleChange}
               />
             </div>
