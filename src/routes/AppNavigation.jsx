@@ -22,6 +22,7 @@ import ConversionForm from '../componens/ConversionForm'
 import RecommendationLetterList from '../componens/RecommendationLetterList'
 import ListTable from '../componens/ListTable'
 import ExtensionForm from '../componens/ExtensionForm'
+import Apps from '../componens/Apps'
 
 function AppNavigation() {
   let element = useRoutes([
@@ -111,6 +112,10 @@ function AppNavigation() {
           path: '/list-table',
           element: <ListTable />,
         },
+        {
+          path:'/application-step',
+          element:<Apps />
+        }
       ],
     },
   ])
