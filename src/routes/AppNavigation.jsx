@@ -18,21 +18,25 @@ import FinanceForm from '../componens/FinanceFOrm'
 import LayoutPolicies from '../componens/LayoutPolicies'
 import ApplicationForConseent from '../componens/ApplicationForConseent'
 <<<<<<< HEAD
+<<<<<<< HEAD
 import ApplicationForConseentTable from '../componens/ApplicationForConseentTable'
 =======
 <<<<<<< HEAD
 import LayoutPoliciesTable from '../componens/LayoutPoliciesTable'
 import ExtensionForm from '../componens/ExtensionForm'
 =======
+=======
+>>>>>>> 1cda8d2b662c1ff85d0616afcd0a1389e685b842
 import ReGrantForm from '../componens/ReGrantForm'
 import ConversionForm from '../componens/ConversionForm'
 import RecommendationLetterList from '../componens/RecommendationLetterList'
-<<<<<<< HEAD
->>>>>>> dc38266c8f538090f414b3ffd78059d34e34f2b5
-=======
 import ListTable from '../componens/ListTable'
+<<<<<<< HEAD
 >>>>>>> 44c95e5c72e2f784a069fb6942eade24b17de02a
 >>>>>>> 11c241d1be86cd1598a5710aa9e4838c7c855562
+=======
+import ExtensionForm from '../componens/ExtensionForm'
+>>>>>>> 1cda8d2b662c1ff85d0616afcd0a1389e685b842
 
 function AppNavigation() {
   let element = useRoutes([
@@ -103,12 +107,8 @@ function AppNavigation() {
           element: <FinanceForm />,
         },
         {
-          path: '/layoutl-policies-form',
-          element: <LayoutPolicies />,
-        },
-        {
           path: '/layoutl-policies',
-          element: <LayoutPoliciesTable />,
+          element: <LayoutPolicies />,
         },
         {
           path: '/executive-govermor',
@@ -127,11 +127,19 @@ function AppNavigation() {
         {
           path: '/recommendation-letter-list',
           element: <RecommendationLetterList />,
+<<<<<<< HEAD
         },{
           path:'/list-table',
           element:<ListTable />
         }
 >>>>>>> 11c241d1be86cd1598a5710aa9e4838c7c855562
+=======
+        },
+        {
+          path: '/list-table',
+          element: <ListTable />,
+        },
+>>>>>>> 1cda8d2b662c1ff85d0616afcd0a1389e685b842
       ],
       
     },
