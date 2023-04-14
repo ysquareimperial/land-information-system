@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Button, Card, CardBody, Col, input, Label, Row } from "reactstrap";
 import { _postApi } from "../helpers/helper";
+import { BsArrowLeft } from "react-icons/bs";
 
 export default function Application_form() {
   const _form = {
@@ -67,7 +68,8 @@ export default function Application_form() {
   return (
     <div>
       <Card className="app_primary_card m-2 shadow p-4">
-        <h5 className="mb-3">Application Form</h5>
+      <button className="mt-2 app_btn col-md-2" onClick={()=>navigate(-1)}><BsArrowLeft />  Back</button>
+        <center><h5 className="mb-3">Application Form</h5></center>
         {/* {JSON.stringify(form)} */}
 
         <Row>

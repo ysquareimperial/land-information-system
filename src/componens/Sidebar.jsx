@@ -7,17 +7,17 @@ import {
   BsFileEarmarkPlus,
 } from 'react-icons/bs'
 import { TiDocumentText } from 'react-icons/ti'
-import { AiOutlineUnorderedList } from 'react-icons/ai'
+import { AiFillMoneyCollect, AiOutlineUnorderedList } from 'react-icons/ai'
 import { useLocation, useNavigate } from 'react-router-dom'
 export default function Sidebar() {
   const navigate = useNavigate()
   const menuItems = [
     { label: 'Dashboard', icon: GoDashboard, link: '/dashboard' },
-    {
-      label: 'Required Documents',
-      icon: BsFiles,
-      link: '/required-docs',
-    },
+    // {
+    //   label: 'Required Documents',
+    //   icon: BsFiles,
+    //   link: '/required-docs',
+    // },
     {
       label: 'List Documents',
       icon: AiOutlineUnorderedList,
@@ -31,7 +31,7 @@ export default function Sidebar() {
     {
       label: 'Application Form',
       icon: BsFileEarmarkPlus,
-      link: '/application-form',
+      link: '/application-table',
     },
     {
       label: 'Layout Policies',
@@ -43,6 +43,25 @@ export default function Sidebar() {
       icon: BsFileEarmarkPlus,
       link: '/executive-govermor',
     },
+    {
+      id: 7,
+      label: 'Extension',
+      icon: BsFileEarmarkText,
+      link: '/extension',
+    },
+    {
+      id: 8,
+      label: 'Re-Grant',
+      icon: BsFileEarmarkText,
+      link: '/re-grant',
+    },
+    {
+      id: 9,
+      label: 'Conversion',
+      icon: BsFileEarmarkText,
+      link: '/conversion',
+    },
+    { id: 6, label: 'Finance', icon: AiFillMoneyCollect, link: '/finance' },
   ]
   const location = useLocation()
   return (

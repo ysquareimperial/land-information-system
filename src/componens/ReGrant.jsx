@@ -1,8 +1,7 @@
 import React, { useState } from 'react'
 import { Button, Card, Col, Input, Row } from 'reactstrap'
-import { _postApi } from '../helpers/helper'
 
-export default function Require_documents() {
+export default function ReGrant() {
   return (
     <div>
       <Card className="app_primary_card m-2 shadow p-4">
