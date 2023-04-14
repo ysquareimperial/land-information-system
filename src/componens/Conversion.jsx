@@ -11,7 +11,7 @@ export default function Conversion() {
       <input type='search' placeholder='Search' className='input_field mb-3'/>
 
       <div>
-        <Table borderless striped responsive>
+        <Table borderless striped responsive size='sm'>
           <thead>
             <tr>
               <td>S/N</td>
@@ -31,7 +31,7 @@ export default function Conversion() {
               <td>@mdo</td>
               <td>
                 <button
-                  className="table_btn"
+                  className="blue table_btn"
                   onClick={() => navigate('/conversion-form')}
                 >
                   Convert

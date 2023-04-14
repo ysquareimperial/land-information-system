@@ -9,9 +9,13 @@ export default function ReGrant() {
         <h5 className="mb-4">
           Application for The Re-Grant of a Statutory Right of Occupancy
         </h5>
-      <input type='search' placeholder='Search' className='input_field mb-3'/>
+        <input
+          type="search"
+          placeholder="Search"
+          className="input_field mb-3"
+        />
         <div>
-          <Table borderless striped responsive>
+          <Table borderless striped responsive size='sm'>
             <thead>
               <tr>
                 <td>S/N</td>
@@ -31,7 +35,7 @@ export default function ReGrant() {
                 <td>@mdo</td>
                 <td>
                   <button
-                    className="table_btn"
+                    className="blue table_btn"
                     onClick={() => navigate('/re-grant-form')}
                   >
                     Re-Grant

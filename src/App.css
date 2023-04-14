@@ -102,3 +102,11 @@
   border-radius: 5px;
   font-size: 12px;
 }
+
+.blue{
+  background-color: #0b345530
+}
+.for{
+  width: fit-content;
+  border-radius: 5px;
+}

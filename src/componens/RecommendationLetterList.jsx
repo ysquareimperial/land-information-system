@@ -28,7 +28,22 @@ export default function RecommendationLetterList() {
               <td>@mdo</td>
               <td>
                 <button
-                  className="table_btn"
+                  className="blue table_btn"
+                  onClick={() => navigate('/recommendation-letter')}
+                >
+                  Approve
+                </button>
+              </td>
+            </tr>
+            <tr>
+              <td scope="row">1</td>
+              <td>Mark</td>
+              <td>Otto</td>
+              <td>@mdo</td>
+              <td>@mdo</td>
+              <td>
+                <button
+                  className="blue table_btn"
                   onClick={() => navigate('/recommendation-letter')}
                 >
                   Approve
