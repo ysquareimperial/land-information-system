@@ -17,18 +17,11 @@ import FinanceTable from '../componens/FinanceTable'
 import FinanceForm from '../componens/FinanceFOrm'
 import LayoutPolicies from '../componens/LayoutPolicies'
 import ApplicationForConseent from '../componens/ApplicationForConseent'
-<<<<<<< HEAD
-import LayoutPoliciesTable from '../componens/LayoutPoliciesTable'
-import ExtensionForm from '../componens/ExtensionForm'
-=======
 import ReGrantForm from '../componens/ReGrantForm'
 import ConversionForm from '../componens/ConversionForm'
 import RecommendationLetterList from '../componens/RecommendationLetterList'
-<<<<<<< HEAD
->>>>>>> dc38266c8f538090f414b3ffd78059d34e34f2b5
-=======
 import ListTable from '../componens/ListTable'
->>>>>>> 44c95e5c72e2f784a069fb6942eade24b17de02a
+import ExtensionForm from '../componens/ExtensionForm'
 
 function AppNavigation() {
   let element = useRoutes([
@@ -99,12 +92,8 @@ function AppNavigation() {
           element: <FinanceForm />,
         },
         {
-          path: '/layoutl-policies-form',
-          element: <LayoutPolicies />,
-        },
-        {
           path: '/layoutl-policies',
-          element: <LayoutPoliciesTable />,
+          element: <LayoutPolicies />,
         },
         {
           path: '/executive-govermor',
@@ -117,10 +106,11 @@ function AppNavigation() {
         {
           path: '/recommendation-letter-list',
           element: <RecommendationLetterList />,
-        },{
-          path:'/list-table',
-          element:<ListTable />
-        }
+        },
+        {
+          path: '/list-table',
+          element: <ListTable />,
+        },
       ],
     },
   ])
