@@ -17,7 +17,11 @@ import FinanceTable from '../componens/FinanceTable'
 import FinanceForm from '../componens/FinanceFOrm'
 import LayoutPolicies from '../componens/LayoutPolicies'
 import ApplicationForConseent from '../componens/ApplicationForConseent'
+import ReGrantForm from '../componens/ReGrantForm'
+import ConversionForm from '../componens/ConversionForm'
+import RecommendationLetterList from '../componens/RecommendationLetterList'
 import ListTable from '../componens/ListTable'
+import ExtensionForm from '../componens/ExtensionForm'
 
 function AppNavigation() {
   let element = useRoutes([
@@ -59,13 +63,21 @@ function AppNavigation() {
           element: <Extension />,
         },
         {
+          path: '/extension-form',
+          element: <ExtensionForm />,
+        },
+        {
           path: '/conversion',
           element: <Conversion />,
         },
 
         {
-          path: '/re-grant',
+          path: '/re-grant-list',
           element: <ReGrant />,
+        },
+        {
+          path: '/re-grant-form',
+          element: <ReGrantForm />,
         },
         {
           path: '/application-table',
@@ -88,9 +100,17 @@ function AppNavigation() {
           element: <ApplicationForConseent />,
         },
         {
-          path:'/list-table',
-          element:<ListTable />
-        }
+          path: '/conversion-form',
+          element: <ConversionForm />,
+        },
+        {
+          path: '/recommendation-letter-list',
+          element: <RecommendationLetterList />,
+        },
+        {
+          path: '/list-table',
+          element: <ListTable />,
+        },
       ],
     },
   ])

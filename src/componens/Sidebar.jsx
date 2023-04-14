@@ -1,11 +1,7 @@
 import React from 'react'
 import { GoDashboard } from 'react-icons/go'
 import { TbBrandGoogleAnalytics } from 'react-icons/tb'
-import {
-  BsFiles,
-  BsFileEarmarkText,
-  BsFileEarmarkPlus,
-} from 'react-icons/bs'
+import { BsFiles, BsFileEarmarkText, BsFileEarmarkPlus } from 'react-icons/bs'
 import { TiDocumentText } from 'react-icons/ti'
 import { AiFillMoneyCollect, AiOutlineUnorderedList } from 'react-icons/ai'
 import { useLocation, useNavigate } from 'react-router-dom'
@@ -27,7 +23,7 @@ export default function Sidebar() {
     {
       label: 'Recommendation Letter',
       icon: BsFileEarmarkText,
-      link: '/recommendation-letter',
+      link: '/recommendation-letter-list',
     },
     {
       label: 'Application Form',
@@ -54,7 +50,7 @@ export default function Sidebar() {
       id: 8,
       label: 'Re-Grant',
       icon: BsFileEarmarkText,
-      link: '/re-grant',
+      link: '/re-grant-list',
     },
     {
       id: 9,
