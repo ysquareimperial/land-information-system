@@ -165,6 +165,34 @@ export default function ApplicationForConseent() {
               />
             </div>
           </Col>
+          <Col md={6}>
+            <label className="input_label">
+            Amount Of Consideration N
+            </label>
+            <div>
+              <input
+                className="input_field"
+                type="text"
+                name="amount_of_consideration_n"
+                value={list.amount_of_consideration_n}
+                onChange={handleChange}
+              />
+            </div>
+          </Col>
+          <Col md={6}>
+            <label className="input_label">
+             Specify Special Mortgate Tearm
+            </label>
+            <div>
+              <input
+                className="input_field"
+                type="number"
+                name="specify_special_mortgage_tearm"
+                value={list.specify_special_mortgage_tearm}
+                onChange={handleChange}
+              />
+            </div>
+          </Col>
         </Row>
         <div>
           <button className="mt-3 app_btn" onClick={handleSubmit}>

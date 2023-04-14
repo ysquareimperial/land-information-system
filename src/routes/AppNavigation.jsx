@@ -56,6 +56,7 @@ function AppNavigation() {
           element: <ApplicationForConseent />,
         },
       ],
+      
     },
   ])
   return element
