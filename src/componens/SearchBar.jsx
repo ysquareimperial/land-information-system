@@ -1,6 +1,8 @@
 import React from "react";
-import {Search} from "react-feather";
 
+import TextInput from "./TextInput";
+import { BsSearch } from "react-icons/bs";
+import  './search.css'
 
 export default function SearchBar(props) {
   const {
@@ -17,7 +19,7 @@ export default function SearchBar(props) {
   return (
     <div className="form-group has-search">
       <span className="form-control-feedback mt-4"  >
-        <Search />
+        <BsSearch />
       </span>
       <TextInput
         ref={_ref}

@@ -1,13 +1,9 @@
 import React from 'react'
 import { GoDashboard } from 'react-icons/go'
 import { TbBrandGoogleAnalytics } from 'react-icons/tb'
-import {
-  BsFiles,
-  BsFileEarmarkText,
-  BsFileEarmarkPlus,
-} from 'react-icons/bs'
+import { BsFiles, BsFileEarmarkText, BsFileEarmarkPlus } from 'react-icons/bs'
 import { TiDocumentText } from 'react-icons/ti'
-import { AiOutlineUnorderedList } from 'react-icons/ai'
+import { AiFillMoneyCollect, AiOutlineUnorderedList } from 'react-icons/ai'
 import { useLocation, useNavigate } from 'react-router-dom'
 export default function Sidebar() {
   const navigate = useNavigate()
@@ -19,6 +15,7 @@ export default function Sidebar() {
       icon: BsFiles,
       link: '/required-docs',
     },
+
     {
       id: 3,
       label: 'List Documents',
@@ -37,6 +34,18 @@ export default function Sidebar() {
       icon: BsFileEarmarkPlus,
       link: '/application-table',
     },
+    {
+      id: 6,
+      label: 'Letter of Grant',
+      icon: BsFileEarmarkText,
+      link: '/letter-of-grant',
+    },
+    {
+      id: 6,
+      label: 'Finance',
+      icon: AiFillMoneyCollect,
+      link: '/finance',
+    },
   ]
   const location = useLocation()
   return (
@@ -44,25 +53,21 @@ export default function Sidebar() {
       <div className="sidebar_cont">
         <p className="items_head pt-3">LAND INFORMATION SYSTEM</p>
         {/* {JSON.stringify(location.pathname)} */}
-        {menuItems.map((menu) => {
-          return (
-            <div>
-              <div className="d-flex">
-                <span
-                  className={
-                    location.pathname === menu.link
-                      ? 'active_sidebar_item'
-                      : `sidebar_item_`
-                  }
-                  onClick={() => navigate(menu.link)}
-                >
-                  <menu.icon size="1.2rem" className="sidebar_icon" />
-                  {menu.label}
-                </span>
-              </div>
-            </div>
-          )
-        })}
+        {menuItems.map((menu) => (
+          <div className="d-flex">
+            <span
+              className={
+                location.pathname === menu.link
+                  ? 'active_sidebar_item'
+                  : `sidebar_item_`
+              }
+              onClick={() => navigate(menu.link)}
+            >
+              <menu.icon size="1.2rem" className="sidebar_icon" />
+              {menu.label}
+            </span>
+          </div>
+        ))}
       </div>
     </div>
   )
