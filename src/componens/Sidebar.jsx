@@ -12,36 +12,36 @@ import { useLocation, useNavigate } from 'react-router-dom'
 export default function Sidebar() {
   const navigate = useNavigate()
   const menuItems = [
-    { id: 1, label: 'Dashboard', icon: GoDashboard, link: '/dashboard' },
+    { label: 'Dashboard', icon: GoDashboard, link: '/dashboard' },
     {
-      id: 2,
       label: 'Required Documents',
       icon: BsFiles,
       link: '/required-docs',
     },
     {
-      id: 3,
       label: 'List Documents',
       icon: AiOutlineUnorderedList,
       link: '/list-docs',
     },
     {
-      id: 4,
       label: 'Recommendation Letter',
       icon: BsFileEarmarkText,
       link: '/recommendation-letter',
     },
     {
-      id: 5,
       label: 'Application Form',
       icon: BsFileEarmarkPlus,
       link: '/application-form',
     },
     {
-      id: 5,
       label: 'Layout Policies',
       icon: BsFileEarmarkPlus,
       link: '/layoutl-policies',
+    },
+    {
+      label: 'ExecutiveGovermor',
+      icon: BsFileEarmarkPlus,
+      link: '/executive-govermor',
     },
   ]
   const location = useLocation()

@@ -10,8 +10,16 @@ export default function Application_form() {
     correspondance_address: "",
     age: "",
     sex: "",
+    yes_no: "",
+    cert_of_occupany_no: "",
+    plot_no: "",
+    location: "",
     marital_stataus: "",
-    residential:"",
+    residential: "",
+    correspondance_address: "",
+    email: "",
+    phone_no: "",
+    local_govt: "",
     Annual_income: "",
     Allocated_before: "",
     Applicant_nationality: "",
@@ -124,7 +132,8 @@ export default function Application_form() {
                 onChange={handleChange}
               />
             </div>
-          </Col><Col md={3}>
+          </Col>
+          <Col md={3}>
             <label className="input_label">Sex</label>
             <div>
               <select
@@ -137,9 +146,10 @@ export default function Application_form() {
                 <option>Select</option>
                 <option>Male</option>
                 <option>Female</option>
-                </select>
+              </select>
             </div>
-          </Col><Col md={3}>
+          </Col>
+          <Col md={3}>
             <label className="input_label">Marital Status</label>
             <div>
               <input
@@ -150,7 +160,8 @@ export default function Application_form() {
                 onChange={handleChange}
               />
             </div>
-          </Col><Col md={3}>
+          </Col>
+          <Col md={3}>
             <label className="input_label">Residential Address (P O B)</label>
             <div>
               <input
@@ -158,6 +169,54 @@ export default function Application_form() {
                 type="text"
                 name="residential"
                 value={form.residential}
+                onChange={handleChange}
+              />
+            </div>
+          </Col>
+          <Col md={3}>
+            <label className="input_label">Correspondence Address</label>
+            <div>
+              <input
+                className="input_field"
+                type="text"
+                name="correspondence_address"
+                value={form.correspondence_address}
+                onChange={handleChange}
+              />
+            </div>
+          </Col>
+          <Col md={3}>
+            <label className="input_label">Email</label>
+            <div>
+              <input
+                className="input_field"
+                type="email"
+                name="email"
+                value={form.email}
+                onChange={handleChange}
+              />
+            </div>
+          </Col>
+          <Col md={3}>
+            <label className="input_label">Phone No</label>
+            <div>
+              <input
+                className="input_field"
+                type="number"
+                name="phone_no"
+                value={form.phone_no}
+                onChange={handleChange}
+              />
+            </div>
+          </Col>
+          <Col md={3}>
+            <label className="input_label">Local Govt</label>
+            <div>
+              <input
+                className="input_field"
+                type="text"
+                name="local_govt"
+                value={form.local_govt}
                 onChange={handleChange}
               />
             </div>
@@ -419,6 +478,78 @@ export default function Application_form() {
               />
             </div>
           </Col>
+          {/* SECTIONNNNNNNNNNNNNNN */}
+          <Col md={3}>
+            <label className="input_label">
+              You been aloctd to any residential plot before?
+            </label>
+            <div>
+              <select
+                className="input_field"
+                type="select"
+                name="yes_no"
+                value={form.yes_no}
+                onChange={handleChange}
+              >
+                <option>Select</option>
+                <option>Yes</option>
+                <option>No</option>
+              </select>
+            </div>
+          </Col>
+          {/* <Col md={3}>
+            <label className="input_label">Application Date</label>
+            <div>
+              <input
+                className="input_field"
+                type="date"
+                name="application_date"
+                value={form.application_date}
+                onChange={handleChange}
+              />
+            </div>
+          </Col> */}
+          {form.yes_no === "Yes" ? (
+            <>
+              <Col md={3}>
+                <label className="input_label">Plot No</label>
+                <div>
+                  <input
+                    className="input_field"
+                    type="Number"
+                    name="plot_no"
+                    value={form.plot_no}
+                    onChange={handleChange}
+                  />
+                </div>
+              </Col>
+              <Col md={3}>
+                <label className="input_label">Location</label>
+                <div>
+                  <input
+                    className="input_field"
+                    type="text"
+                    name="location"
+                    value={form.location}
+                    onChange={handleChange}
+                  />
+                </div>
+              </Col>
+              <Col md={3}>
+                <label className="input_label">Cert Of Occupany No</label>
+                <div>
+                  <input
+                    className="input_field"
+                    type="number"
+                    name="cert_of_occupany_no"
+                    value={form.cert_of_occupany_no}
+                    onChange={handleChange}
+                  />
+                </div>
+              </Col>
+            </>
+          ) : null}
+          {/* SECTIONNNNNNNNNNNNNNN */}
         </Row>
         <div>
           {loading ? (
