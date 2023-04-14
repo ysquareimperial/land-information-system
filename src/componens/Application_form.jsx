@@ -1,63 +1,74 @@
-import React, { useState } from 'react'
-import { Button, Card, CardBody, Col, input, Label, Row } from 'reactstrap'
-import { _postApi } from '../helpers/helper'
-import { BsArrowLeft, BsArrowRight } from 'react-icons/bs'
-import { useNavigate } from 'react-router-dom'
+import React, { useState } from "react";
+import { Button, Card, CardBody, Col, input, Label, Row } from "reactstrap";
+import { _postApi } from "../helpers/helper";
+import { BsArrowLeft } from "react-icons/bs";
 
 export default function Application_form() {
   const _form = {
-    Applicant_full_name: '',
-    registration_particulars: '',
-    Business_location: '',
-    correspondance_address: '',
-    Annual_income: '',
-    Allocated_before: '',
-    Applicant_nationality: '',
-    State_of_origin: '',
-    occupation_business: '',
-    nature_of_business: '',
-    company_registered_under: '',
-    when_where_occupancy_no: '',
-    purpose_of_land_use: '',
-    purpose_for_application_required: '',
-    acitivity_intended_to_undertake: '',
-    type_of_building_erected: '',
-    estimated_amount_to_spenr: '',
-    source_financing: '',
-    length_of_term_required: '',
-    do_you_have_biz_in_kano: '',
-    address_of_local_rep: '',
-    power_of_attorney_if_any: '',
-    location_of_land_required: '',
-    application_date: '',
+    Applicant_full_name: "",
+    registration_particulars: "",
+    Business_location: "",
+    correspondance_address: "",
+    age: "",
+    sex: "",
+    yes_no: "",
+    cert_of_occupany_no: "",
+    plot_no: "",
+    location: "",
+    marital_stataus: "",
+    residential: "",
+    correspondance_address: "",
+    email: "",
+    phone_no: "",
+    local_govt: "",
+    Annual_income: "",
+    Allocated_before: "",
+    Applicant_nationality: "",
+    State_of_origin: "",
+    occupation_business: "",
+    nature_of_business: "",
+    company_registered_under: "",
+    when_where_occupancy_no: "",
+    purpose_of_land_use: "",
+    purpose_for_application_required: "",
+    acitivity_intended_to_undertake: "",
+    type_of_building_erected: "",
+    estimated_amount_to_spenr: "",
+    source_financing: "",
+    length_of_term_required: "",
+    do_you_have_biz_in_kano: "",
+    address_of_local_rep: "",
+    power_of_attorney_if_any: "",
+    location_of_land_required: "",
+    application_date: "",
     // query_type: "Insert",
-  }
-  const [form, setForm] = useState(_form)
+  };
+  const [form, setForm] = useState(_form);
   const handleChange = ({ target: { name, value } }) => {
-    setForm((p) => ({ ...p, [name]: value }))
-  }
-  const [loading, setLoading] = useState(false)
+    setForm((p) => ({ ...p, [name]: value }));
+  };
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = () => {
-    setLoading(true)
-    _postApi('/api/Application_form', form, (res) => {
-      setLoading(false)
-      console.log(res)
+    setLoading(true);
+    _postApi("/api/Application_form", form, (res) => {
+      setLoading(false);
+      console.log(res);
       if (res.success) {
-        alert('success')
-        setForm(_form)
+        alert("success");
+        setForm(_form);
       }
     }),
       (err) => {
-        setLoading(false)
-        console.log(err)
-      }
-  }
-const navigate = useNavigate()
+        setLoading(false);
+        console.log(err);
+      };
+  };
+
   return (
     <div>
       <Card className="app_primary_card m-2 shadow p-4">
-      <button className="mt-2 app_btn col-md-2" onClick={()=>navigate(-1)}><BsArrowLeft  />  Back</button>
+      <button className="mt-2 app_btn col-md-2" onClick={()=>navigate(-1)}><BsArrowLeft />  Back</button>
         <center><h5 className="mb-3">Application Form</h5></center>
         {/* {JSON.stringify(form)} */}
 
@@ -111,6 +122,108 @@ const navigate = useNavigate()
               />
             </div>
           </Col>
+          {/* CHANGESSSSSSSSSSS */}
+          <Col md={3}>
+            <label className="input_label">Age</label>
+            <div>
+              <input
+                className="input_field"
+                type="number"
+                name="age"
+                value={form.age}
+                onChange={handleChange}
+              />
+            </div>
+          </Col>
+          <Col md={3}>
+            <label className="input_label">Sex</label>
+            <div>
+              <select
+                className="input_field"
+                type="select"
+                name="sex"
+                value={form.sex}
+                onChange={handleChange}
+              >
+                <option>Select</option>
+                <option>Male</option>
+                <option>Female</option>
+              </select>
+            </div>
+          </Col>
+          <Col md={3}>
+            <label className="input_label">Marital Status</label>
+            <div>
+              <input
+                className="input_field"
+                type="text"
+                name="marital_stataus"
+                value={form.marital_stataus}
+                onChange={handleChange}
+              />
+            </div>
+          </Col>
+          <Col md={3}>
+            <label className="input_label">Residential Address (P O B)</label>
+            <div>
+              <input
+                className="input_field"
+                type="text"
+                name="residential"
+                value={form.residential}
+                onChange={handleChange}
+              />
+            </div>
+          </Col>
+          <Col md={3}>
+            <label className="input_label">Correspondence Address</label>
+            <div>
+              <input
+                className="input_field"
+                type="text"
+                name="correspondence_address"
+                value={form.correspondence_address}
+                onChange={handleChange}
+              />
+            </div>
+          </Col>
+          <Col md={3}>
+            <label className="input_label">Email</label>
+            <div>
+              <input
+                className="input_field"
+                type="email"
+                name="email"
+                value={form.email}
+                onChange={handleChange}
+              />
+            </div>
+          </Col>
+          <Col md={3}>
+            <label className="input_label">Phone No</label>
+            <div>
+              <input
+                className="input_field"
+                type="number"
+                name="phone_no"
+                value={form.phone_no}
+                onChange={handleChange}
+              />
+            </div>
+          </Col>
+          <Col md={3}>
+            <label className="input_label">Local Govt</label>
+            <div>
+              <input
+                className="input_field"
+                type="text"
+                name="local_govt"
+                value={form.local_govt}
+                onChange={handleChange}
+              />
+            </div>
+          </Col>
+          {/* CHANGESSSSSSSSSSS */}
         </Row>
         <Row>
           <Col md={3}>
@@ -211,7 +324,7 @@ const navigate = useNavigate()
                 onChange={handleChange}
               />
             </div>
-          </Col>{' '}
+          </Col>{" "}
         </Row>
         <Row>
           <Col md={3}>
@@ -265,7 +378,7 @@ const navigate = useNavigate()
                 onChange={handleChange}
               />
             </div>
-          </Col>{' '}
+          </Col>{" "}
         </Row>
         <Row>
           <Col md={3}>
@@ -315,7 +428,7 @@ const navigate = useNavigate()
                 onChange={handleChange}
               />
             </div>
-          </Col>{' '}
+          </Col>{" "}
         </Row>
         <Row>
           <Col md={3}>
@@ -367,13 +480,85 @@ const navigate = useNavigate()
               />
             </div>
           </Col>
+          {/* SECTIONNNNNNNNNNNNNNN */}
+          <Col md={3}>
+            <label className="input_label">
+              You been aloctd to any residential plot before?
+            </label>
+            <div>
+              <select
+                className="input_field"
+                type="select"
+                name="yes_no"
+                value={form.yes_no}
+                onChange={handleChange}
+              >
+                <option>Select</option>
+                <option>Yes</option>
+                <option>No</option>
+              </select>
+            </div>
+          </Col>
+          {/* <Col md={3}>
+            <label className="input_label">Application Date</label>
+            <div>
+              <input
+                className="input_field"
+                type="date"
+                name="application_date"
+                value={form.application_date}
+                onChange={handleChange}
+              />
+            </div>
+          </Col> */}
+          {form.yes_no === "Yes" ? (
+            <>
+              <Col md={3}>
+                <label className="input_label">Plot No</label>
+                <div>
+                  <input
+                    className="input_field"
+                    type="Number"
+                    name="plot_no"
+                    value={form.plot_no}
+                    onChange={handleChange}
+                  />
+                </div>
+              </Col>
+              <Col md={3}>
+                <label className="input_label">Location</label>
+                <div>
+                  <input
+                    className="input_field"
+                    type="text"
+                    name="location"
+                    value={form.location}
+                    onChange={handleChange}
+                  />
+                </div>
+              </Col>
+              <Col md={3}>
+                <label className="input_label">Cert Of Occupany No</label>
+                <div>
+                  <input
+                    className="input_field"
+                    type="number"
+                    name="cert_of_occupany_no"
+                    value={form.cert_of_occupany_no}
+                    onChange={handleChange}
+                  />
+                </div>
+              </Col>
+            </>
+          ) : null}
+          {/* SECTIONNNNNNNNNNNNNNN */}
         </Row>
         <div>
           {loading ? (
             <button
               className="app_btn mt-3"
               disabled
-              style={{ cursor: 'not-allowed', backgroundColor: '#A9A9A9' }}
+              style={{ cursor: "not-allowed", backgroundColor: "#A9A9A9" }}
             >
               Loading...
             </button>
@@ -385,5 +570,5 @@ const navigate = useNavigate()
         </div>
       </Card>
     </div>
-  )
+  );
 }
