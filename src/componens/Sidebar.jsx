@@ -41,7 +41,7 @@ export default function Sidebar() {
     {
       label: 'Application For Conseent',
       icon: BsFileEarmarkPlus,
-      link: '/executive-govermor',
+      link: '/executive-govermor-table',
     },
     {
       id: 7,

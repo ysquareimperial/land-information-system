@@ -17,6 +17,7 @@ import FinanceTable from '../componens/FinanceTable'
 import FinanceForm from '../componens/FinanceForm'
 import LayoutPolicies from '../componens/LayoutPolicies'
 import ApplicationForConseent from '../componens/ApplicationForConseent'
+import ApplicationForConseentTable from '../componens/ApplicationForConseentTable'
 
 function AppNavigation() {
   let element = useRoutes([
@@ -86,6 +87,11 @@ function AppNavigation() {
           path: '/executive-govermor',
           element: <ApplicationForConseent />,
         },
+        {
+          path: '/executive-govermor-table',
+          element: <ApplicationForConseentTable />,
+        },
+        
       ],
       
     },

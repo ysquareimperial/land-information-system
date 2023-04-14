@@ -38,10 +38,10 @@ export default function ApplicationForConseent() {
   return (
     <div>
       <Card className="app_primary_card m-2 shadow p-4">
-        <h5 className="mb-3">Application For Consent To Mortgate</h5>
+        <center><h5 className="mb-3">Application For Consent To Mortgate Statutory Right Of Occupancy</h5></center>
         {/* {JSON.stringify(list)} */}
         <Row className="mb-1">
-          <Col md={6}>
+          <Col md={3}>
             <label className="input_label">Right Of OCCupancy Number</label>
             <div>
               <input
@@ -53,7 +53,7 @@ export default function ApplicationForConseent() {
               />
             </div>
           </Col>
-          <Col md={6}>
+          <Col md={3}>
             <label className="input_label">Name Of Applicant</label>
             <div>
               <input
@@ -67,7 +67,7 @@ export default function ApplicationForConseent() {
           </Col>
         </Row>
         <Row>
-          <Col md={6}>
+          <Col md={3}>
             <label className="input_label">
               Local And Correspondence Address
             </label>
@@ -81,7 +81,7 @@ export default function ApplicationForConseent() {
               />
             </div>
           </Col>
-          <Col md={6}>
+          <Col md={3}>
             <label className="input_label">
               Name Of Holder (If Defferent From Application)
             </label>
@@ -95,7 +95,7 @@ export default function ApplicationForConseent() {
               />
             </div>
           </Col>
-          <Col md={6}>
+          <Col md={3}>
             <label className="input_label">
               Date Of Grant
             </label>
@@ -109,7 +109,7 @@ export default function ApplicationForConseent() {
               />
             </div>
           </Col>
-          <Col md={6}>
+          <Col md={3}>
             <label className="input_label">
               Purpose
             </label>
@@ -123,7 +123,7 @@ export default function ApplicationForConseent() {
               />
             </div>
           </Col>
-          <Col md={6}>
+          <Col md={3}>
             <label className="input_label">
              Mortgagor Institution
             </label>
@@ -137,7 +137,7 @@ export default function ApplicationForConseent() {
               />
             </div>
           </Col>
-          <Col md={6}>
+          <Col md={3}>
             <label className="input_label">
               Location And Correspondence Address
             </label>
@@ -151,7 +151,7 @@ export default function ApplicationForConseent() {
               />
             </div>
           </Col>
-          <Col md={6}>
+          <Col md={3}>
             <label className="input_label">
              GSM
             </label>
@@ -165,7 +165,7 @@ export default function ApplicationForConseent() {
               />
             </div>
           </Col>
-          <Col md={6}>
+          <Col md={3}>
             <label className="input_label">
             Amount Of Consideration N
             </label>
@@ -179,7 +179,7 @@ export default function ApplicationForConseent() {
               />
             </div>
           </Col>
-          <Col md={6}>
+          <Col md={3}>
             <label className="input_label">
              Specify Special Mortgate Tearm
             </label>
