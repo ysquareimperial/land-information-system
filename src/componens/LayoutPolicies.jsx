@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Card, Col, Row } from "reactstrap";
-import { _postApi } from "../helpers/helper";
+import { _fetchApi, _postApi } from "../helpers/helper";
 
 export default function LayoutPolicies() {
   const [list, setList] = useState({
@@ -18,7 +18,7 @@ export default function LayoutPolicies() {
     setLoading(true);
     _postApi("/api/layout_policies", list, (res) => {
       console.log(res);
-      if (res.succes) {
+      if (res.success) {
         setLoading(false);
         setList({
           layout_number: "",
@@ -35,22 +35,44 @@ export default function LayoutPolicies() {
         console.log(err);
       };
   };
+  const [data,setData]=useState([])
+
+  const getList = ()=>{
+    _fetchApi('/api/plots',
+    (res)=>{
+        setData(res.results[0])
+    },(err)=>{
+        console.log(err)
+    }
+    )
+  }
+  useEffect(
+    ()=>{
+        getList();
+        
+    },[]
+  )
   return (
     <div>
       <Card className="app_primary_card m-2 shadow p-4">
         <h5 className="mb-3">Layout Policies</h5>
-        {/* {JSON.stringify(list)} */}
+        {/* {JSON.stringify(data)} */}
         <Row className="mb-1">
           <Col md={6}>
             <label className="input_label">Layout Number</label>
             <div>
-              <input
-                type="text"
+              <select
+                // type="text"
                 className="input_field"
                 name="layout_number"
                 value={list.layout_number}
                 onChange={handleChange}
-              />
+              >
+                <option>---select---</option>
+                {
+                  data.map((item)=>(<option>{item.layout_number}</option>))
+                }
+              </select>
             </div>
           </Col>
           <Col md={6}>

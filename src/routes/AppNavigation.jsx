@@ -17,12 +17,23 @@ import FinanceTable from '../componens/FinanceTable'
 import FinanceForm from '../componens/FinanceFOrm'
 import LayoutPolicies from '../componens/LayoutPolicies'
 import ApplicationForConseent from '../componens/ApplicationForConseent'
+import ApplicationForConseentTable from '../componens/ApplicationForConseentTable'
+// 
+import LayoutPoliciesTable from '../componens/LayoutPoliciesTable'
+import ExtensionForm from '../componens/ExtensionForm'
+
 import ReGrantForm from '../componens/ReGrantForm'
 import ConversionForm from '../componens/ConversionForm'
 import RecommendationLetterList from '../componens/RecommendationLetterList'
 import ListTable from '../componens/ListTable'
-import ExtensionForm from '../componens/ExtensionForm'
+// import ExtensionForm from '../componens/ExtensionForm'
+
 import Apps from '../componens/Apps'
+import GeneratFile from '../componens/GenerateFile'
+import ViewFile from '../componens/ViewFile'
+import CadestralRecom from '../componens/CadestralRecom'
+import GrantTable from '../componens/GrantTable'
+
 
 function AppNavigation() {
   let element = useRoutes([
@@ -101,22 +112,52 @@ function AppNavigation() {
           element: <ApplicationForConseent />,
         },
         {
+
+          path: '/executive-govermor-table',
+          element: <ApplicationForConseentTable />,
+        },
+        {
+
           path: '/conversion-form',
           element: <ConversionForm />,
         },
         {
           path: '/recommendation-letter-list',
           element: <RecommendationLetterList />,
+
+        },{
+          path:'/list-table',
+          element:<ListTable />
         },
+//  11c241d1be86cd1598a5710aa9e4838c7c855562
+
+     
         {
           path: '/list-table',
           element: <ListTable />,
         },
+
         {
           path:'/application-step',
           element:<Apps />
-        }
+        },
+      {
+        path:'/generate',
+        element:<GeneratFile />
+      },{
+        path:'/view-generate',
+        element:<ViewFile />
+      },{
+        path:'/cadestral-recom',
+        element:<CadestralRecom />
+      },{
+        path:'/grant-table',
+        element:<GrantTable />
+      }
+
+//  1cda8d2b662
       ],
+      
     },
   ])
   return element

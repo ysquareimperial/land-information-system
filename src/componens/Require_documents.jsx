@@ -62,6 +62,16 @@ const handleChanges = ({target:{name,value}})=>{
         },
         []
     )
+
+  const [image, setImage] = useState([]);
+  const [video, setVideo] = useState();
+  const addFileVideo = (e) => {
+    setImage(e.target.files[0]);
+    console.log(e.target.files[0]);
+    // if (e.target.files[0]) {
+    //   setVideo(URL.createObjectURL(e.target.files[0]));
+    // }
+  }
     //  value={'by-project'}
   return (
     <div>
@@ -75,14 +85,14 @@ const handleChanges = ({target:{name,value}})=>{
 
         <Col md={1}>
           {radios.lenth}
-            <Input  name={item.document_name} value={true} type='checkbox' onChange={handleChanges} />
+            <Input  className='input_field' name={item.document_name} value={true} type='checkbox' onChange={handleChanges} />
             </Col>
             <Col md={3}>
               <p>{item.document_name}</p>
             </Col>
             
             <Col md={4}>
-            <input className='input_field' type='file' />
+            <input className='input_field' onChange={addFileVideo} type='file' />
             </Col>
             </Row>
        ))

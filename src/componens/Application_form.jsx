@@ -1,7 +1,9 @@
 import React, { useState } from "react";
-import { Button, Card, CardBody, Col, input, Label, Row } from "reactstrap";
+import { Button, Card, CardBody, Col, input, Label, Modal, ModalBody, ModalFooter, ModalHeader, Row } from "reactstrap";
 import { _postApi } from "../helpers/helper";
 import { BsArrowLeft } from "react-icons/bs";
+import Require_documents from "./Require_documents";
+import { useNavigate } from "react-router-dom";
 
 export default function Application_form() {
   const _form = {
@@ -41,6 +43,7 @@ export default function Application_form() {
     power_of_attorney_if_any: "",
     location_of_land_required: "",
     application_date: "",
+    type:''
     // query_type: "Insert",
   };
   const [form, setForm] = useState(_form);
@@ -48,14 +51,19 @@ export default function Application_form() {
     setForm((p) => ({ ...p, [name]: value }));
   };
   const [loading, setLoading] = useState(false);
-
+  const [modal3, setModal3] = useState(false)
+  const toggle3 = () => setModal3(!modal3)
+  const [appid,setAppid]=useState()
   const handleSubmit = () => {
     setLoading(true);
+   
     _postApi("/api/Application_form", form, (res) => {
       setLoading(false);
       console.log(res);
       if (res.success) {
-        alert("success");
+        setAppid(res.application_id)
+       toggle3()
+
         setForm(_form);
       }
     }),
@@ -64,9 +72,23 @@ export default function Application_form() {
         console.log(err);
       };
   };
-
+const navigate  =useNavigate()
   return (
     <div>
+         <Modal isOpen={modal3} toggle={toggle3} size="lg">
+       <ModalHeader>Continue With</ModalHeader>
+        <ModalBody>
+      {/* <Require_documents />
+       */}
+      Your Application number  : {appid}
+        </ModalBody>
+        <ModalFooter>
+         
+          <Button color="danger" onClick={()=>{toggle3();navigate(-1)}}>
+            Close
+          </Button>
+        </ModalFooter>
+                </Modal>
       <Card className="app_primary_card m-2 shadow p-4">
       <button className="mt-2 app_btn col-md-2" onClick={()=>navigate(-1)}><BsArrowLeft />  Back</button>
         <center><h5 className="mb-3">Application Form</h5></center>
@@ -83,6 +105,17 @@ export default function Application_form() {
                 value={form.Applicant_full_name}
                 onChange={handleChange}
               />
+            </div>
+          </Col>
+          <Col md={3}>
+            <label className="input_label">Applicantion Type</label>
+            <label className="input_label">Application Type</label>
+            <div>
+              <select className="input_field" name='type' value={form.type} onChange={handleChange}>
+              <option>---select----</option>
+              <option>residential</option>
+                <option>commercial</option>
+             </select>
             </div>
           </Col>
           <Col md={3}>
@@ -224,8 +257,7 @@ export default function Application_form() {
             </div>
           </Col>
           {/* CHANGESSSSSSSSSSS */}
-        </Row>
-        <Row>
+     
           <Col md={3}>
             <label className="input_label">Annual Income</label>
             <div>
@@ -275,8 +307,7 @@ export default function Application_form() {
               />
             </div>
           </Col>
-        </Row>
-        <Row>
+        
           <Col md={3}>
             <label className="input_label">Occupation Business</label>
             <div>
@@ -325,8 +356,7 @@ export default function Application_form() {
               />
             </div>
           </Col>{" "}
-        </Row>
-        <Row>
+       
           <Col md={3}>
             <label className="input_label">Purpose Of Land Use</label>
             <div>
@@ -379,8 +409,7 @@ export default function Application_form() {
               />
             </div>
           </Col>{" "}
-        </Row>
-        <Row>
+       
           <Col md={3}>
             <label className="input_label">Estimated Amount To Spenr</label>
             <div>
@@ -429,8 +458,7 @@ export default function Application_form() {
               />
             </div>
           </Col>{" "}
-        </Row>
-        <Row>
+       
           <Col md={3}>
             <label className="input_label">Address Of Local Rep</label>
             <div>
@@ -557,7 +585,7 @@ export default function Application_form() {
           {loading ? (
             <button
               className="app_btn mt-3"
-              disabled
+              onClick={handleSubmit}
               style={{ cursor: "not-allowed", backgroundColor: "#A9A9A9" }}
             >
               Loading...

@@ -5,11 +5,11 @@ import SearchBar from './SearchBar'
 import { useNavigate } from 'react-router-dom'
 import { _fetchApi } from '../helpers/helper'
 
-function FinanceTable() {
+function GeneratFile() {
   const navigate = useNavigate()
     const [data,setData]=useState([])
   const getID =()=>{
-    _fetchApi('/api/getBYID?status=application',
+    _fetchApi('/api/getBYID?status=application-fee-paid',
     (res)=>{
       setData(res.results)
     },(err)=>{
@@ -44,7 +44,7 @@ function FinanceTable() {
                           <td>{item.application_id}</td>
                           <td>{item.State_of_origin}</td>
                           <td>{item.occupation_business}</td>
-                          <td><button className='app_btn' onClick={()=>navigate(`/finance-form?applicant_full_name=${item.Applicant_full_name}&application_id=${item.application_id}&type=${item.type}`)}>Process Payment</button></td>
+                          <td><button className='app_btn' onClick={()=>navigate(`/view-generate?application_id=${item.application_id}`)}>Generate File Number</button></td>
    
   </tr>
     )
@@ -54,14 +54,9 @@ function FinanceTable() {
       <Card className="app_primary_card m-2 shadow p-4">
         {/* {JSON.stringify(data[0])} */}
         <center>
-          <h5 className="mb-3">Finance</h5>
+          <h5 className="mb-3">Generate FIle Number</h5>
         </center>
-        <button
-          className="mt-2 app_btn col-md-2"
-          onClick={() => navigate('/finance-form')}
-        >
-          <BsPlusLg /> Add New
-        </button>
+      
             <Input type="text" className='mt-3' name="hello" value={hello}  
       placeholder="Search by Application Number or Applicant Name" 
       onChange={(e) =>setHello(e.target.value)} 
@@ -88,4 +83,4 @@ function FinanceTable() {
   )
 }
 
-export default FinanceTable
+export default GeneratFile
