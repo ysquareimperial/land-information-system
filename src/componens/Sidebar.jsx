@@ -326,24 +326,60 @@ export default function Sidebar() {
           </span>
         </li>
         {showSubMenuO ? (
+          <>
           <div>
-            <div className="d-flex">
-              <span
-                className={
-                  location.pathname === "/cadestral-recom"
-                    ? "active_sidebar_item"
-                    : `sidebar_item_ `
-                }
-                onClick={() => navigate("/cadestral-recom")}
-              >
-                <BsFileEarmarkText size="1.2rem" className="sidebar_icon" />
-                Recommendation Letter
-              </span>
-              {/* </div> */}
-            </div>
-          </div>
-        ) : (
-          ""
+          <div className="d-flex">
+          <span
+            className={
+              location.pathname === '/cadestral-recom'
+                ? 'active_sidebar_item'
+                : `sidebar_item_ `
+            }
+            onClick={() => navigate('/cadestral-recom')}
+          >
+            <BsFileEarmarkText size="1.2rem" className="sidebar_icon" />
+           Recommendation Letter
+          </span>
+        {/* </div> */}
+        </div>
+      </div> 
+
+      <div>
+          <div className="d-flex">
+          <span
+            className={
+              location.pathname === '/survey-table'
+                ? 'active_sidebar_item'
+                : `sidebar_item_ `
+            }
+            onClick={() => navigate('/survey-table')}
+          >
+            <BsFileEarmarkText size="1.2rem" className="sidebar_icon" />
+           Survey Report
+          </span>
+        {/* </div> */}
+        </div>
+      </div> 
+
+      <div>
+          <div className="d-flex">
+          <span
+            className={
+              location.pathname === '/yes'
+                ? 'active_sidebar_item'
+                : `sidebar_item_ `
+            }
+            onClick={() => navigate('/yes')}
+          >
+            <BsFileEarmarkText size="1.2rem" className="sidebar_icon" />
+           YES/NO
+          </span>
+        {/* </div> */}
+        </div>
+      </div> 
+      </>
+         ): (
+          ''
         )}
         <li className="sidebar_item_" onClick={drop1}>
           <span>
@@ -356,7 +392,27 @@ export default function Sidebar() {
             )}
           </span>
         </li>
-        <li className="sidebar_item_" onClick={dropS}>
+        {showSubMenu1 ? (
+          <div>
+          <div className="d-flex">
+          <span
+            className={
+              location.pathname === '/schedule-payment'
+                ? 'active_sidebar_item'
+                : `sidebar_item_ `
+            }
+            onClick={() => navigate('/schedule-payment')}
+          >
+            <BsFileEarmarkPlus size="1.2rem" className="sidebar_icon" />
+            Schedule Payment
+          </span>
+        {/* </div> */}
+        </div>
+      </div> 
+         ): (
+          ''
+        )}
+          <li className="sidebar_item_" onClick={dropS}>
           <span>
             <BsFillBarChartLineFill size="1.2rem" className="sidebar_icon" />{" "}
             Director Finance
@@ -368,24 +424,44 @@ export default function Sidebar() {
           </span>
         </li>
         {showSubMenuS ? (
+          <>
           <div>
-            <div className="d-flex">
-              <span
-                className={
-                  location.pathname === "/finance"
-                    ? "active_sidebar_item"
-                    : `sidebar_item_ `
-                }
-                onClick={() => navigate("/finance")}
-              >
-                <AiFillMoneyCollect size="1.2rem" className="sidebar_icon" />
-                Finance
-              </span>
-              {/* </div> */}
-            </div>
-          </div>
-        ) : (
-          ""
+          <div className="d-flex">
+          <span
+            className={
+              location.pathname === '/finance'
+                ? 'active_sidebar_item'
+                : `sidebar_item_ `
+            }
+            onClick={() => navigate('/finance')}
+          >
+            <AiFillMoneyCollect size="1.2rem" className="sidebar_icon" />
+            Finance
+          </span>
+        {/* </div> */}
+        </div>
+      </div> 
+
+      <div>
+          <div className="d-flex">
+          <span
+            className={
+              location.pathname === '/finaces-grant'
+                ? 'active_sidebar_item'
+                : `sidebar_item_ `
+            }
+            onClick={() => navigate('/finaces-grant')}
+          >
+            <AiFillMoneyCollect size="1.2rem" className="sidebar_icon" />
+            Grant Payment
+          </span>
+        {/* </div> */}
+        </div>
+      </div> 
+
+      </>
+         ): (
+          ''
         )}
       </div>
     </div>

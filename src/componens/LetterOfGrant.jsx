@@ -62,11 +62,15 @@ export default function LetterOfGrant() {
     },[]
   )
 
+  useEffect(()=>{
+  setLetterOfGrantForm((p)=>({...p,file_no:application_file_number,date_of_issue:recs[0]?.persec_sign_date,serial_no:recs[0]?.term,permsec_signature:'blob blob blob',signature_date:recs[0]?.persec_sign_date}))
+  },[application_file_number,recs[0]])
+
   return (
     <div>
       <Card className="app_primary_card m-2 shadow p-4">
         <h5 className="mb-3">Letter of Grant</h5>
-        {/* {JSON.stringify(recs)} */}
+       
        <Row>
         <Col md={6}>
         <Card>

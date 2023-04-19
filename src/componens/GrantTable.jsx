@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Card, Table } from 'reactstrap'
-import { useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { _fetchApi } from '../helpers/helper'
 export default function GrantTable() {
   const navigate = useNavigate()
@@ -20,10 +20,12 @@ export default function GrantTable() {
         getList() 
     },[]
   )
+  const location =useLocation()
+  const rout = location.pathname === '/survey-table'?'SurveyReport':'letter-of-grant'
   return (
     <Card className="app_primary_card m-2 shadow p-4">
       <h5 className="mb-4">Applications</h5>
-      {/* {JSON.stringify(data)} */}
+      {JSON.stringify(rout)}
       <input type='search' placeholder='Search' className='input_field mb-3'/>
       <div>
         <Table borderless striped responsive>
@@ -48,7 +50,7 @@ export default function GrantTable() {
               <td>
                 <button
                   className="blue table_btn"
-                  onClick={() => navigate(`/letter-of-grant?application_file_number=${item.application_file_number}`)}
+                  onClick={() => navigate(`/${rout}?application_file_number=${item.application_file_number}`)}
                 >
                   Approve
                 </button>

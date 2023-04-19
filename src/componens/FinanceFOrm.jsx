@@ -111,7 +111,8 @@ function FinanceForm() {
                 <option>---select----</option>
                 <option>residential</option>
                 <option>commercial</option>
-              </select>
+                <option>grant</option>
+             </select>
             </div>
           </Col>
           <Col md={6} className="mt-0">
@@ -122,7 +123,7 @@ function FinanceForm() {
                 value={list.application_id}
                 onChange={handleChange}
                 name="hotel"
-              />
+              />  
               <BsSearch className="search_icon" onClick={toggle3} />
               <Modal isOpen={modal3} toggle={toggle3} size="xl">
                 <ModalBody>

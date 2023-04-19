@@ -2,14 +2,13 @@ import React, { useEffect, useState } from "react";
 import { Card, Table } from "reactstrap";
 import { useNavigate } from "react-router-dom";
 import { _fetchApi } from "../helpers/helper";
-
 export default function CertificateOfOccupancyRentTable() {
   const navigate = useNavigate();
   const [data, setData] = useState([]);
 
   const getList = () => {
     _fetchApi(
-      "/api/getGrant",
+      "/api/getCadestral?status=Director Cadestral",
       (res) => {
         setData(res.results[0]);
       },
@@ -24,7 +23,7 @@ export default function CertificateOfOccupancyRentTable() {
 
   return (
     <Card className="app_primary_card m-2 shadow p-4">
-      <h5 className="mb-4">Applications</h5>
+      <h5 className="mb-4">Certificate Of Occupancy Rent </h5>
       {/* {JSON.stringify(data)} */}
       <input type="search" placeholder="Search" className="input_field mb-3" />
       <div>
@@ -32,9 +31,10 @@ export default function CertificateOfOccupancyRentTable() {
           <thead>
             <tr>
               <td>S/N</td>
-              <td>File No</td>
-              <td>grant Number</td>
-              <td>Date Issue</td>
+              <td>Applicant File No</td>
+              <td>Location</td>
+              <td>Plot No</td>
+              <td>Plan No</td>
               <td>Action</td>
             </tr>
           </thead>
@@ -42,18 +42,21 @@ export default function CertificateOfOccupancyRentTable() {
             {data?.map((item, index) => (
               <tr>
                 <td scope="row">{index + 1}</td>
-                <td>{item.file_number}</td>
-                <td>{item.grant_number}</td>
-                <td>{item.date_issue}</td>
-                {/* <td>{item.location}</td> */}
+                <td>{item.application_file_number}</td>
+                <td>{item.location}</td>
+                <td>{item.plot_no}</td>
+                <td>{item.plan_no}</td>
                 <td>
                   <button
                     className="blue table_btn"
                     onClick={() =>
-                      navigate("/certificate-of-occupancy-rent")
-                    }
+                        navigate(
+                          `/certificate-of-occupancy-rent?application_file_number=${item.application_file_number}&id=${item.id}`
+                        )
+                      }
+                    //   onClick={() => navigate(`/recommendation-letter?application_file_number=${item.application_file_number}`)}
                   >
-                    View
+                    Approve
                   </button>
                 </td>
               </tr>

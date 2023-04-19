@@ -28,17 +28,22 @@ import RecommendationLetterList from "../componens/RecommendationLetterList";
 import ListTable from "../componens/ListTable";
 // import ExtensionForm from '../componens/ExtensionForm'
 
-import Apps from "../componens/Apps";
-import GeneratFile from "../componens/GenerateFile";
-import ViewFile from "../componens/ViewFile";
-import CadestralRecom from "../componens/CadestralRecom";
-import GrantTable from "../componens/GrantTable";
+import Apps from '../componens/Apps'
+import GeneratFile from '../componens/GenerateFile'
+import ViewFile from '../componens/ViewFile'
+import CadestralRecom from '../componens/CadestralRecom'
+import GrantTable from '../componens/GrantTable'
+import LetterGrantTable from '../componens/LetterGrantTable'
+import SurveyReport from '../componens/SurveyReport'
+import YesOrNo from '../componens/YesOrNo'
+import Reschedule from '../componens/Reschedule'
 import ForInformation from "../componens/ForInformation";
 import ForInformationTable from "../componens/ForInformationTable";
 import RequestForSurveyReport from "../componens/RequestForSurveyReport";
 import CertificateOfOccupancyRentTable from "../componens/CertificateOfOccupancyRentTable";
 import CertificateOfOccupancyRent from "../componens/CertificateOfOccupancyRent";
 import ApplicationForConsesntTo from "../componens/ApplicationForConsesntTo";
+
 
 function AppNavigation() {
   let element = useRoutes([
@@ -137,6 +142,38 @@ function AppNavigation() {
           path: "/list-table",
           element: <ListTable />,
         },
+      {
+        path:'/generate',
+        element:<GeneratFile />
+      },{
+        path:'/view-generate',
+        element:<ViewFile />
+      },{
+        path:'/cadestral-recom',
+        element:<CadestralRecom />
+      },{
+        path:'/grant-table',
+        element:<GrantTable />
+      },{
+        path:'/finaces-grant',
+        element:<LetterGrantTable />
+      },
+      {
+        path:'/SurveyReport',
+        element:<SurveyReport />
+      },
+      {
+        path:'/survey-table',
+        element:<GrantTable />
+      },
+      {
+        path:'/yes',
+        element:<YesOrNo />
+
+      },{
+        path:'/schedule-payment',
+        element:<Reschedule />
+      },
 
         {
           path: "/application-step",
