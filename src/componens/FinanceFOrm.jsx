@@ -102,6 +102,7 @@ const navigate =useNavigate()
               <option>---select----</option>
               <option>residential</option>
                 <option>commercial</option>
+                <option>grant</option>
              </select>
             </div>
           </Col>

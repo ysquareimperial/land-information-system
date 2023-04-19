@@ -33,6 +33,10 @@ import GeneratFile from '../componens/GenerateFile'
 import ViewFile from '../componens/ViewFile'
 import CadestralRecom from '../componens/CadestralRecom'
 import GrantTable from '../componens/GrantTable'
+import LetterGrantTable from '../componens/LetterGrantTable'
+import SurveyReport from '../componens/SurveyReport'
+import YesOrNo from '../componens/YesOrNo'
+import Reschedule from '../componens/Reschedule'
 
 
 function AppNavigation() {
@@ -153,6 +157,25 @@ function AppNavigation() {
       },{
         path:'/grant-table',
         element:<GrantTable />
+      },{
+        path:'/finaces-grant',
+        element:<LetterGrantTable />
+      },
+      {
+        path:'/SurveyReport',
+        element:<SurveyReport />
+      },
+      {
+        path:'/survey-table',
+        element:<GrantTable />
+      },
+      {
+        path:'/yes',
+        element:<YesOrNo />
+
+      },{
+        path:'/schedule-payment',
+        element:<Reschedule />
       }
 
 //  1cda8d2b662
