@@ -35,132 +35,154 @@ function CertificateOfOccupancyRent() {
         <Row>
           <Col md={3}>
             <p>
-              <b>Number: </b>{data[0]?.date_of_issue}
+              <b>Number: </b>
+              {/* {data[0]?.date_of_issue} */}
             </p>
           </Col>
 
           <Col md={3}>
             <p>
-              <b>Date Of Issue: </b>{data[0]?.date_of_issue}
+              <b>Date Of Issue: </b>
+              {/* {data[0]?.date_of_issue} */}
             </p>
           </Col>
           <Col md={3}>
             <p>
-              <b>Date Of Expiry: </b>{data[0]?.date_of_issue}
+              <b>Date Of Expiry: </b>
+              {/* {data[0]?.date_of_issue} */}
             </p>
           </Col>
           <Col md={3}>
             <p>
-              <b>Rent Per Annum: </b>{data[0]?.date_of_issue}
+              <b>Rent Per Annum: </b>
+              {/* {data[0]?.date_of_issue} */}
             </p>
           </Col>
           <Col md={3}>
             <p>
-              <b>Location Station: </b>{data[0]?.date_of_issue}
+              <b>Location Station: </b>
+              {/* {data[0]?.date_of_issue} */}
             </p>
           </Col>
           <Col md={3}>
             <p>
-              <b>District: </b>{data[0]?.date_of_issue}
+              <b>District: </b>
+              {/* {data[0]?.date_of_issue} */}
             </p>
           </Col>
           <p>The rent and fees payable are made as fol: lows:- </p>
           <Col md={3}>
             <p>
-              <b>Rent From: </b>{data[0]?.date_of_issue}
+              <b>Rent From: </b>
+              {/* {data[0]?.date_of_issue} */}
             </p>
           </Col>
           <Col md={3}>
             <p>
-              <b>N: </b>{data[0]?.date_of_issue}
+              <b>N: </b>
+              {/* {data[0]?.date_of_issue} */}
             </p>
           </Col>
           <Col md={3}>
             <p>
-              <b>Per Annum N: </b>{data[0]?.date_of_issue}
+              <b>Per Annum N: </b>
+              {/* {data[0]?.date_of_issue} */}
             </p>
           </Col>
           <Col md={3}>
             <p>
-              <b>Registration Fees: </b>{data[0]?.date_of_issue}
+              <b>Registration Fees: </b>
+              {/* {data[0]?.date_of_issue} */}
             </p>
           </Col>
           <Col md={3}>
             <p>
-              <b>N: </b>{data[0]?.date_of_issue}
+              <b>N: </b>
+              {/* {data[0]?.date_of_issue} */}
             </p>
           </Col>
           <Col md={3}>
             <p>
-              <b>Survey Fees: </b>{data[0]?.date_of_issue}
+              <b>Survey Fees: </b>
+              {/* {data[0]?.date_of_issue} */}
             </p>
           </Col>
           <Col md={3}>
             <p>
-               <b>N: </b> {data[0]?.date_of_issue}
+              <b>N: </b>
+              {/* {data[0]?.date_of_issue} */}
             </p>
           </Col>
           <Col md={3}>
             <p>
-              <b>Preparation Fees: </b>{data[0]?.date_of_issue}
+              <b>Preparation Fees: </b>
+              {/* {data[0]?.date_of_issue} */}
             </p>
           </Col>
           <Col md={3}>
             <p>
-              <b>N: </b>{data[0]?.date_of_issue}
+              <b>N: </b>
+              {/* {data[0]?.date_of_issue} */}
             </p>
           </Col>
           <Col md={3}>
             <p>
-              <b>Development: </b>{data[0]?.date_of_issue}
+              <b>Development: </b>
+              {/* {data[0]?.date_of_issue} */}
             </p>
           </Col>
           <Col md={3}>
             <p>
-              <b>N: </b>{data[0]?.date_of_issue}
+              <b>N: </b>
+              {/* {data[0]?.date_of_issue} */}
             </p>
           </Col>
           <Col md={3}>
             <p>
-              <b>Total N: </b>{data[0]?.date_of_issue}
+              <b>Total N: </b>
+              {/* {data[0]?.date_of_issue} */}
             </p>
           </Col>
           <p>Less: </p>
           <Col md={3}>
             <p>
-              <b>Amount Deposited On Kano CRC No: </b>{data[0]?.date_of_issue}
+              <b>Amount Deposited On Kano CRC No: </b>
+              {/* {data[0]?.date_of_issue} */}
             </p>
           </Col>
           <Col md={3}>
             <p>
-              <b>Of: </b> {data[0]?.date_of_issue}
+              <b>Of: </b>
+              {/* {data[0]?.date_of_issue} */}
             </p>
           </Col>
           <Col md={3}>
             <p>
-              <b>20: </b> {data[0]?.date_of_issue}
+              <b>20: </b>
+              {/* {data[0]?.date_of_issue} */}
             </p>
           </Col>
           <Col md={3}>
             <p>
-               <b>N: </b> {data[0]?.date_of_issue}
+              <b>N: </b>
+              {/* {data[0]?.date_of_issue} */}
             </p>
           </Col>
           <Col md={3}>
             <p>
               <b>Balance Due To Government Applicet N: </b>{" "}
-              {data[0]?.date_of_issue}
+              {/* {data[0]?.date_of_issue} */}
             </p>
           </Col>
           <p className="mt-2">
-          <p>
-            2. Will you please remint this sum diect to this office not later
-            then a month from the date of this later
-          </p>
-          <p>
-            3. I would take this opportunity of reminding you that further annul
-            rent payable.
-          </p>
+            <p>
+              2. Will you please remint this sum diect to this office not later
+              then a month from the date of this later
+            </p>
+            <p>
+              3. I would take this opportunity of reminding you that further
+              annul rent payable.
+            </p>
           </p>
         </Row>
         <div>

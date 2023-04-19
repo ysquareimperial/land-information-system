@@ -141,8 +141,22 @@ export default function Sidebar() {
             </span>
             {/* </div> */}
           </div>
+          <div className="d-flex">
+            <span
+              className={
+                location.pathname === "/dashboard"
+                  ? "active_sidebar_item"
+                  : `sidebar_item_ `
+              }
+              onClick={() => navigate("/application-for-consesnt-to")}
+            >
+              <GoDashboard size="1.2rem" className="sidebar_icon" />
+              Application For Consesnt To
+            </span>
+            {/* </div> */}
+          </div>
         </div>
-        <li  className="sidebar_item_" onClick={drop}>
+        <li className="sidebar_item_" onClick={drop}>
           <span>
             <AiOutlineUser size="1.2rem" className="sidebar_icon" />{" "}
             Commissioner

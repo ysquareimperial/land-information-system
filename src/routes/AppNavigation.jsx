@@ -38,6 +38,7 @@ import ForInformationTable from "../componens/ForInformationTable";
 import RequestForSurveyReport from "../componens/RequestForSurveyReport";
 import CertificateOfOccupancyRentTable from "../componens/CertificateOfOccupancyRentTable";
 import CertificateOfOccupancyRent from "../componens/CertificateOfOccupancyRent";
+import ApplicationForConsesntTo from "../componens/ApplicationForConsesntTo";
 
 function AppNavigation() {
   let element = useRoutes([
@@ -131,7 +132,6 @@ function AppNavigation() {
           path: "/list-table",
           element: <ListTable />,
         },
-        //  11c241d1be86cd1598a5710aa9e4838c7c855562
 
         {
           path: "/list-table",
@@ -177,6 +177,10 @@ function AppNavigation() {
         {
           path: "/certificate-of-occupancy-rent",
           element: <CertificateOfOccupancyRent />,
+        },
+        {
+          path: "/application-for-consesnt-to",
+          element: <ApplicationForConsesntTo />,
         },
       ],
     },
