@@ -1,11 +1,13 @@
-import React, { useState } from 'react'
-import { Card, Col, Row } from 'reactstrap'
-import { _postApi } from '../helpers/helper'
+import React, { useEffect, useState } from 'react'
+import { Card, Col, Modal, ModalBody, Row, Table } from 'reactstrap'
+import { _fetchApi, _postApi, useQuery } from '../helpers/helper'
+import { BsSearch } from 'react-icons/bs'
+import SearchBar from './SearchBar'
 
 export default function RecommendationLetter() {
   const [loading, setLoading] = useState(false)
   const form = {
-    Application_file_number: '',
+    application_file_number: '',
     location: '',
     plot_no: '',
     plan_no: '',
@@ -25,16 +27,19 @@ export default function RecommendationLetter() {
     comm_govt_signature: '',
     Comm_govt_signature_date: '',
     recommendation_id: '',
+    status:''
   }
   const [recLetteForm, setRecLetterForm] = useState(form)
-
+  const query = useQuery();
+  const file_no = query.get("file_no");
+  const application_file_number = query.get('application_file_number')
   const handleChange = ({ target: { name, value } }) => {
     setRecLetterForm((p) => ({ ...p, [name]: value }))
   }
 
   const handleSubmit = () => {
     setLoading(true)
-    _postApi('/api/create-recommendation-letter', recLetteForm, (res) => {
+    _postApi(`/api/create-recommendation-letter?query_type=${file_no===null?'update':'Insert'}`, recLetteForm, (res) => {
       setLoading(false)
       console.log(res)
       if (res.success) {
@@ -46,10 +51,45 @@ export default function RecommendationLetter() {
         setLoading(false)
         console.log(err)
       }
+     
   }
+  const [data,setData]=useState([])
+  const getID =()=>{
+    _fetchApi('/api/plots',
+    (res)=>{
+      setData(res.results)
+    },(err)=>{
+      console.log(err)
+    }
+    )
+  }
+  // const [po]
+  const getPolicy = ()=>{
+    _fetchApi(`/api/getPolicys?layout_number=${recLetteForm.plan_no}`,
+    (res)=>{
+      console.log(res.results[0])
+      // alert(JSON.stringify(res.results[0]))
+      setRecLetterForm((p)=>({...p,term:res.results[0][0]?.policy_name,annual_ground_rent:res.results[0][0]?.item_description}))
+    },
+    (err)=>{
+      console.log(err)
+    }
+    )
+  }
+  useEffect(()=>{
+    getPolicy()
+  },[recLetteForm.plan_no])
+  useEffect(
+  ()=>{
+    getID()
+    setRecLetterForm((p)=>({...p,application_file_number:file_no===null?application_file_number:file_no}))
+  },[file_no]
+  )
+  const [modal3, setModal3] = useState(false)
+      const toggle3 = () => setModal3(!modal3)
   return (
     <div>
-      {/* {JSON.stringify(recLetteForm)} */}
+      {JSON.stringify(recLetteForm.plan_no)}
       <Card className="app_primary_card m-2 shadow p-4">
         <h5 className="mb-3">Recommendation Letter</h5>
         <Row className="mb-1">
@@ -57,31 +97,59 @@ export default function RecommendationLetter() {
             <label className="input_label">Application File No</label>
             <div>
               <input
-                type="number"
+                // type="number"
                 className="input_field"
-                name="Application_file_number"
-                value={recLetteForm.Application_file_number}
+                name="application_file_number"
+                value={recLetteForm.application_file_number}
                 onChange={handleChange}
               />
             </div>
           </Col>
           <Col lg={3}>
             <label className="input_label">Location</label>
-            <div>
-              <input
-                type="text"
-                className="input_field"
-                name="location"
-                value={recLetteForm.location}
-                onChange={handleChange}
-              />
-            </div>
+            <div className="search_input_form">
+                <input
+                  className="input_field"
+                  value={recLetteForm.location}
+                  onChange={handleChange}
+                  name="hotel"
+                />
+                <BsSearch className="search_icon" onClick={toggle3} />
+                <Modal isOpen={modal3} toggle={toggle3} size="md">
+               <ModalBody>
+               <SearchBar />
+                <Table striped >
+                  <thead>
+                    <tr>
+                      <th>Location</th>
+                      <th>Plots Number</th>
+                      <th>Plan Number</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {
+                      data[0]?.map((item)=>(
+                        <tr>
+                          <td>{item.layout_address}</td>
+                          <td>{item.application_id}</td>
+                          <td>{item.plots_numbers}</td>
+                          <td>{item.layout_number}</td>
+                          <td><button className='app_btn' onClick={()=>{setRecLetterForm((p)=>({...p,location:item.layout_address,plot_no:item.plots_numbers,plan_no:item.layout_number}));toggle3()}}>select</button></td>
+                        </tr>
+                      ))
+                    }
+                  </tbody>
+                </Table>
+               </ModalBody>
+                </Modal>
+              </div>
           </Col>
           <Col lg={3}>
             <label className="input_label">Plot No</label>
             <div>
               <input
-                type="number"
+                // type="number"
                 className="input_field"
                 name="plot_no"
                 value={recLetteForm.plot_no}
@@ -299,6 +367,22 @@ export default function RecommendationLetter() {
                 value={recLetteForm.recommendation_id}
                 onChange={handleChange}
               />
+            </div>
+          </Col>
+          <Col lg={3}>
+            <label className="input_label">Send To</label>
+            <div>
+              <select
+              
+                className="input_field"
+                name="status"
+                value={recLetteForm.status}
+                onChange={handleChange}
+              >
+                <option>---select---</option>
+                <option>Director Cadestral</option>
+                <option>Comissioner </option>
+              </select>
             </div>
           </Col>
         </Row>

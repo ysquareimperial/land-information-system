@@ -36,50 +36,62 @@ export default function Require_documents() {
   };
 
   // called every time a file's `status` changes
-  const [radios, setRadio] = useState({
-    order: [],
-  });
-  const handleChanges = ({ target: { name, value } }) => {
-    setRadio((p) => ({ ...p, [name]: value }));
-  };
-  const [data, setData] = useState([]);
-  const getList = () => {
-    _fetchApi(
-      "/api/getList",
-      (res) => {
-        console.log(res);
-        setData(res.results);
-      },
-      (err) => {
-        console.log(err);
-      }
-    );
-  };
-  useEffect(() => {
-    getList();
-  }, []);
-  //  value={'by-project'}
+  const [radios,setRadio]=useState({
+    order:[],
+})
+const handleChanges = ({target:{name,value}})=>{
+  setRadio((p)=>({...p, [name]:value}))
+}
+  const [data,setData]=useState([])
+    const getList =()=>{
+
+        _fetchApi('/api/getList',
+        (res)=>{
+            console.log(res)
+            setData(res.results)
+        },
+        (err)=>{
+            console.log(err)
+        }
+        )
+    }
+    useEffect(
+        ()=>{
+            getList()  
+        },
+        []
+    )
+
+  const [image, setImage] = useState([]);
+  const [video, setVideo] = useState();
+  const addFileVideo = (e) => {
+    setImage(e.target.files[0]);
+    console.log(e.target.files[0]);
+    // if (e.target.files[0]) {
+    //   setVideo(URL.createObjectURL(e.target.files[0]));
+    // }
+  }
+    //  value={'by-project'}
   return (
     <div>
       <Card className="app_primary_card m-2 shadow p-4">
-        {JSON.stringify(radios)}
+        {/* {JSON.stringify(radios)} */}
         <h5 className="mb-3">Attach Document</h5>
-        {data[0]?.map((item, index) => (
-          <Row className="mb-3">
-            <Col md={1}>
-              <Input
-                name={item.document_name}
-                value={item.document_name}
-                type="checkbox"
-                onChange={handleChanges}
-              />
+       {
+       data[0]?.map((item,index)=>(
+        
+          <Row className='mb-3'>
+
+        <Col md={1}>
+          {radios.lenth}
+            <Input  className='input_field' name={item.document_name} value={true} type='checkbox' onChange={handleChanges} />
             </Col>
             <Col md={3}>
               <p>{item.document_name}</p>
             </Col>
 
             <Col md={4}>
-              <input className="input_field" type="file" />
+            <input className='input_field' onChange={addFileVideo} type='file' />
             </Col>
           </Row>
         ))}

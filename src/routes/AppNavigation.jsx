@@ -17,9 +17,7 @@ import FinanceTable from "../componens/FinanceTable";
 import FinanceForm from "../componens/FinanceFOrm";
 import LayoutPolicies from "../componens/LayoutPolicies";
 import ApplicationForConseent from "../componens/ApplicationForConseent";
-
 import ApplicationForConseentTable from "../componens/ApplicationForConseentTable";
-
 //
 import LayoutPoliciesTable from "../componens/LayoutPoliciesTable";
 import ExtensionForm from "../componens/ExtensionForm";
@@ -28,11 +26,18 @@ import ReGrantForm from "../componens/ReGrantForm";
 import ConversionForm from "../componens/ConversionForm";
 import RecommendationLetterList from "../componens/RecommendationLetterList";
 import ListTable from "../componens/ListTable";
-import ApplicationForConsesntTo from "../componens/ApplicationForConsesntTo";
-
 // import ExtensionForm from '../componens/ExtensionForm'
 
-// import Apps from '../componens/Apps'
+import Apps from "../componens/Apps";
+import GeneratFile from "../componens/GenerateFile";
+import ViewFile from "../componens/ViewFile";
+import CadestralRecom from "../componens/CadestralRecom";
+import GrantTable from "../componens/GrantTable";
+import ForInformation from "../componens/ForInformation";
+import ForInformationTable from "../componens/ForInformationTable";
+import RequestForSurveyReport from "../componens/RequestForSurveyReport";
+import CertificateOfOccupancyRentTable from "../componens/CertificateOfOccupancyRentTable";
+import CertificateOfOccupancyRent from "../componens/CertificateOfOccupancyRent";
 
 function AppNavigation() {
   let element = useRoutes([
@@ -126,15 +131,53 @@ function AppNavigation() {
           path: "/list-table",
           element: <ListTable />,
         },
+        //  11c241d1be86cd1598a5710aa9e4838c7c855562
+
         {
-          path: "/application-for-consesnt-to",
-          element: <ApplicationForConsesntTo />,
+          path: "/list-table",
+          element: <ListTable />,
         },
 
-        // {
-        //   path:'/application-step',
-        //   element:<Apps />
-        // }
+        {
+          path: "/application-step",
+          element: <Apps />,
+        },
+        {
+          path: "/generate",
+          element: <GeneratFile />,
+        },
+        {
+          path: "/view-generate",
+          element: <ViewFile />,
+        },
+        {
+          path: "/cadestral-recom",
+          element: <CadestralRecom />,
+        },
+        {
+          path: "/grant-table",
+          element: <GrantTable />,
+        },
+        {
+          path: "/for-information",
+          element: <ForInformation />,
+        },
+        {
+          path: "/for-information-table",
+          element: <ForInformationTable />,
+        },
+        {
+          path: "/request-for-survey-report",
+          element: <RequestForSurveyReport />,
+        },
+        {
+          path: "/certificate-of-occupancy-rent-table",
+          element: <CertificateOfOccupancyRentTable />,
+        },
+        {
+          path: "/certificate-of-occupancy-rent",
+          element: <CertificateOfOccupancyRent />,
+        },
       ],
     },
   ]);

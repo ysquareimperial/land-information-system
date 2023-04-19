@@ -1,3 +1,4 @@
+import { useLocation } from "react-router-dom";
 
 export const apiURL = "http://localhost:34567";
 const _postApi = (url, data = {}, success = (f) => f, error = (f) => f) => {
@@ -90,9 +91,7 @@ export function unflatten(arr) {
   }
   return tree;
 }
-
 export function useQuery() {
-  const { useLocation } = require("react-router");
-  return new URLSearchParams(useLocation().search);
+  return new URLSearchParams(useLocation().search)
 }
-export default useQuery;
+// export default useQuery;

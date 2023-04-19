@@ -110,3 +110,20 @@
   width: fit-content;
   border-radius: 5px;
 }
+.search_input_form {
+  display: flex;
+  /* border: 1px solid rgb(4, 1, 31); */
+}
+
+.search_icon {
+  font-size: 30px;
+  padding: 5px;
+  font-weight: bold;
+  width: 50px;
+  background-color: #0b3455;
+  color: #fff;
+  height: 40px;
+}
+.search_icon:hover {
+  cursor: pointer;
+}
