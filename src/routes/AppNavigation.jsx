@@ -18,7 +18,7 @@ import FinanceForm from '../componens/FinanceFOrm'
 import LayoutPolicies from '../componens/LayoutPolicies'
 import ApplicationForConseent from '../componens/ApplicationForConseent'
 import ApplicationForConseentTable from '../componens/ApplicationForConseentTable'
-// 
+//
 import LayoutPoliciesTable from '../componens/LayoutPoliciesTable'
 import ExtensionForm from '../componens/ExtensionForm'
 
@@ -41,7 +41,7 @@ import Shedule_table from '../componens/ScheduleTable'
 import PaymentTable from '../componens/PaymentTab'
 import ApplicationLetter from '../componens/ApplicationLetter'
 import ValuationReport from '../componens/ValuationReport'
-
+import ViewResAppPDF from '../componens/ViewResAppPDF'
 
 function AppNavigation() {
   let element = useRoutes([
@@ -120,86 +120,91 @@ function AppNavigation() {
           element: <ApplicationForConseent />,
         },
         {
-
           path: '/executive-govermor-table',
           element: <ApplicationForConseentTable />,
         },
         {
-
           path: '/conversion-form',
           element: <ConversionForm />,
         },
         {
           path: '/recommendation-letter-list',
           element: <RecommendationLetterList />,
-
-        },{
-          path:'/list-table',
-          element:<ListTable />
         },
-//  11c241d1be86cd1598a5710aa9e4838c7c855562
+        {
+          path: '/list-table',
+          element: <ListTable />,
+        },
+        //  11c241d1be86cd1598a5710aa9e4838c7c855562
 
-     
         {
           path: '/list-table',
           element: <ListTable />,
         },
 
         {
-          path:'/application-step',
-          element:<Apps />
+          path: '/application-step',
+          element: <Apps />,
         },
-      {
-        path:'/generate',
-        element:<GeneratFile />
-      },{
-        path:'/view-generate',
-        element:<ViewFile />
-      },{
-        path:'/cadestral-recom',
-        element:<CadestralRecom />
-      },{
-        path:'/grant-table',
-        element:<GrantTable />
-      },{
-        path:'/finaces-grant',
-        element:<LetterGrantTable />
-      },
-      {
-        path:'/SurveyReport',
-        element:<SurveyReport />
-      },
-      {
-        path:'/survey-table',
-        element:<GrantTable />
-      },
-      {
-        path:'/yes',
-        element:<YesOrNo />
+        {
+          path: '/generate',
+          element: <GeneratFile />,
+        },
+        {
+          path: '/view-generate',
+          element: <ViewFile />,
+        },
+        {
+          path: '/cadestral-recom',
+          element: <CadestralRecom />,
+        },
+        {
+          path: '/grant-table',
+          element: <GrantTable />,
+        },
+        {
+          path: '/finaces-grant',
+          element: <LetterGrantTable />,
+        },
+        {
+          path: '/SurveyReport',
+          element: <SurveyReport />,
+        },
+        {
+          path: '/survey-table',
+          element: <GrantTable />,
+        },
+        {
+          path: '/yes',
+          element: <YesOrNo />,
+        },
+        {
+          path: '/schedule-payment',
+          element: <Reschedule />,
+        },
+        {
+          path: '/shedule-table',
+          element: <Shedule_table />,
+        },
+        {
+          path: '/payment-table',
+          element: <PaymentTable />,
+        },
+        {
+          path: '/application-letter',
+          element: <ApplicationLetter />,
+        },
+        {
+          path: '/ValuationReport',
+          element: <ValuationReport />,
+        },
+        {
+          path: '/pdf',
+          element: <ViewResAppPDF />,
+        },
 
-      },{
-        path:'/schedule-payment',
-        element:<Reschedule />
-      },{
-        path:'/shedule-table',
-        element:<Shedule_table />
-      },
-      {
-        path:'/payment-table',
-        element:<PaymentTable />
-      },
-      {
-        path:'/application-letter',
-        element:<ApplicationLetter />
-      },{
-        path:'/ValuationReport',
-        element:<ValuationReport />
-      }
-      
-
-//  1cda8d2b662
+        //  1cda8d2b662
       ],
-      
     },
   ])
   return element
