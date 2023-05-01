@@ -1,11 +1,16 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Card, Col, Row } from 'reactstrap'
+import { _postApi, useQuery } from '../helpers/helper'
 
 export default function Reschedule() {
+    const query = useQuery();
+    const app_name = query.get('name')
+    const file_no = query.get('file_no')
+    const type = query.get('type')
     const [schedule,setSchedule]=useState({
         name:'',
         file_no:'',
-        purpose_payment:'Application Processing Fees -- FOR ASSIGNMENT',
+        purpose_payment:type==='lol'?'Application Processing Fees -- FOR ASSIGNMENT':'Bill Balance',
         amount:'12000',
         rank:'',
         date:''
@@ -13,11 +18,21 @@ export default function Reschedule() {
     const  handleChange = ({target:{name,value}})=>{
         setSchedule((p)=>({...p,[name]:value}))
     }
+
+    useEffect(
+        ()=>{
+setSchedule((p)=>({...p,name:app_name,file_no:file_no}))
+        },[file_no,app_name]
+    )
+
+    const handleSubmit = ()=>{
+        _postApi('/api/schedule_payment',schedule,(res)=>{console.log(res)},(err)=>{console.log(err)})
+    }
   return (
     <div>
         <Card className="app_primary_card m-2 shadow p-4">
         <h5 className="mb-3">YES/NO Application</h5>
-        {/* {JSON.stringify(schedule)} */}
+        {/* {JSON.stringify(file_no)} */}
         <Row>
             <Col md={4}>
                 <label>Name</label>
@@ -48,7 +63,7 @@ export default function Reschedule() {
 
         </Row>
 
-        <center><button className='app_btn mt-2'>Submit</button></center>
+        <center><button className='app_btn mt-2' onClick={handleSubmit}>Submit</button></center>
         </Card>
     </div>
   )

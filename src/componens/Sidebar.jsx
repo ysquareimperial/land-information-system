@@ -301,6 +301,23 @@ export default function Sidebar() {
         {/* </div> */}
         </div>
       </div> 
+
+      <div>
+          <div className="d-flex">
+          <span
+            className={
+              location.pathname === '/ValuationReport'
+                ? 'active_sidebar_item'
+                : `sidebar_item_ `
+            }
+            onClick={() => navigate('/ValuationReport')}
+          >
+            <BsFileEarmarkText size="1.2rem" className="sidebar_icon" />
+           Evaluation Report
+          </span>
+        {/* </div> */}
+        </div>
+      </div> 
       </>
          ): (
           ''
@@ -316,15 +333,16 @@ export default function Sidebar() {
           </span>
         </li>
         {showSubMenu1 ? (
+          <>
           <div>
           <div className="d-flex">
           <span
             className={
-              location.pathname === '/schedule-payment'
+              location.pathname === '/shedule-table'
                 ? 'active_sidebar_item'
                 : `sidebar_item_ `
             }
-            onClick={() => navigate('/schedule-payment')}
+            onClick={() => navigate('/shedule-table')}
           >
             <BsFileEarmarkPlus size="1.2rem" className="sidebar_icon" />
             Schedule Payment
@@ -332,6 +350,24 @@ export default function Sidebar() {
         {/* </div> */}
         </div>
       </div> 
+
+      <div>
+          <div className="d-flex">
+          <span
+            className={
+              location.pathname === '/shedule-table?type=letter'
+                ? 'active_sidebar_item'
+                : `sidebar_item_ `
+            }
+            onClick={() => navigate('/shedule-table?type=letter')}
+          >
+            <BsFileEarmarkPlus size="1.2rem" className="sidebar_icon" />
+            Application Letter
+          </span>
+        {/* </div> */}
+        </div>
+      </div> 
+      </>
          ): (
           ''
         )}
@@ -376,6 +412,23 @@ export default function Sidebar() {
           >
             <AiFillMoneyCollect size="1.2rem" className="sidebar_icon" />
             Grant Payment
+          </span>
+        {/* </div> */}
+        </div>
+      </div> 
+
+      <div>
+          <div className="d-flex">
+          <span
+            className={
+              location.pathname === '/payment-table'
+                ? 'active_sidebar_item'
+                : `sidebar_item_ `
+            }
+            onClick={() => navigate('/payment-table')}
+          >
+            <AiFillMoneyCollect size="1.2rem" className="sidebar_icon" />
+            Payment Schedule
           </span>
         {/* </div> */}
         </div>

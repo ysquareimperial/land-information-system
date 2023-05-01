@@ -77,12 +77,12 @@ const navigate =useNavigate()
  
       useEffect(
         ()=>{
-          setList((p)=>({...p, amounts:total?.toLocaleString(),amount:total,applicant_full_name:applicant_full_name,application_id:application_id,type:type==='null'?'':type}))
+          setList((p)=>({...p, amount:total,applicant_full_name:applicant_full_name,application_id:application_id,type:type==='null'?'':type}))
         },[]
-      )
-      useEffect(
+        )
+        useEffect(
         ()=>{
-          setList((p)=>({...p, amounts:total?.toLocaleString(),amount:total}))
+          setList((p)=>({...p, amounts:type==='schedule payment'?12000:total?.toLocaleString(),amount:type==='schedule payment'?12000:total}))
         },[total]
       )
       const [modal3, setModal3] = useState(false)
@@ -103,6 +103,7 @@ const navigate =useNavigate()
               <option>residential</option>
                 <option>commercial</option>
                 <option>grant</option>
+                <option>schedule payment</option>
              </select>
             </div>
           </Col>

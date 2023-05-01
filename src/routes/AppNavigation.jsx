@@ -37,6 +37,10 @@ import LetterGrantTable from '../componens/LetterGrantTable'
 import SurveyReport from '../componens/SurveyReport'
 import YesOrNo from '../componens/YesOrNo'
 import Reschedule from '../componens/Reschedule'
+import Shedule_table from '../componens/ScheduleTable'
+import PaymentTable from '../componens/PaymentTab'
+import ApplicationLetter from '../componens/ApplicationLetter'
+import ValuationReport from '../componens/ValuationReport'
 
 
 function AppNavigation() {
@@ -176,7 +180,22 @@ function AppNavigation() {
       },{
         path:'/schedule-payment',
         element:<Reschedule />
+      },{
+        path:'/shedule-table',
+        element:<Shedule_table />
+      },
+      {
+        path:'/payment-table',
+        element:<PaymentTable />
+      },
+      {
+        path:'/application-letter',
+        element:<ApplicationLetter />
+      },{
+        path:'/ValuationReport',
+        element:<ValuationReport />
       }
+      
 
 //  1cda8d2b662
       ],
