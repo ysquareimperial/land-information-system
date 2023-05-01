@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Card, CardBody, Col, input, Label, Modal, ModalBody, ModalFooter, ModalHeader, Row } from "reactstrap";
 import { _postApi } from "../helpers/helper";
 import { BsArrowLeft } from "react-icons/bs";
 import Require_documents from "./Require_documents";
 import { useNavigate } from "react-router-dom";
+import LocalGovernment from "./LocalGovernment";
 
 export default function Application_form() {
   const _form = {
@@ -72,7 +73,30 @@ export default function Application_form() {
         console.log(err);
       };
   };
+  const [country,setCountry]=useState([])
+  const getCountries = ()=>{
+    fetch('https://restcountries.com/v3.1/all',{
+      method:'GET',
+      headers: { "Content-Type": "application/json" },
+    })
+    .then((raw) => raw.json())
+    .then((response) => {
+      // console.log(response);
+      if (response.status >= 400) {
+        console.log(response);
+      } else  setCountry(response);
+    })
+    .catch((err) =>  console.log(err));
+  }
+  useEffect(
+    ()=>{
+      getCountries()
+    },[]
+  )
 const navigate  =useNavigate()
+const newCountry = country.map((item)=>item.name.common)
+const [lgas, setLGAs] = useState([]);
+
   return (
     <div>
          <Modal isOpen={modal3} toggle={toggle3} size="lg">
@@ -92,9 +116,10 @@ const navigate  =useNavigate()
       <Card className="app_primary_card m-2 shadow p-4">
       <button className="mt-2 app_btn col-md-2" onClick={()=>navigate(-1)}><BsArrowLeft />  Back</button>
         <center><h5 className="mb-3">Application Form</h5></center>
-        {/* {JSON.stringify(form)} */}
+        {/* {JSON.stringify(country)} */}
 
         <Row>
+          {/* {JSON.stringify(newCountry.sort())} */}
           <Col md={3}>
             <label className="input_label">Applicant Full Name</label>
             <div>
@@ -114,23 +139,30 @@ const navigate  =useNavigate()
               <select className="input_field" name='type' value={form.type} onChange={handleChange}>
               <option>---select----</option>
               <option>residential</option>
-                <option>commercial</option>
+                <option>commercial</
+                
+                
+                
+                
+                
+                option>
              </select>
             </div>
           </Col>
-          <Col md={3}>
-            <label className="input_label">Registration Particulars</label>
-            <div>
-              <input
-                className="input_field"
-                type="text"
-                name="registration_particulars"
-                value={form.registration_particulars}
-                onChange={handleChange}
-              />
-            </div>
-          </Col>
-          <Col md={3}>
+          {
+           form.type === 'commercial'? <> <Col md={3}>
+           <label className="input_label">Registration Particulars</label>
+           <div>
+             <input
+               className="input_field"
+               type="text"
+               name="registration_particulars"
+               value={form.registration_particulars}
+               onChange={handleChange}
+             />
+           </div>
+         </Col> 
+         <Col md={3}>
             <label className="input_label">Business Location</label>
             <div>
               <input
@@ -142,6 +174,10 @@ const navigate  =useNavigate()
               />
             </div>
           </Col>
+         </>:''
+          }
+        
+        
 
           <Col md={3}>
             <label className="input_label">Correspondance Address</label>
@@ -187,15 +223,35 @@ const navigate  =useNavigate()
           <Col md={3}>
             <label className="input_label">Marital Status</label>
             <div>
-              <input
+        
+              <select
                 className="input_field"
-                type="text"
+                type="select"
                 name="marital_stataus"
                 value={form.marital_stataus}
                 onChange={handleChange}
-              />
+              >
+                <option>Select</option>
+                <option>single</option>
+                <option>married</option>
+              </select>
             </div>
           </Col>
+          {
+            form.marital_stataus==='married'?
+            <Col md={3}>
+            <label className="input_label">Husband Adress</label>
+            <div>
+              <input
+                className="input_field"
+                type="text"
+                name="husband_address"
+                value={form.husband_address}
+                onChange={handleChange}
+              />
+            </div>
+          </Col>:''
+          }
           <Col md={3}>
             <label className="input_label">Residential Address (P O B)</label>
             <div>
@@ -245,15 +301,50 @@ const navigate  =useNavigate()
             </div>
           </Col>
           <Col md={3}>
+            <label className="input_label">State Of Origin</label>
+            <div>
+            <select
+                type="select"
+                className="input_field "
+                name="State_of_origin"
+                value={form.State_of_origin}
+                onChange={({ target: { value } }) => {
+                  setForm((p) => ({ ...p, State_of_origin: value }));
+                  let selected = LocalGovernment.find((a) => a.State_of_origin === value);
+                  setLGAs(selected.lgas);
+                }}
+              >
+                <option>Any State</option>
+                {LocalGovernment.map((item) => (
+                  <option>{item.state}</option>
+                ))}
+              </select>
+          
+            </div>
+          </Col>
+          <Col md={3}>
             <label className="input_label">Local Govt</label>
             <div>
-              <input
+            <select
+                type="select"
+                className="input_field p-2"
+                name="local_govt"
+                value={form.local_govt}
+                onChange={handleChange}
+              >
+                <option>Any LGA</option>
+                {lgas.map((item) => (
+                  <option>{item}</option>
+                ))}
+              </select>
+
+              {/* <input
                 className="input_field"
                 type="text"
                 name="local_govt"
                 value={form.local_govt}
                 onChange={handleChange}
-              />
+              /> */}
             </div>
           </Col>
           {/* CHANGESSSSSSSSSSS */}
@@ -285,28 +376,21 @@ const navigate  =useNavigate()
           <Col md={3}>
             <label className="input_label">Applicant Nationality</label>
             <div>
-              <input
+            <select
                 className="input_field"
-                type="text"
+                type="select"
                 name="Applicant_nationality"
                 value={form.Applicant_nationality}
                 onChange={handleChange}
-              />
+              >
+                <option>Select</option>
+                {newCountry&&newCountry.sort()?.map((item)=><option>{item}</option>)}
+              </select>
+             
             </div>
           </Col>
 
-          <Col md={3}>
-            <label className="input_label">State Of Origin</label>
-            <div>
-              <input
-                className="input_field"
-                type="text"
-                name="State_of_origin"
-                value={form.State_of_origin}
-                onChange={handleChange}
-              />
-            </div>
-          </Col>
+          
         
           <Col md={3}>
             <label className="input_label">Occupation Business</label>
@@ -320,6 +404,9 @@ const navigate  =useNavigate()
               />
             </div>
           </Col>
+          {
+           form.type === 'commercial'?<>
+         
           <Col md={3}>
             <label className="input_label">Nature Of Business</label>
             <div>
@@ -344,6 +431,9 @@ const navigate  =useNavigate()
               />
             </div>
           </Col>
+          </>
+           :''}
+          
           <Col md={3}>
             <label className="input_label">When Where Occupancy N</label>
             <div>
@@ -446,6 +536,8 @@ const navigate  =useNavigate()
               />
             </div>
           </Col>
+          {
+           form.type === 'commercial'?
           <Col md={3}>
             <label className="input_label">Do You Have Biz In Kano</label>
             <div>
@@ -457,7 +549,7 @@ const navigate  =useNavigate()
                 onChange={handleChange}
               />
             </div>
-          </Col>{" "}
+          </Col> :''}{" "}
        
           <Col md={3}>
             <label className="input_label">Address Of Local Rep</label>
