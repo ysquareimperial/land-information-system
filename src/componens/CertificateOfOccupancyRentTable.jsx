@@ -8,7 +8,7 @@ export default function CertificateOfOccupancyRentTable() {
 
   const getList = () => {
     _fetchApi(
-      "/api/getCadestral?status=Director Cadestral",
+      "/api/getCadestral?status=Director Cadestragit l",
       (res) => {
         setData(res.results[0]);
       },
