@@ -36,6 +36,7 @@
 
 .sidebar_item_ {
   margin: 0;
+  text-decoration: none !important;
   cursor: pointer;
   /* color: black; */
   width: 100%;
