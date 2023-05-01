@@ -131,7 +131,7 @@ export default function Sidebar() {
                   className={
                     location.pathname === menu.link
                       ? 'active_sidebar_item'
-                      : `sidebar_item_ `
+                      : `sidebar_items `
                   }
                   onClick={() => navigate(menu.link)}
                 >
@@ -162,7 +162,7 @@ export default function Sidebar() {
             className={
               location.pathname === '/application-table'
                 ? 'active_sidebar_item'
-                : `sidebar_item_ `
+                : `sidebar_items `
             }
             onClick={() => navigate('/application-table')}
           >
@@ -193,7 +193,7 @@ export default function Sidebar() {
             className={
               location.pathname === '/generate'
                 ? 'active_sidebar_item'
-                : `sidebar_item_ `
+                : `sidebar_items `
             }
             onClick={() => navigate('/generate')}
           >
@@ -209,7 +209,7 @@ export default function Sidebar() {
             className={
               location.pathname === '/recommendation-letter-list'
                 ? 'active_sidebar_item'
-                : `sidebar_item_ `
+                : `sidebar_items `
             }
             onClick={() => navigate('/recommendation-letter-list')}
           >
@@ -225,7 +225,7 @@ export default function Sidebar() {
             className={
               location.pathname === '/grant-table'
                 ? 'active_sidebar_item'
-                : `sidebar_item_ `
+                : `sidebar_items `
             }
             onClick={() => navigate('/grant-table')}
           >
@@ -257,7 +257,7 @@ export default function Sidebar() {
             className={
               location.pathname === '/cadestral-recom'
                 ? 'active_sidebar_item'
-                : `sidebar_item_ `
+                : `sidebar_items `
             }
             onClick={() => navigate('/cadestral-recom')}
           >
@@ -274,7 +274,7 @@ export default function Sidebar() {
             className={
               location.pathname === '/survey-table'
                 ? 'active_sidebar_item'
-                : `sidebar_item_ `
+                : `sidebar_items `
             }
             onClick={() => navigate('/survey-table')}
           >
