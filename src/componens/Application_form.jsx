@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Button, Card, CardBody, Col, input, Label, Modal, ModalBody, ModalFooter, ModalHeader, Row } from "reactstrap";
+import { Button, Card, CardBody, Col, input, Label, Modal, ModalBody, ModalFooter, ModalHeader, Row, Table } from "reactstrap";
 import { _postApi } from "../helpers/helper";
 import { BsArrowLeft } from "react-icons/bs";
 import Require_documents from "./Require_documents";
@@ -96,7 +96,22 @@ export default function Application_form() {
 const navigate  =useNavigate()
 const newCountry = country.map((item)=>item.name.common)
 const [lgas, setLGAs] = useState([]);
-
+const [new_data,setNew_data]=useState([])
+const handleAdd = ()=>{
+  setNew_data((p)=>(
+    [...p,{
+      plot_no:form.plot_no,
+      cert_of_occupancy:form.cert_of_occupany_no,
+      location:form.location
+    }]
+  ))
+ setForm((p)=>({...p,plot_no:'',cert_of_occupany_no:'',location:''}))
+}
+const handleDelete = (index) =>{
+  let item = new_data.filter((i, idx) => index !== idx)
+  setNew_data(item) 
+  console.log(index)
+ }
   return (
     <div>
          <Modal isOpen={modal3} toggle={toggle3} size="lg">
@@ -114,9 +129,16 @@ const [lgas, setLGAs] = useState([]);
         </ModalFooter>
                 </Modal>
       <Card className="app_primary_card m-2 shadow p-4">
-      <button className="mt-2 app_btn col-md-2" onClick={()=>navigate(-1)}><BsArrowLeft />  Back</button>
-        <center><h5 className="mb-3">Application Form</h5></center>
-        {/* {JSON.stringify(country)} */}
+        <div className="mb-3" style={{height:70, display:'flex',alignItems:'center', gap:10}}>
+
+    <div>
+       <button className=" back" onClick={()=>navigate(-1)}><BsArrowLeft size='1.5rem' />  </button>
+      </div> 
+    <div>
+       <h5 className="m-0">Application Form</h5>
+      </div>
+        </div>
+        {/* {JSON.stringify(form)} */}
 
         <Row>
           {/* {JSON.stringify(newCountry.sort())} */}
@@ -192,6 +214,8 @@ const [lgas, setLGAs] = useState([]);
             </div>
           </Col>
           {/* CHANGESSSSSSSSSSS */}
+          {
+           form.type === 'residential'? <>
           <Col md={3}>
             <label className="input_label">Age</label>
             <div>
@@ -204,6 +228,7 @@ const [lgas, setLGAs] = useState([]);
               />
             </div>
           </Col>
+
           <Col md={3}>
             <label className="input_label">Sex</label>
             <div>
@@ -237,6 +262,10 @@ const [lgas, setLGAs] = useState([]);
               </select>
             </div>
           </Col>
+
+          </>:''}
+        
+          
           {
             form.marital_stataus==='married'?
             <Col md={3}>
@@ -310,7 +339,7 @@ const [lgas, setLGAs] = useState([]);
                 value={form.State_of_origin}
                 onChange={({ target: { value } }) => {
                   setForm((p) => ({ ...p, State_of_origin: value }));
-                  let selected = LocalGovernment.find((a) => a.State_of_origin === value);
+                  let selected = LocalGovernment.find((a) => a.state === value);
                   setLGAs(selected.lgas);
                 }}
               >
@@ -631,6 +660,12 @@ const [lgas, setLGAs] = useState([]);
               />
             </div>
           </Col> */}
+          
+          {/* SECTIONNNNNNNNNNNNNNN */}
+        </Row>
+        {form.yes_no === "Yes" ? (
+        <div className="p-3 mt-2" style={{border:'3px solid #f1f1f1'}}>
+          <Row>
           {form.yes_no === "Yes" ? (
             <>
               <Col md={3}>
@@ -671,8 +706,33 @@ const [lgas, setLGAs] = useState([]);
               </Col>
             </>
           ) : null}
-          {/* SECTIONNNNNNNNNNNNNNN */}
-        </Row>
+          <center><button className="app_btn mt-2" onClick={handleAdd}>Add</button></center>
+          <Table bordered size="sm" className="mt-2">
+            <thead>
+            <tr>
+    <th>Plot No</th>
+    <th>Location</th>
+    <th>Cert Of Occupancy</th>
+    <th>Action</th>
+    </tr>
+    </thead>
+    {
+      new_data?.map((item,index)=>(
+<tbody>
+    <tr>
+      <td>{item.plot_no}</td>
+      <td>{item.location}</td>
+      <td>{item.cert_of_occupancy}</td>
+      <td><Button color="danger" onClick={()=>handleDelete(index)}>delete</Button></td>
+    </tr>
+    </tbody>
+      ))
+    }
+    
+          </Table>
+
+          </Row>
+        </div>):''}
         <div>
           {loading ? (
             <button

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import { Card, CardBody, CardHeader, Col, Row } from 'reactstrap'
+import { Button, Card, CardBody, CardHeader, Col, Modal, ModalBody, ModalFooter, ModalHeader, Row } from 'reactstrap'
 import { _fetchApi, _postApi, useQuery } from '../helpers/helper'
+import { useNavigate } from 'react-router-dom'
 
 export default function LetterOfGrant() {
   const _form = {
@@ -11,20 +12,27 @@ export default function LetterOfGrant() {
     permsec_signature: '',
     signature_date: '',
   }
+  const navigate = useNavigate()
   const [letterOfGrantForm, setLetterOfGrantForm] = useState(_form)
   const [loading, setLoading] = useState(false)
   const handleChange = ({ target: { name, value } }) => {
     setLetterOfGrantForm((p) => ({ ...p, [name]: value }))
   }
-
+  const [modal3, setModal3] = useState(false)
+  const toggle3 = () => setModal3(!modal3)
+const [grantNumber,setGrantNumber]=useState()
+const query = useQuery();
+const application_file_number = query.get('application_file_number')
   const handleSubmit = () => {
     setLoading(true)
-    _postApi('/api/create-letter-of-grant', letterOfGrantForm, (res) => {
+    _postApi(`/api/create-letter-of-grant?file_nos=${application_file_number}`, letterOfGrantForm, (res) => {
       setLoading(false)
       console.log(res)
       if (res.success) {
-        alert('success')
+        // alert('success')
+        toggle3()
         setLetterOfGrantForm(_form)
+        setGrantNumber(res.grant)
       }
     }),
       (err) => {
@@ -32,8 +40,7 @@ export default function LetterOfGrant() {
         console.log(err)
       }
   }
-  const query = useQuery();
-  const application_file_number = query.get('application_file_number')
+
   const [recs,setRecs]=useState([])
   const getRecommendation =()=>{
     _fetchApi(`/api/getAppBYID?application_file_number=${application_file_number}`,
@@ -68,9 +75,23 @@ export default function LetterOfGrant() {
 
   return (
     <div>
+           <Modal isOpen={modal3} toggle={toggle3} size="lg">
+       <ModalHeader>Continue With</ModalHeader>
+        <ModalBody>
+      {/* <Require_documents />
+       */}
+      Your Grant number  : {grantNumber}
+        </ModalBody>
+        <ModalFooter>
+         
+          <Button color="danger" onClick={()=>{toggle3();navigate(-1)}}>
+            Close
+          </Button>
+        </ModalFooter>
+                </Modal>
       <Card className="app_primary_card m-2 shadow p-4">
         <h5 className="mb-3">Letter of Grant</h5>
-       
+       {/* {JSON.stringify(app[0])} */}
        <Row>
         <Col md={6}>
         <Card>

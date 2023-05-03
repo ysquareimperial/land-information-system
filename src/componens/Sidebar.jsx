@@ -211,7 +211,7 @@ export default function Sidebar() {
                 ? 'active_sidebar_item'
                 : `sidebar_items `
             }
-            onClick={() => navigate('/recommendation-letter-list')}
+            onClick={() => navigate('/recommendation-letter-list?type=director-land')}
           >
             <BsFileEarmarkText size="1.2rem" className="sidebar_icon" />
            Recommendation Letter
@@ -243,7 +243,7 @@ export default function Sidebar() {
           <span>
             <BsPinMapFill size="1.2rem" className="sidebar_icon"  /> Director Cadestral
             {showSubMenuO ? (
-              <TiArrowSortedUp size="1.4rem" />
+              <TiArrowSortedUp className='ml-5' size="1.4rem" />
             ) : (
               <TiArrowSortedDown size="1.4rem" />
             )}
@@ -259,7 +259,7 @@ export default function Sidebar() {
                 ? 'active_sidebar_item'
                 : `sidebar_items `
             }
-            onClick={() => navigate('/cadestral-recom')}
+            onClick={() => navigate('/cadestral-recom?type=director-cadestral')}
           >
             <BsFileEarmarkText size="1.2rem" className="sidebar_icon" />
            Recommendation Letter

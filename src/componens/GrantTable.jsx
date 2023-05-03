@@ -24,8 +24,8 @@ export default function GrantTable() {
   const rout = location.pathname === '/survey-table'?'SurveyReport':'letter-of-grant'
   return (
     <Card className="app_primary_card m-2 shadow p-4">
-      <h5 className="mb-4">Applications</h5>
-      {JSON.stringify(rout)}
+      <h5 className="mb-4">{rout==='letter-of-grant'?'Generate Letter Of Grant':rout ==='SurveyReport'?'Survey Report':''}</h5>
+      {/* {JSON.stringify(data)} */}
       <input type='search' placeholder='Search' className='input_field mb-3'/>
       <div>
         <Table borderless striped responsive>
@@ -48,12 +48,28 @@ export default function GrantTable() {
               <td>{item.plot_no}</td>
               <td>{item.plan_no}</td>
               <td>
-                <button
-                  className="blue table_btn"
+                {
+                  item.grant_status==='generated'?  <button
+                  className="blue app_btn "
+                  
+                  // onClick={() => navigate(`/${rout}?application_file_number=${item.application_file_number}`)}
+                >
+                  View
+                </button>:  <button
+                  className="blue app_btn "
+                  
                   onClick={() => navigate(`/${rout}?application_file_number=${item.application_file_number}`)}
                 >
-                  Approve
+                  Process
                 </button>
+                }
+                {/* <button
+                  className="blue app_btn "
+                  
+                  onClick={() => navigate(`/${rout}?application_file_number=${item.application_file_number}`)}
+                >
+                  Process
+                </button> */}
               </td>
             </tr>
             ))}

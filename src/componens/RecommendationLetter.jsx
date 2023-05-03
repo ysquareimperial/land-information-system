@@ -3,6 +3,7 @@ import { Card, Col, Modal, ModalBody, Row, Table } from 'reactstrap'
 import { _fetchApi, _postApi, useQuery } from '../helpers/helper'
 import { BsSearch } from 'react-icons/bs'
 import SearchBar from './SearchBar'
+import { useNavigate } from 'react-router-dom'
 
 export default function RecommendationLetter() {
   const [loading, setLoading] = useState(false)
@@ -17,7 +18,7 @@ export default function RecommendationLetter() {
     annual_ground_rent: '',
     development_charges: '',
     survey_charges: '',
-    recommendation_DLand: '',
+    recommendation_dland: '',
     Dland_signature: '',
     Dland_sign_date: '',
     recommendation_permsec: '',
@@ -36,7 +37,7 @@ export default function RecommendationLetter() {
   const handleChange = ({ target: { name, value } }) => {
     setRecLetterForm((p) => ({ ...p, [name]: value }))
   }
-
+    const navigate = useNavigate()
   const handleSubmit = () => {
     setLoading(true)
     _postApi(`/api/create-recommendation-letter?query_type=${file_no===null?'update':'Insert'}`, recLetteForm, (res) => {
@@ -76,20 +77,36 @@ export default function RecommendationLetter() {
     }
     )
   }
+  const [newForm,setNewForm]=useState([])
+  const getRecBy = ()=>{
+    _fetchApi(`/api/getAppBYID?application_file_number=${application_file_number}`,
+(res)=>{
+  if(res.success){
+    setNewForm(res.results[0])
+  }
+},(err)=>{
+  console.log(err)
+}
+    )
+  }
+  const role = query.get('role')
   useEffect(()=>{
     getPolicy()
   },[recLetteForm.plan_no])
   useEffect(
   ()=>{
-    getID()
-    setRecLetterForm((p)=>({...p,application_file_number:file_no===null?application_file_number:file_no}))
-  },[file_no]
+    getID();
+    getRecBy();
+    setRecLetterForm((p)=>({...p,application_file_number:file_no===null?application_file_number:file_no,...newForm[0]}))
+  },[file_no, ]
   )
   const [modal3, setModal3] = useState(false)
       const toggle3 = () => setModal3(!modal3)
+
+     
   return (
     <div>
-      {JSON.stringify(recLetteForm.plan_no)}
+      {JSON.stringify(newForm[0])}
       <Card className="app_primary_card m-2 shadow p-4">
         <h5 className="mb-3">Recommendation Letter</h5>
         <Row className="mb-1">
@@ -102,9 +119,198 @@ export default function RecommendationLetter() {
                 name="application_file_number"
                 value={recLetteForm.application_file_number}
                 onChange={handleChange}
+                disabled
               />
             </div>
           </Col>
+          
+          <Col lg={3}>
+            <label className="input_label">Value of Proposed Dev</label>
+            <div>
+              <input
+              disabled={role==='director-cadestral'?true:false}
+              //  {role === 'director-cadestral' }
+               type="number"
+                className="input_field"
+                name="value_of_proposed_development"
+                value={recLetteForm.value_of_proposed_development}
+                onChange={handleChange}
+              />
+            </div>
+          </Col>
+          <Col lg={3}>
+            <label className="input_label">Time of Completion</label>
+            <div>
+              <input
+                disabled={role==='director-cadestral'?true:false}
+                type="text"
+                className="input_field"
+                name="time_of_completion"
+                value={recLetteForm.time_of_completion}
+                onChange={handleChange}
+              />
+            </div>
+          </Col>
+         
+      
+          <Col lg={3}>
+            <label className="input_label">Development Charges</label>
+            <div>
+              <input
+                disabled={role==='director-cadestral'?true:false}
+                type="number"
+                className="input_field"
+                name="development_charges"
+                value={recLetteForm.development_charges}
+                onChange={handleChange}
+              />
+            </div>
+          </Col>
+          <Col lg={3}>
+            <label className="input_label">Survey Charges</label>
+            <div>
+              <input
+                type="number"
+                className="input_field"
+                name="survey_charges"
+                value={recLetteForm.survey_charges}
+                onChange={handleChange}
+              />
+            </div>
+          </Col>
+          <Col lg={3}>
+            <label className="input_label">Recommendation Dir Land</label>
+            <div>
+              <textarea
+                type=""
+                className="input_field"
+                name="recommendation_dland"
+                value={recLetteForm.recommendation_dland}
+                onChange={handleChange}
+                disabled={role==='director-cadestral'?true:false}
+              />
+            </div>
+          </Col>
+          <Col lg={3}>
+            <label className="input_label">Dir Land Signature</label>
+            <div>
+              <input
+                type=""
+                className="input_field"
+                name="Dland_signature"
+                value={recLetteForm.Dland_signature}
+                onChange={handleChange}
+                disabled={role==='director-cadestral'?true:false}
+              />
+            </div>
+          </Col>
+       
+          <Col lg={3}>
+            <label className="input_label">Dir Land Signature Date</label>
+            <div>
+              <input
+                type="date"
+                className="input_field"
+                name="Dland_sign_date"
+                value={recLetteForm.Dland_sign_date}
+                onChange={handleChange}
+                disabled={role==='director-cadestral'?true:false}
+              />
+            </div>
+          </Col>
+          {
+            role==='director-cadestral'||'director-land'?<> 
+            </>:<>
+            <Col lg={3}>
+            <label className="input_label">Recommendation PSec</label>
+            <div>
+              <input
+                type=""
+                className="input_field"
+                name="recommendation_permsec"
+                value={recLetteForm.recommendation_permsec}
+                onChange={handleChange}
+              />
+            </div>
+          </Col>
+          <Col lg={3}>
+            <label className="input_label">PSec Signature</label>
+            <div>
+              <input
+                type=""
+                className="input_field"
+                name="Permsec_signature"
+                value={recLetteForm.Permsec_signature}
+                onChange={handleChange}
+              />
+            </div>
+          </Col>
+          <Col lg={3}>
+            <label className="input_label">PSec Signature Date</label>
+            <div>
+              <input
+                type="date"
+                className="input_field"
+                name="PermSec_sign_date"
+                value={recLetteForm.PermSec_sign_date}
+                onChange={handleChange}
+              />
+            </div>
+          </Col>
+          <Col lg={3}>
+            <label className="input_label">Grant Approve/Reject</label>
+            <div>
+              <input
+                type=""
+                className="input_field"
+                name="grant_approve_reject"
+                value={recLetteForm.grant_approve_reject}
+                onChange={handleChange}
+              />
+            </div>
+          </Col>
+          <Col lg={3}>
+            <label className="input_label">Gov/Comm Signature</label>
+            <div>
+              <input
+                type=""
+                className="input_field"
+                name="comm_govt_signature"
+                value={recLetteForm.comm_govt_signature}
+                onChange={handleChange}
+              />
+            </div>
+          </Col>
+          <Col lg={3}>
+            <label className="input_label">Gov/Comm Signature Date</label>
+            <div>
+              <input
+                type="date"
+                className="input_field"
+                name="Comm_govt_signature_date"
+                value={recLetteForm.Comm_govt_signature_date}
+                onChange={handleChange}
+              />
+            </div>
+          </Col>
+            </>
+          }
+          
+       
+          
+          {/* <Col lg={3}>
+            <label className="input_label">Recommendation ID</label>
+            <div>
+              <input
+                type=""
+                className="input_field"
+                name="recommendation_id"
+                value={recLetteForm.recommendation_id}
+                onChange={handleChange}
+              />
+            </div>
+          </Col> */}
+          
           <Col lg={3}>
             <label className="input_label">Location</label>
             <div className="search_input_form">
@@ -169,8 +375,7 @@ export default function RecommendationLetter() {
               />
             </div>
           </Col>
-        </Row>
-        <Row className="mb-1">
+      
           <Col lg={3}>
             <label className="input_label">Term</label>
             <div>
@@ -184,30 +389,6 @@ export default function RecommendationLetter() {
             </div>
           </Col>
           <Col lg={3}>
-            <label className="input_label">Value of Proposed Dev</label>
-            <div>
-              <input
-                type="number"
-                className="input_field"
-                name="value_of_proposed_development"
-                value={recLetteForm.value_of_proposed_development}
-                onChange={handleChange}
-              />
-            </div>
-          </Col>
-          <Col lg={3}>
-            <label className="input_label">Time of Completion</label>
-            <div>
-              <input
-                type="text"
-                className="input_field"
-                name="time_of_completion"
-                value={recLetteForm.time_of_completion}
-                onChange={handleChange}
-              />
-            </div>
-          </Col>
-          <Col lg={3}>
             <label className="input_label">Annual Ground Rent</label>
             <div>
               <input
@@ -215,156 +396,6 @@ export default function RecommendationLetter() {
                 className="input_field"
                 name="annual_ground_rent"
                 value={recLetteForm.annual_ground_rent}
-                onChange={handleChange}
-              />
-            </div>
-          </Col>
-        </Row>{' '}
-        <Row className="mb-1">
-          <Col lg={3}>
-            <label className="input_label">Development Charges</label>
-            <div>
-              <input
-                type="number"
-                className="input_field"
-                name="development_charges"
-                value={recLetteForm.development_charges}
-                onChange={handleChange}
-              />
-            </div>
-          </Col>
-          <Col lg={3}>
-            <label className="input_label">Survey Charges</label>
-            <div>
-              <input
-                type="number"
-                className="input_field"
-                name="survey_charges"
-                value={recLetteForm.survey_charges}
-                onChange={handleChange}
-              />
-            </div>
-          </Col>
-          <Col lg={3}>
-            <label className="input_label">Recommendation Dir Land</label>
-            <div>
-              <input
-                type=""
-                className="input_field"
-                name="recommendation_DLand"
-                value={recLetteForm.recommendation_DLand}
-                onChange={handleChange}
-              />
-            </div>
-          </Col>
-          <Col lg={3}>
-            <label className="input_label">Dir Land Signature</label>
-            <div>
-              <input
-                type=""
-                className="input_field"
-                name="Dland_signature"
-                value={recLetteForm.Dland_signature}
-                onChange={handleChange}
-              />
-            </div>
-          </Col>
-        </Row>{' '}
-        <Row className="mb-1">
-          <Col lg={3}>
-            <label className="input_label">Dir Land Signature Date</label>
-            <div>
-              <input
-                type="date"
-                className="input_field"
-                name="Dland_sign_date"
-                value={recLetteForm.Dland_sign_date}
-                onChange={handleChange}
-              />
-            </div>
-          </Col>
-          <Col lg={3}>
-            <label className="input_label">Recommendation PSec</label>
-            <div>
-              <input
-                type=""
-                className="input_field"
-                name="recommendation_permsec"
-                value={recLetteForm.recommendation_permsec}
-                onChange={handleChange}
-              />
-            </div>
-          </Col>
-          <Col lg={3}>
-            <label className="input_label">PSec Signature</label>
-            <div>
-              <input
-                type=""
-                className="input_field"
-                name="Permsec_signature"
-                value={recLetteForm.Permsec_signature}
-                onChange={handleChange}
-              />
-            </div>
-          </Col>
-          <Col lg={3}>
-            <label className="input_label">PSec Signature Date</label>
-            <div>
-              <input
-                type="date"
-                className="input_field"
-                name="PermSec_sign_date"
-                value={recLetteForm.PermSec_sign_date}
-                onChange={handleChange}
-              />
-            </div>
-          </Col>
-        </Row>
-        <Row className="mb-1">
-          <Col lg={3}>
-            <label className="input_label">Grant Approve/Reject</label>
-            <div>
-              <input
-                type=""
-                className="input_field"
-                name="grant_approve_reject"
-                value={recLetteForm.grant_approve_reject}
-                onChange={handleChange}
-              />
-            </div>
-          </Col>
-          <Col lg={3}>
-            <label className="input_label">Gov/Comm Signature</label>
-            <div>
-              <input
-                type=""
-                className="input_field"
-                name="comm_govt_signature"
-                value={recLetteForm.comm_govt_signature}
-                onChange={handleChange}
-              />
-            </div>
-          </Col>
-          <Col lg={3}>
-            <label className="input_label">Gov/Comm Signature Date</label>
-            <div>
-              <input
-                type="date"
-                className="input_field"
-                name="Comm_govt_signature_date"
-                value={recLetteForm.Comm_govt_signature_date}
-                onChange={handleChange}
-              />
-            </div>
-          </Col>
-          <Col lg={3}>
-            <label className="input_label">Recommendation ID</label>
-            <div>
-              <input
-                type=""
-                className="input_field"
-                name="recommendation_id"
-                value={recLetteForm.recommendation_id}
                 onChange={handleChange}
               />
             </div>
