@@ -111,7 +111,7 @@ export default function Sidebar() {
               {/* </div> */}
               </div>
             </div> 
-        <li className="sidebar_item_" onClick={drop}>
+        <p className="sidebar_item_" onClick={drop}>
           <span>
             <AiOutlineUser size="1.2rem" className="sidebar_icon"  /> Commissioner
             {showSubMenu ? (
@@ -120,7 +120,7 @@ export default function Sidebar() {
               <TiArrowSortedDown size="1.4rem" />
             )}
           </span>
-        </li>
+        </p>
         {menuItems.map((menu) => {
           return (<>
             {showSubMenu ? (
@@ -145,7 +145,7 @@ export default function Sidebar() {
         )}</>
           )
         })}
-        <li className="sidebar_item_" onClick={dropF}>
+        <p className="sidebar_item_" onClick={dropF}>
           <span>
             <BsCardChecklist size="1.2rem" className="sidebar_icon"  /> Permanent Secretary
             {showSubMenuF ? (
@@ -154,7 +154,7 @@ export default function Sidebar() {
               <TiArrowSortedDown size="1.4rem" />
             )}
           </span>
-        </li>
+        </p>
         {showSubMenuF ? (
           <div>
           <div className="d-flex">
@@ -175,7 +175,7 @@ export default function Sidebar() {
          ): (
           ''
         )}
-        <li className="sidebar_item_" onClick={drop2}>
+        <p className="sidebar_item_" onClick={drop2}>
           <span>
             <BsBuildings size="1.2rem" className="sidebar_icon"  /> Director Land
             {showSubMenu2 ? (
@@ -184,7 +184,7 @@ export default function Sidebar() {
               <TiArrowSortedDown size="1.4rem" />
             )}
           </span>
-        </li>
+        </p>
         {showSubMenu2 ? (
           <>
           <div>
@@ -239,7 +239,7 @@ export default function Sidebar() {
          ): (
           ''
         )}
-        <li className="sidebar_item_" onClick={dropO}>
+        <p className="sidebar_item_" onClick={dropO}>
           <span>
             <BsPinMapFill size="1.2rem" className="sidebar_icon"  /> Director Cadestral
             {showSubMenuO ? (
@@ -248,7 +248,7 @@ export default function Sidebar() {
               <TiArrowSortedDown size="1.4rem" />
             )}
           </span>
-        </li>
+        </p>
         {showSubMenuO ? (
           <>
           <div>
@@ -322,7 +322,7 @@ export default function Sidebar() {
          ): (
           ''
         )}
-          <li className="sidebar_item_" onClick={drop1}>
+          <p className="sidebar_item_" onClick={drop1}>
           <span>
             <BsFillGridFill size="1.2rem" className="sidebar_icon"   /> Director Deeds
             {showSubMenu1 ? (
@@ -331,7 +331,7 @@ export default function Sidebar() {
               <TiArrowSortedDown size="1.4rem" />
             )}
           </span>
-        </li>
+        </p>
         {showSubMenu1 ? (
           <>
           <div>
@@ -371,7 +371,7 @@ export default function Sidebar() {
          ): (
           ''
         )}
-          <li className="sidebar_item_" onClick={dropS}>
+          <p className="sidebar_item_" onClick={dropS}>
           <span>
             <BsFillBarChartLineFill size="1.2rem" className="sidebar_icon"  /> Director Finance
             {showSubMenuS ? (
@@ -380,7 +380,7 @@ export default function Sidebar() {
               <TiArrowSortedDown size="1.4rem" />
             )}
           </span>
-        </li>
+        </p>
         {showSubMenuS ? (
           <>
           <div>
