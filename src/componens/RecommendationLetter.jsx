@@ -108,7 +108,7 @@ export default function RecommendationLetter() {
     <div>
       {JSON.stringify(newForm[0])}
       <Card className="app_primary_card m-2 shadow p-4">
-        <h5 className="mb-3">Recommendation Letter</h5>
+        <h5 className="mb-3">Generate Recommendation Letter</h5>
         <Row className="mb-1">
           <Col lg={3}>
             <label className="input_label">Application File No</label>

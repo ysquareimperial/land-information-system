@@ -72,7 +72,7 @@ export const ResAppPDF = ({ form = {} }) => (
           <Text>NO 2, Dr. Bala Mohd. Road</Text>
           <Text>P.M.B. 3083, Kano State</Text>
         </View>
-      </View>
+      </View>8.
       {/* ////////////////////////////////////////////// */}
       <View
         style={{
@@ -134,7 +134,7 @@ export const ResAppPDF = ({ form = {} }) => (
           <View style={{ width: '95%' }}>
             <Text>
               Applicant's Full Name:
-              <span style={{ color: 'black' }}>{form.Applicant_full_name}</span>
+              <Text style={{ color: 'black' }}>{form.Applicant_full_name}</Text>
             </Text>
             <View
               style={{
@@ -145,14 +145,14 @@ export const ResAppPDF = ({ form = {} }) => (
               }}
             >
               <Text>
-                (a) Age:<span style={{ color: 'black' }}>{form.age}</span>
+                (a) Age:<Text style={{ color: 'black' }}>{form.age}</Text>
               </Text>
               <Text>
-                (b) Sex:<span style={{ color: 'black' }}>{form.sex}</span>
+                (b) Sex:<Text style={{ color: 'black' }}>{form.sex}</Text>
               </Text>
               <Text>
                 (c) Marital Status:
-                <span style={{ color: 'black' }}>{form.marital_stataus}</span>
+                <Text style={{ color: 'black' }}>{form.marital_stataus}</Text>
               </Text>
             </View>
             <Text style={{ marginTop: 10 }}>
@@ -175,7 +175,7 @@ export const ResAppPDF = ({ form = {} }) => (
           <View style={{ width: '95%' }}>
             <Text>
               Residential Address (P.O. Box must be given):
-              <span style={{ color: 'black' }}>{form.residential}</span>
+              <Text style={{ color: 'black' }}>{form.residential}</Text>
             </Text>
           </View>
         </View>
@@ -193,9 +193,9 @@ export const ResAppPDF = ({ form = {} }) => (
           <View style={{ width: '95%' }}>
             <Text>
               Correspondence Address:
-              <span style={{ color: 'black' }}>
+              <Text style={{ color: 'black' }}>
                 {form.correspondance_address}
-              </span>
+              </Text>
             </Text>
           </View>
         </View>
@@ -228,9 +228,9 @@ export const ResAppPDF = ({ form = {} }) => (
           <View style={{ width: '95%' }}>
             <Text>
               Nationality (Indicate if naturalized):
-              <span style={{ color: 'black' }}>
+              <Text style={{ color: 'black' }}>
                 {form.Applicant_nationality}
-              </span>
+              </Text>
             </Text>
           </View>
         </View>
@@ -249,7 +249,7 @@ export const ResAppPDF = ({ form = {} }) => (
             <Text>Occupation:</Text>
             <Text style={{ marginTop: 20 }}>
               (a) Annual Income:
-              <span style={{ color: 'black' }}>{form.Annual_income}</span>
+              <Text style={{ color: 'black' }}>{form.Annual_income}</Text>
             </Text>
           </View>
         </View>
@@ -267,7 +267,7 @@ export const ResAppPDF = ({ form = {} }) => (
           <View style={{ width: '95%' }}>
             <Text>
               Have you been allocated any Residential plot before:
-              <span style={{ color: 'black' }}>{form.Allocated_before}</span>
+              <Text style={{ color: 'black' }}>{form.Allocated_before}</Text>
             </Text>
             <View
               style={{ marginTop: 20, display: 'flex', flexDirection: 'row' }}
@@ -275,7 +275,7 @@ export const ResAppPDF = ({ form = {} }) => (
               <View style={{ width: '30%' }}>
                 <Text>
                   If yes state:{' '}
-                  <span style={{ color: 'black' }}>{form.State_of_origin}</span>
+                  <Text style={{ color: 'black' }}>{form.State_of_origin}</Text>
                 </Text>
               </View>
               <View style={{ width: '70%' }}>
@@ -299,17 +299,17 @@ export const ResAppPDF = ({ form = {} }) => (
                   >
                     <Text>
                       a. Plot No:
-                      <span style={{ color: 'black' }}>{form.plot_no} </span>
+                      <Text style={{ color: 'black' }}>{form.plot_no} </Text>
                     </Text>
                     <Text>
                       b. Location:
-                      <span style={{ color: 'black' }}>{form.location}</span>{' '}
+                      <Text style={{ color: 'black' }}>{form.location}</Text>{' '}
                     </Text>
                     <Text>
                       b. Cert. of Occupancy No:
-                      <span style={{ color: 'black' }}>
+                      <Text style={{ color: 'black' }}>
                         {form.cert_of_occupany_no}
-                      </span>{' '}
+                      </Text>{' '}
                     </Text>
                   </View>
                 </View>
@@ -386,9 +386,9 @@ export const ResAppPDF = ({ form = {} }) => (
           <View style={{ width: '95%' }}>
             <Text>
               Propose value of buildings to be erected:
-              <span style={{ color: 'black' }}>
+              <Text style={{ color: 'black' }}>
                 {form.type_of_building_erected}
-              </span>
+              </Text>
             </Text>
           </View>
         </View>
@@ -406,7 +406,7 @@ export const ResAppPDF = ({ form = {} }) => (
           <View style={{ width: '95%' }}>
             <Text>
               Application's source of financing the buildings:
-              <span style={{ color: 'black' }}>{form.source_financing}</span>
+              <Text style={{ color: 'black' }}>{form.source_financing}</Text>
             </Text>
           </View>
         </View>
@@ -441,9 +441,9 @@ export const ResAppPDF = ({ form = {} }) => (
           <View style={{ width: '95%' }}>
             <Text>
               Length of time required:
-              <span style={{ color: 'black' }}>
+              <Text style={{ color: 'black' }}>
                 {form.length_of_term_required}
-              </span>
+              </Text>
             </Text>
           </View>
         </View>
@@ -461,9 +461,9 @@ export const ResAppPDF = ({ form = {} }) => (
           <View style={{ width: '95%' }}>
             <Text>
               Name and address of local representative:
-              <span style={{ color: 'black' }}>
+              <Text style={{ color: 'black' }}>
                 {form.address_of_local_rep}
-              </span>
+              </Text>
             </Text>
           </View>
         </View>
@@ -598,9 +598,9 @@ export const ResAppPDF = ({ form = {} }) => (
               <View style={{ width: '50%' }}>
                 <Text>
                   Dated:
-                  <span style={{ color: 'black' }}>
+                  <Text style={{ color: 'black' }}>
                     {form.application_date}
-                  </span>
+                  </Text>
                 </Text>
               </View>
               <View style={{ width: '50%' }}>

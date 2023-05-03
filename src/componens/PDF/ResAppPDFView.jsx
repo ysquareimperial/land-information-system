@@ -6,10 +6,8 @@ export default function ResAppPDFView({form={}}) {
   return (
     <div>
       {/* {JSON.stringify(form)} */}
-      <PDFViewer style={{ width: '100%', height: '100vh' }}>
-        <ResAppPDF form={form}/>
-      </PDFViewer>
       <PDFDownloadLink
+      style={{float:'left'}}
         document={<ResAppPDF />}
         fileName="Residential_Application_PDF_Doc"
       >
@@ -26,6 +24,10 @@ export default function ResAppPDFView({form={}}) {
           )
         }
       </PDFDownloadLink>
+      <PDFViewer style={{ width: '100%', height: '100vh' }}>
+        <ResAppPDF form={form}/>
+      </PDFViewer>
+      
     </div>
   )
 }

@@ -236,7 +236,7 @@ export default function Sidebar() {
             onClick={() => navigate('/recommendation-letter-list?type=director-land')}
           >
             <BsFileEarmarkText size="1.2rem" className="sidebar_icon" />
-           Recommendation Letter
+           Generate Recommendation Letter
           </span>
         {/* </div> */}
         </div>
@@ -285,7 +285,7 @@ export default function Sidebar() {
             onClick={() => navigate('/cadestral-recom?type=director-cadestral')}
           >
             <BsFileEarmarkText size="1.2rem" className="sidebar_icon" />
-           Recommendation Letter
+           Generate Letter
           </span>
         {/* </div> */}
         </div>

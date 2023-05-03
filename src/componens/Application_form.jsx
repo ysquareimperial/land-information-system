@@ -6,6 +6,7 @@ import Require_documents from "./Require_documents";
 import { useNavigate } from "react-router-dom";
 import LocalGovernment from "./LocalGovernment";
 import ResAppPDFView from "./PDF/ResAppPDFView";
+import { TiCancel } from "react-icons/ti";
 
 export default function Application_form() {
   const _form = {
@@ -58,7 +59,7 @@ export default function Application_form() {
   const [appid,setAppid]=useState()
   const handleSubmit = () => {
     setLoading(true);
-    // toggle3()
+    toggle3()
    
     _postApi("/api/Application_form", form, (res) => {
       setLoading(false);
@@ -67,7 +68,7 @@ export default function Application_form() {
         setAppid(res.application_id)
        toggle3()
 
-        setForm(_form);
+        // setForm(_form);
       }
     }),
       (err) => {
@@ -118,11 +119,19 @@ const handleDelete = (index) =>{
     <div>
          <Modal isOpen={modal3} toggle={toggle3} size="lg">
           <ModalHeader>
-          <Row>
-           <span className="col-md-"> Continue With </span>  <Button color="danger col-md-3" style={{float:'left'}} onClick={()=>{toggle3();navigate(-1)}}>
-            Close
+          <div style={{display:'flex',justifyContent:'space-between'}}>
+         <span >
+         Continue With   
+          </span> 
+           
+          {/* <Col md={3}>
+          </Col>  */}
+          
+           <Button color="danger" style={{float:'left'}} onClick={()=>{toggle3();navigate(-1)}}>
+            <TiCancel />
           </Button>
-          </Row>
+         
+          </div>
           </ModalHeader>
          
      
