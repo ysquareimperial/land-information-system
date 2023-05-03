@@ -1,26 +1,26 @@
-import { useRoutes } from "react-router-dom";
-import AppIndex from "./AppIndex";
-import Neww from "../componens/Neww";
-import Bbb from "../componens/Bbb";
-import Landing from "../componens/Landing";
-import Dashboard from "../componens/Dashboard";
-import RecommendationLetter from "../componens/RecommendationLetter";
-import Require_documents from "../componens/Require_documents";
-import List_doc from "../componens/List_doc";
-import Application_form from "../componens/Application_form";
-import LetterOfGrant from "../componens/LetterOfGrant";
-import Extension from "../componens/Extension";
-import ReGrant from "../componens/ReGrant";
-import Conversion from "../componens/Conversion";
-import Application_Table from "../componens/Application_Table";
-import FinanceTable from "../componens/FinanceTable";
-import FinanceForm from "../componens/FinanceFOrm";
-import LayoutPolicies from "../componens/LayoutPolicies";
-import ApplicationForConseent from "../componens/ApplicationForConseent";
-import ApplicationForConseentTable from "../componens/ApplicationForConseentTable";
+import { useRoutes } from 'react-router-dom'
+import AppIndex from './AppIndex'
+import Neww from '../componens/Neww'
+import Bbb from '../componens/Bbb'
+import Landing from '../componens/Landing'
+import Dashboard from '../componens/Dashboard'
+import RecommendationLetter from '../componens/RecommendationLetter'
+import Require_documents from '../componens/Require_documents'
+import List_doc from '../componens/List_doc'
+import Application_form from '../componens/Application_form'
+import LetterOfGrant from '../componens/LetterOfGrant'
+import Extension from '../componens/Extension'
+import ReGrant from '../componens/ReGrant'
+import Conversion from '../componens/Conversion'
+import Application_Table from '../componens/Application_Table'
+import FinanceTable from '../componens/FinanceTable'
+import FinanceForm from '../componens/FinanceFOrm'
+import LayoutPolicies from '../componens/LayoutPolicies'
+import ApplicationForConseent from '../componens/ApplicationForConseent'
+import ApplicationForConseentTable from '../componens/ApplicationForConseentTable'
 //
-import LayoutPoliciesTable from "../componens/LayoutPoliciesTable";
-import ExtensionForm from "../componens/ExtensionForm";
+import LayoutPoliciesTable from '../componens/LayoutPoliciesTable'
+import ExtensionForm from '../componens/ExtensionForm'
 
 import ReGrantForm from "../componens/ReGrantForm";
 import ConversionForm from "../componens/ConversionForm";
@@ -48,6 +48,13 @@ import CertificateOfOccupancyRentTable from "../componens/CertificateOfOccupancy
 import CertificateOfOccupancyRent from "../componens/CertificateOfOccupancyRent";
 import ApplicationForConsesntTo from "../componens/ApplicationForConsesntTo";
 
+import ResAppPDFView from '../componens/PDF/ResAppPDFView'
+import RecForGrOfStatRightOfOccupView from '../componens/PDF/RecForGrOfStatRightOfOccupView'
+import { MinistOfLandPhyPlanKanoState } from '../componens/PDF/MinistOfLandPhyPlanKanoState'
+import MinistOfLandPhyPlanKanoStateView from '../componens/PDF/MinistOfLandPhyPlanKanoStateView'
+import RequestForSurveyReportView from '../componens/PDF/RequestForSurveyReportView'
+import { KanoStateCadDeptPDF } from '../componens/PDF/KanoStateCadDeptPDF'
+import KanoStateCadDeptPDFView from '../componens/PDF/KanoStateCadDeptPDFView'
 
 function AppNavigation() {
   let element = useRoutes([
@@ -131,6 +138,11 @@ function AppNavigation() {
         },
         {
           path: "/conversion-form",
+          path: '/executive-govermor-table',
+          element: <ApplicationForConseentTable />,
+        },
+        {
+          path: '/conversion-form',
           element: <ConversionForm />,
         },
         {
@@ -138,14 +150,20 @@ function AppNavigation() {
           element: <RecommendationLetterList />,
         },
         {
-          path: "/list-table",
+          path: '/list-table',
           element: <ListTable />,
         },
+        //  11c241d1be86cd1598a5710aa9e4838c7c855562
 
-        {
-          path: "/list-table",
-          element: <ListTable />,
-        },
+        // {
+        //   path: "/list-table",
+        //   element: <ListTable />,
+        // },
+
+        // {
+        //   path: "/list-table",
+        //   element: <ListTable />,
+        // },
       {
         path:'/generate',
         element:<GeneratFile />
@@ -235,6 +253,82 @@ function AppNavigation() {
           path: "/application-for-consesnt-to",
           element: <ApplicationForConsesntTo />,
         },
+         { path: '/application-step',
+          element: <Apps />,
+        },
+        {
+          path: '/generate',
+          element: <GeneratFile />,
+        },
+        {
+          path: '/view-generate',
+          element: <ViewFile />,
+        },
+        {
+          path: '/cadestral-recom',
+          element: <CadestralRecom />,
+        },
+        {
+          path: '/grant-table',
+          element: <GrantTable />,
+        },
+        {
+          path: '/finaces-grant',
+          element: <LetterGrantTable />,
+        },
+        {
+          path: '/SurveyReport',
+          element: <SurveyReport />,
+        },
+        {
+          path: '/survey-table',
+          element: <GrantTable />,
+        },
+        {
+          path: '/yes',
+          element: <YesOrNo />,
+        },
+        {
+          path: '/schedule-payment',
+          element: <Reschedule />,
+        },
+        {
+          path: '/shedule-table',
+          element: <Shedule_table />,
+        },
+        {
+          path: '/payment-table',
+          element: <PaymentTable />,
+        },
+        {
+          path: '/application-letter',
+          element: <ApplicationLetter />,
+        },
+        {
+          path: '/ValuationReport',
+          element: <ValuationReport />,
+        },
+        {
+          path: '/pdf',
+          element: <ResAppPDFView />,
+        },
+        {
+          path: '/pdf2',
+          element: <RecForGrOfStatRightOfOccupView />,
+        },
+        {
+          path: '/pdf3',
+          element: <MinistOfLandPhyPlanKanoStateView />,
+        },
+        {
+          path: '/pdf4',
+          element: <RequestForSurveyReportView />,
+        },
+        {
+          path: '/pdf5',
+          element: <KanoStateCadDeptPDFView />,
+        },
+        //  1cda8d2b662
       ],
     },
   ]);

@@ -5,6 +5,7 @@ import { BsArrowLeft } from "react-icons/bs";
 import Require_documents from "./Require_documents";
 import { useNavigate } from "react-router-dom";
 import LocalGovernment from "./LocalGovernment";
+import ResAppPDFView from "./PDF/ResAppPDFView";
 
 export default function Application_form() {
   const _form = {
@@ -57,6 +58,7 @@ export default function Application_form() {
   const [appid,setAppid]=useState()
   const handleSubmit = () => {
     setLoading(true);
+    // toggle3()
    
     _postApi("/api/Application_form", form, (res) => {
       setLoading(false);
@@ -115,17 +117,23 @@ const handleDelete = (index) =>{
   return (
     <div>
          <Modal isOpen={modal3} toggle={toggle3} size="lg">
-       <ModalHeader>Continue With</ModalHeader>
+          <ModalHeader>
+          <Row>
+           <span className="col-md-"> Continue With </span>  <Button color="danger col-md-3" style={{float:'left'}} onClick={()=>{toggle3();navigate(-1)}}>
+            Close
+          </Button>
+          </Row>
+          </ModalHeader>
+         
+     
         <ModalBody>
       {/* <Require_documents />
        */}
       Your Application number  : {appid}
+      <ResAppPDFView form={form}/>
         </ModalBody>
         <ModalFooter>
-         
-          <Button color="danger" onClick={()=>{toggle3();navigate(-1)}}>
-            Close
-          </Button>
+       
         </ModalFooter>
                 </Modal>
       <Card className="app_primary_card m-2 shadow p-4">
