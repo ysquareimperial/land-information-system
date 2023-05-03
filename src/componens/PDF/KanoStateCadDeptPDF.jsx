@@ -281,7 +281,7 @@ export const KanoStateCadDeptPDF = () => (
               <Text style={{ marginTop: 20 }}>
                 __________________________________
               </Text>
-              <Text style={{marginLeft:60}}>For: Director Cadastral</Text>
+              <Text style={{ marginLeft: 60 }}>For: Director Cadastral</Text>
             </View>
           </View>
         </View>
