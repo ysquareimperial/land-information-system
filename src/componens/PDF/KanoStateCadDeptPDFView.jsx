@@ -2,15 +2,16 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { PDFDownloadLink, PDFViewer } from '@react-pdf/renderer'
 import { ResAppPDF } from './ResAppPDF'
-export default function ViewResAppPDF() {
+import { KanoStateCadDeptPDF } from './KanoStateCadDeptPDF'
+export default function KanoStateCadDeptPDFView() {
   return (
     <div>
       <PDFViewer style={{ width: '100%', height: '100vh' }}>
-        <ResAppPDF />
+        <KanoStateCadDeptPDF />
       </PDFViewer>
       <PDFDownloadLink
-        document={<ResAppPDF />}
-        fileName="Residential_Application_PDF_Doc"
+        document={<KanoStateCadDeptPDF />}
+        fileName="KanoStateCadDeptPDF"
       >
         {({ loading }) =>
           loading ? (
@@ -18,7 +19,7 @@ export default function ViewResAppPDF() {
               Loading Document...
             </button>
           ) : (
-            <button className='app_btn' style={{ marginRight: 0 }}>
+            <button className="app_btn" style={{ marginRight: 0 }}>
               {' '}
               Download PDF
             </button>

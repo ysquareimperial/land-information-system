@@ -41,7 +41,13 @@ import Shedule_table from '../componens/ScheduleTable'
 import PaymentTable from '../componens/PaymentTab'
 import ApplicationLetter from '../componens/ApplicationLetter'
 import ValuationReport from '../componens/ValuationReport'
-import ViewResAppPDF from '../componens/ViewResAppPDF'
+import ResAppPDFView from '../componens/PDF/ResAppPDFView'
+import RecForGrOfStatRightOfOccupView from '../componens/PDF/RecForGrOfStatRightOfOccupView'
+import { MinistOfLandPhyPlanKanoState } from '../componens/PDF/MinistOfLandPhyPlanKanoState'
+import MinistOfLandPhyPlanKanoStateView from '../componens/PDF/MinistOfLandPhyPlanKanoStateView'
+import RequestForSurveyReportView from '../componens/PDF/RequestForSurveyReportView'
+import { KanoStateCadDeptPDF } from '../componens/PDF/KanoStateCadDeptPDF'
+import KanoStateCadDeptPDFView from '../componens/PDF/KanoStateCadDeptPDFView'
 
 function AppNavigation() {
   let element = useRoutes([
@@ -200,9 +206,24 @@ function AppNavigation() {
         },
         {
           path: '/pdf',
-          element: <ViewResAppPDF />,
+          element: <ResAppPDFView />,
         },
-
+        {
+          path: '/pdf2',
+          element: <RecForGrOfStatRightOfOccupView />,
+        },
+        {
+          path: '/pdf3',
+          element: <MinistOfLandPhyPlanKanoStateView />,
+        },
+        {
+          path: '/pdf4',
+          element: <RequestForSurveyReportView />,
+        },
+        {
+          path: '/pdf5',
+          element: <KanoStateCadDeptPDFView />,
+        },
         //  1cda8d2b662
       ],
     },

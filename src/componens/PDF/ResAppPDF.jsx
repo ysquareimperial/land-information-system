@@ -7,7 +7,7 @@ import {
   StyleSheet,
   Image,
 } from '@react-pdf/renderer'
-import coat from '../images/pngwing.com.png'
+import coat from '../../images/pngwing.com.png'
 // Create styles
 const styles = StyleSheet.create({
   page: {
