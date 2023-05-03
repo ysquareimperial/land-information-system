@@ -55,6 +55,8 @@ import MinistOfLandPhyPlanKanoStateView from '../componens/PDF/MinistOfLandPhyPl
 import RequestForSurveyReportView from '../componens/PDF/RequestForSurveyReportView'
 import { KanoStateCadDeptPDF } from '../componens/PDF/KanoStateCadDeptPDF'
 import KanoStateCadDeptPDFView from '../componens/PDF/KanoStateCadDeptPDFView'
+import { CadastralFeesAreaPDF } from '../componens/PDF/CadastralFeesAreaPDF'
+import CadastralFeesAreaPDFView from '../componens/PDF/CadastralFeesAreaPDFView'
 
 function AppNavigation() {
   let element = useRoutes([
@@ -327,6 +329,10 @@ function AppNavigation() {
         {
           path: '/pdf5',
           element: <KanoStateCadDeptPDFView />,
+        },
+        {
+          path: '/pdf6',
+          element: <CadastralFeesAreaPDFView />,
         },
         //  1cda8d2b662
       ],
