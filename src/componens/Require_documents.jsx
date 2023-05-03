@@ -1,41 +1,40 @@
-import React, { useEffect, useState } from 'react'
-import { Button, Card, Col, Input, Row } from 'reactstrap'
-import { _fetchApi, _postApi } from '../helpers/helper'
-import 'react-dropzone-uploader/dist/styles.css'
-import Dropzone from 'react-dropzone-uploader'
+import React, { useEffect, useState } from "react";
+import { Button, Card, Col, Input, Row } from "reactstrap";
+import { _fetchApi, _postApi } from "../helpers/helper";
+// import 'react-dropzone-uploader/dist/styles.css'
+// import Dropzone from 'react-dropzone-uploader'
 export default function Require_documents() {
   const [docs, setDocs] = useState({
-    application_id: '',
-    document_id: '',
-    document_name: '',
-    document_object: '',
-  })
+    application_id: "",
+    document_id: "",
+    document_name: "",
+    document_object: "",
+  });
   const handleChange = ({ target: { name, value } }) => {
-    setDocs((p) => ({ ...p, [name]: value }))
-  }
-  const [loading, setLoading] = useState(false)
+    setDocs((p) => ({ ...p, [name]: value }));
+  };
+  const [loading, setLoading] = useState(false);
   const handleSubmit = () => {
-    setLoading(true)
-    _postApi('/api/required_docs?in_query_type=Insert', docs, (res) => {
-      console.log(res)
+    setLoading(true);
+    _postApi("/api/required_docs?in_query_type=Insert", docs, (res) => {
+      console.log(res);
       if (res.succes) {
-        setLoading(false)
+        setLoading(false);
         setDocs({
-          application_id: '',
-          document_id: '',
-          document_name: '',
-          document_object: '',
-        })
-        alert('success')
+          application_id: "",
+          document_id: "",
+          document_name: "",
+          document_object: "",
+        });
+        alert("success");
       }
     }),
       (err) => {
-        setLoading(false)
-        console.log(err)
-      }
-  }
+        setLoading(false);
+        console.log(err);
+      };
+  };
 
-  
   // called every time a file's `status` changes
   const [radios,setRadio]=useState({
     order:[],
@@ -90,21 +89,19 @@ const handleChanges = ({target:{name,value}})=>{
             <Col md={3}>
               <p>{item.document_name}</p>
             </Col>
-            
+
             <Col md={4}>
             <input className='input_field' onChange={addFileVideo} type='file' />
             </Col>
-            </Row>
-       ))
-       }
-     
-       
+          </Row>
+        ))}
+
         <div>
           <button className="mt-3 app_btn" onClick={handleSubmit}>
-            {loading ? '...loading' : 'Submit'}
+            {loading ? "...loading" : "Submit"}
           </button>
         </div>
       </Card>
     </div>
-  )
+  );
 }

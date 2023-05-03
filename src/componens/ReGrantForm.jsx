@@ -1,6 +1,6 @@
-import React from 'react'
-import { Card, Col, Row } from 'reactstrap'
-import ForOfficialUseForm from './ForOfficialUseForm'
+import React from "react";
+import { Card, Col, Row } from "reactstrap";
+import ForOfficialUseForm from "./ForOfficialUseForm";
 
 export default function ReGrantForm() {
   return (
@@ -252,14 +252,14 @@ export default function ReGrantForm() {
           </Col>
         </Row>
         <ForOfficialUseForm
-          label={'Accntnt, Ministry of Land & Physical Planning'}
+          label={"Accntnt, Ministry of Land & Physical Planning"}
         />
         <div>
-          <button className="app_btn mt-3" onClick={''}>
+          <button className="app_btn mt-3" onClick={""}>
             Submit
           </button>
         </div>
       </Card>
     </div>
-  )
+  );
 }

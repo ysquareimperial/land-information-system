@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Card, Table } from 'reactstrap'
+import { Card, Col, Row, Table } from 'reactstrap'
 import SearchBar from './SearchBar'
 import { BsPlusLg } from 'react-icons/bs'
 import { useNavigate } from 'react-router-dom'
@@ -31,10 +31,21 @@ export default function Application_Table() {
             <BsPlusLg /> New Application
           </button>
         <SearchBar />
-        
+        <Row>
+          <Col md={1}>
+            {/* <span>pending</span> */}
+        <div style={{background:'orange',color:'white'}} className='p-1'>pending</div>
+        </Col>
+        <Col md={1}>
+        <div style={{background:'blue',color:'white'}} className='p-1 pr-5 pl-5'>app paid</div>
+        </Col>
+        <Col md={1}>
+        <div style={{background:'green',color:'white'}} className='p-1'>Approved</div>
+        </Col>
+        </Row>
         <Table striped>
     <thead>
-        <tr>
+        <tr >
             <th>Applicant Full Name</th>
             <th >Business Location</th>
             <th >Applicant Nationality</th>
@@ -48,13 +59,13 @@ export default function Application_Table() {
     <tbody>
       {
         data[0]?.map((item)=>(
-          <tr>
-          <td>{item.Applicant_full_name}</td>
-          <td>{item.Business_location}</td>
-          <td>{item.Applicant_nationality}</td>
-          <td>{item.State_of_origin}</td>
-          <td>{item.occupation_business}</td>
-          <td>{item.length_of_term_required}</td>
+          <tr style={{background:item.status==='application'?'orange':item.status==='file_no_generated'?'green':item.status==='application-fee-paid'?'blue':'',color:'white'}}>
+          <td style={{color:'white'}}>{item.Applicant_full_name}</td>
+          <td style={{color:'white'}}>{item.Business_location}</td>
+          <td style={{color:'white'}}>{item.Applicant_nationality}</td>
+          <td style={{color:'white'}}>{item.State_of_origin}</td>
+          <td style={{color:'white'}}>{item.occupation_business}</td>
+          <td style={{color:'white'}}>{item.length_of_term_required}</td>
          
         </tr>
         ))

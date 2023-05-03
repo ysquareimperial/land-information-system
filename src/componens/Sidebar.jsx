@@ -112,22 +112,22 @@ export default function Sidebar() {
         <p className="items_head pt-3">LAND INFORMATION SYSTEM</p>
         {/* {JSON.stringify(location.pathname)} */}
         <div>
-          {/* <div  class="nav__link collapse"> */}
-          <div className="d-flex">
-            <span
-              className={
-                location.pathname === '/dashboard'
-                  ? 'active_sidebar_item'
-                  : `sidebar_item_ `
-              }
-              onClick={() => navigate('/dashboard')}
-            >
-              <GoDashboard size="1.2rem" className="sidebar_icon" />
-              Dashboard
-            </span>
-            {/* </div> */}
-          </div>
-        </div>
+              {/* <div  class="nav__link collapse"> */}
+              <div className="d-flex">
+                <span
+                  className={
+                    location.pathname === '/dashboard'
+                      ? 'active_sidebar_item'
+                      : `sidebar_item_ `
+                  }
+                  onClick={() => navigate('/dashboard')}
+                >
+                  <GoDashboard size="1.2rem" className="sidebar_icon" />
+                  Dashboard
+                </span>
+              {/* </div> */}
+              </div>
+            </div> 
         <p className="sidebar_item_" onClick={drop}>
           <span>
             <AiOutlineUser size="1.2rem" className="sidebar_icon" />{' '}
@@ -209,56 +209,56 @@ export default function Sidebar() {
         </p>
         {showSubMenu2 ? (
           <>
-            <div>
-              <div className="d-flex">
-                <span
-                  className={
-                    location.pathname === '/generate'
-                      ? 'active_sidebar_item'
-                      : `sidebar_items `
-                  }
-                  onClick={() => navigate('/generate')}
-                >
-                  <BsFileEarmarkText size="1.2rem" className="sidebar_icon" />
-                  Generate File Number
-                </span>
-                {/* </div> */}
-              </div>
-            </div>
-            <div>
-              <div className="d-flex">
-                <span
-                  className={
-                    location.pathname === '/recommendation-letter-list'
-                      ? 'active_sidebar_item'
-                      : `sidebar_items `
-                  }
-                  onClick={() => navigate('/recommendation-letter-list')}
-                >
-                  <BsFileEarmarkText size="1.2rem" className="sidebar_icon" />
-                  Recommendation Letter
-                </span>
-                {/* </div> */}
-              </div>
-            </div>
-            <div>
-              <div className="d-flex">
-                <span
-                  className={
-                    location.pathname === '/grant-table'
-                      ? 'active_sidebar_item'
-                      : `sidebar_items `
-                  }
-                  onClick={() => navigate('/grant-table')}
-                >
-                  <BsFileEarmarkText size="1.2rem" className="sidebar_icon" />
-                  Letter Of Grant
-                </span>
-                {/* </div> */}
-              </div>
-            </div>
-          </>
-        ) : (
+          <div>
+          <div className="d-flex">
+          <span
+            className={
+              location.pathname === '/generate'
+                ? 'active_sidebar_item'
+                : `sidebar_items `
+            }
+            onClick={() => navigate('/generate')}
+          >
+            <BsFileEarmarkText size="1.2rem" className="sidebar_icon" />
+          Generate File Number
+          </span>
+        {/* </div> */}
+        </div>
+      </div> 
+          <div>
+          <div className="d-flex">
+          <span
+            className={
+              location.pathname === '/recommendation-letter-list'
+                ? 'active_sidebar_item'
+                : `sidebar_items `
+            }
+            onClick={() => navigate('/recommendation-letter-list?type=director-land')}
+          >
+            <BsFileEarmarkText size="1.2rem" className="sidebar_icon" />
+           Recommendation Letter
+          </span>
+        {/* </div> */}
+        </div>
+      </div> 
+      <div>
+          <div className="d-flex">
+          <span
+            className={
+              location.pathname === '/grant-table'
+                ? 'active_sidebar_item'
+                : `sidebar_items `
+            }
+            onClick={() => navigate('/grant-table')}
+          >
+            <BsFileEarmarkText size="1.2rem" className="sidebar_icon" />
+          Letter Of Grant
+          </span>
+        {/* </div> */}
+        </div>
+        </div>
+      </>
+         ): (
           ''
         )}
         <p className="sidebar_item_" onClick={dropO}>
@@ -266,7 +266,7 @@ export default function Sidebar() {
             <BsPinMapFill size="1.2rem" className="sidebar_icon" /> Director
             Cadestral
             {showSubMenuO ? (
-              <TiArrowSortedUp size="1.4rem" />
+              <TiArrowSortedUp className='ml-5' size="1.4rem" />
             ) : (
               <TiArrowSortedDown size="1.4rem" />
             )}
@@ -274,22 +274,22 @@ export default function Sidebar() {
         </p>
         {showSubMenuO ? (
           <>
-            <div>
-              <div className="d-flex">
-                <span
-                  className={
-                    location.pathname === '/cadestral-recom'
-                      ? 'active_sidebar_item'
-                      : `sidebar_items `
-                  }
-                  onClick={() => navigate('/cadestral-recom')}
-                >
-                  <BsFileEarmarkText size="1.2rem" className="sidebar_icon" />
-                  Recommendation Letter
-                </span>
-                {/* </div> */}
-              </div>
-            </div>
+          <div>
+          <div className="d-flex">
+          <span
+            className={
+              location.pathname === '/cadestral-recom'
+                ? 'active_sidebar_item'
+                : `sidebar_items `
+            }
+            onClick={() => navigate('/cadestral-recom?type=director-cadestral')}
+          >
+            <BsFileEarmarkText size="1.2rem" className="sidebar_icon" />
+           Recommendation Letter
+          </span>
+        {/* </div> */}
+        </div>
+      </div> 
 
             <div>
               <div className="d-flex">
@@ -345,7 +345,7 @@ export default function Sidebar() {
         ) : (
           ''
         )}
-        <p className="sidebar_item_" onClick={drop1}>
+          <p className="sidebar_item_" onClick={drop1}>
           <span>
             <BsFillGridFill size="1.2rem" className="sidebar_icon" /> Director
             Deeds
@@ -395,7 +395,7 @@ export default function Sidebar() {
         ) : (
           ''
         )}
-        <p className="sidebar_item_" onClick={dropS}>
+          <p className="sidebar_item_" onClick={dropS}>
           <span>
             <BsFillBarChartLineFill size="1.2rem" className="sidebar_icon" />{' '}
             Director Finance

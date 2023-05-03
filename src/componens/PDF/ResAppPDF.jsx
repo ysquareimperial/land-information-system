@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
 })
 
 // Create Document Component
-export const ResAppPDF = () => (
+export const ResAppPDF = ({form={}}) => (
   <Document>
     <Page size="A4" style={styles.page}>
       <View
@@ -132,7 +132,7 @@ export const ResAppPDF = () => (
             <Text>1. </Text>
           </View>
           <View style={{ width: '95%' }}>
-            <Text>Applicant's Full Name:</Text>
+            <Text>Applicant's Full Name:{form.Applicant_full_name}</Text>
             <View
               style={{
                 marginTop: 20,
@@ -141,9 +141,9 @@ export const ResAppPDF = () => (
                 gap: 20,
               }}
             >
-              <Text>(a) Age:</Text>
-              <Text>(b) Sex:</Text>
-              <Text>(c) Marital Status:</Text>
+              <Text>(a) Age:{form.age}</Text>
+              <Text>(b) Sex:{form.sex}</Text>
+              <Text>(c) Marital Status:{form.marital_stataus}</Text>
             </View>
             <Text style={{ marginTop: 10 }}>
               (d) If married woman, give name and address of your husband
@@ -163,7 +163,7 @@ export const ResAppPDF = () => (
             <Text>2. </Text>
           </View>
           <View style={{ width: '95%' }}>
-            <Text>Residential Address (P.O. Box must be given):</Text>
+            <Text>Residential Address (P.O. Box must be given):{form.residential}</Text>
           </View>
         </View>
         <View
@@ -178,7 +178,7 @@ export const ResAppPDF = () => (
             <Text>3. </Text>
           </View>
           <View style={{ width: '95%' }}>
-            <Text>Correspondence Address:</Text>
+            <Text>Correspondence Address:{form.correspondance_address}</Text>
           </View>
         </View>
         <View
@@ -208,7 +208,7 @@ export const ResAppPDF = () => (
             <Text>5. </Text>
           </View>
           <View style={{ width: '95%' }}>
-            <Text>Nationality (Indicate if naturalized):</Text>
+            <Text>Nationality (Indicate if naturalized):{form.Applicant_nationality}</Text>
           </View>
         </View>
         <View
@@ -224,7 +224,7 @@ export const ResAppPDF = () => (
           </View>
           <View style={{ width: '95%' }}>
             <Text>Occupation:</Text>
-            <Text style={{ marginTop: 20 }}>(a) Annual Income:</Text>
+            <Text style={{ marginTop: 20 }}>(a) Annual Income:{form.Annual_income}</Text>
           </View>
         </View>
         <View
@@ -239,12 +239,12 @@ export const ResAppPDF = () => (
             <Text>7. </Text>
           </View>
           <View style={{ width: '95%' }}>
-            <Text>Have you been allocated any Residential plot before:</Text>
+            <Text>Have you been allocated any Residential plot before:{form.Allocated_before}</Text>
             <View
               style={{ marginTop: 20, display: 'flex', flexDirection: 'row' }}
             >
               <View style={{ width: '30%' }}>
-                <Text>If yes state:</Text>
+                <Text>If yes state: {form.State_of_origin}</Text>
               </View>
               <View style={{ width: '70%' }}>
                 <View
@@ -265,9 +265,9 @@ export const ResAppPDF = () => (
                       gap: 20,
                     }}
                   >
-                    <Text>a. Plot No: </Text>
-                    <Text>b. Location: </Text>
-                    <Text>b. Cert. of Occupancy No: </Text>
+                    <Text>a. Plot No:{form.plot_no} </Text>
+                    <Text>b. Location:{form.location} </Text>
+                    <Text>b. Cert. of Occupancy No:{form.cert_of_occupany_no} </Text>
                   </View>
                 </View>
                 <View
@@ -341,7 +341,7 @@ export const ResAppPDF = () => (
             <Text>8. </Text>
           </View>
           <View style={{ width: '95%' }}>
-            <Text>Propose value of buildings to be erected:</Text>
+            <Text>Propose value of buildings to be erected:{form.type_of_building_erected}</Text>
           </View>
         </View>
         <View
@@ -356,7 +356,7 @@ export const ResAppPDF = () => (
             <Text>9. </Text>
           </View>
           <View style={{ width: '95%' }}>
-            <Text>Application's source of financing the buildings:</Text>
+            <Text>Application's source of financing the buildings:{form.source_financing}</Text>
           </View>
         </View>
         <View
@@ -388,7 +388,7 @@ export const ResAppPDF = () => (
             <Text>11. </Text>
           </View>
           <View style={{ width: '95%' }}>
-            <Text>Length of time required:</Text>
+            <Text>Length of time required:{form.length_of_term_required}</Text>
           </View>
         </View>
         <View
@@ -403,7 +403,7 @@ export const ResAppPDF = () => (
             <Text>12. </Text>
           </View>
           <View style={{ width: '95%' }}>
-            <Text>Name and address of local representative:</Text>
+            <Text>Name and address of local representative:{form.address_of_local_rep}</Text>
           </View>
         </View>
         <View
@@ -535,7 +535,7 @@ export const ResAppPDF = () => (
               }}
             >
               <View style={{ width: '50%' }}>
-                <Text>Dated:_________________________</Text>
+                <Text>Dated:{form.application_date}</Text>
               </View>
               <View style={{ width: '50%' }}>
                 <Text>Signature of applicant:_______________</Text>
