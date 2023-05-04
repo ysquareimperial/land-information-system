@@ -1,44 +1,61 @@
-import React, { useState } from "react";
-import { Button, Card, Col, Row } from "reactstrap";
-import { _postApi } from "../helpers/helper";
+import React, { useState } from 'react'
+import { Button, Card, Col, Row } from 'reactstrap'
+import { _postApi } from '../helpers/helper'
+import { BsArrowLeft } from 'react-icons/bs'
+import { useNavigate } from 'react-router-dom'
 
 export default function ApplicationForConseent() {
+  const navigate = useNavigate()
   const [list, setList] = useState({
-    right_of_occupancy_number: "",
-    name_of_applicant: "",
-    local_and_correspondence: "",
-    name_of_holder: "",
-    local_of_right_of_occupancy: "",
-  });
+    right_of_occupancy_number: '',
+    name_of_applicant: '',
+    local_and_correspondence: '',
+    name_of_holder: '',
+    local_of_right_of_occupancy: '',
+  })
   const handleChange = ({ target: { name, value } }) => {
-    setList((p) => ({ ...p, [name]: value }));
-  };
-  const [loading, setLoading] = useState(false);
+    setList((p) => ({ ...p, [name]: value }))
+  }
+  const [loading, setLoading] = useState(false)
   const handleSubmit = () => {
-    setLoading(true);
-    _postApi("/api/layout_policies", list, (res) => {
-      console.log(res);
+    setLoading(true)
+    _postApi('/api/layout_policies', list, (res) => {
+      console.log(res)
       if (res.succes) {
-        setLoading(false);
+        setLoading(false)
         setList({
-          right_of_occupancy_number: "",
-          name_of_applicant: "",
-          local_and_correspondence: "",
-          name_of_holder: "",
-          local_of_right_of_occupancy: "",
-        });
-        alert("success");
+          right_of_occupancy_number: '',
+          name_of_applicant: '',
+          local_and_correspondence: '',
+          name_of_holder: '',
+          local_of_right_of_occupancy: '',
+        })
+        alert('success')
       }
     }),
       (err) => {
-        setLoading(false);
-        console.log(err);
-      };
-  };
+        setLoading(false)
+        console.log(err)
+      }
+  }
   return (
     <div>
       <Card className="app_primary_card m-2 shadow p-4">
-        <center><h5 className="mb-3">Application For Consent To Mortgate Statutory Right Of Occupancy</h5></center>
+        <div
+          className="mb-3"
+          style={{ height: 70, display: 'flex', alignItems: 'center', gap: 10 }}
+        >
+          <div>
+            <button className=" back" onClick={() => navigate(-1)}>
+              <BsArrowLeft size="1.5rem" />{' '}
+            </button>
+          </div>
+          <div>
+            <h5 className="mb-3">
+              Application For Consent To Mortgage Statutory Right Of Occupancy
+            </h5>
+          </div>
+        </div>
         {/* {JSON.stringify(list)} */}
         <Row className="mb-2">
           <Col lg={3}>
@@ -53,7 +70,7 @@ export default function ApplicationForConseent() {
               />
             </div>
           </Col>
-          
+
           <Col lg={3}>
             <label className="input_label">Name Of Applicant</label>
             <div>
@@ -97,9 +114,7 @@ export default function ApplicationForConseent() {
             </div>
           </Col>
           <Col lg={3}>
-            <label className="input_label">
-              Date Of Grant
-            </label>
+            <label className="input_label">Date Of Grant</label>
             <div>
               <input
                 className="input_field"
@@ -111,9 +126,7 @@ export default function ApplicationForConseent() {
             </div>
           </Col>
           <Col lg={3}>
-            <label className="input_label">
-              Purpose
-            </label>
+            <label className="input_label">Purpose</label>
             <div>
               <input
                 className="input_field"
@@ -125,9 +138,7 @@ export default function ApplicationForConseent() {
             </div>
           </Col>
           <Col lg={3}>
-            <label className="input_label">
-             Mortgagor Institution
-            </label>
+            <label className="input_label">Mortgagor Institution</label>
             <div>
               <input
                 className="input_field"
@@ -153,9 +164,7 @@ export default function ApplicationForConseent() {
             </div>
           </Col>
           <Col lg={3}>
-            <label className="input_label">
-             GSM
-            </label>
+            <label className="input_label">GSM</label>
             <div>
               <input
                 className="input_field"
@@ -167,9 +176,7 @@ export default function ApplicationForConseent() {
             </div>
           </Col>
           <Col lg={3}>
-            <label className="input_label">
-            Amount Of Consideration N
-            </label>
+            <label className="input_label">Amount Of Consideration N</label>
             <div>
               <input
                 className="input_field"
@@ -182,7 +189,7 @@ export default function ApplicationForConseent() {
           </Col>
           <Col lg={3}>
             <label className="input_label">
-             Specify Special Mortgate Tearm
+              Specify Special Mortgate Tearm
             </label>
             <div>
               <input
@@ -197,10 +204,10 @@ export default function ApplicationForConseent() {
         </Row>
         <div>
           <button className="mt-3 app_btn" onClick={handleSubmit}>
-            {loading ? "...loading" : "Submit"}
+            {loading ? '...loading' : 'Submit'}
           </button>
         </div>
       </Card>
     </div>
-  );
+  )
 }

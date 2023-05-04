@@ -14,7 +14,7 @@ import ReGrant from '../componens/ReGrant'
 import Conversion from '../componens/Conversion'
 import Application_Table from '../componens/Application_Table'
 import FinanceTable from '../componens/FinanceTable'
-import FinanceForm from '../componens/FinanceFOrm'
+import FinanceForm from '../componens/FinanceForm'
 import LayoutPolicies from '../componens/LayoutPolicies'
 import ApplicationForConseent from '../componens/ApplicationForConseent'
 import ApplicationForConseentTable from '../componens/ApplicationForConseentTable'
@@ -57,6 +57,7 @@ import { KanoStateCadDeptPDF } from '../componens/PDF/KanoStateCadDeptPDF'
 import KanoStateCadDeptPDFView from '../componens/PDF/KanoStateCadDeptPDFView'
 import { CadastralFeesAreaPDF } from '../componens/PDF/CadastralFeesAreaPDF'
 import CadastralFeesAreaPDFView from '../componens/PDF/CadastralFeesAreaPDFView'
+import DescriptionOfRightOfOccPDFView from '../componens/PDF/DescriptionOfRightOfOccPDFView'
 
 function AppNavigation() {
   let element = useRoutes([
@@ -333,6 +334,10 @@ function AppNavigation() {
         {
           path: '/pdf6',
           element: <CadastralFeesAreaPDFView />,
+        },
+        {
+          path: '/pdf7',
+          element: <DescriptionOfRightOfOccPDFView />,
         },
         //  1cda8d2b662
       ],

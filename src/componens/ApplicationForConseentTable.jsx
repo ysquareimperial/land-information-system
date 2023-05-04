@@ -1,32 +1,45 @@
-import React from "react";
-import { BsArrowLeft, BsPlusLg } from "react-icons/bs";
-import { useNavigate } from "react-router-dom";
-import { Button, Card, Table } from "reactstrap";
+import React from 'react'
+import { BsArrowLeft, BsPlusLg } from 'react-icons/bs'
+import { useNavigate } from 'react-router-dom'
+import { Button, Card, Col, Row, Table } from 'reactstrap'
 
 export default function ApplicationForConseentTable() {
-    const navigate = useNavigate()
+  const navigate = useNavigate()
   return (
     <Card className="app_primary_card m-2 shadow p-4">
-      <center>
-        <h5 className="mb-3">Application Form Consent To Mortgate</h5>
-      </center>
-
-      <button
-        className="mt-2 app_btn col-md-2"
-        onClick={() => navigate("/executive-govermor")}
-      >
-        <BsPlusLg /> New Application
-      </button>
+      <Row>
+        <Col md={6}>
+          {' '}
+          <h5 className="mb-3">Application Form Consent To Mortgate</h5>
+        </Col>
+        <Col md={6}>
+          <button
+            className="app_btn"
+            style={{ float: 'right' }}
+            onClick={() => navigate('/executive-govermor')}
+          >
+            <BsPlusLg /> New Application
+          </button>
+        </Col>
+      </Row>
       <div>
-        <Table borderless striped responsive className="mt-3">
+        <Table
+          striped
+          borderless
+          className="mt-3"
+          size="sm"
+          style={{ fontSize: 14 }}
+        >
           <thead>
             <tr>
-              <td>S/N</td>
-              <td>Right</td>
-              <td>Name Of Applicant</td>
-              <td>Location Of Application</td>
-              <td>Name Of Holder (If Different From Application )</td>
-              <td>Action</td>
+              <td style={{ fontWeight: 'bold' }}>S/N</td>
+              <td style={{ fontWeight: 'bold' }}>Right</td>
+              <td style={{ fontWeight: 'bold' }}>Name Of Applicant</td>
+              <td style={{ fontWeight: 'bold' }}>Location Of Application</td>
+              <td style={{ fontWeight: 'bold' }}>
+                Name Of Holder (If Different From Application )
+              </td>
+              <td style={{ fontWeight: 'bold' }}>Action</td>
             </tr>
           </thead>
           <tbody>
@@ -51,7 +64,7 @@ export default function ApplicationForConseentTable() {
                 {/* <button className="table_btn">Re-Grant</button> */}
                 Edit
               </td>
-            </tr>{" "}
+            </tr>{' '}
             <tr>
               <td scope="row">1</td>
               <td>Mark</td>
@@ -62,7 +75,7 @@ export default function ApplicationForConseentTable() {
                 {/* <button className="table_btn">Re-Grant</button> */}
                 Edit
               </td>
-            </tr>{" "}
+            </tr>{' '}
             <tr>
               <td scope="row">1</td>
               <td>Mark</td>
@@ -78,5 +91,5 @@ export default function ApplicationForConseentTable() {
         </Table>
       </div>
     </Card>
-  );
+  )
 }
