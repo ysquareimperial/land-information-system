@@ -2,11 +2,12 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { PDFDownloadLink, PDFViewer } from '@react-pdf/renderer'
 import { RecForGrOfStatRightOfOccup } from './RecForGrOfStatRightOfOccup'
-export default function RecForGrOfStatRightOfOccupView() {
+export default function RecForGrOfStatRightOfOccupView({form={}}) {
   return (
     <div>
+      {JSON.stringify(form)}
       <PDFViewer style={{ width: '100%', height: '100vh' }}>
-        <RecForGrOfStatRightOfOccup />
+        <RecForGrOfStatRightOfOccup form={form}/>
       </PDFViewer>
       <PDFDownloadLink
         document={<RecForGrOfStatRightOfOccup />}

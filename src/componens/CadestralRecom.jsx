@@ -25,7 +25,7 @@ export default function CadestralRecom() {
   return (
     <Card className="app_primary_card m-2 shadow p-4">
       <h5 className="mb-4">{type==='director-cadestral'?'Generate Recomendation Letter':''}</h5>
-      {/* {JSON.stringify(type)} */}
+      {/* {JSON.stringify(data)} */}
       <input type='search' placeholder='Search' className='input_field mb-3'/>
       <div>
         <Table borderless striped responsive>
@@ -55,12 +55,20 @@ export default function CadestralRecom() {
           <td>{item.occupation_business}</td>
           <td>{item.length_of_term_required}</td>
               <td>
-                <button
-                  className="blue table_btn"
+                {
+                  item.cadestral_status==='generated'?  <button
+                  className="approved"
+                  // onClick={() => navigate(`/recommendation-letter?application_file_number=${item.file_no}&role=${type}`)}
+                >
+                  View
+                </button>:  <button
+                  className="paid"
                   onClick={() => navigate(`/recommendation-letter?application_file_number=${item.file_no}&role=${type}`)}
                 >
                   process
                 </button>
+                }
+               
               </td>
             </tr>
             ))}

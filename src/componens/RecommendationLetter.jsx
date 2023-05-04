@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react'
-import { Card, Col, Modal, ModalBody, Row, Table } from 'reactstrap'
+import { Button, Card, Col, Modal, ModalBody, ModalFooter, ModalHeader, Row, Table } from 'reactstrap'
 import { _fetchApi, _postApi, useQuery } from '../helpers/helper'
 import { BsSearch } from 'react-icons/bs'
 import SearchBar from './SearchBar'
 import { useNavigate } from 'react-router-dom'
+import { TiCancel } from 'react-icons/ti'
+import RecForGrOfStatRightOfOccupView from './PDF/RecForGrOfStatRightOfOccupView'
 
 export default function RecommendationLetter() {
   const [loading, setLoading] = useState(false)
@@ -20,7 +22,7 @@ export default function RecommendationLetter() {
     survey_charges: '',
     recommendation_dland: '',
     Dland_signature: '',
-    Dland_sign_date: '',
+    dland_sign_date: '',
     recommendation_permsec: '',
     Permsec_signature: '',
     PermSec_sign_date: '',
@@ -33,19 +35,27 @@ export default function RecommendationLetter() {
   const [recLetteForm, setRecLetterForm] = useState(form)
   const query = useQuery();
   const file_no = query.get("file_no");
+  const name = query.get("name");
+  const type = query.get("type");
   const application_file_number = query.get('application_file_number')
   const handleChange = ({ target: { name, value } }) => {
     setRecLetterForm((p) => ({ ...p, [name]: value }))
   }
+  const [modal3, setModal3] = useState(false)
+  const [modal, setModal] = useState(false)
+  const toggle3 = () => setModal3(!modal3)
+  const toggle = () => setModal(!modal)
     const navigate = useNavigate()
   const handleSubmit = () => {
+    // toggle()
     setLoading(true)
     _postApi(`/api/create-recommendation-letter?query_type=${file_no===null?'update':'Insert'}`, recLetteForm, (res) => {
       setLoading(false)
       console.log(res)
       if (res.success) {
         alert('success')
-        setRecLetterForm(form)
+        toggle3()
+        // setRecLetterForm(form)
       }
     }),
       (err) => {
@@ -97,16 +107,49 @@ export default function RecommendationLetter() {
   ()=>{
     getID();
     getRecBy();
-    setRecLetterForm((p)=>({...p,application_file_number:file_no===null?application_file_number:file_no,...newForm[0]}))
+    setRecLetterForm((p)=>({...p,application_file_number:file_no===null?application_file_number:file_no,name:name,type:type}))
   },[file_no, ]
   )
-  const [modal3, setModal3] = useState(false)
-      const toggle3 = () => setModal3(!modal3)
+
+  useEffect(()=>{role==='director-land'?null:
+    setRecLetterForm((p)=>({...p,value_of_proposed_development:newForm[0]?.value_of_proposed_development,time_of_completion:newForm[0]?.time_of_completion,development_charges:newForm[0]?.development_charges, recommendation_dland: newForm[0]?.recommendation_dland,
+    Dland_signature:newForm[0]?.Dland_signature,
+    dland_sign_date:  newForm[0]?.dland_sign_date}))
+  },[application_file_number,query])
+
 
      
   return (
     <div>
-      {JSON.stringify(newForm[0])}
+       <Modal isOpen={modal} toggle={toggle} size="lg">
+          <ModalHeader>
+          <div style={{display:'flex',justifyContent:'space-between'}}>
+         <span >
+         Continue With   
+          </span> 
+           
+          {/* <Col md={3}>
+          </Col>  */}
+          
+           <Button color="danger" style={{float:'left'}} onClick={()=>{toggle();navigate(-1)}}>
+            <TiCancel />
+          </Button>
+         
+          </div>
+          </ModalHeader>
+         
+     
+        <ModalBody>
+      {/* <Require_documents />
+       */}
+   
+      <RecForGrOfStatRightOfOccupView form={recLetteForm}/>
+        </ModalBody>
+        <ModalFooter>
+       
+        </ModalFooter>
+                </Modal>
+      {/* {JSON.stringify(recLetteForm)} */}
       <Card className="app_primary_card m-2 shadow p-4">
         <h5 className="mb-3">Generate Recommendation Letter</h5>
         <Row className="mb-1">
@@ -211,8 +254,8 @@ export default function RecommendationLetter() {
               <input
                 type="date"
                 className="input_field"
-                name="Dland_sign_date"
-                value={recLetteForm.Dland_sign_date}
+                name="dland_sign_date"
+                value={recLetteForm.dland_sign_date}
                 onChange={handleChange}
                 disabled={role==='director-cadestral'?true:false}
               />
@@ -341,7 +384,9 @@ export default function RecommendationLetter() {
                           <td>{item.application_id}</td>
                           <td>{item.plots_numbers}</td>
                           <td>{item.layout_number}</td>
-                          <td><button className='app_btn' onClick={()=>{setRecLetterForm((p)=>({...p,location:item.layout_address,plot_no:item.plots_numbers,plan_no:item.layout_number}));toggle3()}}>select</button></td>
+                          <td>
+                            <button className='app_btn' onClick={()=>{setRecLetterForm((p)=>({...p,location:item.layout_address,plot_no:item.plots_numbers,plan_no:item.layout_number}));toggle3()}}>select</button>
+                            </td>
                         </tr>
                       ))
                     }

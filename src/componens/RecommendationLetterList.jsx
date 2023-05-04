@@ -25,7 +25,7 @@ export default function RecommendationLetterList() {
   return (
     <Card className="app_primary_card m-2 shadow p-4">
       <h5 className="mb-4">Generate Recomendation Letter</h5>
-      {/* {JSON.stringify(role)} */}
+      {/* {JSON.stringify(data[0])} */}
       <input type='search' placeholder='Search' className='input_field mb-3'/>
       <div>
       <Table striped>
@@ -54,12 +54,29 @@ export default function RecommendationLetterList() {
           <td>{item.State_of_origin}</td>
           <td>{item.occupation_business}</td>
           <td>{item.length_of_term_required}</td>
-         <td>  <button
-                  className="blue table_btn"
+         <td> 
+          {/* {item.land_status==='generated'?'hello':'fuck yu'} */}
+          {
+            item.land_status===null?<button
+            className="paid"
+            onClick={() => navigate(`/recommendation-letter?file_no=${item.file_no}&role=${role}&name=${item.Applicant_full_name}&type=${item.type}`)}
+          >
+            process
+          </button>:
+          <button
+          className="approved"
+          // onClick={() => navigate(`/recommendation-letter?file_no=${item.file_no}&role=${role}`)}
+        >
+          view
+        </button>
+          }
+           {/* <button
+                  className="paid"
                   onClick={() => navigate(`/recommendation-letter?file_no=${item.file_no}&role=${role}`)}
                 >
                   process
-                </button></td>
+                </button> */}
+                </td>
         </tr>
         ))
       }
