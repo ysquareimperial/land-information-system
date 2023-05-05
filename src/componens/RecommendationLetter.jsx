@@ -28,82 +28,98 @@ export default function RecommendationLetter() {
     comm_govt_signature: '',
     Comm_govt_signature_date: '',
     recommendation_id: '',
-    status:''
+    status: '',
   }
   const [recLetteForm, setRecLetterForm] = useState(form)
-  const query = useQuery();
-  const file_no = query.get("file_no");
+  const query = useQuery()
+  const file_no = query.get('file_no')
   const application_file_number = query.get('application_file_number')
   const handleChange = ({ target: { name, value } }) => {
     setRecLetterForm((p) => ({ ...p, [name]: value }))
   }
-    const navigate = useNavigate()
+  const navigate = useNavigate()
   const handleSubmit = () => {
     setLoading(true)
-    _postApi(`/api/create-recommendation-letter?query_type=${file_no===null?'update':'Insert'}`, recLetteForm, (res) => {
-      setLoading(false)
-      console.log(res)
-      if (res.success) {
-        alert('success')
-        setRecLetterForm(form)
-      }
-    }),
+    _postApi(
+      `/api/create-recommendation-letter?query_type=${
+        file_no === null ? 'update' : 'Insert'
+      }`,
+      recLetteForm,
+      (res) => {
+        setLoading(false)
+        console.log(res)
+        if (res.success) {
+          alert('success')
+          setRecLetterForm(form)
+        }
+      },
+    ),
       (err) => {
         setLoading(false)
         console.log(err)
       }
-     
   }
-  const [data,setData]=useState([])
-  const getID =()=>{
-    _fetchApi('/api/plots',
-    (res)=>{
-      setData(res.results)
-    },(err)=>{
-      console.log(err)
-    }
+  const [data, setData] = useState([])
+  const getID = () => {
+    _fetchApi(
+      '/api/plots',
+      (res) => {
+        setData(res.results)
+      },
+      (err) => {
+        console.log(err)
+      },
     )
   }
   // const [po]
-  const getPolicy = ()=>{
-    _fetchApi(`/api/getPolicys?layout_number=${recLetteForm.plan_no}`,
-    (res)=>{
-      console.log(res.results[0])
-      // alert(JSON.stringify(res.results[0]))
-      setRecLetterForm((p)=>({...p,term:res.results[0][0]?.policy_name,annual_ground_rent:res.results[0][0]?.item_description}))
-    },
-    (err)=>{
-      console.log(err)
-    }
+  const getPolicy = () => {
+    _fetchApi(
+      `/api/getPolicys?layout_number=${recLetteForm.plan_no}`,
+      (res) => {
+        console.log(res.results[0])
+        // alert(JSON.stringify(res.results[0]))
+        setRecLetterForm((p) => ({
+          ...p,
+          term: res.results[0][0]?.policy_name,
+          annual_ground_rent: res.results[0][0]?.item_description,
+        }))
+      },
+      (err) => {
+        console.log(err)
+      },
     )
   }
-  const [newForm,setNewForm]=useState([])
-  const getRecBy = ()=>{
-    _fetchApi(`/api/getAppBYID?application_file_number=${application_file_number}`,
-(res)=>{
-  if(res.success){
-    setNewForm(res.results[0])
-  }
-},(err)=>{
-  console.log(err)
-}
+  const [newForm, setNewForm] = useState([])
+  const getRecBy = () => {
+    _fetchApi(
+      `/api/getAppBYID?application_file_number=${application_file_number}`,
+      (res) => {
+        if (res.success) {
+          setNewForm(res.results[0])
+        }
+      },
+      (err) => {
+        console.log(err)
+      },
     )
   }
   const role = query.get('role')
-  useEffect(()=>{
+  useEffect(() => {
     getPolicy()
-  },[recLetteForm.plan_no])
-  useEffect(
-  ()=>{
-    getID();
-    getRecBy();
-    setRecLetterForm((p)=>({...p,application_file_number:file_no===null?application_file_number:file_no,...newForm[0]}))
-  },[file_no, ]
-  )
+  }, [recLetteForm.plan_no])
+  useEffect(() => {
+    getID()
+    getRecBy()
+    setRecLetterForm((p) => ({
+      ...p,
+      application_file_number:
+        file_no === null ? application_file_number : file_no,
+      ...newForm[0],
+    }))
+  }, [file_no])
   const [modal3, setModal3] = useState(false)
-      const toggle3 = () => setModal3(!modal3)
+  const toggle3 = () => setModal3(!modal3)
 
-     
   return (
     <div>
       {JSON.stringify(newForm[0])}
@@ -123,14 +139,14 @@ export default function RecommendationLetter() {
               />
             </div>
           </Col>
-          
+
           <Col lg={3}>
             <label className="input_label">Value of Proposed Dev</label>
             <div>
               <input
-              disabled={role==='director-cadestral'?true:false}
-              //  {role === 'director-cadestral' }
-               type="number"
+                disabled={role === 'director-cadestral' ? true : false}
+                //  {role === 'director-cadestral' }
+                type="number"
                 className="input_field"
                 name="value_of_proposed_development"
                 value={recLetteForm.value_of_proposed_development}
@@ -142,7 +158,7 @@ export default function RecommendationLetter() {
             <label className="input_label">Time of Completion</label>
             <div>
               <input
-                disabled={role==='director-cadestral'?true:false}
+                disabled={role === 'director-cadestral' ? true : false}
                 type="text"
                 className="input_field"
                 name="time_of_completion"
@@ -151,13 +167,12 @@ export default function RecommendationLetter() {
               />
             </div>
           </Col>
-         
-      
+
           <Col lg={3}>
             <label className="input_label">Development Charges</label>
             <div>
               <input
-                disabled={role==='director-cadestral'?true:false}
+                disabled={role === 'director-cadestral' ? true : false}
                 type="number"
                 className="input_field"
                 name="development_charges"
@@ -185,9 +200,10 @@ export default function RecommendationLetter() {
                 type=""
                 className="input_field"
                 name="recommendation_dland"
+                rows={1}
                 value={recLetteForm.recommendation_dland}
                 onChange={handleChange}
-                disabled={role==='director-cadestral'?true:false}
+                disabled={role === 'director-cadestral' ? true : false}
               />
             </div>
           </Col>
@@ -200,11 +216,11 @@ export default function RecommendationLetter() {
                 name="Dland_signature"
                 value={recLetteForm.Dland_signature}
                 onChange={handleChange}
-                disabled={role==='director-cadestral'?true:false}
+                disabled={role === 'director-cadestral' ? true : false}
               />
             </div>
           </Col>
-       
+
           <Col lg={3}>
             <label className="input_label">Dir Land Signature Date</label>
             <div>
@@ -214,90 +230,89 @@ export default function RecommendationLetter() {
                 name="Dland_sign_date"
                 value={recLetteForm.Dland_sign_date}
                 onChange={handleChange}
-                disabled={role==='director-cadestral'?true:false}
+                disabled={role === 'director-cadestral' ? true : false}
               />
             </div>
           </Col>
-          {
-            role==='director-cadestral'||'director-land'?<> 
-            </>:<>
-            <Col lg={3}>
-            <label className="input_label">Recommendation PSec</label>
-            <div>
-              <input
-                type=""
-                className="input_field"
-                name="recommendation_permsec"
-                value={recLetteForm.recommendation_permsec}
-                onChange={handleChange}
-              />
-            </div>
-          </Col>
-          <Col lg={3}>
-            <label className="input_label">PSec Signature</label>
-            <div>
-              <input
-                type=""
-                className="input_field"
-                name="Permsec_signature"
-                value={recLetteForm.Permsec_signature}
-                onChange={handleChange}
-              />
-            </div>
-          </Col>
-          <Col lg={3}>
-            <label className="input_label">PSec Signature Date</label>
-            <div>
-              <input
-                type="date"
-                className="input_field"
-                name="PermSec_sign_date"
-                value={recLetteForm.PermSec_sign_date}
-                onChange={handleChange}
-              />
-            </div>
-          </Col>
-          <Col lg={3}>
-            <label className="input_label">Grant Approve/Reject</label>
-            <div>
-              <input
-                type=""
-                className="input_field"
-                name="grant_approve_reject"
-                value={recLetteForm.grant_approve_reject}
-                onChange={handleChange}
-              />
-            </div>
-          </Col>
-          <Col lg={3}>
-            <label className="input_label">Gov/Comm Signature</label>
-            <div>
-              <input
-                type=""
-                className="input_field"
-                name="comm_govt_signature"
-                value={recLetteForm.comm_govt_signature}
-                onChange={handleChange}
-              />
-            </div>
-          </Col>
-          <Col lg={3}>
-            <label className="input_label">Gov/Comm Signature Date</label>
-            <div>
-              <input
-                type="date"
-                className="input_field"
-                name="Comm_govt_signature_date"
-                value={recLetteForm.Comm_govt_signature_date}
-                onChange={handleChange}
-              />
-            </div>
-          </Col>
+          {role === 'director-cadestral' || 'director-land' ? (
+            <></>
+          ) : (
+            <>
+              <Col lg={3}>
+                <label className="input_label">Recommendation PSec</label>
+                <div>
+                  <input
+                    type=""
+                    className="input_field"
+                    name="recommendation_permsec"
+                    value={recLetteForm.recommendation_permsec}
+                    onChange={handleChange}
+                  />
+                </div>
+              </Col>
+              <Col lg={3}>
+                <label className="input_label">PSec Signature</label>
+                <div>
+                  <input
+                    type=""
+                    className="input_field"
+                    name="Permsec_signature"
+                    value={recLetteForm.Permsec_signature}
+                    onChange={handleChange}
+                  />
+                </div>
+              </Col>
+              <Col lg={3}>
+                <label className="input_label">PSec Signature Date</label>
+                <div>
+                  <input
+                    type="date"
+                    className="input_field"
+                    name="PermSec_sign_date"
+                    value={recLetteForm.PermSec_sign_date}
+                    onChange={handleChange}
+                  />
+                </div>
+              </Col>
+              <Col lg={3}>
+                <label className="input_label">Grant Approve/Reject</label>
+                <div>
+                  <input
+                    type=""
+                    className="input_field"
+                    name="grant_approve_reject"
+                    value={recLetteForm.grant_approve_reject}
+                    onChange={handleChange}
+                  />
+                </div>
+              </Col>
+              <Col lg={3}>
+                <label className="input_label">Gov/Comm Signature</label>
+                <div>
+                  <input
+                    type=""
+                    className="input_field"
+                    name="comm_govt_signature"
+                    value={recLetteForm.comm_govt_signature}
+                    onChange={handleChange}
+                  />
+                </div>
+              </Col>
+              <Col lg={3}>
+                <label className="input_label">Gov/Comm Signature Date</label>
+                <div>
+                  <input
+                    type="date"
+                    className="input_field"
+                    name="Comm_govt_signature_date"
+                    value={recLetteForm.Comm_govt_signature_date}
+                    onChange={handleChange}
+                  />
+                </div>
+              </Col>
             </>
-          }
-          
-       
-          
+          )}
+
           {/* <Col lg={3}>
             <label className="input_label">Recommendation ID</label>
             <div>
@@ -310,101 +325,119 @@ export default function RecommendationLetter() {
               />
             </div>
           </Col> */}
-          
-          <Col lg={3}>
-            <label className="input_label">Location</label>
-            <div className="search_input_form">
-                <input
-                  className="input_field"
-                  value={recLetteForm.location}
-                  onChange={handleChange}
-                  name="hotel"
-                />
-                <BsSearch className="search_icon" onClick={toggle3} />
-                <Modal isOpen={modal3} toggle={toggle3} size="md">
-               <ModalBody>
-               <SearchBar />
-                <Table striped >
-                  <thead>
-                    <tr>
-                      <th>Location</th>
-                      <th>Plots Number</th>
-                      <th>Plan Number</th>
-                      <th>Action</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {
-                      data[0]?.map((item)=>(
-                        <tr>
-                          <td>{item.layout_address}</td>
-                          <td>{item.application_id}</td>
-                          <td>{item.plots_numbers}</td>
-                          <td>{item.layout_number}</td>
-                          <td><button className='app_btn' onClick={()=>{setRecLetterForm((p)=>({...p,location:item.layout_address,plot_no:item.plots_numbers,plan_no:item.layout_number}));toggle3()}}>select</button></td>
-                        </tr>
-                      ))
-                    }
-                  </tbody>
-                </Table>
-               </ModalBody>
-                </Modal>
-              </div>
-          </Col>
-          <Col lg={3}>
-            <label className="input_label">Plot No</label>
-            <div>
-              <input
-                // type="number"
-                className="input_field"
-                name="plot_no"
-                value={recLetteForm.plot_no}
-                onChange={handleChange}
-              />
-            </div>
-          </Col>
-          <Col lg={3}>
-            <label className="input_label">Plan No</label>
-            <div>
-              <input
-                type="number"
-                className="input_field"
-                name="plan_no"
-                value={recLetteForm.plan_no}
-                onChange={handleChange}
-              />
-            </div>
-          </Col>
-      
-          <Col lg={3}>
-            <label className="input_label">Term</label>
-            <div>
-              <input
-                type="text"
-                className="input_field"
-                name="term"
-                value={recLetteForm.term}
-                onChange={handleChange}
-              />
-            </div>
-          </Col>
-          <Col lg={3}>
-            <label className="input_label">Annual Ground Rent</label>
-            <div>
-              <input
-                type="number"
-                className="input_field"
-                name="annual_ground_rent"
-                value={recLetteForm.annual_ground_rent}
-                onChange={handleChange}
-              />
-            </div>
-          </Col>
+          {role === 'director-land' ? (
+            ''
+          ) : (
+            <>
+              <Col lg={3}>
+                <label className="input_label">Location</label>
+                <div className="search_input_form">
+                  <input
+                    className="input_field"
+                    value={recLetteForm.location}
+                    onChange={handleChange}
+                    name="hotel"
+                  />
+                  <BsSearch className="search_icon" onClick={toggle3} />
+                  <Modal isOpen={modal3} toggle={toggle3} size="md">
+                    <ModalBody>
+                      <SearchBar />
+                      <Table striped>
+                        <thead>
+                          <tr>
+                            <th>Location</th>
+                            <th>Plots Number</th>
+                            <th>Plan Number</th>
+                            <th>Action</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {data[0]?.map((item) => (
+                            <tr>
+                              <td>{item.layout_address}</td>
+                              <td>{item.application_id}</td>
+                              <td>{item.plots_numbers}</td>
+                              <td>{item.layout_number}</td>
+                              <td>
+                                <button
+                                  className="app_btn"
+                                  onClick={() => {
+                                    setRecLetterForm((p) => ({
+                                      ...p,
+                                      location: item.layout_address,
+                                      plot_no: item.plots_numbers,
+                                      plan_no: item.layout_number,
+                                    }))
+                                    toggle3()
+                                  }}
+                                >
+                                  select
+                                </button>
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </Table>
+                    </ModalBody>
+                  </Modal>
+                </div>
+              </Col>
+              <Col lg={3}>
+                <label className="input_label">Plot No</label>
+                <div>
+                  <input
+                    // type="number"
+                    className="input_field"
+                    name="plot_no"
+                    value={recLetteForm.plot_no}
+                    onChange={handleChange}
+                  />
+                </div>
+              </Col>
+              <Col lg={3}>
+                <label className="input_label">Plan No</label>
+                <div>
+                  <input
+                    type="number"
+                    className="input_field"
+                    name="plan_no"
+                    value={recLetteForm.plan_no}
+                    onChange={handleChange}
+                  />
+                </div>
+              </Col>
+
+              <Col lg={3}>
+                <label className="input_label">Term</label>
+                <div>
+                  <input
+                    type="text"
+                    className="input_field"
+                    name="term"
+                    value={recLetteForm.term}
+                    onChange={handleChange}
+                  />
+                </div>
+              </Col>
+              <Col lg={3}>
+                <label className="input_label">Annual Ground Rent</label>
+                <div>
+                  <input
+                    type="number"
+                    className="input_field"
+                    name="annual_ground_rent"
+                    value={recLetteForm.annual_ground_rent}
+                    onChange={handleChange}
+                  />
+                </div>
+              </Col>
+            </>
+          )}
+
           <Col lg={3}>
             <label className="input_label">Send To</label>
             <div>
               <select
-              
                 className="input_field"
                 name="status"
                 value={recLetteForm.status}

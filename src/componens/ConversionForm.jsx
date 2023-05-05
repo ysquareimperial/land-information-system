@@ -1,14 +1,49 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Card, Col, Row } from 'reactstrap'
 import ForOfficialUseForm from './ForOfficialUseForm'
+import { _postApi } from '../helpers/helper'
 
 export default function ConversionForm() {
+  const [loading, setLoading] = useState(false)
+  const _form = {
+    applicant_full_name: '',
+    age: '',
+    occupation: '',
+    nationality: '',
+    state_of_origin: '',
+    home_domicile: '',
+    add_in_nig: '',
+    phone: '',
+    name_add_of_lcl_rep: '',
+    suff_desc: '',
+    customary_title: '',
+    purp_for_land_req: '',
+    value_of_impr_offered_and_time_for_erection: '',
+    applicants_src_of_financing_impr_offered: '',
+    len_of_time_req: '',
+    date: '',
+    signature: '',
+    file_no: 'COM/2023/54',
+  }
+  const [form, setForm] = useState(_form)
+  const handleChange = ({ target: { name, value } }) => {
+    setForm((p) => ({ ...p, [name]: value }))
+  }
+  const handleSubmit = () => {
+    _postApi('/api/conversion', form, (res) => {
+      setLoading(false)
+      console.log(res)
+    }),
+      (err) => {
+        setLoading(false)
+        console.log(err)
+      }
+  }
   return (
     <div>
+      {/* {JSON.stringify(form)} */}
       <Card className="app_primary_card m-2 shadow p-4">
-        <h5 className="mb-3">
-          Application for Conversion to Statutory Right of Occupancy
-        </h5>
+        <h5 className="mb-3">Conversion to Statutory Right of Occupancy</h5>
         <Row className="mb-2">
           <Col lg={3}>
             <label className="input_label">Applicant's Full Name</label>
@@ -16,9 +51,9 @@ export default function ConversionForm() {
               <input
                 type="text"
                 className="input_field"
-                // name="term"
-                // value={recLetteForm.term}
-                // onChange={handleChange}
+                name="applicant_full_name"
+                value={form.applicant_full_name}
+                onChange={handleChange}
               />
             </div>
           </Col>
@@ -28,9 +63,9 @@ export default function ConversionForm() {
               <input
                 type="number"
                 className="input_field"
-                // name="value_of_proposed_development"
-                // value={recLetteForm.value_of_proposed_development}
-                // onChange={handleChange}
+                name="age"
+                value={form.age}
+                onChange={handleChange}
               />
             </div>
           </Col>
@@ -40,9 +75,9 @@ export default function ConversionForm() {
               <input
                 type="text"
                 className="input_field"
-                // name="time_of_completion"
-                // value={recLetteForm.time_of_completion}
-                // onChange={handleChange}
+                name="occupation"
+                value={form.occupation}
+                onChange={handleChange}
               />
             </div>
           </Col>
@@ -50,11 +85,11 @@ export default function ConversionForm() {
             <label className="input_label">Nationality</label>
             <div>
               <input
-                type="number"
+                type="text"
                 className="input_field"
-                // name="annual_ground_rent"
-                // value={recLetteForm.annual_ground_rent}
-                // onChange={handleChange}
+                name="nationality"
+                value={form.nationality}
+                onChange={handleChange}
               />
             </div>
           </Col>
@@ -66,9 +101,9 @@ export default function ConversionForm() {
               <input
                 type="text"
                 className="input_field"
-                // name="term"
-                // value={recLetteForm.term}
-                // onChange={handleChange}
+                name="state_of_origin"
+                value={form.state_of_origin}
+                onChange={handleChange}
               />
             </div>
           </Col>
@@ -76,11 +111,11 @@ export default function ConversionForm() {
             <label className="input_label">Home Domicile</label>
             <div>
               <input
-                type="number"
+                type="text"
                 className="input_field"
-                // name="value_of_proposed_development"
-                // value={recLetteForm.value_of_proposed_development}
-                // onChange={handleChange}
+                name="home_domicile"
+                value={form.home_domicile}
+                onChange={handleChange}
               />
             </div>
           </Col>
@@ -90,9 +125,9 @@ export default function ConversionForm() {
               <input
                 type="text"
                 className="input_field"
-                // name="time_of_completion"
-                // value={recLetteForm.time_of_completion}
-                // onChange={handleChange}
+                name="add_in_nig"
+                value={form.add_in_nig}
+                onChange={handleChange}
               />
             </div>
           </Col>
@@ -102,9 +137,9 @@ export default function ConversionForm() {
               <input
                 type="number"
                 className="input_field"
-                // name="annual_ground_rent"
-                // value={recLetteForm.annual_ground_rent}
-                // onChange={handleChange}
+                name="phone"
+                value={form.phone}
+                onChange={handleChange}
               />
             </div>
           </Col>
@@ -118,9 +153,9 @@ export default function ConversionForm() {
               <input
                 type="text"
                 className="input_field"
-                // name="term"
-                // value={recLetteForm.term}
-                // onChange={handleChange}
+                name="name_add_of_lcl_rep"
+                value={form.name_add_of_lcl_rep}
+                onChange={handleChange}
               />
             </div>
           </Col>
@@ -128,11 +163,11 @@ export default function ConversionForm() {
             <label className="input_label">Sufficient Description</label>
             <div>
               <input
-                type="number"
+                type="text"
                 className="input_field"
-                // name="value_of_proposed_development"
-                // value={recLetteForm.value_of_proposed_development}
-                // onChange={handleChange}
+                name="suff_desc"
+                value={form.suff_desc}
+                onChange={handleChange}
               />
             </div>
           </Col>
@@ -141,7 +176,12 @@ export default function ConversionForm() {
               How Customary Title Was Obtained
             </label>
             <div>
-              <select className="input_field">
+              <select
+                name="customary_title"
+                value={form.customary_title}
+                onChange={handleChange}
+                className="input_field"
+              >
                 <option>--select--</option>
                 <option>By Purchase</option>
                 <option>By Inheritance</option>
@@ -156,11 +196,11 @@ export default function ConversionForm() {
             </label>
             <div>
               <input
-                type="number"
+                type="text"
                 className="input_field"
-                // name="annual_ground_rent"
-                // value={recLetteForm.annual_ground_rent}
-                // onChange={handleChange}
+                name="purp_for_land_req"
+                value={form.purp_for_land_req}
+                onChange={handleChange}
               />
             </div>
           </Col>
@@ -174,9 +214,9 @@ export default function ConversionForm() {
               <input
                 type="text"
                 className="input_field"
-                // name="term"
-                // value={recLetteForm.term}
-                // onChange={handleChange}
+                name="value_of_impr_offered_and_time_for_erection"
+                value={form.value_of_impr_offered_and_time_for_erection}
+                onChange={handleChange}
               />
             </div>
           </Col>
@@ -186,11 +226,11 @@ export default function ConversionForm() {
             </label>
             <div>
               <input
-                type="number"
+                type="text"
                 className="input_field"
-                // name="value_of_proposed_development"
-                // value={recLetteForm.value_of_proposed_development}
-                // onChange={handleChange}
+                name="applicants_src_of_financing_impr_offered"
+                value={form.applicants_src_of_financing_impr_offered}
+                onChange={handleChange}
               />
             </div>
           </Col>
@@ -198,11 +238,11 @@ export default function ConversionForm() {
             <label className="input_label">Length of Term Required</label>
             <div>
               <input
-                type="number"
+                type="text"
                 className="input_field"
-                // name="value_of_proposed_development"
-                // value={recLetteForm.value_of_proposed_development}
-                // onChange={handleChange}
+                name="len_of_time_req"
+                value={form.len_of_time_req}
+                onChange={handleChange}
               />
             </div>
           </Col>
@@ -210,11 +250,11 @@ export default function ConversionForm() {
             <label className="input_label">Date</label>
             <div>
               <input
-                type="number"
+                type="date"
                 className="input_field"
-                // name="value_of_proposed_development"
-                // value={recLetteForm.value_of_proposed_development}
-                // onChange={handleChange}
+                name="date"
+                value={form.date}
+                onChange={handleChange}
               />
             </div>
           </Col>
@@ -222,20 +262,30 @@ export default function ConversionForm() {
             <label className="input_label">Signature of Applicant</label>
             <div>
               <input
-                type="number"
+                type="text"
                 className="input_field"
-                // name="value_of_proposed_development"
-                // value={recLetteForm.value_of_proposed_development}
-                // onChange={handleChange}
+                name="signature"
+                value={form.signature}
+                onChange={handleChange}
               />
             </div>
           </Col>
         </Row>
         <ForOfficialUseForm label={'Accntnt, Bureau of Land Management'} />
         <div>
-          <button className="app_btn mt-3" onClick={''}>
-            Submit
-          </button>
+          {loading ? (
+            <button
+              className="app_btn mt-3"
+              onClick={handleSubmit}
+              style={{ cursor: 'not-allowed', backgroundColor: '#A9A9A9' }}
+            >
+              Loading...
+            </button>
+          ) : (
+            <button className="app_btn mt-3" onClick={handleSubmit}>
+              Submit
+            </button>
+          )}
         </div>
       </Card>
     </div>
