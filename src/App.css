@@ -5,15 +5,16 @@
 .sidebar {
   height: 100vh;
   /* background-color: transparent;
-  overflow-y: auto;
   background-image: url("./images/pbg.png");
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;*/
+  overflow-y: auto;
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.com/svgjs' width='1440' height='250' preserveAspectRatio='none' viewBox='0 0 1440 250'%3e%3cg mask='url(%26quot%3b%23SvgjsMask1003%26quot%3b)' fill='none'%3e%3crect width='1440' height='250' x='0' y='0' fill='rgba(11%2c 52%2c 85%2c 1)'%3e%3c/rect%3e%3cpath d='M25 250L275 0L458 0L208 250z' fill='url(%23SvgjsLinearGradient1004)'%3e%3c/path%3e%3cpath d='M284.6 250L534.6 0L657.6 0L407.6 250z' fill='url(%23SvgjsLinearGradient1004)'%3e%3c/path%3e%3cpath d='M479.20000000000005 250L729.2 0L787.7 0L537.7 250z' fill='url(%23SvgjsLinearGradient1004)'%3e%3c/path%3e%3cpath d='M720.8000000000001 250L970.8000000000001 0L1185.3000000000002 0L935.3000000000001 250z' fill='url(%23SvgjsLinearGradient1004)'%3e%3c/path%3e%3cpath d='M1397 250L1147 0L1070.5 0L1320.5 250z' fill='url(%23SvgjsLinearGradient1005)'%3e%3c/path%3e%3cpath d='M1170.4 250L920.4000000000001 0L705.9000000000001 0L955.9000000000001 250z' fill='url(%23SvgjsLinearGradient1005)'%3e%3c/path%3e%3cpath d='M957.8 250L707.8 0L352.29999999999995 0L602.3 250z' fill='url(%23SvgjsLinearGradient1005)'%3e%3c/path%3e%3cpath d='M693.1999999999999 250L443.19999999999993 0L309.69999999999993 0L559.6999999999999 250z' fill='url(%23SvgjsLinearGradient1005)'%3e%3c/path%3e%3cpath d='M1290.7913678139291 250L1440 100.7913678139291L1440 250z' fill='url(%23SvgjsLinearGradient1004)'%3e%3c/path%3e%3cpath d='M0 250L149.2086321860709 250L 0 100.7913678139291z' fill='url(%23SvgjsLinearGradient1005)'%3e%3c/path%3e%3c/g%3e%3cdefs%3e%3cmask id='SvgjsMask1003'%3e%3crect width='1440' height='250' fill='white'%3e%3c/rect%3e%3c/mask%3e%3clinearGradient x1='0%25' y1='100%25' x2='100%25' y2='0%25' id='SvgjsLinearGradient1004'%3e%3cstop stop-color='rgba(15%2c 70%2c 185%2c 0.2)' offset='0'%3e%3c/stop%3e%3cstop stop-opacity='0' stop-color='rgba(15%2c 70%2c 185%2c 0.2)' offset='0.66'%3e%3c/stop%3e%3c/linearGradient%3e%3clinearGradient x1='100%25' y1='100%25' x2='0%25' y2='0%25' id='SvgjsLinearGradient1005'%3e%3cstop stop-color='rgba(15%2c 70%2c 185%2c 0.2)' offset='0'%3e%3c/stop%3e%3cstop stop-opacity='0' stop-color='rgba(15%2c 70%2c 185%2c 0.2)' offset='0.66'%3e%3c/stop%3e%3c/linearGradient%3e%3c/defs%3e%3c/svg%3e");
   color: white;
   /* background-color: #0b3455; */
   /* position: fixed; */
+
   background-repeat: no-repeat;
   background-size: cover;
   background-position: top center;
@@ -57,19 +58,21 @@
   border-radius: 0 15px 15px 0;
 }
 
-
 .sidebar_icon {
   margin-right: 10px;
   /* color: black !important; */
 }
 
 .active_sidebar_item {
+  /* margin-right: 10px; */
   background-color: #ffffff2a;
   width: 95%;
   border-radius: 0 15px 15px 0;
   margin: 0;
   cursor: pointer;
-  padding: 8px 20px;
+  padding: 8px 33px;
+
+  /* padding: 8px 20px; */
 
   font-size: 13px;
 }
@@ -109,7 +112,7 @@
   padding: 5px 20px;
   border-radius: 5px;
 }
-.table_btn{
+.table_btn {
   background-color: #d8d8d8;
   color: black;
   /* border: 1px solid #0b3455; */
@@ -119,10 +122,10 @@
   font-size: 12px;
 }
 
-.blue{
-  background-color: #0b345530
+.blue {
+  background-color: #0b345530;
 }
-.for{
+.for {
   width: fit-content;
   border-radius: 5px;
 }
@@ -153,7 +156,7 @@
   z-index: 1;
   border: #0b3455 1px solid;
 }
-.back{
+.back {
   width: 50px;
   height: 50px;
   border-radius: 50%;
@@ -161,19 +164,28 @@
   background-color: #d8d8d8 !important;
   border: none;
 }
-.pending,.paid,.approved {
-  font-size: 14px;
-  padding: 3px 20px;
+.pending,
+.paid,
+.approved {
+  /* font-size: 14px; */
+  padding: 2px 10px;
+  font-size: 12px;
   border-radius: 5px;
-  border: none; 
+  border: none;
 }
-.paid{
-background-color: #0b345556;
+.paid {
+  background-color: #0b345556;
 }
-.approved{
-  
+.approved {
   background-color: rgba(0, 121, 0, 0.562);
 }
-.pending{
+.pending {
   background-color: rgba(255, 166, 0, 0.411);
+}
+
+.legend{
+  background-color: #0b345530;
+  padding: 5px;
+  border-radius: 5px;
+  width: fit-content;
 }

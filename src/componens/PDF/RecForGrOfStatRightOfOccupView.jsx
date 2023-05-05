@@ -5,7 +5,7 @@ import { RecForGrOfStatRightOfOccup } from './RecForGrOfStatRightOfOccup'
 export default function RecForGrOfStatRightOfOccupView({form={}}) {
   return (
     <div>
-      {JSON.stringify(form)}
+      {/* {JSON.stringify(form)} */}
       <PDFViewer style={{ width: '100%', height: '100vh' }}>
         <RecForGrOfStatRightOfOccup form={form}/>
       </PDFViewer>

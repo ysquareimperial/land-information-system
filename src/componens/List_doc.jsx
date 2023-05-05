@@ -45,8 +45,19 @@ export default function List_doc() {
   return (
     <div>
       <Card className="app_primary_card m-2 shadow p-4">
-      <button className="mt-2 app_btn col-md-2" onClick={()=>navigate(-1)}><BsArrowLeft />  Back</button>
-        <center><h5 className="mb-3">List Documents</h5></center>
+      <div
+          className="mb-3"
+          style={{ height: 70, display: 'flex', alignItems: 'center', gap: 10 }}
+        >
+          <div>
+            <button className=" back" onClick={() => navigate(-1)}>
+              <BsArrowLeft size="1.5rem" />{' '}
+            </button>
+          </div>
+          <div>
+            <h5 className="m-0">List Documents</h5>
+          </div>
+        </div>
         {/* {JSON.stringify(new_list.length>0?'node':'')} */}
         <Row className="mb-1">
           {/* <Col md={6}>

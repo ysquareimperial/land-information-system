@@ -1,15 +1,16 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { PDFDownloadLink, PDFViewer } from '@react-pdf/renderer'
-import { ResAppPDF } from './ResAppPDF'
-export default function ResAppPDFView({form={}}) {
+import { DescriptionOfRightOfOccPDF } from './DescriptionOnRightOfOccPDF'
+export default function DescriptionOfRightOfOccPDFView() {
   return (
     <div>
-      {JSON.stringify(form.type)}
+      <PDFViewer style={{ width: '100%', height: '100vh' }}>
+        <DescriptionOfRightOfOccPDF/>
+      </PDFViewer>
       <PDFDownloadLink
-      style={{float:'left'}}
-        document={<ResAppPDF />}
-        fileName="Residential_Application_PDF_Doc"
+        document={<DescriptionOfRightOfOccPDF/>}
+        fileName="DescriptionOfRightOfOccPDF"
       >
         {({ loading }) =>
           loading ? (
@@ -17,17 +18,13 @@ export default function ResAppPDFView({form={}}) {
               Loading Document...
             </button>
           ) : (
-            <button className='app_btn' style={{ marginRight: 0 }}>
+            <button className="app_btn" style={{ marginRight: 0 }}>
               {' '}
               Download PDF
             </button>
           )
         }
       </PDFDownloadLink>
-      <PDFViewer style={{ width: '100%', height: '100vh' }}>
-        <ResAppPDF form={form}/>
-      </PDFViewer>
-      
     </div>
   )
 }

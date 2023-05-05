@@ -17,12 +17,22 @@ const styles = StyleSheet.create({
     paddingLeft: 20,
     paddingRight: 20,
   },
+  page2: {
+    color: 'green',
+    paddingTop: 30,
+    paddingBottom: 30,
+    paddingLeft: 20,
+    paddingRight: 20,
+  },
 })
 
 // Create Document Component
 export const ResAppPDF = ({ form = {} }) => (
   <Document>
-    <Page size="A4" style={styles.page}>
+    <Page
+      size="A4"
+      style={form.type === 'residential' ? styles.page : styles.page2}
+    >
       <View
         style={{
           display: 'flex',
@@ -50,7 +60,7 @@ export const ResAppPDF = ({ form = {} }) => (
       >
         <View
           style={{
-            border: '1px solid red',
+            border: form.type === 'residential' ? '1px solid red' : '1px solid green',
             borderRadius: 5,
             padding: 5,
             fontSize: 9,
@@ -62,7 +72,7 @@ export const ResAppPDF = ({ form = {} }) => (
         </View>
         <View
           style={{
-            border: '1px solid red',
+            border: form.type === 'residential' ? '1px solid red' : '1px solid green',
             borderRadius: 5,
             padding: 5,
             fontSize: 9,
@@ -72,7 +82,8 @@ export const ResAppPDF = ({ form = {} }) => (
           <Text>NO 2, Dr. Bala Mohd. Road</Text>
           <Text>P.M.B. 3083, Kano State</Text>
         </View>
-      </View>8.
+      </View>
+      8.
       {/* ////////////////////////////////////////////// */}
       <View
         style={{
@@ -84,7 +95,7 @@ export const ResAppPDF = ({ form = {} }) => (
       >
         <View
           style={{
-            border: '1px solid red',
+            border: form.type === 'residential' ? '1px solid red' : '1px solid green',
             borderRadius: 5,
             padding: '30px 5px',
             textAlign: 'center',
@@ -102,7 +113,7 @@ export const ResAppPDF = ({ form = {} }) => (
       </View>
       <View
         style={{
-          border: '1px solid red',
+          border: form.type === 'residential' ? '1px solid red' : '1px solid green',
           textAlign: 'center',
           padding: 10,
           marginTop: 5,
@@ -115,7 +126,7 @@ export const ResAppPDF = ({ form = {} }) => (
       {/* ////////////////////////////////////////////// */}
       <View
         style={{
-          border: '1px solid red',
+          border: form.type === 'residential' ? '1px solid red' : '1px solid green',
           padding: 10,
           marginTop: 20,
           fontSize: 12,
@@ -303,7 +314,9 @@ export const ResAppPDF = ({ form = {} }) => (
                     </Text>
                     <Text>
                       b. Location:
-                      <Text style={{ color: 'black' }}>{form.location}</Text>{' '}
+                      <Text style={{ color: 'black' }}>
+                        {form.location}
+                      </Text>{' '}
                     </Text>
                     <Text>
                       b. Cert. of Occupancy No:
@@ -366,7 +379,7 @@ export const ResAppPDF = ({ form = {} }) => (
       </View>
       <View
         style={{
-          border: '1px solid red',
+          border: form.type === 'residential' ? '1px solid red' : '1px solid green',
           padding: 10,
           marginTop: 20,
           fontSize: 12,
@@ -491,7 +504,7 @@ export const ResAppPDF = ({ form = {} }) => (
         <View style={{ width: '90%' }}>
           <View
             style={{
-              border: '1px solid red',
+              border: form.type === 'residential' ? '1px solid red' : '1px solid green',
               padding: 10,
               width: '100%',
               marginTop: 5,

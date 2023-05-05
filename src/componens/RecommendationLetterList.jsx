@@ -1,30 +1,66 @@
 import React, { useEffect, useState } from 'react'
-import { Card, Table } from 'reactstrap'
+import { Button, Card, Modal, ModalBody, ModalFooter, ModalHeader, Table } from 'reactstrap'
 import { useNavigate } from 'react-router-dom'
 import { _fetchApi, useQuery } from '../helpers/helper'
+import RecForGrOfStatRightOfOccupView from './PDF/RecForGrOfStatRightOfOccupView'
 export default function RecommendationLetterList() {
   const navigate = useNavigate()
-  const [data,setData]=useState([])
-  const getID =()=>{
-    _fetchApi('/api/getBYID?status=file_no_generated',
-    (res)=>{
-      setData(res.results)
-    },(err)=>{
-      console.log(err)
-    }
+  const [data, setData] = useState([])
+  const getID = () => {
+    _fetchApi(
+      '/api/getBYID?status=file_no_generated',
+      (res) => {
+        setData(res.results)
+      },
+      (err) => {
+        console.log(err)
+      },
     )
   }
-  useEffect(
-    ()=>{
-      getID()
-    },
-    []
-  )
+  useEffect(() => {
+    getID()
+  }, [])
   const query = useQuery()
   const role = query.get('type')
+  const [modal3, setModal3] = useState(false)
+  const toggle3 = () => setModal3(!modal3)
+  const [newForm,setNewForm]=useState([])
+  const getRecBy = (num)=>{
+    _fetchApi(`/api/getAppBYID?application_file_number=${num}`,
+(res)=>{
+  if(res.success){
+    setNewForm(res.results[0])
+  }
+},(err)=>{
+  console.log(err)
+}
+    )
+  }
   return (
+    <>
+    
+    <Modal isOpen={modal3} toggle={toggle3} size="lg">
+        <ModalHeader>Continue With</ModalHeader>
+        <ModalBody>
+          {/* <Require_documents />
+           */}
+        <RecForGrOfStatRightOfOccupView form={newForm[0]}/>
+        </ModalBody>
+        <ModalFooter>
+          <Button
+            color="danger"
+            onClick={() => {
+              toggle3()
+              // navigate(-1)
+            }}
+          >
+            Close
+          </Button>
+        </ModalFooter>
+      </Modal>
     <Card className="app_primary_card m-2 shadow p-4">
-      <h5 className="mb-4">Generate Recomendation Letter</h5>
+
+      <h5 className="mb-4">Generate Recomendation Letters</h5>
       {/* {JSON.stringify(data[0])} */}
       <input type='search' placeholder='Search' className='input_field mb-3'/>
       <div>
@@ -47,14 +83,14 @@ export default function RecommendationLetterList() {
       {
         data[0]?.map((item)=>(
           <tr>
-            <td>{item.application_id}</td>
-          <td>{item.Applicant_full_name}</td>
-          <td>{item.Business_location}</td>
-          <td>{item.Applicant_nationality}</td>
-          <td>{item.State_of_origin}</td>
-          <td>{item.occupation_business}</td>
-          <td>{item.length_of_term_required}</td>
-         <td> 
+            <td >{item.application_id}</td>
+          <td >{item.Applicant_full_name}</td>
+          <td >{item.Business_location}</td>
+          <td >{item.Applicant_nationality}</td>
+          <td >{item.State_of_origin}</td>
+          <td >{item.occupation_business}</td>
+          <td >{item.length_of_term_required}</td>
+         <td > 
           {/* {item.land_status==='generated'?'hello':'fuck yu'} */}
           {
             item.land_status===null?<button
@@ -65,7 +101,7 @@ export default function RecommendationLetterList() {
           </button>:
           <button
           className="approved"
-          // onClick={() => navigate(`/recommendation-letter?file_no=${item.file_no}&role=${role}`)}
+          onClick={() => {getRecBy(item.file_no);toggle3()}}
         >
           view
         </button>
@@ -85,5 +121,6 @@ export default function RecommendationLetterList() {
         </Table>
       </div>
     </Card>
+    </>
   )
 }

@@ -1,159 +1,181 @@
-import React, { useEffect, useState } from "react";
-import { Button, Card, CardBody, Col, input, Label, Modal, ModalBody, ModalFooter, ModalHeader, Row, Table } from "reactstrap";
-import { _postApi } from "../helpers/helper";
-import { BsArrowLeft } from "react-icons/bs";
-import Require_documents from "./Require_documents";
-import { useNavigate } from "react-router-dom";
-import LocalGovernment from "./LocalGovernment";
-import ResAppPDFView from "./PDF/ResAppPDFView";
-import { TiCancel } from "react-icons/ti";
+import React, { useEffect, useState } from 'react'
+import {
+  Button,
+  Card,
+  CardBody,
+  Col,
+  input,
+  Label,
+  Modal,
+  ModalBody,
+  ModalFooter,
+  ModalHeader,
+  Row,
+  Table,
+} from 'reactstrap'
+import { _postApi } from '../helpers/helper'
+import { BsArrowLeft } from 'react-icons/bs'
+import Require_documents from './Require_documents'
+import { useNavigate } from 'react-router-dom'
+import LocalGovernment from './LocalGovernment'
+import ResAppPDFView from './PDF/ResAppPDFView'
+import { TiCancel } from 'react-icons/ti'
 
 export default function Application_form() {
   const _form = {
-    Applicant_full_name: "",
-    registration_particulars: "",
-    Business_location: "",
-    correspondance_address: "",
-    age: "",
-    sex: "",
-    yes_no: "",
-    cert_of_occupany_no: "",
-    plot_no: "",
-    location: "",
-    marital_stataus: "",
-    residential: "",
-    correspondance_address: "",
-    email: "",
-    phone_no: "",
-    local_govt: "",
-    Annual_income: "",
-    Allocated_before: "",
-    Applicant_nationality: "",
-    State_of_origin: "",
-    occupation_business: "",
-    nature_of_business: "",
-    company_registered_under: "",
-    when_where_occupancy_no: "",
-    purpose_of_land_use: "",
-    purpose_for_application_required: "",
-    acitivity_intended_to_undertake: "",
-    type_of_building_erected: "",
-    estimated_amount_to_spenr: "",
-    source_financing: "",
-    length_of_term_required: "",
-    do_you_have_biz_in_kano: "",
-    address_of_local_rep: "",
-    power_of_attorney_if_any: "",
-    location_of_land_required: "",
-    application_date: "",
-    type:''
+    Applicant_full_name: '',
+    registration_particulars: '',
+    Business_location: '',
+    correspondance_address: '',
+    age: '',
+    sex: '',
+    yes_no: '',
+    cert_of_occupany_no: '',
+    plot_no: '',
+    location: '',
+    marital_stataus: '',
+    residential: '',
+    correspondance_address: '',
+    email: '',
+    phone_no: '',
+    local_govt: '',
+    Annual_income: '',
+    Allocated_before: '',
+    Applicant_nationality: '',
+    State_of_origin: '',
+    occupation_business: '',
+    nature_of_business: '',
+    company_registered_under: '',
+    when_where_occupancy_no: '',
+    purpose_of_land_use: '',
+    purpose_for_application_required: '',
+    acitivity_intended_to_undertake: '',
+    type_of_building_erected: '',
+    estimated_amount_to_spenr: '',
+    source_financing: '',
+    length_of_term_required: '',
+    do_you_have_biz_in_kano: '',
+    address_of_local_rep: '',
+    power_of_attorney_if_any: '',
+    location_of_land_required: '',
+    application_date: '',
+    type: '',
     // query_type: "Insert",
-  };
-  const [form, setForm] = useState(_form);
+  }
+  const [form, setForm] = useState(_form)
   const handleChange = ({ target: { name, value } }) => {
-    setForm((p) => ({ ...p, [name]: value }));
-  };
-  const [loading, setLoading] = useState(false);
+    setForm((p) => ({ ...p, [name]: value }))
+  }
+  const [loading, setLoading] = useState(false)
   const [modal3, setModal3] = useState(false)
   const toggle3 = () => setModal3(!modal3)
-  const [appid,setAppid]=useState()
+  const [appid, setAppid] = useState()
   const handleSubmit = () => {
-    setLoading(true);
+    setLoading(true)
     toggle3()
-   
-    _postApi("/api/Application_form", form, (res) => {
-      setLoading(false);
-      console.log(res);
+
+    _postApi('/api/Application_form', form, (res) => {
+      setLoading(false)
+      console.log(res)
       if (res.success) {
         setAppid(res.application_id)
-       toggle3()
+        toggle3()
 
         // setForm(_form);
       }
     }),
       (err) => {
-        setLoading(false);
-        console.log(err);
-      };
-  };
-  const [country,setCountry]=useState([])
-  const getCountries = ()=>{
-    fetch('https://restcountries.com/v3.1/all',{
-      method:'GET',
-      headers: { "Content-Type": "application/json" },
-    })
-    .then((raw) => raw.json())
-    .then((response) => {
-      // console.log(response);
-      if (response.status >= 400) {
-        console.log(response);
-      } else  setCountry(response);
-    })
-    .catch((err) =>  console.log(err));
+        setLoading(false)
+        console.log(err)
+      }
   }
-  useEffect(
-    ()=>{
-      getCountries()
-    },[]
-  )
-const navigate  =useNavigate()
-const newCountry = country.map((item)=>item.name.common)
-const [lgas, setLGAs] = useState([]);
-const [new_data,setNew_data]=useState([])
-const handleAdd = ()=>{
-  setNew_data((p)=>(
-    [...p,{
-      plot_no:form.plot_no,
-      cert_of_occupancy:form.cert_of_occupany_no,
-      location:form.location
-    }]
-  ))
- setForm((p)=>({...p,plot_no:'',cert_of_occupany_no:'',location:''}))
-}
-const handleDelete = (index) =>{
-  let item = new_data.filter((i, idx) => index !== idx)
-  setNew_data(item) 
-  console.log(index)
- }
+  const [country, setCountry] = useState([])
+  const getCountries = () => {
+    fetch('https://restcountries.com/v3.1/all', {
+      method: 'GET',
+      headers: { 'Content-Type': 'application/json' },
+    })
+      .then((raw) => raw.json())
+      .then((response) => {
+        // console.log(response);
+        if (response.status >= 400) {
+          console.log(response)
+        } else setCountry(response)
+      })
+      .catch((err) => console.log(err))
+  }
+  useEffect(() => {
+    getCountries()
+  }, [])
+  const navigate = useNavigate()
+  const newCountry = country.map((item) => item.name.common)
+  const [lgas, setLGAs] = useState([])
+  const [new_data, setNew_data] = useState([])
+  const handleAdd = () => {
+    setNew_data((p) => [
+      ...p,
+      {
+        plot_no: form.plot_no,
+        cert_of_occupancy: form.cert_of_occupany_no,
+        location: form.location,
+      },
+    ])
+    setForm((p) => ({
+      ...p,
+      plot_no: '',
+      cert_of_occupany_no: '',
+      location: '',
+    }))
+  }
+  const handleDelete = (index) => {
+    let item = new_data.filter((i, idx) => index !== idx)
+    setNew_data(item)
+    console.log(index)
+  }
   return (
     <div>
-         <Modal isOpen={modal3} toggle={toggle3} size="lg">
-          <ModalHeader>
-          <div style={{display:'flex',justifyContent:'space-between'}}>
-         <span >
-         Continue With   
-          </span> 
-           
-          {/* <Col md={3}>
-          </Col>  */}
-          
-           <Button color="danger" style={{float:'left'}} onClick={()=>{toggle3();navigate(-1)}}>
-            <TiCancel />
-          </Button>
-         
-          </div>
-          </ModalHeader>
-         
-     
-        <ModalBody>
-      {/* <Require_documents />
-       */}
-      Your Application number  : {appid}
-      <ResAppPDFView form={form}/>
-        </ModalBody>
-        <ModalFooter>
-       
-        </ModalFooter>
-                </Modal>
-      <Card className="app_primary_card m-2 shadow p-4">
-        <div className="mb-3" style={{height:70, display:'flex',alignItems:'center', gap:10}}>
+      <Modal isOpen={modal3} toggle={toggle3} size="lg">
+        <ModalHeader>
+          <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+            <span>Continue With</span>
 
-    <div>
-       <button className=" back" onClick={()=>navigate(-1)}><BsArrowLeft size='1.5rem' />  </button>
-      </div> 
-    <div>
-       <h5 className="m-0">Application Form</h5>
-      </div>
+            {/* <Col md={3}>
+          </Col>  */}
+
+            <Button
+              color="danger"
+              style={{ float: 'left' }}
+              onClick={() => {
+                toggle3()
+                navigate(-1)
+              }}
+            >
+              <TiCancel />
+            </Button>
+          </div>
+        </ModalHeader>
+
+        <ModalBody>
+          {/* <Require_documents />
+           */}
+          Your Application number : {appid}
+          <ResAppPDFView form={form} />
+        </ModalBody>
+        <ModalFooter></ModalFooter>
+      </Modal>
+      <Card className="app_primary_card m-2 shadow p-4">
+        <div
+          className="mb-3"
+          style={{ height: 70, display: 'flex', alignItems: 'center', gap: 10 }}
+        >
+          <div>
+            <button className=" back" onClick={() => navigate(-1)}>
+              <BsArrowLeft size="1.5rem" />{' '}
+            </button>
+          </div>
+          <div>
+            <h5 className="m-0">Application Form</h5>
+          </div>
         </div>
         {/* {JSON.stringify(form)} */}
 
@@ -175,49 +197,49 @@ const handleDelete = (index) =>{
             <label className="input_label">Applicantion Type</label>
             <label className="input_label">Application Type</label>
             <div>
-              <select className="input_field" name='type' value={form.type} onChange={handleChange}>
-              <option>---select----</option>
-              <option>residential</option>
-                <option>commercial</
-                
-                
-                
-                
-                
-                option>
-             </select>
-            </div>
-          </Col>
-          {
-           form.type === 'commercial'? <> <Col md={3}>
-           <label className="input_label">Registration Particulars</label>
-           <div>
-             <input
-               className="input_field"
-               type="text"
-               name="registration_particulars"
-               value={form.registration_particulars}
-               onChange={handleChange}
-             />
-           </div>
-         </Col> 
-         <Col md={3}>
-            <label className="input_label">Business Location</label>
-            <div>
-              <input
+              <select
                 className="input_field"
-                type="text"
-                name="Business_location"
-                value={form.Business_location}
+                name="type"
+                value={form.type}
                 onChange={handleChange}
-              />
+              >
+                <option>---select----</option>
+                <option>residential</option>
+                <option>commercial</option>
+              </select>
             </div>
           </Col>
-         </>:''
-          }
-        
-        
-
+          {form.type === 'commercial' ? (
+            <>
+              {' '}
+              <Col md={3}>
+                <label className="input_label">Registration Particulars</label>
+                <div>
+                  <input
+                    className="input_field"
+                    type="text"
+                    name="registration_particulars"
+                    value={form.registration_particulars}
+                    onChange={handleChange}
+                  />
+                </div>
+              </Col>
+              <Col md={3}>
+                <label className="input_label">Business Location</label>
+                <div>
+                  <input
+                    className="input_field"
+                    type="text"
+                    name="Business_location"
+                    value={form.Business_location}
+                    onChange={handleChange}
+                  />
+                </div>
+              </Col>
+            </>
+          ) : (
+            ''
+          )}
           <Col md={3}>
             <label className="input_label">Correspondance Address</label>
             <div>
@@ -231,73 +253,73 @@ const handleDelete = (index) =>{
             </div>
           </Col>
           {/* CHANGESSSSSSSSSSS */}
-          {
-           form.type === 'residential'? <>
-          <Col md={3}>
-            <label className="input_label">Age</label>
-            <div>
-              <input
-                className="input_field"
-                type="number"
-                name="age"
-                value={form.age}
-                onChange={handleChange}
-              />
-            </div>
-          </Col>
+          {form.type === 'residential' ? (
+            <>
+              <Col md={3}>
+                <label className="input_label">Age</label>
+                <div>
+                  <input
+                    className="input_field"
+                    type="number"
+                    name="age"
+                    value={form.age}
+                    onChange={handleChange}
+                  />
+                </div>
+              </Col>
 
-          <Col md={3}>
-            <label className="input_label">Sex</label>
-            <div>
-              <select
-                className="input_field"
-                type="select"
-                name="sex"
-                value={form.sex}
-                onChange={handleChange}
-              >
-                <option>Select</option>
-                <option>Male</option>
-                <option>Female</option>
-              </select>
-            </div>
-          </Col>
-          <Col md={3}>
-            <label className="input_label">Marital Status</label>
-            <div>
-        
-              <select
-                className="input_field"
-                type="select"
-                name="marital_stataus"
-                value={form.marital_stataus}
-                onChange={handleChange}
-              >
-                <option>Select</option>
-                <option>single</option>
-                <option>married</option>
-              </select>
-            </div>
-          </Col>
-
-          </>:''}
-        
-          
-          {
-            form.marital_stataus==='married'?
+              <Col md={3}>
+                <label className="input_label">Sex</label>
+                <div>
+                  <select
+                    className="input_field"
+                    type="select"
+                    name="sex"
+                    value={form.sex}
+                    onChange={handleChange}
+                  >
+                    <option>Select</option>
+                    <option>Male</option>
+                    <option>Female</option>
+                  </select>
+                </div>
+              </Col>
+              <Col md={3}>
+                <label className="input_label">Marital Status</label>
+                <div>
+                  <select
+                    className="input_field"
+                    type="select"
+                    name="marital_stataus"
+                    value={form.marital_stataus}
+                    onChange={handleChange}
+                  >
+                    <option>Select</option>
+                    <option>single</option>
+                    <option>married</option>
+                  </select>
+                </div>
+              </Col>
+            </>
+          ) : (
+            ''
+          )}
+          {form.marital_stataus === 'married' ? (
             <Col md={3}>
-            <label className="input_label">Husband Adress</label>
-            <div>
-              <input
-                className="input_field"
-                type="text"
-                name="husband_address"
-                value={form.husband_address}
-                onChange={handleChange}
-              />
-            </div>
-          </Col>:''
-          }
+              <label className="input_label">Husband Adress</label>
+              <div>
+                <input
+                  className="input_field"
+                  type="text"
+                  name="husband_address"
+                  value={form.husband_address}
+                  onChange={handleChange}
+                />
+              </div>
+            </Col>
+          ) : (
+            ''
+          )}
           <Col md={3}>
             <label className="input_label">Residential Address (P O B)</label>
             <div>
@@ -349,15 +371,15 @@ const handleDelete = (index) =>{
           <Col md={3}>
             <label className="input_label">State Of Origin</label>
             <div>
-            <select
+              <select
                 type="select"
                 className="input_field "
                 name="State_of_origin"
                 value={form.State_of_origin}
                 onChange={({ target: { value } }) => {
-                  setForm((p) => ({ ...p, State_of_origin: value }));
-                  let selected = LocalGovernment.find((a) => a.state === value);
-                  setLGAs(selected.lgas);
+                  setForm((p) => ({ ...p, State_of_origin: value }))
+                  let selected = LocalGovernment.find((a) => a.state === value)
+                  setLGAs(selected.lgas)
                 }}
               >
                 <option>Any State</option>
@@ -365,13 +387,12 @@ const handleDelete = (index) =>{
                   <option>{item.state}</option>
                 ))}
               </select>
-          
             </div>
           </Col>
           <Col md={3}>
             <label className="input_label">Local Govt</label>
             <div>
-            <select
+              <select
                 type="select"
                 className="input_field p-2"
                 name="local_govt"
@@ -394,7 +415,6 @@ const handleDelete = (index) =>{
             </div>
           </Col>
           {/* CHANGESSSSSSSSSSS */}
-     
           <Col md={3}>
             <label className="input_label">Annual Income</label>
             <div>
@@ -422,7 +442,7 @@ const handleDelete = (index) =>{
           <Col md={3}>
             <label className="input_label">Applicant Nationality</label>
             <div>
-            <select
+              <select
                 className="input_field"
                 type="select"
                 name="Applicant_nationality"
@@ -430,14 +450,11 @@ const handleDelete = (index) =>{
                 onChange={handleChange}
               >
                 <option>Select</option>
-                {newCountry&&newCountry.sort()?.map((item)=><option>{item}</option>)}
+                {newCountry &&
+                  newCountry.sort()?.map((item) => <option>{item}</option>)}
               </select>
-             
             </div>
           </Col>
-
-          
-        
           <Col md={3}>
             <label className="input_label">Occupation Business</label>
             <div>
@@ -450,36 +467,36 @@ const handleDelete = (index) =>{
               />
             </div>
           </Col>
-          {
-           form.type === 'commercial'?<>
-         
-          <Col md={3}>
-            <label className="input_label">Nature Of Business</label>
-            <div>
-              <input
-                className="input_field"
-                type="text"
-                name="nature_of_business"
-                value={form.nature_of_business}
-                onChange={handleChange}
-              />
-            </div>
-          </Col>
-          <Col md={3}>
-            <label className="input_label">Company Registered Under</label>
-            <div>
-              <input
-                className="input_field"
-                type="text"
-                name="company_registered_under"
-                value={form.company_registered_under}
-                onChange={handleChange}
-              />
-            </div>
-          </Col>
-          </>
-           :''}
-          
+          {form.type === 'commercial' ? (
+            <>
+              <Col md={3}>
+                <label className="input_label">Nature Of Business</label>
+                <div>
+                  <input
+                    className="input_field"
+                    type="text"
+                    name="nature_of_business"
+                    value={form.nature_of_business}
+                    onChange={handleChange}
+                  />
+                </div>
+              </Col>
+              <Col md={3}>
+                <label className="input_label">Company Registered Under</label>
+                <div>
+                  <input
+                    className="input_field"
+                    type="text"
+                    name="company_registered_under"
+                    value={form.company_registered_under}
+                    onChange={handleChange}
+                  />
+                </div>
+              </Col>
+            </>
+          ) : (
+            ''
+          )}
           <Col md={3}>
             <label className="input_label">When Where Occupancy N</label>
             <div>
@@ -491,8 +508,7 @@ const handleDelete = (index) =>{
                 onChange={handleChange}
               />
             </div>
-          </Col>{" "}
-       
+          </Col>{' '}
           <Col md={3}>
             <label className="input_label">Purpose Of Land Use</label>
             <div>
@@ -544,8 +560,7 @@ const handleDelete = (index) =>{
                 onChange={handleChange}
               />
             </div>
-          </Col>{" "}
-       
+          </Col>{' '}
           <Col md={3}>
             <label className="input_label">Estimated Amount To Spenr</label>
             <div>
@@ -582,21 +597,22 @@ const handleDelete = (index) =>{
               />
             </div>
           </Col>
-          {
-           form.type === 'commercial'?
-          <Col md={3}>
-            <label className="input_label">Do You Have Biz In Kano</label>
-            <div>
-              <input
-                className="input_field"
-                type="text"
-                name="do_you_have_biz_in_kano"
-                value={form.do_you_have_biz_in_kano}
-                onChange={handleChange}
-              />
-            </div>
-          </Col> :''}{" "}
-       
+          {form.type === 'commercial' ? (
+            <Col md={3}>
+              <label className="input_label">Do You Have Biz In Kano</label>
+              <div>
+                <input
+                  className="input_field"
+                  type="text"
+                  name="do_you_have_biz_in_kano"
+                  value={form.do_you_have_biz_in_kano}
+                  onChange={handleChange}
+                />
+              </div>
+            </Col>
+          ) : (
+            ''
+          )}{' '}
           <Col md={3}>
             <label className="input_label">Address Of Local Rep</label>
             <div>
@@ -621,7 +637,6 @@ const handleDelete = (index) =>{
               />
             </div>
           </Col>
-
           <Col md={3}>
             <label className="input_label">Location Of Land Required</label>
             <div>
@@ -677,85 +692,102 @@ const handleDelete = (index) =>{
               />
             </div>
           </Col> */}
-          
           {/* SECTIONNNNNNNNNNNNNNN */}
         </Row>
-        {form.yes_no === "Yes" ? (
-        <div className="p-3 mt-2" style={{border:'3px solid #f1f1f1'}}>
+        {form.yes_no === 'Yes' ? (
           <Row>
-          {form.yes_no === "Yes" ? (
-            <>
-              <Col md={3}>
-                <label className="input_label">Plot No</label>
-                <div>
-                  <input
-                    className="input_field"
-                    type="Number"
-                    name="plot_no"
-                    value={form.plot_no}
-                    onChange={handleChange}
-                  />
-                </div>
-              </Col>
-              <Col md={3}>
-                <label className="input_label">Location</label>
-                <div>
-                  <input
-                    className="input_field"
-                    type="text"
-                    name="location"
-                    value={form.location}
-                    onChange={handleChange}
-                  />
-                </div>
-              </Col>
-              <Col md={3}>
-                <label className="input_label">Cert Of Occupany No</label>
-                <div>
-                  <input
-                    className="input_field"
-                    type="number"
-                    name="cert_of_occupany_no"
-                    value={form.cert_of_occupany_no}
-                    onChange={handleChange}
-                  />
-                </div>
-              </Col>
-            </>
-          ) : null}
-          <center><button className="app_btn mt-2" onClick={handleAdd}>Add</button></center>
-          <Table bordered size="sm" className="mt-2">
-            <thead>
-            <tr>
-    <th>Plot No</th>
-    <th>Location</th>
-    <th>Cert Of Occupancy</th>
-    <th>Action</th>
-    </tr>
-    </thead>
-    {
-      new_data?.map((item,index)=>(
-<tbody>
-    <tr>
-      <td>{item.plot_no}</td>
-      <td>{item.location}</td>
-      <td>{item.cert_of_occupancy}</td>
-      <td><Button color="danger" onClick={()=>handleDelete(index)}>delete</Button></td>
-    </tr>
-    </tbody>
-      ))
-    }
-    
-          </Table>
-
+            {form.yes_no === 'Yes' ? (
+              <>
+                <Col md={3}>
+                  <label className="input_label">Plot No</label>
+                  <div>
+                    <input
+                      className="input_field"
+                      type="Number"
+                      name="plot_no"
+                      value={form.plot_no}
+                      onChange={handleChange}
+                    />
+                  </div>
+                </Col>
+                <Col md={3}>
+                  <label className="input_label">Location</label>
+                  <div>
+                    <input
+                      className="input_field"
+                      type="text"
+                      name="location"
+                      value={form.location}
+                      onChange={handleChange}
+                    />
+                  </div>
+                </Col>
+                <Col md={3}>
+                  <label className="input_label">Cert Of Occupany No</label>
+                  <div>
+                    <input
+                      className="input_field"
+                      type="number"
+                      name="cert_of_occupany_no"
+                      value={form.cert_of_occupany_no}
+                      onChange={handleChange}
+                    />
+                  </div>
+                </Col>
+              </>
+            ) : null}
+            <Col
+              md={3}
+              style={{ display: 'flex', alignItems: 'center', marginTop: 22 }}
+            >
+              <button className="app_btn" onClick={handleAdd}>
+                Add
+              </button>
+            </Col>
+            <Col>
+              <Table striped borderless size="sm" className='mt-3' style={{ fontSize: 14 }}>
+                <thead>
+                  <tr>
+                    <td style={{ fontWeight: 'bold' }}>Plot No</td>
+                    <td style={{ fontWeight: 'bold' }}>Location</td>
+                    <td style={{ fontWeight: 'bold' }}>Cert Of Occupancy</td>
+                    <td style={{ fontWeight: 'bold' }}>
+                      {' '}
+                      <div style={{ float: 'right' }}>Action</div>
+                    </td>
+                  </tr>
+                </thead>
+                  <tbody>
+                {new_data?.map((item, index) => (
+                    <tr>
+                      <td>{item.plot_no}</td>
+                      <td>{item.location}</td>
+                      <td>{item.cert_of_occupancy}</td>
+                      <td>
+                        <div style={{ float: 'right' }}>
+                          <button
+                            className="paid"
+                            onClick={() => handleDelete(index)}
+                          >
+                            delete
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                ))}
+                  </tbody>
+              </Table>
+            </Col>
           </Row>
-        </div>):''}
+        ) : (
+          ''
+        )}
         <div>
           {loading ? (
             <button
               className="app_btn mt-3"
               onClick={handleSubmit}
-              style={{ cursor: "not-allowed", backgroundColor: "#A9A9A9" }}
+              style={{ cursor: 'not-allowed', backgroundColor: '#A9A9A9' }}
             >
               Loading...
             </button>
@@ -767,5 +799,5 @@ const handleDelete = (index) =>{
         </div>
       </Card>
     </div>
-  );
+  )
 }

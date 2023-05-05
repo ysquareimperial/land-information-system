@@ -1,100 +1,105 @@
-import React, { useEffect, useState } from "react";
-import { Card, Col, Input, Modal, ModalBody, Row, Table } from "reactstrap";
-import { _fetchApi, _postApi, useQuery } from "../helpers/helper";
-import { useNavigate } from "react-router-dom";
-import { BsSearch } from "react-icons/bs";
-import SearchBar from "./SearchBar";
+import React, { useEffect, useState } from 'react'
+import { Card, Col, Input, Modal, ModalBody, Row, Table } from 'reactstrap'
+import { _fetchApi, _postApi, useQuery } from '../helpers/helper'
+import { useNavigate } from 'react-router-dom'
+import { BsSearch } from 'react-icons/bs'
+import SearchBar from './SearchBar'
 
 function FinanceForm() {
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(false)
   const [list, setList] = useState({
-    application_id: "",
-    applicant_full_name: "",
-    amount: "",
-    type: "",
-    description: "",
-  });
+    application_id: '',
+    applicant_full_name: '',
+    amount: '',
+    type: '',
+    description: '',
+  })
   const handleChange = ({ target: { name, value } }) => {
-    setList((p) => ({ ...p, [name]: value }));
-  };
-  const [data, setData] = useState([]);
-  const [charges, setCharges] = useState([]);
+    setList((p) => ({ ...p, [name]: value }))
+  }
+  const [data, setData] = useState([])
+  const [charges, setCharges] = useState([])
   const getID = () => {
     _fetchApi(
-      "/api/getBYID?status=application",
+      '/api/getBYID?status=application',
       (res) => {
-        setData(res.results);
+        setData(res.results)
       },
       (err) => {
-        console.log(err);
-      }
-    );
-  };
+        console.log(err)
+      },
+    )
+  }
   const getCharges = () => {
     _fetchApi(
-      "/api/getCharges",
+      '/api/getCharges',
       (res) => {
-        setCharges(res.results);
+        setCharges(res.results)
       },
       (err) => {
-        console.log(err);
-      }
-    );
-  };
+        console.log(err)
+      },
+    )
+  }
   useEffect(() => {
-    getID();
-    getCharges();
-  }, []);
-  const navigate = useNavigate();
+    getID()
+    getCharges()
+  }, [])
+  const navigate = useNavigate()
   const postFinace = () => {
-    setLoading(true);
+    setLoading(true)
     _postApi(
-      "/api/post-finace",
+      '/api/post-finace',
       list,
       (res) => {
         if (res.success) {
-          setLoading(false);
-          alert("success");
-          navigate(-1);
+          setLoading(false)
+          alert('success')
+          navigate(-1)
         }
-        console.log(res);
+        console.log(res)
       },
       (err) => {
-        setLoading(false);
-        console.log(err);
-      }
-    );
-  };
-  const query = useQuery();
-  const type = query.get("type");
-  const byResidential = charges[0]?.filter((i) => i.type === type || list.type);
+        setLoading(false)
+        console.log(err)
+      },
+    )
+  }
+  const query = useQuery()
+  const type = query.get('type')
+  const byResidential = charges[0]?.filter((i) => i.type === type || list.type)
   const total =
     byResidential &&
-    byResidential.reduce((total, item) => parseFloat(item.amount) + total, 0);
+    byResidential.reduce((total, item) => parseFloat(item.amount) + total, 0)
 
-  const applicant_full_name = query.get("applicant_full_name");
-  const application_id = query.get("application_id");
- 
-      useEffect(
-        ()=>{
-          setList((p)=>({...p, amount:total,applicant_full_name:applicant_full_name,application_id:application_id,type:type==='null'?'':type}))
-        },[]
-        )
-        useEffect(
-        ()=>{
-          setList((p)=>({...p, amounts:type==='schedule payment'?12000:total?.toLocaleString(),amount:type==='schedule payment'?12000:total}))
-        },[total]
-      )
-      const [modal3, setModal3] = useState(false)
-      const toggle3 = () => setModal3(!modal3)
+  const applicant_full_name = query.get('applicant_full_name')
+  const application_id = query.get('application_id')
+
+  useEffect(() => {
+    setList((p) => ({
+      ...p,
+      amount: total,
+      applicant_full_name: applicant_full_name,
+      application_id: application_id,
+      type: type === 'null' ? '' : type,
+    }))
+  }, [])
+  useEffect(() => {
+    setList((p) => ({
+      ...p,
+      amounts: type === 'schedule payment' ? 12000 : total?.toLocaleString(),
+      amount: type === 'schedule payment' ? 12000 : total,
+    }))
+  }, [total])
+  const [modal3, setModal3] = useState(false)
+  const toggle3 = () => setModal3(!modal3)
 
   return (
     <div>
       <Card className="app_primary_card m-2 shadow p-4">
         {/* {JSON.stringify(type==='null'?"iam empty": type)} */}
-        <center>
-          <h5 className="mb-3">Finance</h5>
-        </center>
+
+        <h5 className="mb-3">Finance</h5>
         <Row className="mb-1">
           <Col md={6}>
             <label className="input_label">Application Type</label>
@@ -110,7 +115,7 @@ function FinanceForm() {
                 <option>commercial</option>
                 <option>grant</option>
                 <option>schedule payment</option>
-             </select>
+              </select>
             </div>
           </Col>
           <Col md={6} className="mt-0">
@@ -121,8 +126,12 @@ function FinanceForm() {
                 value={list.application_id}
                 onChange={handleChange}
                 name="hotel"
-              />  
-              <BsSearch className="search_icon" onClick={toggle3} />
+              />
+              <BsSearch
+                className="search_icon"
+                style={{ borderTopRightRadius: 5 }}
+                onClick={toggle3}
+              />
               <Modal isOpen={modal3} toggle={toggle3} size="xl">
                 <ModalBody>
                   <SearchBar />
@@ -151,8 +160,8 @@ function FinanceForm() {
                                   ...p,
                                   application_id: item.application_id,
                                   applicant_full_name: item.Applicant_full_name,
-                                }));
-                                toggle3();
+                                }))
+                                toggle3()
                               }}
                             >
                               select
@@ -207,7 +216,7 @@ function FinanceForm() {
             <div className="d-flex justify-content-around mt-4">
               {byResidential?.map((item) => (
                 <span style={{ fontSize: 10 }}>
-                  {" "}
+                  {' '}
                   <Input checked type="checkbox" />
                   {item.name} :{parseInt(item.amount).toLocaleString()}
                 </span>
@@ -218,12 +227,12 @@ function FinanceForm() {
 
         <div>
           <button onClick={postFinace} className="mt-3 app_btn">
-            {loading ? "...loading" : "Submit"}
+            {loading ? '...loading' : 'Submit'}
           </button>
         </div>
       </Card>
     </div>
-  );
+  )
 }
 
-export default FinanceForm;
+export default FinanceForm

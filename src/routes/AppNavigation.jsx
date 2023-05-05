@@ -57,6 +57,7 @@ import { KanoStateCadDeptPDF } from '../componens/PDF/KanoStateCadDeptPDF'
 import KanoStateCadDeptPDFView from '../componens/PDF/KanoStateCadDeptPDFView'
 import { CadastralFeesAreaPDF } from '../componens/PDF/CadastralFeesAreaPDF'
 import CadastralFeesAreaPDFView from '../componens/PDF/CadastralFeesAreaPDFView'
+import DescriptionOfRightOfOccPDFView from '../componens/PDF/DescriptionOfRightOfOccPDFView'
 
 function AppNavigation() {
   let element = useRoutes([
@@ -333,6 +334,10 @@ function AppNavigation() {
         {
           path: '/pdf6',
           element: <CadastralFeesAreaPDFView />,
+        },
+        {
+          path: '/pdf7',
+          element: <DescriptionOfRightOfOccPDFView />,
         },
         //  1cda8d2b662
       ],

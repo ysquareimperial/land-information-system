@@ -1,30 +1,30 @@
-import React, { useEffect, useState } from "react";
-import { BsPlusLg, BsSearch } from "react-icons/bs";
-import { Button, Card, Col, Input, Row, Table } from "reactstrap";
-import SearchBar from "./SearchBar";
-import { useNavigate } from "react-router-dom";
-import { _fetchApi } from "../helpers/helper";
+import React, { useEffect, useState } from 'react'
+import { BsPlusLg, BsSearch } from 'react-icons/bs'
+import { Button, Card, Col, Input, Row, Table } from 'reactstrap'
+import SearchBar from './SearchBar'
+import { useNavigate } from 'react-router-dom'
+import { _fetchApi } from '../helpers/helper'
 
 function GeneratFile() {
-  const navigate = useNavigate();
-  const [data, setData] = useState([]);
+  const navigate = useNavigate()
+  const [data, setData] = useState([])
   const getID = () => {
     _fetchApi(
-      "/api/getBYID?status=application-fee-paid",
+      '/api/getBYID?status=application-fee-paid',
       (res) => {
-        setData(res.results);
+        setData(res.results)
       },
       (err) => {
-        console.log(err);
-      }
-    );
-  };
+        console.log(err)
+      },
+    )
+  }
   useEffect(() => {
-    getID();
-  }, []);
-  const [hello, setHello] = useState("");
+    getID()
+  }, [])
+  const [hello, setHello] = useState('')
 
-  const rows = [];
+  const rows = []
   data[0]?.forEach((item, i) => {
     if (
       item.application_id
@@ -35,7 +35,7 @@ function GeneratFile() {
         .toLowerCase()
         .indexOf(hello.toLowerCase()) === -1
     ) {
-      return;
+      return
     }
     rows.push(
       <tr key={i} className="p-0 m-0">
@@ -44,25 +44,26 @@ function GeneratFile() {
         <td>{item.State_of_origin}</td>
         <td>{item.occupation_business}</td>
         <td>
-          <button
-            className="app_btn"
-            onClick={() =>
-              navigate(`/view-generate?application_id=${item.application_id}`)
-            }
-          >
-            Generate File Number
-          </button>
+          <div style={{ float: 'right' }}>
+            <button
+              className="paid"
+              onClick={() =>
+                navigate(`/view-generate?application_id=${item.application_id}`)
+              }
+            >
+              Generate File Number
+            </button>
+          </div>
         </td>
-      </tr>
-    );
-  });
+      </tr>,
+    )
+  })
   return (
     <div>
       <Card className="app_primary_card m-2 shadow p-4">
         {/* {JSON.stringify(data[0])} */}
-        <center>
-          <h5 className="mb-3">Generate FIle Number</h5>
-        </center>
+
+        <h5 className="mb-3">Generate FIle Number</h5>
 
         <Input
           type="text"
@@ -73,21 +74,30 @@ function GeneratFile() {
           onChange={(e) => setHello(e.target.value)}
         />
 
-        <Table striped>
+        <Table
+          striped
+          borderless
+          size="sm"
+          className="mt-3"
+          style={{ fontSize: 14 }}
+        >
           <thead>
             <tr>
-              <th>Applicant Name</th>
-              <th>Applicantion Number</th>
-              <th>State of origin</th>
-              <th>Bussiness Occupation</th>
-              <th>Action</th>
+              <td style={{ fontWeight: 'bold' }}>Applicant Name</td>
+              <td style={{ fontWeight: 'bold' }}>Applicantion Number</td>
+              <td style={{ fontWeight: 'bold' }}>State of origin</td>
+              <td style={{ fontWeight: 'bold' }}>Bussiness Occupation</td>
+              <td style={{ fontWeight: 'bold' }}>
+                {' '}
+                <div style={{ float: 'right' }}>Action</div>
+              </td>
             </tr>
           </thead>
           <tbody>{rows}</tbody>
         </Table>
       </Card>
     </div>
-  );
+  )
 }
 
-export default GeneratFile;
+export default GeneratFile

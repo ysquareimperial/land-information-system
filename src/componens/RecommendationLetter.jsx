@@ -54,7 +54,7 @@ export default function RecommendationLetter() {
       console.log(res)
       if (res.success) {
         alert('success')
-        toggle3()
+        toggle()
         // setRecLetterForm(form)
       }
     }),
@@ -149,7 +149,7 @@ export default function RecommendationLetter() {
        
         </ModalFooter>
                 </Modal>
-      {/* {JSON.stringify(recLetteForm)} */}
+      {JSON.stringify(newForm)}
       <Card className="app_primary_card m-2 shadow p-4">
         <h5 className="mb-3">Generate Recommendation Letter</h5>
         <Row className="mb-1">
