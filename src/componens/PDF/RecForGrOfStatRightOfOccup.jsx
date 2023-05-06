@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
 })
 
 // Create Document Component
-export const RecForGrOfStatRightOfOccup = () => (
+export const RecForGrOfStatRightOfOccup = ({form={}}) => (
   <Document>
     <Page size="A4" style={styles.page}>
       {/* /////////////////////////////////////////////// */}
@@ -98,7 +98,7 @@ export const RecForGrOfStatRightOfOccup = () => (
             <Text>1. </Text>
           </View>
           <View style={{ width: '95%' }}>
-            <Text>Name of Applicant:</Text>
+            <Text>Name of Applicant:{form?.name}</Text>
           </View>
         </View>
         <View
@@ -114,9 +114,9 @@ export const RecForGrOfStatRightOfOccup = () => (
           </View>
           <View style={{ width: '95%' }}>
             <View style={{ display: 'flex', flexDirection: 'row', gap: 10 }}>
-              <Text>(a) File Ref. No: RES/2008/56/5617</Text>
-              <Text>(b) Purpose of Clause: Residential</Text>
-              <Text>(c) Location: Dangwauro</Text>
+              <Text>(a) File Ref. No: {form?.application_file_number}</Text>
+              <Text>(b) Purpose of Clause: {form?.type}</Text>
+              <Text>(c) Location: {form?.location}</Text>
             </View>
             <View
               style={{
@@ -126,8 +126,8 @@ export const RecForGrOfStatRightOfOccup = () => (
                 marginTop: 5,
               }}
             >
-              <Text>(d) Plot No: 2214</Text>
-              <Text>(e) Layout Plan No: TP/KNUPDA/307</Text>
+              <Text>(d) Plot No: {form?.plot_no}</Text>
+              <Text>(e) Layout Plan No: {form?.plan_no}</Text>
             </View>
           </View>
         </View>
@@ -143,7 +143,7 @@ export const RecForGrOfStatRightOfOccup = () => (
             <Text>3. </Text>
           </View>
           <View style={{ width: '95%' }}>
-            <Text>Term: 99 years</Text>
+            <Text>Term: {form?.term}</Text>
           </View>
         </View>
         <View
@@ -158,7 +158,7 @@ export const RecForGrOfStatRightOfOccup = () => (
             <Text>4. </Text>
           </View>
           <View style={{ width: '95%' }}>
-            <Text>Value of Purposed Development N: </Text>
+            <Text>Value of Purposed Development N:{form?.value_of_proposed_development} </Text>
           </View>
         </View>
         <View
@@ -174,7 +174,7 @@ export const RecForGrOfStatRightOfOccup = () => (
           </View>
           <View style={{ width: '95%' }}>
             <Text>
-              Time for Competition of Proposed Development: within two days
+              Time for Competition of Proposed Development: within {form?.time_of_completion} years 
             </Text>
           </View>
         </View>
@@ -190,7 +190,7 @@ export const RecForGrOfStatRightOfOccup = () => (
             <Text>6. </Text>
           </View>
           <View style={{ width: '95%' }}>
-            <Text>Annual Ground Rent: 7,000.00 p.h.p.a</Text>
+            <Text>Annual Ground Rent: {form?.annual_ground_rent} p.h.p.a</Text>
           </View>
         </View>
         <View
@@ -205,7 +205,7 @@ export const RecForGrOfStatRightOfOccup = () => (
             <Text>7. </Text>
           </View>
           <View style={{ width: '95%' }}>
-            <Text>Development Charge (If any): To Follow</Text>
+            <Text>Development Charge (If any): {form?.development_charges===''?'To Follow':form?.development_charges}</Text>
           </View>
         </View>
         <View
@@ -220,7 +220,7 @@ export const RecForGrOfStatRightOfOccup = () => (
             <Text>8. </Text>
           </View>
           <View style={{ width: '95%' }}>
-            <Text>Survey and Processing Charges: 1,500.00</Text>
+            <Text>Survey and Processing Charges: {form?.survey_charges}</Text>
           </View>
         </View>
         <View
@@ -236,9 +236,7 @@ export const RecForGrOfStatRightOfOccup = () => (
           </View>
           <View style={{ width: '95%' }}>
             <Text>
-              The Director of Land recommends/does not recommend the application
-              for the following reasons, It is a case of resettlement as per the
-              implementation of Dangwauro Layout TP/KNUPDA/307
+              {form?.recommendation_dland}
             </Text>
           </View>
         </View>
@@ -254,7 +252,7 @@ export const RecForGrOfStatRightOfOccup = () => (
             <Text style={{ marginLeft: 100 }}>Director Land</Text>
           </View>
           <View style={{ width: '30%' }}>
-            <Text>Date:_______________</Text>
+            <Text>Date:{form?.dland_sign_date}</Text>
           </View>
         </View>
         <View
@@ -271,8 +269,7 @@ export const RecForGrOfStatRightOfOccup = () => (
           <View style={{ width: '95%' }}>
             <Text>RECOMMENDATION BY THE PERMANENT SECRETARY</Text>
             <Text style={{ marginTop: 10 }}>
-              I recommend/do not recommend the application for a Grant over Plot
-              No: 2214 TP/KNUPDA/307 Location: Dangwauro
+              {form?.recommendation_permsec}
             </Text>
           </View>
         </View>
@@ -288,7 +285,7 @@ export const RecForGrOfStatRightOfOccup = () => (
             <Text style={{ marginLeft: 100 }}>Permanent Secretary</Text>
           </View>
           <View style={{ width: '30%' }}>
-            <Text>Date:_______________</Text>
+            <Text>Date:{form?.PermSec_sign_date}</Text>
           </View>
         </View>
         <Text style={{ marginTop: 20 }}>
@@ -326,7 +323,7 @@ export const RecForGrOfStatRightOfOccup = () => (
             <Text style={{ fontSize: 10, textAlign: 'center' }}>
               Hon. Commissioner
             </Text>
-            <Text style={{ marginTop: 30 }}>Date:_______________</Text>
+            <Text style={{ marginTop: 30 }}>Date:{form?.Comm_govt_signature_date}</Text>
           </View>
         </View>
       </View>

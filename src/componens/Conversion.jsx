@@ -7,7 +7,7 @@ export default function Conversion() {
   const [data, setData] = useState([])
   const getList = () => {
     _fetchApi(
-      '/api/getCadestral?status=approved',
+      '/api/getBYID?status=file_no_generated',
       (res) => {
         setData(res.results[0])
       },
@@ -21,7 +21,7 @@ export default function Conversion() {
   }, [])
   return (
     <Card className="app_primary_card m-2 shadow p-4">
-      {/* {JSON.stringify(data)} */}
+      {JSON.stringify(data)}
       <h5 className="mb-4">Conversion to Statutory Right of Occupancy</h5>
       <input type="search" placeholder="Search" className="input_field mb-3" />
 
@@ -41,8 +41,8 @@ export default function Conversion() {
             {data?.map((item, index) => (
               <tr>
                 <td scope="row">{index + 1}</td>
-                <td>{item.application_file_number}</td>
-                <td>{item.location}</td>
+                <td>{item.Applicant_full_name}</td>
+                <td>{item.Business_location}</td>
                 <td>{item.plot_no}</td>
                 <td>{item.plan_no}</td>
                 <td>
@@ -50,7 +50,7 @@ export default function Conversion() {
                     className="blue table_btn"
                     onClick={() =>
                       navigate(
-                        `/conversion-form?application_file_number=${item.application_file_number}`,
+                        `/conversion-form?application_file_number=${item.file_no}`,
                       )
                     }
                   >

@@ -47,7 +47,7 @@ function ViewFile() {
   const [appid, setAppid] = useState()
   const generateFIle = () => {
     _postApi(
-      `/api/generate-file-no?application_id=${application_id}`,
+      `/api/generate-file-no?application_id=${application_id}&type${data[0][0]?.type}`,
       {},
       (res) => {
         console.log(res)
@@ -89,7 +89,7 @@ function ViewFile() {
         </ModalFooter>
       </Modal>
       <Card className="app_primary_card m-2 shadow p-4">
-        {/* {JSON.stringify(finance[0])} */}
+        {JSON.stringify(data[0])}
 
         <h5 className="mb-3">Generate FIle Number</h5>
         <Row>

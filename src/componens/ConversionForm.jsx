@@ -1,10 +1,12 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Card, Col, Row } from 'reactstrap'
 import ForOfficialUseForm from './ForOfficialUseForm'
-import { _postApi } from '../helpers/helper'
+import { _postApi, _fetchApi, useQuery } from '../helpers/helper'
 
 export default function ConversionForm() {
   const [loading, setLoading] = useState(false)
+  const query = useQuery()
+  const application_file_number = query.get('application_file_number')
   const _form = {
     applicant_full_name: '',
     age: '',
@@ -23,7 +25,7 @@ export default function ConversionForm() {
     len_of_time_req: '',
     date: '',
     signature: '',
-    file_no: 'COM/2023/54',
+    file_no: application_file_number,
   }
   const [form, setForm] = useState(_form)
   const handleChange = ({ target: { name, value } }) => {
@@ -39,6 +41,21 @@ export default function ConversionForm() {
         console.log(err)
       }
   }
+
+  const getApplicant = () => {
+    _fetchApi(
+      `/api/getreByIDs?file_no=${application_file_number}`,
+      (res) => {
+        setData(res.results)
+      },
+      (err) => {
+        console.log(err)
+      },
+    )
+  }
+  useEffect(() => {
+    getApplicant()
+  })
   return (
     <div>
       {/* {JSON.stringify(form)} */}

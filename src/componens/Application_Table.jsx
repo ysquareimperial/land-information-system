@@ -77,9 +77,9 @@ export default function Application_Table() {
                     {item.status === 'application' ? (
                       <button className="pending">Pending</button>
                     ) : item.status === 'file_no_generated' ? (
-                      <button className="paid">Paid</button>
-                    ) : item.status === 'application-fee-paid' ? (
                       <button className="approved">Approved</button>
+                    ) : item.status === 'application-fee-paid' ? (
+                      <button className="paid">paid</button>
                     ) : (
                       ''
                     )}
