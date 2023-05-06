@@ -5,6 +5,7 @@ import { _postApi, _fetchApi, useQuery } from '../helpers/helper'
 
 export default function ConversionForm() {
   const [loading, setLoading] = useState(false)
+  const [data, setData] = useState([])
   const query = useQuery()
   const application_file_number = query.get('application_file_number')
   const _form = {
@@ -25,7 +26,7 @@ export default function ConversionForm() {
     len_of_time_req: '',
     date: '',
     signature: '',
-    file_no: application_file_number,
+    file_no: `CON/${application_file_number}`,
   }
   const [form, setForm] = useState(_form)
   const handleChange = ({ target: { name, value } }) => {
@@ -46,7 +47,7 @@ export default function ConversionForm() {
     _fetchApi(
       `/api/getreByIDs?file_no=${application_file_number}`,
       (res) => {
-        setData(res.results)
+        setData(res.results[0])
       },
       (err) => {
         console.log(err)
@@ -55,10 +56,21 @@ export default function ConversionForm() {
   }
   useEffect(() => {
     getApplicant()
-  })
+  }, [])
+
+  useEffect(() => {
+    setForm((p) => ({
+      ...p,
+      applicant_full_name: data[0]?.Applicant_full_name,
+      occupation: data[0]?.occupation_business,
+      nationality: data[0]?.Applicant_nationality,
+      state_of_origin: data[0]?.State_of_origin,
+      add_in_nig: data[0]?.correspondance_address,
+    }))
+  }, )
   return (
     <div>
-      {/* {JSON.stringify(form)} */}
+      {/* {JSON.stringify(data)} */}
       <Card className="app_primary_card m-2 shadow p-4">
         <h5 className="mb-3">Conversion to Statutory Right of Occupancy</h5>
         <Row className="mb-2">

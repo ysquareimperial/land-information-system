@@ -247,6 +247,26 @@ export default function Sidebar() {
               <div className="d-flex">
                 <span
                   className={
+                    location.pathname === '/conversion-recommendation-letter'
+                      ? 'active_sidebar_item'
+                      : `sidebar_items `
+                  }
+                  onClick={() =>
+                    navigate(
+                      '/conversion-recommendation-letter?type=director-land',
+                    )
+                  }
+                >
+                  <BsFileEarmarkText size="1.2rem" className="sidebar_icon" />
+                  Generate Conversion Recommendation Letter
+                </span>
+                {/* </div> */}
+              </div>
+            </div>
+            <div>
+              <div className="d-flex">
+                <span
+                  className={
                     location.pathname === '/grant-table'
                       ? 'active_sidebar_item'
                       : `sidebar_items `
@@ -294,7 +314,24 @@ export default function Sidebar() {
                 {/* </div> */}
               </div>
             </div>
-
+            <div>
+              <div className="d-flex">
+                <span
+                  className={
+                    location.pathname === '/cadestral-conv-recom'
+                      ? 'active_sidebar_item'
+                      : `sidebar_items `
+                  }
+                  onClick={() =>
+                    navigate('/conversion-recommendation-letter?type=director-cadestral')
+                  }
+                >
+                  <BsFileEarmarkText size="1.2rem" className="sidebar_icon" />
+                  Generate Conversion Letter
+                </span>
+                {/* </div> */}
+              </div>
+            </div>
             <div>
               <div className="d-flex">
                 <span
@@ -458,6 +495,22 @@ export default function Sidebar() {
                 >
                   <AiFillMoneyCollect size="1.2rem" className="sidebar_icon" />
                   Payment Schedule
+                </span>
+                {/* </div> */}
+              </div>
+            </div>
+            <div>
+              <div className="d-flex">
+                <span
+                  className={
+                    location.pathname === '/payment-table'
+                      ? 'active_sidebar_item'
+                      : `sidebar_item_ `
+                  }
+                  onClick={() => navigate('/conversion-list')}
+                >
+                  <AiFillMoneyCollect size="1.2rem" className="sidebar_icon" />
+                  Conversion
                 </span>
                 {/* </div> */}
               </div>

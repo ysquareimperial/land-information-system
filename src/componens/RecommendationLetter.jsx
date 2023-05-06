@@ -112,7 +112,7 @@ export default function RecommendationLetter() {
   const [newForm, setNewForm] = useState([])
   const getRecBy = () => {
     _fetchApi(
-      `/api/getAppBYID?application_file_number=${application_file_number}`,
+      `/api/getAppBYID?application_file_number=${file_no}`,
       (res) => {
         if (res.success) {
           setNewForm(res.results[0])
@@ -185,9 +185,13 @@ export default function RecommendationLetter() {
         </ModalBody>
         <ModalFooter></ModalFooter>
       </Modal>
-      {JSON.stringify(newForm)}
+      {/* {JSON.stringify(newForm)} */}
       <Card className="app_primary_card m-2 shadow p-4">
-        <h5 className="mb-3">Generate Recommendation Letter</h5>
+        <h5 className="mb-3">
+          {type === 'conversion'
+            ? 'Generate Conversion Recommendation Letter'
+            : 'Generated Recommendation Letter'}
+        </h5>
         <Row className="mb-1">
           <Col lg={3}>
             <label className="input_label">Application File No</label>

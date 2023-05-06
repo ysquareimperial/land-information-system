@@ -21,7 +21,7 @@ export default function Conversion() {
   }, [])
   return (
     <Card className="app_primary_card m-2 shadow p-4">
-      {JSON.stringify(data)}
+      {/* {JSON.stringify(data)} */}
       <h5 className="mb-4">Conversion to Statutory Right of Occupancy</h5>
       <input type="search" placeholder="Search" className="input_field mb-3" />
 
