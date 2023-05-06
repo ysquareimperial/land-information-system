@@ -13,6 +13,7 @@ import {
 } from 'reactstrap'
 import { _fetchApi, _postApi, useQuery } from '../helpers/helper'
 import { useNavigate } from 'react-router-dom'
+import RecForGrOfStatRightOfOccupView from './PDF/RecForGrOfStatRightOfOccupView'
 
 export default function LetterOfGrant() {
   const _form = {
@@ -101,9 +102,8 @@ export default function LetterOfGrant() {
       <Modal isOpen={modal3} toggle={toggle3} size="lg">
         <ModalHeader>Continue With</ModalHeader>
         <ModalBody>
-          {/* <Require_documents />
-           */}
           Your Grant number : {grantNumber}
+          <RecForGrOfStatRightOfOccupView />
         </ModalBody>
         <ModalFooter>
           <Button
