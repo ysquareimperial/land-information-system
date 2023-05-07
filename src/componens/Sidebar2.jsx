@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { GoDashboard } from 'react-icons/go'
-// import { IoIosArrowUp, IoIosArrowDown } from 'react-icons/ti'
-import { IoIosArrowUp, IoIosArrowDown } from 'react-icons/io'
+// import { IoIosArrowUp, IoIosArrowForward } from 'react-icons/ti'
+import { IoIosArrowUp, IoIosArrowForward } from 'react-icons/io'
 // import { AiOutlineUser, AiOutlineUnorderedList } from 'react-icons/ai'
 import { useNavigate } from 'react-router-dom'
 
@@ -74,7 +74,7 @@ export default function Sidebar2() {
             {showSubMenu ? (
               <IoIosArrowUp style={{ float: 'right' }} size="1.1rem" />
             ) : (
-              <IoIosArrowDown size="1.1rem" style={{ float: 'right' }} />
+              <IoIosArrowForward size="1.1rem" style={{ float: 'right' }} />
             )}
           </span>
         </p>
@@ -88,7 +88,7 @@ export default function Sidebar2() {
                       ? 'active_sidebar_item'
                       : `sidebar_items `
                   }
-                  onClick={() => navigate('')}
+                //   onClick={() => navigate('')}
                 >
                   {/* <AiOutlineUnorderedList
                     size="1.2rem"
@@ -104,7 +104,7 @@ export default function Sidebar2() {
                       ? 'active_sidebar_item'
                       : `sidebar_items `
                   }
-                  onClick={() => navigate('')}
+                //   onClick={() => navigate('')}
                 >
                   {/* <AiOutlineUnorderedList
                     size="1.2rem"
@@ -120,7 +120,7 @@ export default function Sidebar2() {
                       ? 'active_sidebar_item'
                       : `sidebar_items `
                   }
-                  onClick={() => navigate('')}
+                //   onClick={() => navigate('')}
                 >
                   {/* <AiOutlineUnorderedList
                     size="1.2rem"
@@ -206,7 +206,7 @@ export default function Sidebar2() {
             {showSubMenuS ? (
               <IoIosArrowUp style={{ float: 'right' }} size="1.1rem" />
             ) : (
-              <IoIosArrowDown size="1.1rem" style={{ float: 'right' }} />
+              <IoIosArrowForward size="1.1rem" style={{ float: 'right' }} />
             )}
           </span>
         </p>
@@ -220,7 +220,7 @@ export default function Sidebar2() {
                       ? 'active_sidebar_item'
                       : `sidebar_items `
                   }
-                  onClick={() => navigate('')}
+                //   onClick={() => navigate('')}
                 >
                   {/* <AiOutlineUnorderedList
                     size="1.2rem"
@@ -236,7 +236,7 @@ export default function Sidebar2() {
                       ? 'active_sidebar_item'
                       : `sidebar_items `
                   }
-                  onClick={() => navigate('')}
+                //   onClick={() => navigate('')}
                 >
                   {/* <AiOutlineUnorderedList
                     size="1.2rem"
@@ -252,7 +252,7 @@ export default function Sidebar2() {
                       ? 'active_sidebar_item'
                       : `sidebar_items `
                   }
-                  onClick={() => navigate('')}
+                //   onClick={() => navigate('')}
                 >
                   {/* <AiOutlineUnorderedList
                     size="1.2rem"
@@ -268,7 +268,7 @@ export default function Sidebar2() {
                       ? 'active_sidebar_item'
                       : `sidebar_items `
                   }
-                  onClick={() => navigate('')}
+                //   onClick={() => navigate('')}
                 >
                   {/* <AiOutlineUnorderedList
                     size="1.2rem"
@@ -290,7 +290,7 @@ export default function Sidebar2() {
             {showSubMenuC ? (
               <IoIosArrowUp style={{ float: 'right' }} size="1.1rem" />
             ) : (
-              <IoIosArrowDown size="1.1rem" style={{ float: 'right' }} />
+              <IoIosArrowForward size="1.1rem" style={{ float: 'right' }} />
             )}
           </span>
         </p>
@@ -304,7 +304,7 @@ export default function Sidebar2() {
                       ? 'active_sidebar_item'
                       : `sidebar_items `
                   }
-                  onClick={() => navigate('')}
+                //   onClick={() => navigate('')}
                 >
                   {/* <AiOutlineUnorderedList
                     size="1.2rem"
@@ -320,7 +320,7 @@ export default function Sidebar2() {
                       ? 'active_sidebar_item'
                       : `sidebar_items `
                   }
-                  onClick={() => navigate('')}
+                //   onClick={() => navigate('')}
                 >
                   {/* <AiOutlineUnorderedList
                     size="1.2rem"
@@ -336,7 +336,7 @@ export default function Sidebar2() {
                       ? 'active_sidebar_item'
                       : `sidebar_items `
                   }
-                  onClick={() => navigate('')}
+                //   onClick={() => navigate('')}
                 >
                   {/* <AiOutlineUnorderedList
                     size="1.2rem"
@@ -352,7 +352,7 @@ export default function Sidebar2() {
                       ? 'active_sidebar_item'
                       : `sidebar_items `
                   }
-                  onClick={() => navigate('')}
+                //   onClick={() => navigate('')}
                 >
                   {/* <AiOutlineUnorderedList
                     size="1.2rem"
@@ -374,7 +374,7 @@ export default function Sidebar2() {
             {showSubMenuC ? (
               <IoIosArrowUp style={{ float: 'right' }} size="1.1rem" />
             ) : (
-              <IoIosArrowDown size="1.1rem" style={{ float: 'right' }} />
+              <IoIosArrowForward size="1.1rem" style={{ float: 'right' }} />
             )}
           </span>
         </p>
@@ -388,7 +388,7 @@ export default function Sidebar2() {
                       ? 'active_sidebar_item'
                       : `sidebar_items `
                   }
-                  onClick={() => navigate('')}
+                //   onClick={() => navigate('')}
                 >
                   {/* <AiOutlineUnorderedList
                     size="1.2rem"
@@ -404,7 +404,7 @@ export default function Sidebar2() {
                       ? 'active_sidebar_item'
                       : `sidebar_items `
                   }
-                  onClick={() => navigate('')}
+                //   onClick={() => navigate('')}
                 >
                   {/* <AiOutlineUnorderedList
                     size="1.2rem"
@@ -420,7 +420,7 @@ export default function Sidebar2() {
                       ? 'active_sidebar_item'
                       : `sidebar_items `
                   }
-                  onClick={() => navigate('')}
+                //   onClick={() => navigate('')}
                 >
                   {/* <AiOutlineUnorderedList
                     size="1.2rem"
@@ -442,7 +442,7 @@ export default function Sidebar2() {
             {showSubMenuD ? (
               <IoIosArrowUp style={{ float: 'right' }} size="1.1rem" />
             ) : (
-              <IoIosArrowDown size="1.1rem" style={{ float: 'right' }} />
+              <IoIosArrowForward size="1.1rem" style={{ float: 'right' }} />
             )}
           </span>
         </p>
@@ -456,7 +456,7 @@ export default function Sidebar2() {
                       ? 'active_sidebar_item'
                       : `sidebar_items `
                   }
-                  onClick={() => navigate('')}
+                //   onClick={() => navigate('')}
                 >
                   {/* <AiOutlineUnorderedList
                     size="1.2rem"
@@ -475,10 +475,10 @@ export default function Sidebar2() {
           <span>
             {/* <AiOutlineUser size="1.2rem" className="sidebar_icon" />  */}
             Director DEEDS
-            {showSubMenuC ? (
+            {showSubMenuE ? (
               <IoIosArrowUp style={{ float: 'right' }} size="1.1rem" />
             ) : (
-              <IoIosArrowDown size="1.1rem" style={{ float: 'right' }} />
+              <IoIosArrowForward size="1.1rem" style={{ float: 'right' }} />
             )}
           </span>
         </p>
@@ -492,7 +492,7 @@ export default function Sidebar2() {
                       ? 'active_sidebar_item'
                       : `sidebar_items `
                   }
-                  onClick={() => navigate('')}
+                //   onClick={() => navigate('')}
                 >
                   {/* <AiOutlineUnorderedList
                     size="1.2rem"
@@ -514,7 +514,7 @@ export default function Sidebar2() {
             {showSubMenuC ? (
               <IoIosArrowUp style={{ float: 'right' }} size="1.1rem" />
             ) : (
-              <IoIosArrowDown size="1.1rem" style={{ float: 'right' }} />
+              <IoIosArrowForward size="1.1rem" style={{ float: 'right' }} />
             )}
           </span>
         </p>
@@ -528,7 +528,7 @@ export default function Sidebar2() {
                       ? 'active_sidebar_item'
                       : `sidebar_items `
                   }
-                  onClick={() => navigate('')}
+                //   onClick={() => navigate('')}
                 >
                   {/* <AiOutlineUnorderedList
                     size="1.2rem"
@@ -544,7 +544,7 @@ export default function Sidebar2() {
                       ? 'active_sidebar_item'
                       : `sidebar_items `
                   }
-                  onClick={() => navigate('')}
+                //   onClick={() => navigate('')}
                 >
                   {/* <AiOutlineUnorderedList
                     size="1.2rem"
@@ -560,7 +560,7 @@ export default function Sidebar2() {
                       ? 'active_sidebar_item'
                       : `sidebar_items `
                   }
-                  onClick={() => navigate('')}
+                //   onClick={() => navigate('')}
                 >
                   {/* <AiOutlineUnorderedList
                     size="1.2rem"
@@ -576,7 +576,7 @@ export default function Sidebar2() {
                       ? 'active_sidebar_item'
                       : `sidebar_items `
                   }
-                  onClick={() => navigate('')}
+                //   onClick={() => navigate('')}
                 >
                   {/* <AiOutlineUnorderedList
                     size="1.2rem"
@@ -598,7 +598,7 @@ export default function Sidebar2() {
             {showSubMenuI ? (
               <IoIosArrowUp style={{ float: 'right' }} size="1.1rem" />
             ) : (
-              <IoIosArrowDown size="1.1rem" style={{ float: 'right' }} />
+              <IoIosArrowForward size="1.1rem" style={{ float: 'right' }} />
             )}
           </span>
         </p>
@@ -612,7 +612,7 @@ export default function Sidebar2() {
                       ? 'active_sidebar_item'
                       : `sidebar_items `
                   }
-                  onClick={() => navigate('')}
+                //   onClick={() => navigate('')}
                 >
                   {/* <AiOutlineUnorderedList
                     size="1.2rem"
@@ -628,7 +628,7 @@ export default function Sidebar2() {
                       ? 'active_sidebar_item'
                       : `sidebar_items `
                   }
-                  onClick={() => navigate('')}
+                //   onClick={() => navigate('')}
                 >
                   {/* <AiOutlineUnorderedList
                     size="1.2rem"
@@ -644,7 +644,7 @@ export default function Sidebar2() {
                       ? 'active_sidebar_item'
                       : `sidebar_items `
                   }
-                  onClick={() => navigate('')}
+                //   onClick={() => navigate('')}
                 >
                   {/* <AiOutlineUnorderedList
                     size="1.2rem"
@@ -666,7 +666,7 @@ export default function Sidebar2() {
             {showSubMenuPP ? (
               <IoIosArrowUp style={{ float: 'right' }} size="1.1rem" />
             ) : (
-              <IoIosArrowDown size="1.1rem" style={{ float: 'right' }} />
+              <IoIosArrowForward size="1.1rem" style={{ float: 'right' }} />
             )}
           </span>
         </p>
@@ -680,7 +680,7 @@ export default function Sidebar2() {
                       ? 'active_sidebar_item'
                       : `sidebar_items `
                   }
-                  onClick={() => navigate('')}
+                //   onClick={() => navigate('')}
                 >
                   {/* <AiOutlineUnorderedList
                     size="1.2rem"
@@ -696,7 +696,7 @@ export default function Sidebar2() {
                       ? 'active_sidebar_item'
                       : `sidebar_items `
                   }
-                  onClick={() => navigate('')}
+                //   onClick={() => navigate('')}
                 >
                   {/* <AiOutlineUnorderedList
                     size="1.2rem"
@@ -718,7 +718,7 @@ export default function Sidebar2() {
             {showSubMenuPR ? (
               <IoIosArrowUp style={{ float: 'right' }} size="1.1rem" />
             ) : (
-              <IoIosArrowDown size="1.1rem" style={{ float: 'right' }} />
+              <IoIosArrowForward size="1.1rem" style={{ float: 'right' }} />
             )}
           </span>
         </p>
@@ -732,7 +732,7 @@ export default function Sidebar2() {
                       ? 'active_sidebar_item'
                       : `sidebar_items `
                   }
-                  onClick={() => navigate('')}
+                //   onClick={() => navigate('')}
                 >
                   {/* <AiOutlineUnorderedList
                     size="1.2rem"
@@ -748,7 +748,7 @@ export default function Sidebar2() {
                       ? 'active_sidebar_item'
                       : `sidebar_items `
                   }
-                  onClick={() => navigate('')}
+                //   onClick={() => navigate('')}
                 >
                   {/* <AiOutlineUnorderedList
                     size="1.2rem"
