@@ -323,7 +323,9 @@ export default function Sidebar() {
                       : `sidebar_items `
                   }
                   onClick={() =>
-                    navigate('/conversion-recommendation-letter?type=director-cadestral')
+                    navigate(
+                      '/conversion-recommendation-letter?type=director-cadestral',
+                    )
                   }
                 >
                   <BsFileEarmarkText size="1.2rem" className="sidebar_icon" />
