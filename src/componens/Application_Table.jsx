@@ -1,14 +1,17 @@
 import React, { useEffect, useState } from 'react'
-import { Card, Col, Row, Table } from 'reactstrap'
+import { Card, Col, Row, Table, Modal } from 'reactstrap'
 import SearchBar from './SearchBar'
 import { BsPlusLg } from 'react-icons/bs'
 import { useNavigate } from 'react-router-dom'
 import { _fetchApi } from '../helpers/helper'
-
+import ResAppPDFView from './PDF/ResAppPDFView'
 export default function Application_Table() {
   const navigate = useNavigate()
   const [data, setData] = useState([])
-
+  const [modal, setModal] = useState(false)
+  const toggleModal = () => {
+    setModal(!modal)
+  }
   const getApplication = () => {
     _fetchApi(
       '/api/get-application',
@@ -24,6 +27,7 @@ export default function Application_Table() {
   useEffect(() => {
     getApplication()
   }, [])
+  const [newData, setNewData] = useState({})
   return (
     <div>
       {/* {JSON.stringify(data[0])} */}
@@ -60,6 +64,9 @@ export default function Application_Table() {
                 {' '}
                 <div style={{ textAlign: 'right' }}>Status</div>
               </td>
+              <td style={{ fontWeight: 'bold' }}>
+                <div style={{ textAlign: 'right' }}>Action</div>
+              </td>
             </tr>
           </thead>
           <tbody>
@@ -85,11 +92,30 @@ export default function Application_Table() {
                     )}
                   </div>
                 </td>
+                <td>
+                  <div style={{ textAlign: 'right' }}>
+                    <button
+                      className="paid"
+                      onClick={() => {
+                        setNewData(item)
+                        toggleModal()
+                      }}
+                    >
+                      View
+                    </button>
+                  </div>
+                </td>
               </tr>
             ))}
           </tbody>
         </Table>
       </Card>
+      <Modal isOpen={modal} toggle={toggleModal} size="lg">
+        <div className="p-2">
+          {/* {JSON.stringify(newData)} */}
+          <ResAppPDFView form={newData} />
+        </div>
+      </Modal>
     </div>
   )
 }

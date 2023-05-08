@@ -260,33 +260,38 @@ export default function RecommendationLetter() {
               />
             </div>
           </Col>
-          <Col lg={3}>
-            <label className="input_label">Recommendation Dir Land</label>
-            <div>
-              <textarea
-                type=""
-                className="input_field"
-                name="recommendation_dland"
-                rows={1}
-                value={recLetteForm.recommendation_dland}
-                onChange={handleChange}
-                disabled={role === 'director-cadestral' ? true : false}
-              />
-            </div>
-          </Col>
-          <Col lg={3}>
-            <label className="input_label">Dir Land Signature</label>
-            <div>
-              <input
-                type=""
-                className="input_field"
-                name="Dland_signature"
-                value={recLetteForm.Dland_signature}
-                onChange={handleChange}
-                disabled={role === 'director-cadestral' ? true : false}
-              />
-            </div>
-          </Col>
+          {role === 'registry' ? (
+            ''
+          ) : (
+            <>
+              <Col lg={3}>
+                <label className="input_label">Recommendation Dir Land</label>
+                <div>
+                  <textarea
+                    type=""
+                    className="input_field"
+                    name="recommendation_dland"
+                    rows={1}
+                    value={recLetteForm.recommendation_dland}
+                    onChange={handleChange}
+                    disabled={role === 'director-cadestral' ? true : false}
+                  />
+                </div>
+              </Col>
+              <Col lg={3}>
+                <label className="input_label">Dir Land Signature</label>
+                <div>
+                  <input
+                    type=""
+                    className="input_field"
+                    name="Dland_signature"
+                    value={recLetteForm.Dland_signature}
+                    onChange={handleChange}
+                    disabled={role === 'director-cadestral' ? true : false}
+                  />
+                </div>
+              </Col>
+            
 
           <Col lg={3}>
             <label className="input_label">Dir Land Signature Date</label>
@@ -301,6 +306,8 @@ export default function RecommendationLetter() {
               />
             </div>
           </Col>
+          </>
+          )}
           {role === 'director-cadestral' || 'director-land' ? (
             <></>
           ) : (
@@ -505,8 +512,9 @@ export default function RecommendationLetter() {
                 onChange={handleChange}
               >
                 <option>---select---</option>
-                <option>Director Cadestral</option>
-                <option>Comissioner </option>
+                <option>Director Land</option>
+                <option>Permanent Secretary</option>
+                <option>Comissioner/Governor</option>
               </select>
             </div>
           </Col>

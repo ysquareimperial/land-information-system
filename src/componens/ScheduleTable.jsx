@@ -55,7 +55,7 @@ function Shedule_table() {
   return (
     <div>
       <Card className="app_primary_card m-2 shadow p-4">
-        {JSON.stringify(role)}
+        {/* {JSON.stringify(role)} */}
         <center>
           <h5 className="mb-3">{type==='letter'?'Application Letter':'Schedule Table'}</h5>
         </center>
