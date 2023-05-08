@@ -189,7 +189,7 @@ function AppNavigation() {
           path: '/cadestral-recom',
           element: <CadestralRecom />,
         },
-      
+
         {
           path: '/grant-table',
           element: <GrantTable />,
