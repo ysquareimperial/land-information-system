@@ -195,7 +195,7 @@ export default function Application_form() {
         <Row>
           {/* {JSON.stringify(newCountry.sort())} */}
           <Col md={3}>
-            <label className="input_label">Applicant Full Name</label>
+            <label className="input_label">Applicant's Full Name</label>
             <div>
               <input
                 className="input_field"
@@ -286,7 +286,7 @@ export default function Application_form() {
             </div>
           </Col>
           {/* CHANGESSSSSSSSSSS */}
-          {form.type === 'residential' ? (
+          {form.type === 'Residential' ? (
             <>
               <Col md={3}>
                 <label className="input_label">Age</label>
@@ -339,7 +339,9 @@ export default function Application_form() {
           )}
           {form.marital_stataus === 'married' ? (
             <Col md={3}>
-              <label className="input_label">Husband Adress</label>
+              <label className="input_label">
+                Name & Address of Your Husband
+              </label>
               <div>
                 <input
                   className="input_field"
@@ -354,7 +356,9 @@ export default function Application_form() {
             ''
           )}
           <Col md={3}>
-            <label className="input_label">Residential Address (P O B)</label>
+            <label className="input_label">
+              Residential Address (P O Box must be given)
+            </label>
             <div>
               <input
                 className="input_field"
@@ -378,7 +382,7 @@ export default function Application_form() {
             </div>
           </Col>
           <Col md={3}>
-            <label className="input_label">Email</label>
+            <label className="input_label">Email(if any)</label>
             <div>
               <input
                 className="input_field"
@@ -461,7 +465,9 @@ export default function Application_form() {
             </div>
           </Col>
           <Col md={3}>
-            <label className="input_label">Allocated Before</label>
+            <label className="input_label">
+              Have you been allocated any residential plot Before
+            </label>
             <div>
               <input
                 className="input_field"
@@ -756,7 +762,7 @@ export default function Application_form() {
                   </div>
                 </Col>
                 <Col md={3}>
-                  <label className="input_label">Cert Of Occupany No</label>
+                  <label className="input_label">Cert Of Occupancy No</label>
                   <div>
                     <input
                       className="input_field"

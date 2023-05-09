@@ -99,7 +99,8 @@ export default function Sidebar2() {
                       ? 'active_sidebar_item'
                       : `sidebar_items `
                   }
-                  onClick={() => navigate('/generate-recommendation-comm-gov')}
+                  onClick={() => navigate('/recommendation-letter-list?role=comm-gov')}
+                  // onClick={() => navigate('/generate-recommendation-comm-gov')}
                 >
                   {/* <AiOutlineUnorderedList
                     size="1.2rem"
@@ -135,7 +136,8 @@ export default function Sidebar2() {
                       ? 'active_sidebar_item'
                       : `sidebar_items `
                   }
-                  onClick={() => navigate('/generate-recommendation-perm-sec')}
+                  onClick={() => navigate('/recommendation-letter-list?role=perm-sec')}
+                  // onClick={() => navigate('/generate-recommendation-perm-sec')}
                 >
                   {/* <AiOutlineUnorderedList
                     size="1.2rem"
@@ -203,7 +205,7 @@ export default function Sidebar2() {
                       ? 'active_sidebar_item'
                       : `sidebar_items `
                   }
-                  onClick={() => navigate('/generate-recommendation-dir-land')}
+                  onClick={() => navigate('/recommendation-letter-list?role=dir-land')}
                 >
                   {/* <AiOutlineUnorderedList
                     size="1.2rem"

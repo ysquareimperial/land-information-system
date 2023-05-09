@@ -68,7 +68,7 @@ export default function RecommendationLetterList() {
         </ModalFooter>
       </Modal>
       <Card className="app_primary_card m-2 shadow p-4">
-        <h5 className="mb-4">Generate Recomendation Letters</h5>
+        <h5 className="mb-4">Generate Recommendation Letters</h5>
         {/* {JSON.stringify(data[0])} */}
         <input
           type="search"
