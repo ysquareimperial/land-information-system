@@ -2,22 +2,22 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { PDFDownloadLink, PDFViewer } from '@react-pdf/renderer'
 import { ResAppPDF } from './ResAppPDF'
-export default function ResAppPDFView({form={}}) {
+export default function ResAppPDFView({ form = {} }) {
   return (
     <div>
-      {JSON.stringify(form.type)}
+      {/* {JSON.stringify(form.type)} */}
       <PDFDownloadLink
-      style={{float:'left'}}
+        style={{ float: 'left' }}
         document={<ResAppPDF />}
         fileName="Residential_Application_PDF_Doc"
       >
         {({ loading }) =>
           loading ? (
-            <button style={{ marginRight: 0 }} className="app_btn">
+            <button style={{ marginRight: 0 }} className="app_btn mb-2">
               Loading Document...
             </button>
           ) : (
-            <button className='app_btn' style={{ marginRight: 0 }}>
+            <button className="app_btn mb-2" style={{ marginRight: 0 }}>
               {' '}
               Download PDF
             </button>
@@ -25,9 +25,8 @@ export default function ResAppPDFView({form={}}) {
         }
       </PDFDownloadLink>
       <PDFViewer style={{ width: '100%', height: '100vh' }}>
-        <ResAppPDF form={form}/>
+        <ResAppPDF form={form} />
       </PDFViewer>
-      
     </div>
   )
 }

@@ -29,7 +29,7 @@ export default function RecommendationLetterList() {
     getID()
   }, [])
   const query = useQuery()
-  const role = query.get('type')
+  const role = query.get('role')
   const [modal3, setModal3] = useState(false)
   const toggle3 = () => setModal3(!modal3)
   const [newForm, setNewForm] = useState([])

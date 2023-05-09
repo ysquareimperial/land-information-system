@@ -20,8 +20,9 @@ import { useNavigate } from 'react-router-dom'
 import LocalGovernment from './LocalGovernment'
 import ResAppPDFView from './PDF/ResAppPDFView'
 import { TiCancel } from 'react-icons/ti'
-
+import moment from 'moment'
 export default function Application_form() {
+  const today = moment().format('YYYY-MM-DD')
   const _form = {
     Applicant_full_name: '',
     registration_particulars: '',
@@ -42,7 +43,7 @@ export default function Application_form() {
     Annual_income: '',
     Allocated_before: '',
     Applicant_nationality: '',
-    State_of_origin: '',
+    State_of_origin: 'Kano',
     occupation_business: '',
     nature_of_business: '',
     company_registered_under: '',
@@ -58,13 +59,17 @@ export default function Application_form() {
     address_of_local_rep: '',
     power_of_attorney_if_any: '',
     location_of_land_required: '',
-    application_date: '',
+    application_date: today,
     type: '',
     // query_type: "Insert",
   }
   const [form, setForm] = useState(_form)
   const handleChange = ({ target: { name, value } }) => {
     setForm((p) => ({ ...p, [name]: value }))
+  }
+  const [selectType, setSelectType] = useState({ type: '' })
+  const handleSelectType = ({ target: { name, value } }) => {
+    setSelectType((p) => ({ ...p, [name]: value }))
   }
   const [loading, setLoading] = useState(false)
   const [modal3, setModal3] = useState(false)
@@ -132,8 +137,17 @@ export default function Application_form() {
     setNew_data(item)
     console.log(index)
   }
+  useEffect(() => {
+    selectType.type === 'Others'
+      ? setForm((p) => ({ ...p, type: '' }))
+      : setForm((p) => ({ ...p, type: selectType.type }))
+  }, [selectType.type])
+
   return (
     <div>
+      {/* {JSON.stringify(form.type)}
+      {JSON.stringify(selectType.type)} */}
+
       <Modal isOpen={modal3} toggle={toggle3} size="lg">
         <ModalHeader>
           <div style={{ display: 'flex', justifyContent: 'space-between' }}>
@@ -156,9 +170,9 @@ export default function Application_form() {
         </ModalHeader>
 
         <ModalBody>
-          {/* <Require_documents />
-           */}
-          Your Application number : {appid}
+          <div>
+            {/* <p className="m-0">Your Application number : {appid}</p> */}
+          </div>
           <ResAppPDFView form={form} />
         </ModalBody>
         <ModalFooter></ModalFooter>
@@ -177,7 +191,6 @@ export default function Application_form() {
             <h5 className="m-0">Application Form</h5>
           </div>
         </div>
-        {/* {JSON.stringify(form)} */}
 
         <Row>
           {/* {JSON.stringify(newCountry.sort())} */}
@@ -200,15 +213,35 @@ export default function Application_form() {
               <select
                 className="input_field"
                 name="type"
-                value={form.type}
-                onChange={handleChange}
+                value={selectType.type}
+                onChange={handleSelectType}
               >
                 <option>---select----</option>
-                <option>residential</option>
-                <option>commercial</option>
+                <option>Residential</option>
+                <option>Commercial</option>
+                <option>Agricultural</option>
+                <option>Industrial</option>
+                <option>Recreational</option>
+                <option>Others</option>
               </select>
             </div>
           </Col>
+          {selectType.type === 'Others' ? (
+            <Col md={3}>
+              <label className="input_label">Other application type</label>
+              <div>
+                <input
+                  className="input_field"
+                  type="text"
+                  name="type"
+                  value={form.type}
+                  onChange={handleChange}
+                />
+              </div>
+            </Col>
+          ) : (
+            ''
+          )}
           {form.type === 'commercial' ? (
             <>
               {' '}
@@ -378,7 +411,7 @@ export default function Application_form() {
                 value={form.State_of_origin}
                 onChange={({ target: { value } }) => {
                   setForm((p) => ({ ...p, State_of_origin: value }))
-                  let selected = LocalGovernment.find((a) => a.state === value)
+                  let selected = LocalGovernment.find((a) => a.state === 'Kano')
                   setLGAs(selected.lgas)
                 }}
               >
@@ -390,7 +423,7 @@ export default function Application_form() {
             </div>
           </Col>
           <Col md={3}>
-            <label className="input_label">Local Govt</label>
+            <label className="input_label">Local Government</label>
             <div>
               <select
                 type="select"
@@ -664,7 +697,7 @@ export default function Application_form() {
           {/* SECTIONNNNNNNNNNNNNNN */}
           <Col md={3}>
             <label className="input_label">
-              You been aloctd to any residential plot before?
+              Have you been allocated to any residential plot before?
             </label>
             <div>
               <select
@@ -745,7 +778,13 @@ export default function Application_form() {
               </button>
             </Col>
             <Col>
-              <Table striped borderless size="sm" className='mt-3' style={{ fontSize: 14 }}>
+              <Table
+                striped
+                borderless
+                size="sm"
+                className="mt-3"
+                style={{ fontSize: 14 }}
+              >
                 <thead>
                   <tr>
                     <td style={{ fontWeight: 'bold' }}>Plot No</td>
@@ -757,8 +796,8 @@ export default function Application_form() {
                     </td>
                   </tr>
                 </thead>
-                  <tbody>
-                {new_data?.map((item, index) => (
+                <tbody>
+                  {new_data?.map((item, index) => (
                     <tr>
                       <td>{item.plot_no}</td>
                       <td>{item.location}</td>
@@ -774,8 +813,8 @@ export default function Application_form() {
                         </div>
                       </td>
                     </tr>
-                ))}
-                  </tbody>
+                  ))}
+                </tbody>
               </Table>
             </Col>
           </Row>

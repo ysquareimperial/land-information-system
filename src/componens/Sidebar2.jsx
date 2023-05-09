@@ -14,8 +14,10 @@ export default function Sidebar2() {
   const [showSubMenuE, setShowSubMenuE] = useState(false)
   const [showSubMenuG, setShowSubMenuG] = useState(false)
   const [showSubMenuI, setShowSubMenuI] = useState(false)
+  const [showSubMenuCM, setShowSubMenuCM] = useState(false)
   const [showSubMenuPP, setShowSubMenuPP] = useState(false)
   const [showSubMenuPR, setShowSubMenuPR] = useState(false)
+  const [showRegistryMenu, setShowRegistryMenu] = useState(false)
   const drop = () => {
     setShowSubMenu((p) => !p)
   }
@@ -43,9 +45,18 @@ export default function Sidebar2() {
   const dropPP = () => {
     setShowSubMenuPP((p) => !p)
   }
+  const dropCM = () => {
+    setShowSubMenuCM((p) => !p)
+  }
+
   const dropPR = () => {
     setShowSubMenuPR((p) => !p)
   }
+
+  const dropRegistry = () => {
+    setShowRegistryMenu((p) => !p)
+  }
+
   const navigate = useNavigate()
   return (
     <div className="sidebar">
@@ -67,6 +78,110 @@ export default function Sidebar2() {
           </div>
         </div>
         {/* ////////////////////////////////////// */}
+        <p className="sidebar_item_" onClick={dropCM}>
+          <span>
+            {/* <AiOutlineUser size="1.2rem" className="sidebar_icon" />  */}
+            Commissioner
+            {showSubMenuCM ? (
+              <IoIosArrowUp style={{ float: 'right' }} size="1.1rem" />
+            ) : (
+              <IoIosArrowForward size="1.1rem" style={{ float: 'right' }} />
+            )}
+          </span>
+        </p>
+        <>
+          {showSubMenuCM ? (
+            <div>
+              <div className="d-flex">
+                <span
+                  className={
+                    location.pathname === ''
+                      ? 'active_sidebar_item'
+                      : `sidebar_items `
+                  }
+                  onClick={() => navigate('/generate-recommendation-comm-gov')}
+                >
+                  {/* <AiOutlineUnorderedList
+                    size="1.2rem"
+                    className="sidebar_icon"
+                  /> */}
+                  Generate Rec. Letter
+                </span>
+              </div>
+            </div>
+          ) : (
+            ''
+          )}
+        </>
+        {/* ////////////////////////////////////////////////////*/}
+        <p className="sidebar_item_" onClick={dropPR}>
+          <span>
+            {/* <AiOutlineUser size="1.2rem" className="sidebar_icon" />  */}
+            PRS
+            {showSubMenuPR ? (
+              <IoIosArrowUp style={{ float: 'right' }} size="1.1rem" />
+            ) : (
+              <IoIosArrowForward size="1.1rem" style={{ float: 'right' }} />
+            )}
+          </span>
+        </p>
+        <>
+          {showSubMenuPR ? (
+            <div>
+              <div className="d-flex">
+                <span
+                  className={
+                    location.pathname === ''
+                      ? 'active_sidebar_item'
+                      : `sidebar_items `
+                  }
+                  onClick={() => navigate('/generate-recommendation-perm-sec')}
+                >
+                  {/* <AiOutlineUnorderedList
+                    size="1.2rem"
+                    className="sidebar_icon"
+                  /> */}
+                  Generate Rec. Letter
+                </span>
+              </div>
+              <div className="d-flex">
+                <span
+                  className={
+                    location.pathname === ''
+                      ? 'active_sidebar_item'
+                      : `sidebar_items `
+                  }
+                  //   onClick={() => navigate('')}
+                >
+                  {/* <AiOutlineUnorderedList
+                    size="1.2rem"
+                    className="sidebar_icon"
+                  /> */}
+                  Research
+                </span>
+              </div>
+              <div className="d-flex">
+                <span
+                  className={
+                    location.pathname === ''
+                      ? 'active_sidebar_item'
+                      : `sidebar_items `
+                  }
+                  //   onClick={() => navigate('')}
+                >
+                  {/* <AiOutlineUnorderedList
+                    size="1.2rem"
+                    className="sidebar_icon"
+                  /> */}
+                  Planning
+                </span>
+              </div>
+            </div>
+          ) : (
+            ''
+          )}
+        </>
+        {/* //////////////////////////////////////////////////// */}
         <p className="sidebar_item_" onClick={drop}>
           <span>
             {/* <AiOutlineUser size="1.2rem" className="sidebar_icon" />  */}
@@ -88,7 +203,23 @@ export default function Sidebar2() {
                       ? 'active_sidebar_item'
                       : `sidebar_items `
                   }
-                //   onClick={() => navigate('')}
+                  onClick={() => navigate('/generate-recommendation-dir-land')}
+                >
+                  {/* <AiOutlineUnorderedList
+                    size="1.2rem"
+                    className="sidebar_icon"
+                  /> */}
+                  Generate Rec. Letter
+                </span>
+              </div>
+              <div className="d-flex">
+                <span
+                  className={
+                    location.pathname === ''
+                      ? 'active_sidebar_item'
+                      : `sidebar_items `
+                  }
+                  //   onClick={() => navigate('')}
                 >
                   {/* <AiOutlineUnorderedList
                     size="1.2rem"
@@ -104,7 +235,7 @@ export default function Sidebar2() {
                       ? 'active_sidebar_item'
                       : `sidebar_items `
                   }
-                //   onClick={() => navigate('')}
+                  //   onClick={() => navigate('')}
                 >
                   {/* <AiOutlineUnorderedList
                     size="1.2rem"
@@ -120,7 +251,7 @@ export default function Sidebar2() {
                       ? 'active_sidebar_item'
                       : `sidebar_items `
                   }
-                //   onClick={() => navigate('')}
+                  //   onClick={() => navigate('')}
                 >
                   {/* <AiOutlineUnorderedList
                     size="1.2rem"
@@ -136,7 +267,10 @@ export default function Sidebar2() {
                       ? 'active_sidebar_item'
                       : `sidebar_items `
                   }
-                  onClick={() => navigate('/application-table')}
+                  onClick={() => {
+                    navigate('/application-table')
+                    dropRegistry()
+                  }}
                 >
                   {/* <AiOutlineUnorderedList
                     size="1.2rem"
@@ -145,54 +279,65 @@ export default function Sidebar2() {
                   Registry
                 </span>
               </div>
-              <div className="d-flex">
-                <span
-                  className={
-                    location.pathname === '/generate'
-                      ? 'active_sidebar_item'
-                      : `sidebar_items `
-                  }
-                  onClick={() => navigate('/generate')}
-                >
-                  {/* <AiOutlineUnorderedList
+              {showRegistryMenu ? (
+                <div style={{ paddingLeft: 10 }}>
+                  <div className="d-flex">
+                    <span
+                      style={{ fontSize: 11 }}
+                      className={
+                        location.pathname === '/generate'
+                          ? 'active_sidebar_item'
+                          : `sidebar_items `
+                      }
+                      onClick={() => navigate('/generate')}
+                    >
+                      {/* <AiOutlineUnorderedList
                     size="1.2rem"
                     className="sidebar_icon"
                   /> */}
-                  Genrate File No
-                </span>
-              </div>
-              <div className="d-flex">
-                <span
-                  className={
-                    location.pathname === '/recommendation-letter-list'
-                      ? 'active_sidebar_item'
-                      : `sidebar_items `
-                  }
-                  onClick={() => navigate('/recommendation-letter-list?type=director-land')}
-                >
-                  {/* <AiOutlineUnorderedList
+                      Genrate File No
+                    </span>
+                  </div>
+                  <div className="d-flex">
+                    <span
+                      style={{ fontSize: 11 }}
+                      className={
+                        location.pathname === '/recommendation-letter-list'
+                          ? 'active_sidebar_item'
+                          : `sidebar_items `
+                      }
+                      onClick={() =>
+                        navigate('/recommendation-letter-list?role=registry')
+                      }
+                    >
+                      {/* <AiOutlineUnorderedList
                     size="1.2rem"
                     className="sidebar_icon"
                   /> */}
-                  Genrate Rec. Letter
-                </span>
-              </div>
-              <div className="d-flex">
-                <span
-                  className={
-                    location.pathname === '/grant-table'
-                      ? 'active_sidebar_item'
-                      : `sidebar_items `
-                  }
-                  onClick={() => navigate('/grant-table')}
-                >
-                  {/* <AiOutlineUnorderedList
+                      Genrate Rec. Letter
+                    </span>
+                  </div>
+                  <div className="d-flex">
+                    <span
+                      style={{ fontSize: 11 }}
+                      className={
+                        location.pathname === '/grant-table'
+                          ? 'active_sidebar_item'
+                          : `sidebar_items `
+                      }
+                      onClick={() => navigate('/grant-table')}
+                    >
+                      {/* <AiOutlineUnorderedList
                     size="1.2rem"
                     className="sidebar_icon"
                   /> */}
-                  Genrate Letter of Grant
-                </span>
-              </div>
+                      Genrate Letter of Grant
+                    </span>
+                  </div>
+                </div>
+              ) : (
+                ''
+              )}
             </div>
           ) : (
             ''
@@ -220,7 +365,7 @@ export default function Sidebar2() {
                       ? 'active_sidebar_item'
                       : `sidebar_items `
                   }
-                //   onClick={() => navigate('')}
+                  //   onClick={() => navigate('')}
                 >
                   {/* <AiOutlineUnorderedList
                     size="1.2rem"
@@ -236,7 +381,7 @@ export default function Sidebar2() {
                       ? 'active_sidebar_item'
                       : `sidebar_items `
                   }
-                //   onClick={() => navigate('')}
+                  //   onClick={() => navigate('')}
                 >
                   {/* <AiOutlineUnorderedList
                     size="1.2rem"
@@ -252,7 +397,7 @@ export default function Sidebar2() {
                       ? 'active_sidebar_item'
                       : `sidebar_items `
                   }
-                //   onClick={() => navigate('')}
+                  //   onClick={() => navigate('')}
                 >
                   {/* <AiOutlineUnorderedList
                     size="1.2rem"
@@ -268,7 +413,7 @@ export default function Sidebar2() {
                       ? 'active_sidebar_item'
                       : `sidebar_items `
                   }
-                //   onClick={() => navigate('')}
+                  //   onClick={() => navigate('')}
                 >
                   {/* <AiOutlineUnorderedList
                     size="1.2rem"
@@ -304,7 +449,7 @@ export default function Sidebar2() {
                       ? 'active_sidebar_item'
                       : `sidebar_items `
                   }
-                //   onClick={() => navigate('')}
+                  //   onClick={() => navigate('')}
                 >
                   {/* <AiOutlineUnorderedList
                     size="1.2rem"
@@ -320,7 +465,7 @@ export default function Sidebar2() {
                       ? 'active_sidebar_item'
                       : `sidebar_items `
                   }
-                //   onClick={() => navigate('')}
+                  //   onClick={() => navigate('')}
                 >
                   {/* <AiOutlineUnorderedList
                     size="1.2rem"
@@ -336,7 +481,7 @@ export default function Sidebar2() {
                       ? 'active_sidebar_item'
                       : `sidebar_items `
                   }
-                //   onClick={() => navigate('')}
+                  //   onClick={() => navigate('')}
                 >
                   {/* <AiOutlineUnorderedList
                     size="1.2rem"
@@ -352,7 +497,7 @@ export default function Sidebar2() {
                       ? 'active_sidebar_item'
                       : `sidebar_items `
                   }
-                //   onClick={() => navigate('')}
+                  //   onClick={() => navigate('')}
                 >
                   {/* <AiOutlineUnorderedList
                     size="1.2rem"
@@ -388,7 +533,7 @@ export default function Sidebar2() {
                       ? 'active_sidebar_item'
                       : `sidebar_items `
                   }
-                //   onClick={() => navigate('')}
+                  onClick={() => navigate('/finance')}
                 >
                   {/* <AiOutlineUnorderedList
                     size="1.2rem"
@@ -404,7 +549,7 @@ export default function Sidebar2() {
                       ? 'active_sidebar_item'
                       : `sidebar_items `
                   }
-                //   onClick={() => navigate('')}
+                  //   onClick={() => navigate('')}
                 >
                   {/* <AiOutlineUnorderedList
                     size="1.2rem"
@@ -420,7 +565,7 @@ export default function Sidebar2() {
                       ? 'active_sidebar_item'
                       : `sidebar_items `
                   }
-                //   onClick={() => navigate('')}
+                  //   onClick={() => navigate('')}
                 >
                   {/* <AiOutlineUnorderedList
                     size="1.2rem"
@@ -456,7 +601,7 @@ export default function Sidebar2() {
                       ? 'active_sidebar_item'
                       : `sidebar_items `
                   }
-                //   onClick={() => navigate('')}
+                  //   onClick={() => navigate('')}
                 >
                   {/* <AiOutlineUnorderedList
                     size="1.2rem"
@@ -492,7 +637,7 @@ export default function Sidebar2() {
                       ? 'active_sidebar_item'
                       : `sidebar_items `
                   }
-                //   onClick={() => navigate('')}
+                  //   onClick={() => navigate('')}
                 >
                   {/* <AiOutlineUnorderedList
                     size="1.2rem"
@@ -528,7 +673,7 @@ export default function Sidebar2() {
                       ? 'active_sidebar_item'
                       : `sidebar_items `
                   }
-                //   onClick={() => navigate('')}
+                  //   onClick={() => navigate('')}
                 >
                   {/* <AiOutlineUnorderedList
                     size="1.2rem"
@@ -544,7 +689,7 @@ export default function Sidebar2() {
                       ? 'active_sidebar_item'
                       : `sidebar_items `
                   }
-                //   onClick={() => navigate('')}
+                  //   onClick={() => navigate('')}
                 >
                   {/* <AiOutlineUnorderedList
                     size="1.2rem"
@@ -560,7 +705,7 @@ export default function Sidebar2() {
                       ? 'active_sidebar_item'
                       : `sidebar_items `
                   }
-                //   onClick={() => navigate('')}
+                  //   onClick={() => navigate('')}
                 >
                   {/* <AiOutlineUnorderedList
                     size="1.2rem"
@@ -576,7 +721,7 @@ export default function Sidebar2() {
                       ? 'active_sidebar_item'
                       : `sidebar_items `
                   }
-                //   onClick={() => navigate('')}
+                  //   onClick={() => navigate('')}
                 >
                   {/* <AiOutlineUnorderedList
                     size="1.2rem"
@@ -612,7 +757,7 @@ export default function Sidebar2() {
                       ? 'active_sidebar_item'
                       : `sidebar_items `
                   }
-                //   onClick={() => navigate('')}
+                  //   onClick={() => navigate('')}
                 >
                   {/* <AiOutlineUnorderedList
                     size="1.2rem"
@@ -628,7 +773,7 @@ export default function Sidebar2() {
                       ? 'active_sidebar_item'
                       : `sidebar_items `
                   }
-                //   onClick={() => navigate('')}
+                  //   onClick={() => navigate('')}
                 >
                   {/* <AiOutlineUnorderedList
                     size="1.2rem"
@@ -644,7 +789,7 @@ export default function Sidebar2() {
                       ? 'active_sidebar_item'
                       : `sidebar_items `
                   }
-                //   onClick={() => navigate('')}
+                  //   onClick={() => navigate('')}
                 >
                   {/* <AiOutlineUnorderedList
                     size="1.2rem"
@@ -680,7 +825,7 @@ export default function Sidebar2() {
                       ? 'active_sidebar_item'
                       : `sidebar_items `
                   }
-                //   onClick={() => navigate('')}
+                  //   onClick={() => navigate('')}
                 >
                   {/* <AiOutlineUnorderedList
                     size="1.2rem"
@@ -696,7 +841,7 @@ export default function Sidebar2() {
                       ? 'active_sidebar_item'
                       : `sidebar_items `
                   }
-                //   onClick={() => navigate('')}
+                  //   onClick={() => navigate('')}
                 >
                   {/* <AiOutlineUnorderedList
                     size="1.2rem"
@@ -711,57 +856,6 @@ export default function Sidebar2() {
           )}
         </>
         {/* /////////////////////////////////////////////////////// */}
-        <p className="sidebar_item_" onClick={dropPR}>
-          <span>
-            {/* <AiOutlineUser size="1.2rem" className="sidebar_icon" />  */}
-            PRS
-            {showSubMenuPR ? (
-              <IoIosArrowUp style={{ float: 'right' }} size="1.1rem" />
-            ) : (
-              <IoIosArrowForward size="1.1rem" style={{ float: 'right' }} />
-            )}
-          </span>
-        </p>
-        <>
-          {showSubMenuPR ? (
-            <div>
-              <div className="d-flex">
-                <span
-                  className={
-                    location.pathname === ''
-                      ? 'active_sidebar_item'
-                      : `sidebar_items `
-                  }
-                //   onClick={() => navigate('')}
-                >
-                  {/* <AiOutlineUnorderedList
-                    size="1.2rem"
-                    className="sidebar_icon"
-                  /> */}
-                  Research
-                </span>
-              </div>
-              <div className="d-flex">
-                <span
-                  className={
-                    location.pathname === ''
-                      ? 'active_sidebar_item'
-                      : `sidebar_items `
-                  }
-                //   onClick={() => navigate('')}
-                >
-                  {/* <AiOutlineUnorderedList
-                    size="1.2rem"
-                    className="sidebar_icon"
-                  /> */}
-                  Planning
-                </span>
-              </div>
-            </div>
-          ) : (
-            ''
-          )}
-        </>
       </div>
     </div>
   )

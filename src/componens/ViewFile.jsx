@@ -89,7 +89,7 @@ function ViewFile() {
         </ModalFooter>
       </Modal>
       <Card className="app_primary_card m-2 shadow p-4">
-        {JSON.stringify(data[0])}
+        {/* {JSON.stringify(data[0])} */}
 
         <h5 className="mb-3">Generate FIle Number</h5>
         <Row>

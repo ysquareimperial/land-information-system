@@ -60,6 +60,9 @@ import { CadastralFeesAreaPDF } from '../componens/PDF/CadastralFeesAreaPDF'
 import CadastralFeesAreaPDFView from '../componens/PDF/CadastralFeesAreaPDFView'
 import DescriptionOfRightOfOccPDFView from '../componens/PDF/DescriptionOfRightOfOccPDFView'
 import ConversionRecommendationLetter from '../componens/ConversionRecommendationLetter'
+import GenerateRecDirLand from '../componens/GenerateRecDirLand'
+import GenerateRecPermsSec from '../componens/GenerateRecPermSec'
+import GenerateRecComm from '../componens/GenerateRecComm'
 
 function AppNavigation() {
   let element = useRoutes([
@@ -286,6 +289,18 @@ function AppNavigation() {
         {
           path: '/cadestral-recom',
           element: <CadestralRecom />,
+        },
+        {
+          path: '/generate-recommendation-dir-land',
+          element: <GenerateRecDirLand />,
+        },
+        {
+          path: '/generate-recommendation-perm-sec',
+          element: <GenerateRecPermsSec />,
+        },
+        {
+          path: '/generate-recommendation-comm-gov',
+          element: <GenerateRecComm />,
         },
         {
           path: '/grant-table',
