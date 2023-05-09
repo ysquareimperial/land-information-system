@@ -60,7 +60,7 @@ export default function GrantTable() {
                 <td>{item.plot_no}</td>
                 <td>{item.plan_no}</td>
                 <td>
-                  {/* {item.grant_status === 'generated' ? (
+                  {item.grant_status === 'generated' ? (
                     <div style={{ float: 'right' }}>
                       <button
                         className="blue app_btn "
@@ -70,7 +70,7 @@ export default function GrantTable() {
                         View
                       </button>
                     </div>
-                  ) : ( */}
+                  ) : (
                     <div style={{ float: 'right' }}>
                       <button
                         className="blue paid "
@@ -83,7 +83,7 @@ export default function GrantTable() {
                         Process
                       </button>
                     </div>
-                  {/* )} */}
+                  )} 
                   {/* <button
                   className="blue app_btn "
                   
