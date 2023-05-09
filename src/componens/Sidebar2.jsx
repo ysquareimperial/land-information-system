@@ -83,9 +83,15 @@ export default function Sidebar2() {
             {/* <AiOutlineUser size="1.2rem" className="sidebar_icon" />  */}
             Commissioner
             {showSubMenuCM ? (
-              <IoIosArrowUp style={{ float: 'right' }} size="1.1rem" />
+              <IoIosArrowUp
+                style={{ marginRight: 5, marginTop: -2 }}
+                size="1.1rem"
+              />
             ) : (
-              <IoIosArrowForward size="1.1rem" style={{ float: 'right' }} />
+              <IoIosArrowDown
+                size="1.1rem"
+                style={{ marginRight: 5, marginTop: -2 }}
+              />
             )}
           </span>
         </p>
@@ -120,12 +126,18 @@ export default function Sidebar2() {
         <p className="sidebar_item_" onClick={dropPR}>
           <span>
             {/* <AiOutlineUser size="1.2rem" className="sidebar_icon" />  */}
-            PRS
             {showSubMenuPR ? (
-              <IoIosArrowUp style={{ float: 'right' }} size="1.1rem" />
+              <IoIosArrowUp
+                style={{ marginRight: 5, marginTop: -2 }}
+                size="1.1rem"
+              />
             ) : (
-              <IoIosArrowForward size="1.1rem" style={{ float: 'right' }} />
+              <IoIosArrowDown
+                size="1.1rem"
+                style={{ marginRight: 5, marginTop: -2 }}
+              />
             )}
+            PRS
           </span>
         </p>
         <>
@@ -192,9 +204,15 @@ export default function Sidebar2() {
           <span>
             {/* <AiOutlineUser size="1.2rem" className="sidebar_icon" />  */}
             {showSubMenu ? (
-              <IoIosArrowUp style={{ marginRight: 5 }} size="1.1rem" />
+              <IoIosArrowUp
+                style={{ marginRight: 5, marginTop: -2 }}
+                size="1.1rem"
+              />
             ) : (
-              <IoIosArrowDown size="1.1rem" style={{ marginRight: 5 }} />
+              <IoIosArrowDown
+                size="1.1rem"
+                style={{ marginRight: 5, marginTop: -2 }}
+              />
             )}
             Director Land
           </span>
@@ -355,12 +373,18 @@ export default function Sidebar2() {
         <p className="sidebar_item_" onClick={dropS}>
           <span>
             {/* <AiOutlineUser size="1.2rem" className="sidebar_icon" />  */}
-            Director Survey
             {showSubMenuS ? (
-              <IoIosArrowUp style={{ float: 'right' }} size="1.1rem" />
+              <IoIosArrowUp
+                style={{ marginRight: 5, marginTop: -2 }}
+                size="1.1rem"
+              />
             ) : (
-              <IoIosArrowForward size="1.1rem" style={{ float: 'right' }} />
+              <IoIosArrowDown
+                size="1.1rem"
+                style={{ marginRight: 5, marginTop: -2 }}
+              />
             )}
+            Director Survey
           </span>
         </p>
         <>
