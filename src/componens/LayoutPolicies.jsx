@@ -1,61 +1,60 @@
-import React, { useEffect, useState } from "react";
-import { Button, Card, Col, Row } from "reactstrap";
-import { _fetchApi, _postApi } from "../helpers/helper";
+import React, { useEffect, useState } from 'react'
+import { Button, Card, Col, Row } from 'reactstrap'
+import { _fetchApi, _postApi } from '../helpers/helper'
 
 export default function LayoutPolicies() {
   const [list, setList] = useState({
-    layout_number: "",
-    policy_item_id: "",
-    policy_name: "",
-    item_description: "",
-    item_value: "",
-    survey_charges:'',
-          development_charges:'',
-          term:'',
-          annual_ground_rent:'',
-  });
+    layout_number: '',
+    policy_item_id: '',
+    policy_name: '',
+    item_description: '',
+    item_value: '',
+    survey_charges: '',
+    development_charges: '',
+    term: '',
+    annual_ground_rent: '',
+  })
   const handleChange = ({ target: { name, value } }) => {
-    setList((p) => ({ ...p, [name]: value }));
-  };
-  const [loading, setLoading] = useState(false);
+    setList((p) => ({ ...p, [name]: value }))
+  }
+  const [loading, setLoading] = useState(false)
   const handleSubmit = () => {
-    setLoading(true);
-    _postApi("/api/layout_policies", list, (res) => {
-      console.log(res);
+    setLoading(true)
+    _postApi('/api/layout_policies', list, (res) => {
+      console.log(res)
       if (res.success) {
-        setLoading(false);
+        setLoading(false)
         setList({
-          layout_number: "",
-          policy_item_id: "",
-          policy_name: "",
-          item_description: "",
-          item_value: "",
-        });
-        alert("success");
+          layout_number: '',
+          policy_item_id: '',
+          policy_name: '',
+          item_description: '',
+          item_value: '',
+        })
+        alert('success')
       }
     }),
       (err) => {
-        setLoading(false);
-        console.log(err);
-      };
-  };
-  const [data,setData]=useState([])
-
-  const getList = ()=>{
-    _fetchApi('/api/getPlotiig',
-    (res)=>{
-        setData(res.results[0])
-    },(err)=>{
+        setLoading(false)
         console.log(err)
-    }
+      }
+  }
+  const [data, setData] = useState([])
+
+  const getList = () => {
+    _fetchApi(
+      '/api/getPlotiig',
+      (res) => {
+        setData(res.results[0])
+      },
+      (err) => {
+        console.log(err)
+      },
     )
   }
-  useEffect(
-    ()=>{
-        getList();
-        
-    },[]
-  )
+  useEffect(() => {
+    getList()
+  }, [])
   return (
     <div>
       <Card className="app_primary_card m-2 shadow p-4">
@@ -73,9 +72,9 @@ export default function LayoutPolicies() {
                 onChange={handleChange}
               >
                 <option>---select---</option>
-                {
-                  data.map((item)=>(<option>{item.layout_number}</option>))
-                }
+                {data.map((item) => (
+                  <option>{item.layout_number}</option>
+                ))}
               </select>
             </div>
           </Col>
@@ -181,10 +180,10 @@ export default function LayoutPolicies() {
         </Row>
         <div>
           <button className="mt-3 app_btn" onClick={handleSubmit}>
-            {loading ? "...loading" : "Submit"}
+            {loading ? '...loading' : 'Submit'}
           </button>
         </div>
       </Card>
     </div>
-  );
+  )
 }

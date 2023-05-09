@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { GoDashboard } from 'react-icons/go'
 // import { IoIosArrowUp, IoIosArrowForward } from 'react-icons/ti'
-import { IoIosArrowUp, IoIosArrowForward } from 'react-icons/io'
+import { IoIosArrowUp, IoIosArrowForward, IoIosArrowDown } from 'react-icons/io'
 // import { AiOutlineUser, AiOutlineUnorderedList } from 'react-icons/ai'
 import { useNavigate } from 'react-router-dom'
 
@@ -99,7 +99,9 @@ export default function Sidebar2() {
                       ? 'active_sidebar_item'
                       : `sidebar_items `
                   }
-                  onClick={() => navigate('/recommendation-letter-list?role=comm-gov')}
+                  onClick={() =>
+                    navigate('/recommendation-letter-list?role=comm-gov')
+                  }
                   // onClick={() => navigate('/generate-recommendation-comm-gov')}
                 >
                   {/* <AiOutlineUnorderedList
@@ -136,7 +138,9 @@ export default function Sidebar2() {
                       ? 'active_sidebar_item'
                       : `sidebar_items `
                   }
-                  onClick={() => navigate('/recommendation-letter-list?role=perm-sec')}
+                  onClick={() =>
+                    navigate('/recommendation-letter-list?role=perm-sec')
+                  }
                   // onClick={() => navigate('/generate-recommendation-perm-sec')}
                 >
                   {/* <AiOutlineUnorderedList
@@ -187,12 +191,12 @@ export default function Sidebar2() {
         <p className="sidebar_item_" onClick={drop}>
           <span>
             {/* <AiOutlineUser size="1.2rem" className="sidebar_icon" />  */}
-            Director Land
             {showSubMenu ? (
-              <IoIosArrowUp style={{ float: 'right' }} size="1.1rem" />
+              <IoIosArrowUp style={{ marginRight: 5 }} size="1.1rem" />
             ) : (
-              <IoIosArrowForward size="1.1rem" style={{ float: 'right' }} />
+              <IoIosArrowDown size="1.1rem" style={{ marginRight: 5 }} />
             )}
+            Director Land
           </span>
         </p>
         <>
@@ -205,7 +209,9 @@ export default function Sidebar2() {
                       ? 'active_sidebar_item'
                       : `sidebar_items `
                   }
-                  onClick={() => navigate('/recommendation-letter-list?role=dir-land')}
+                  onClick={() =>
+                    navigate('/recommendation-letter-list?role=dir-land')
+                  }
                 >
                   {/* <AiOutlineUnorderedList
                     size="1.2rem"
@@ -515,7 +521,7 @@ export default function Sidebar2() {
                       ? 'active_sidebar_item'
                       : `sidebar_items `
                   }
-                    onClick={() => navigate('/plots')}
+                  onClick={() => navigate('/plots')}
                 >
                   {/* <AiOutlineUnorderedList
                     size="1.2rem"
@@ -531,13 +537,13 @@ export default function Sidebar2() {
                       ? 'active_sidebar_item'
                       : `sidebar_items `
                   }
-                    onClick={() => navigate('layoutl-policies')}
+                  onClick={() => navigate('layoutl-policies')}
                 >
                   {/* <AiOutlineUnorderedList
                     size="1.2rem"
                     className="sidebar_icon"
                   /> */}
-                  Layot Policy
+                  Layout Policy
                 </span>
               </div>
             </div>
