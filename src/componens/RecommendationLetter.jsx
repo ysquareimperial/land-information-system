@@ -185,7 +185,7 @@ export default function RecommendationLetter() {
         </ModalBody>
         <ModalFooter></ModalFooter>
       </Modal>
-      {/* {JSON.stringify(newForm)} */}
+      {/* {JSON.stringify(data[0])} */}
       <Card className="app_primary_card m-2 shadow p-4">
         <h5 className="mb-3">
           {type === 'conversion'
@@ -418,6 +418,7 @@ export default function RecommendationLetter() {
                       <tr>
                         <th>Location</th>
                         <th>Plots Number</th>
+                        <th>Layout Number</th>
                         <th>Plan Number</th>
                         <th>Action</th>
                       </tr>
@@ -425,19 +426,24 @@ export default function RecommendationLetter() {
                     <tbody>
                       {data[0]?.map((item) => (
                         <tr>
-                          <td>{item.layout_address}</td>
-                          <td>{item.application_id}</td>
+                          <td>{item.location}</td>
                           <td>{item.plots_numbers}</td>
                           <td>{item.layout_number}</td>
+                          <td>{item.plan_number}</td>
                           <td>
                             <button
                               className="app_btn"
                               onClick={() => {
                                 setRecLetterForm((p) => ({
                                   ...p,
-                                  location: item.layout_address,
+                                  location: item.location,
                                   plot_no: item.plots_numbers,
                                   plan_no: item.layout_number,
+                                  term:item.term,
+                                  annual_ground_rent:item.annual_ground_rent,
+                                  survey_charges:item.survey_charges,
+                                  development_charges:item.development_charges,
+                                  plan_no:item.plan_number
                                 }))
                                 toggle3()
                               }}

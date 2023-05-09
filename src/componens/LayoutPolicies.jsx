@@ -9,6 +9,10 @@ export default function LayoutPolicies() {
     policy_name: "",
     item_description: "",
     item_value: "",
+    survey_charges:'',
+          development_charges:'',
+          term:'',
+          annual_ground_rent:'',
   });
   const handleChange = ({ target: { name, value } }) => {
     setList((p) => ({ ...p, [name]: value }));
@@ -38,7 +42,7 @@ export default function LayoutPolicies() {
   const [data,setData]=useState([])
 
   const getList = ()=>{
-    _fetchApi('/api/plots',
+    _fetchApi('/api/getPlotiig',
     (res)=>{
         setData(res.results[0])
     },(err)=>{
@@ -56,7 +60,7 @@ export default function LayoutPolicies() {
     <div>
       <Card className="app_primary_card m-2 shadow p-4">
         <h5 className="mb-3">Layout Policies</h5>
-        {/* {JSON.stringify(data)} */}
+        {/* {JSON.stringify(data[0])} */}
         <Row className="mb-1">
           <Col md={6}>
             <label className="input_label">Layout Number</label>
@@ -121,6 +125,55 @@ export default function LayoutPolicies() {
                 type="number"
                 name="item_value"
                 value={list.item_value}
+                onChange={handleChange}
+              />
+            </div>
+          </Col>
+
+          <Col md={6}>
+            <label className="input_label"> Survey Charges</label>
+            <div>
+              <input
+                className="input_field"
+                type="number"
+                name="survey_charges"
+                value={list.survey_charges}
+                onChange={handleChange}
+              />
+            </div>
+          </Col>
+          <Col md={6}>
+            <label className="input_label">Development Charges</label>
+            <div>
+              <input
+                className="input_field"
+                type="number"
+                name="development_charges"
+                value={list.development_charges}
+                onChange={handleChange}
+              />
+            </div>
+          </Col>
+          <Col md={6}>
+            <label className="input_label">Term</label>
+            <div>
+              <input
+                className="input_field"
+                type="number"
+                name="term"
+                value={list.term}
+                onChange={handleChange}
+              />
+            </div>
+          </Col>
+          <Col md={6}>
+            <label className="input_label">Annual Ground Rent</label>
+            <div>
+              <input
+                className="input_field"
+                type="number"
+                name="annual_ground_rent"
+                value={list.annual_ground_rent}
                 onChange={handleChange}
               />
             </div>

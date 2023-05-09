@@ -63,6 +63,7 @@ import ConversionRecommendationLetter from '../componens/ConversionRecommendatio
 import GenerateRecDirLand from '../componens/GenerateRecDirLand'
 import GenerateRecPermsSec from '../componens/GenerateRecPermSec'
 import GenerateRecComm from '../componens/GenerateRecComm'
+import Plots from '../componens/Plots'
 
 function AppNavigation() {
   let element = useRoutes([
@@ -168,6 +169,10 @@ function AppNavigation() {
         {
           path: '/list-table',
           element: <ListTable />,
+        },
+        {
+       path:'/plots',
+       element:<Plots />
         },
         //  11c241d1be86cd1598a5710aa9e4838c7c855562
 
