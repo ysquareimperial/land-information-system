@@ -508,6 +508,38 @@ export default function Sidebar2() {
                   Report
                 </span>
               </div>
+              <div className="d-flex">
+                <span
+                  className={
+                    location.pathname === ''
+                      ? 'active_sidebar_item'
+                      : `sidebar_items `
+                  }
+                    onClick={() => navigate('/plots')}
+                >
+                  {/* <AiOutlineUnorderedList
+                    size="1.2rem"
+                    className="sidebar_icon"
+                  /> */}
+                  Plots
+                </span>
+              </div>
+              <div className="d-flex">
+                <span
+                  className={
+                    location.pathname === ''
+                      ? 'active_sidebar_item'
+                      : `sidebar_items `
+                  }
+                    onClick={() => navigate('layoutl-policies')}
+                >
+                  {/* <AiOutlineUnorderedList
+                    size="1.2rem"
+                    className="sidebar_icon"
+                  /> */}
+                  Layot Policy
+                </span>
+              </div>
             </div>
           ) : (
             ''

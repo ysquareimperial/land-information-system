@@ -367,6 +367,24 @@ export default function Sidebar() {
                 {/* </div> */}
               </div>
             </div>
+            <div>
+              <div className="d-flex">
+                <span
+                  className={
+                    location.pathname === '/cadestral-recom'
+                      ? 'active_sidebar_item'
+                      : `sidebar_items `
+                  }
+                  onClick={() =>
+                    navigate('/cadestral-recom?type=director-cadestral')
+                  }
+                >
+                  <BsFileEarmarkText size="1.2rem" className="sidebar_icon" />
+                  PLOTS
+                </span>
+                {/* </div> */}
+              </div>
+            </div>
 
             <div>
               <div className="d-flex">

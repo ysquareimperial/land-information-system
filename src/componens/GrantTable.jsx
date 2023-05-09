@@ -83,7 +83,7 @@ export default function GrantTable() {
                         Process
                       </button>
                     </div>
-                  )}
+                  )} 
                   {/* <button
                   className="blue app_btn "
                   

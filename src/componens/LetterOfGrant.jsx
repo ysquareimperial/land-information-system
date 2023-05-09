@@ -14,6 +14,7 @@ import {
 import { _fetchApi, _postApi, useQuery } from '../helpers/helper'
 import { useNavigate } from 'react-router-dom'
 import RecForGrOfStatRightOfOccupView from './PDF/RecForGrOfStatRightOfOccupView'
+import MinistOfLandPhyPlanKanoStateView from './PDF/MinistOfLandPhyPlanKanoStateView'
 
 export default function LetterOfGrant() {
   const _form = {
@@ -103,7 +104,7 @@ export default function LetterOfGrant() {
         <ModalHeader>Continue With</ModalHeader>
         <ModalBody>
           Your Grant number : {grantNumber}
-          <RecForGrOfStatRightOfOccupView />
+          <MinistOfLandPhyPlanKanoStateView />
         </ModalBody>
         <ModalFooter>
           <Button
