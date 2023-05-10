@@ -106,7 +106,7 @@ export default function Sidebar2() {
                       : `sidebar_items `
                   }
                   onClick={() =>
-                    navigate('/recommendation-letter-list?role=comm-gov')
+                    navigate('/cadestral-recom?type=comm-gov')
                   }
                   // onClick={() => navigate('/generate-recommendation-comm-gov')}
                 >
@@ -151,7 +151,7 @@ export default function Sidebar2() {
                       : `sidebar_items `
                   }
                   onClick={() =>
-                    navigate('/recommendation-letter-list?role=perm-sec')
+                    navigate('/cadestral-recom?type=perm-sec')
                   }
                   // onClick={() => navigate('/generate-recommendation-perm-sec')}
                 >
@@ -228,7 +228,7 @@ export default function Sidebar2() {
                       : `sidebar_items `
                   }
                   onClick={() =>
-                    navigate('/recommendation-letter-list?role=dir-land')
+                    navigate('/cadestral-recom?type=dir-land')
                   }
                 >
                   {/* <AiOutlineUnorderedList
