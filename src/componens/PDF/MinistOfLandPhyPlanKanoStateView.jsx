@@ -3,11 +3,11 @@ import { useNavigate } from 'react-router-dom'
 import { PDFDownloadLink, PDFViewer } from '@react-pdf/renderer'
 import { ResAppPDF } from './ResAppPDF'
 import { MinistOfLandPhyPlanKanoState } from './MinistOfLandPhyPlanKanoState'
-export default function MinistOfLandPhyPlanKanoStateView() {
+export default function MinistOfLandPhyPlanKanoStateView({pdf={}}) {
   return (
     <div>
       <PDFViewer style={{ width: '100%', height: '100vh' }}>
-        <MinistOfLandPhyPlanKanoState />
+        <MinistOfLandPhyPlanKanoState pdf={pdf}/>
       </PDFViewer>
       <PDFDownloadLink
         document={<MinistOfLandPhyPlanKanoState />}

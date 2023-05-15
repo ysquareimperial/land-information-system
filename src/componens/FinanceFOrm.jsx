@@ -115,6 +115,7 @@ function FinanceForm() {
                 <option>commercial</option>
                 <option>grant</option>
                 <option>schedule payment</option>
+                <option>For information</option>
               </select>
             </div>
           </Col>

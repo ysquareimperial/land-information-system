@@ -86,8 +86,9 @@ export default function LetterOfGrant() {
     getAppBYID()
     getRecommendation()
   }, [])
-
+  const [pdf,setPdf ]=useState({})
   useEffect(() => {
+    setPdf((p)=>({...recs[0],...app[0]}))
     setLetterOfGrantForm((p) => ({
       ...p,
       file_no: application_file_number,
@@ -98,13 +99,17 @@ export default function LetterOfGrant() {
     }))
   }, [application_file_number, recs[0]])
 
+ 
+
+
+
   return (
     <div>
       <Modal isOpen={modal3} toggle={toggle3} size="lg">
         <ModalHeader>Continue With</ModalHeader>
         <ModalBody>
           Your Grant number : {grantNumber}
-          <MinistOfLandPhyPlanKanoStateView />
+          <MinistOfLandPhyPlanKanoStateView pdf={pdf}/>
         </ModalBody>
         <ModalFooter>
           <Button
@@ -120,7 +125,7 @@ export default function LetterOfGrant() {
       </Modal>
       <Card className="app_primary_card m-2 shadow p-4">
         <h5 className="mb-3">Letter of Grant</h5>
-        {/* {JSON.stringify(app[0])} */}
+        {/* {JSON.stringify(pdf)} */}
         <Row>
           <Col md={6}>
             <Card>
