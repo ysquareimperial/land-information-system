@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
 })
 
 // Create Document Component
-export const MinistOfLandPhyPlanKanoState = () => (
+export const MinistOfLandPhyPlanKanoState = ({pdf={}}) => (
   <Document>
     <Page size="A4" style={styles.page}>
       <View style={{ position: 'absolute', top: '250px', left: '120px' }}>
@@ -141,10 +141,10 @@ export const MinistOfLandPhyPlanKanoState = () => (
             width: 250,
           }}
         >
-          <Text>R OF O NO: RES/2008/5617</Text>
-          <Text style={{ marginTop: 5 }}>PLOT/PLAN NO:2214 TP/KNUPDA/307</Text>
-          <Text style={{ marginTop: 5 }}>LOCATION: Dangwauro</Text>
-          <Text style={{ marginTop: 5 }}>DATE OF ISSUE: 25th May, 2008</Text>
+          <Text>R OF O NO: {pdf&&pdf?.application_file_number}</Text>
+          <Text style={{ marginTop: 5 }}>PLOT/PLAN NO:{pdf&&pdf?.plot_no}{pdf&&pdf?.plan_no}</Text>
+          <Text style={{ marginTop: 5 }}>LOCATION: {pdf&&pdf?.location}</Text>
+          <Text style={{ marginTop: 5 }}>DATE OF ISSUE: {pdf&&pdf?.application_date}</Text>
         </View>
       </View>
       <View
@@ -161,10 +161,10 @@ export const MinistOfLandPhyPlanKanoState = () => (
           TERMS OF OFFER OF GRANT CONVEYANCE OF APPROVAL
         </Text>
         <Text style={{ fontSize: 11, marginTop: 10 }}>
-          With references to your application dated 12/12/2020 I am directed to
+          With references to your application dated {pdf&&pdf?.application_date} I am directed to
           Inform you that the Governor of Kano state has approved the grant of a
-          Right of Occupancy to you over piece of land/plot No. 2214 situated at
-          Dangwauro as per plan No. TP/KNUPDA/307 on the following conditions.
+          Right of Occupancy to you over piece of land/plot No. {pdf&&pdf?.plot_no} situated at
+          {pdf&&pdf?.location} as per plan No. {pdf&&pdf?.plan_no} on the following conditions.
         </Text>
 
         <View
@@ -216,9 +216,9 @@ export const MinistOfLandPhyPlanKanoState = () => (
           <View style={{ width: '95%' }}>
             <Text>(a) Terms: 99 years</Text>
 
-            <Text style={{ marginTop: 5 }}>(b) Purpose: Residential</Text>
+            <Text style={{ marginTop: 5 }}>(b) Purpose: {pdf&&pdf?.type}</Text>
             <Text style={{ marginTop: 5 }}>
-              Value of improvements N33323 within Two years.
+              Value of improvements N33323 within  {pdf&&pdf?.time_of_completion} years.
             </Text>
           </View>
         </View>
@@ -295,7 +295,7 @@ export const MinistOfLandPhyPlanKanoState = () => (
             <Text>6. </Text>
           </View>
           <View style={{ width: '95%' }}>
-            <Text>To complete developments on the land within: Two years</Text>
+            <Text>To complete developments on the land within: {pdf&&pdf?.time_of_completion} years</Text>
           </View>
         </View>
         <View

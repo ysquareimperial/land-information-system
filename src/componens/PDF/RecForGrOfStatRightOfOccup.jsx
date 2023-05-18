@@ -285,7 +285,7 @@ export const RecForGrOfStatRightOfOccup = ({form={}}) => (
             <Text style={{ marginLeft: 100 }}>Permanent Secretary</Text>
           </View>
           <View style={{ width: '30%' }}>
-            <Text>Date:{form?.PermSec_sign_date}</Text>
+            <Text>Date:{form?.persec_sign_date}</Text>
           </View>
         </View>
         <Text style={{ marginTop: 20 }}>
@@ -323,7 +323,7 @@ export const RecForGrOfStatRightOfOccup = ({form={}}) => (
             <Text style={{ fontSize: 10, textAlign: 'center' }}>
               Hon. Commissioner
             </Text>
-            <Text style={{ marginTop: 30 }}>Date:{form?.Comm_govt_signature_date}</Text>
+            <Text style={{ marginTop: 30 }}>Date:{form?.comm_gov_signature_date}</Text>
           </View>
         </View>
       </View>

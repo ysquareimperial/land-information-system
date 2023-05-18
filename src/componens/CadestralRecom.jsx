@@ -36,6 +36,7 @@ export default function CadestralRecom() {
 }
     )
   }
+  const rout = type === 'perm-sec'?'generate-recommendation-perm-sec':type==='comm-gov'?'generate-recommendation-comm-gov':type === 'dir-land'?'generate-recommendation-dir-land':''
   return (
     <Card className="app_primary_card m-2 shadow p-4">
         <Modal isOpen={modal3} toggle={toggle3} size="lg">
@@ -60,7 +61,7 @@ export default function CadestralRecom() {
       <h5 className="mb-4">
         {type === 'director-cadestral' ? 'Generate Recomendation Letter' : ''}
       </h5>
-      {/* {JSON.stringify(type)} */}
+      {/* {JSON.stringify(data[0])} */}
       <input type="search" placeholder="Search" className="input_field mb-3" />
       <div>
         <Table striped borderless size="sm" style={{ fontSize: 14 }}>
@@ -90,18 +91,35 @@ export default function CadestralRecom() {
           <td>{item.occupation_business}</td>
           <td>{item.length_of_term_required}</td>
               <td>
+                
                 {
-                  item.cadestral_status==='generated'?  <button
+                  item.cadestral_status==='generated'?<>{type==='comm-gov'||'perm-sec'?<><button
+                  className="paid"
+                  onClick={() => navigate(`/${rout}?application_file_number=${item.file_no}&role=${type}`)}
+                >
+                  process
+                </button> <button
                   className="approved"
                   onClick={() => {toggle3(),getRecBy(item.file_no)}}
                 >
                   View
-                </button>:  <button
+                </button></>: <button
+                  className="approved"
+                  onClick={() => {toggle3(),getRecBy(item.file_no)}}
+                >
+                  View
+                </button>} </>: 
+                <>{type==='comm-gov'||'perm-sec'?<button
+                className="paid"
+                onClick={() => navigate(`/${rout}?application_file_number=${item.file_no}&role=${type}`)}
+              >
+                process
+              </button>:<button
                   className="paid"
                   onClick={() => navigate(`/recommendation-letter?application_file_number=${item.file_no}&role=${type}`)}
                 >
                   process
-                </button>
+                </button>} </> 
                 }
                
               </td>
