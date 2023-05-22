@@ -106,13 +106,7 @@ export default function GenerateRecComm() {
           <hr />
 
           <Row>
-            <Col lg={3}>
-              <label className="input_label">
-                Director Land Recommendation
-              </label>
-              <h5>{newForm&&newForm[0]?.recommendation_dland}</h5>
-            </Col>
-            <Col lg={3}>
+          <Col lg={3}>
               <label className="input_label">Director Land Signature</label>
               <h5>Dir. Land</h5>
             </Col>
@@ -121,15 +115,30 @@ export default function GenerateRecComm() {
                 Director Land Signature Date
               </label>
               <h5>{newForm&&newForm[0]?.dland_sign_date}</h5>
+            </Col>      
+            <Col lg={12}>
+              <label className="input_label">
+                Director Land Recommendation
+              </label>
+              {/* <h5>{newForm&&newForm[0]?.recommendation_dland}</h5> */}
+              <div>
+          <textarea
+          // name='grant_approve_reject'
+          value={newForm&&newForm[0]?.recommendation_dland}
+          // onChange={handleChange}
+          disabled
+            type=""
+            className="input_field"
+            placeholder="write recommendation here..."
+            rows={4}
+          />
+        </div>
             </Col>
+           
           </Row>
           <hr />
           <Row>
-            <Col lg={3}>
-              <label className="input_label">Perm. Sec. Recommendation</label>
-              <h5>{newForm&&newForm[0]?.recommendation_persec} </h5>
-            </Col>
-            <Col lg={3}>
+          <Col lg={3}>
               <label className="input_label">Perm. Sec. Signature</label>
               <h5>COMM/GOV.</h5>
             </Col>
@@ -137,6 +146,23 @@ export default function GenerateRecComm() {
               <label className="input_label">Perm. Sec. Signature Date</label>
               <h5>{newForm&&newForm[0]?.persec_sign_date}</h5>
             </Col>
+            <Col lg={12}>
+              <label className="input_label">Perm. Sec. Recommendation</label>
+            
+        <div>
+          <textarea
+          // name='grant_approve_reject'
+          value={newForm&&newForm[0]?.recommendation_persec}
+          // onChange={handleChange}
+          disabled
+            type=""
+            className="input_field"
+            placeholder="write recommendation here..."
+            rows={4}
+          />
+        </div>
+            </Col>
+           
           </Row>
           <hr />
 
