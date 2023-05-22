@@ -110,10 +110,10 @@ export default function CadestralRecom() {
                   View
                 </button>} </>: 
                 <>{type==='comm-gov'||'perm-sec'?<button
-                className="paid"
-                onClick={() => navigate(`/${rout}?application_file_number=${item.file_no}&role=${type}`)}
+                className="approved"
+                onClick={() => {toggle3(),getRecBy(item.file_no)}}
               >
-                process
+                View
               </button>:<button
                   className="paid"
                   onClick={() => navigate(`/recommendation-letter?application_file_number=${item.file_no}&role=${type}`)}
