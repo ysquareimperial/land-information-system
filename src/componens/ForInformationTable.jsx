@@ -27,7 +27,7 @@ const type = query.get('type')
   return (
     <Card className="app_primary_card m-2 shadow p-4">
       <h5 className="mb-4">Applications</h5>
-      {JSON.stringify(type)}
+      {/* {JSON.stringify(type)} */}
       <input type="search" placeholder="Search" className="input_field mb-3" />
       <div>
         <Table borderless striped responsive>

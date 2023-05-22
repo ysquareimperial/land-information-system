@@ -150,7 +150,7 @@ export default function GenerateRecPermsSec() {
             </div>
           </Col>
         </Row>
-        <Col lg={3}>
+        {/* <Col lg={3}>
           <label className="input_label">Date</label>
           <div>
             <input
@@ -161,7 +161,7 @@ export default function GenerateRecPermsSec() {
               className="input_field"
             />
           </div>
-        </Col>
+        </Col> */}
         <label className="input_label mt-3">
           <b>Recommendation Permanent Secretary</b>
         </label>
