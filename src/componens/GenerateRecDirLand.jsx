@@ -57,7 +57,7 @@ export default function GenerateRecDirLand() {
   }
   return (
     <div>
-      {JSON.stringify(form)}
+      {/* {JSON.stringify(form)} */}
       <Card className="app_primary_card m-2 shadow p-4">
         <h5 className="mb-3">Generate Recommendation Letter</h5>
         <Row>

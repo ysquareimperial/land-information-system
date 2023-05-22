@@ -98,7 +98,7 @@ export const RecForGrOfStatRightOfOccup = ({form={}}) => (
             <Text>1. </Text>
           </View>
           <View style={{ width: '95%' }}>
-            <Text>Name of Applicant:{form?.name}</Text>
+            <Text>Name of Applicant:  {form?.name}</Text>
           </View>
         </View>
         <View
