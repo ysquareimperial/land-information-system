@@ -16,7 +16,7 @@ import {
 import { _postApi } from '../helpers/helper'
 import { BsArrowLeft } from 'react-icons/bs'
 import Require_documents from './Require_documents'
-import { useNavigate } from 'react-router-dom'
+import { json, useNavigate } from 'react-router-dom'
 import LocalGovernment from './LocalGovernment'
 import ResAppPDFView from './PDF/ResAppPDFView'
 import { TiCancel } from 'react-icons/ti'
@@ -42,7 +42,7 @@ export default function Application_form() {
     local_govt: '',
     Annual_income: '',
     Allocated_before: '',
-    Applicant_nationality: '',
+    Applicant_nationality: 'Nigeria',
     State_of_origin: 'Kano',
     occupation_business: '',
     nature_of_business: '',
@@ -114,7 +114,9 @@ export default function Application_form() {
   }, [])
   const navigate = useNavigate()
   const newCountry = country.map((item) => item.name.common)
-  const [lgas, setLGAs] = useState([])
+  const [lgas, setLGAs] = useState(
+    LocalGovernment.find((a) => a.state === 'Kano').lgas,
+  )
   const [new_data, setNew_data] = useState([])
   const handleAdd = () => {
     setNew_data((p) => [
@@ -147,27 +149,28 @@ export default function Application_form() {
     <div>
       {/* {JSON.stringify(form.type)}
       {JSON.stringify(selectType.type)} */}
-
+      {/* {JSON.stringify(form)} */}
       <Modal isOpen={modal3} toggle={toggle3} size="lg">
-        <ModalHeader>
-          <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-            <span>Continue With</span>
+        <div
+          className="p-3"
+          style={{ display: 'flex', justifyContent: 'space-between' }}
+        >
+          <div>
+            <h5>Application Form</h5>
+          </div>
 
-            {/* <Col md={3}>
-          </Col>  */}
-
-            <Button
-              color="danger"
-              style={{ float: 'left' }}
+          <div>
+            <button 
+            className='app_btn'
               onClick={() => {
                 toggle3()
                 navigate(-1)
               }}
             >
-              <TiCancel />
-            </Button>
+              Close
+            </button>
           </div>
-        </ModalHeader>
+        </div>
 
         <ModalBody>
           <div>
@@ -415,7 +418,7 @@ export default function Application_form() {
                 value={form.State_of_origin}
                 onChange={({ target: { value } }) => {
                   setForm((p) => ({ ...p, State_of_origin: value }))
-                  let selected = LocalGovernment.find((a) => a.state === 'Kano')
+                  let selected = LocalGovernment.find((a) => a.state === value)
                   setLGAs(selected.lgas)
                 }}
               >
@@ -428,6 +431,7 @@ export default function Application_form() {
           </Col>
           <Col md={3}>
             <label className="input_label">Local Government</label>
+            {/* {JSON.stringify(lgas)} */}
             <div>
               <select
                 type="select"
