@@ -138,7 +138,11 @@ export default function GenerateRecComm() {
             </Col>
             <Col lg={12}>
               <label className="input_label">
-                Director Land Recommendation
+                <b>
+                  {' '}
+                  The Director of Land recommends/does not recommend the
+                  application for the following reasons:
+                </b>
               </label>
               {/* <h5>{newForm&&newForm[0]?.recommendation_dland}</h5> */}
               <div>
@@ -166,7 +170,13 @@ export default function GenerateRecComm() {
               <h5>{newForm && newForm[0]?.persec_sign_date}</h5>
             </Col>
             <Col lg={12}>
-              <label className="input_label">Perm. Sec. Recommendation</label>
+              <label className="input_label">
+                {' '}
+                <b>
+                  I recommend/do not recommend the application for Grant over
+                  Plot No: Plan No: Location:
+                </b>
+              </label>
 
               <div>
                 <textarea
@@ -198,7 +208,7 @@ export default function GenerateRecComm() {
           </Col> */}
         </Row>
         <label className="input_label mt-3">
-          Recommendation Commissioner/Governor
+          <b>The Grand of Occupancy is hereby APPROVED NOT APPROVED</b>
         </label>
         <div>
           <textarea

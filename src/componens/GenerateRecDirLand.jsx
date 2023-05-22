@@ -129,7 +129,11 @@ export default function GenerateRecDirLand() {
           </Col> */}
         </Row>
 
-        <label className="input_label mt-3">Recommendation Director Land</label>
+        <label className="input_label mt-3" style={{ fontWeight: 'bold' }}>
+          {' '}
+          The Director of Land recommends/does not recommend the application for
+          the following reasons:
+        </label>
         <div>
           <textarea
             type=""

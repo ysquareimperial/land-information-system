@@ -64,7 +64,7 @@ export default function GenerateRecPermsSec() {
     <div>
       {/* {JSON.stringify(newForm)} */}
       <Card className="app_primary_card m-2 shadow p-4">
-        <Row className='mb-2'>
+        <Row className="mb-2">
           <Col md={10}>
             <h5 className="mb-3">Generate Recommendation Letter</h5>
           </Col>
@@ -134,7 +134,11 @@ export default function GenerateRecPermsSec() {
             {/* <label className="input_label">Director Land Recommendation</label> */}
             {/* <h5>{newForm&&newForm[0]?.recommendation_dland}</h5> */}
             <label className="input_label mt-3">
-              <b>Director Land Recommendation</b>
+              <b>
+                {' '}
+                The Director of Land recommends/does not recommend the
+                application for the following reasons:
+              </b>
             </label>
             <div>
               <textarea
@@ -163,7 +167,23 @@ export default function GenerateRecPermsSec() {
           </div>
         </Col> */}
         <label className="input_label mt-3">
-          <b>Recommendation Permanent Secretary</b>
+          <b>
+            I recommend/do not recommend the application for Grant over Plot No:{' '}
+            <span style={{ fontSize: 15 }}>
+              {' '}
+              {newForm && newForm[0]?.plot_no}{' '}
+            </span>
+            Plan No:{' '}
+            <span style={{ fontSize: 15 }}>
+              {' '}
+              {newForm && newForm[0]?.plan_no}{' '}
+            </span>
+            Location:{' '}
+            <span style={{ fontSize: 15 }}>
+              {' '}
+              {newForm && newForm[0]?.location}
+            </span>
+          </b>
         </label>
         <div>
           <textarea
