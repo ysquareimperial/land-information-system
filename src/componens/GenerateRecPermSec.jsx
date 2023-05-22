@@ -103,10 +103,6 @@ export default function GenerateRecPermsSec () {
             <h5>{newForm&&newForm[0]?.annual_ground_rent}</h5>
           </Col>
           <Col lg={3}>
-            <label className="input_label">Director Land Recommendation</label>
-            <h5>{newForm&&newForm[0]?.recommendation_dland}</h5>
-          </Col>
-          <Col lg={3}>
             <label className="input_label">Director Land Signature</label>
             <h5>Dir. Land</h5>
           </Col>
@@ -114,15 +110,33 @@ export default function GenerateRecPermsSec () {
             <label className="input_label">Director Land Signature Date</label>
             <h5>{newForm&&newForm[0]?.dland_sign_date}</h5>
           </Col>
-          <Col lg={3}>
+          <Col lg={12}>
+            {/* <label className="input_label">Director Land Recommendation</label> */}
+            {/* <h5>{newForm&&newForm[0]?.recommendation_dland}</h5> */}
+            <label className="input_label mt-3"><b>Director Land Recommendation</b></label>
+        <div>
+          <textarea
+            type=""
+            // name='recommendation_permsec'
+            value={newForm&&newForm[0]?.recommendation_dland}
+            // onChange={handleChange}
+            className="input_field"
+            disabled
+            placeholder="write recommendation here..."
+            rows={4}
+          />
+        </div>
+          </Col>
+          
+       
+        </Row>
+        <Col lg={3}>
             <label className="input_label">Date</label>
             <div>
               <input type="date" name='PermSec_sign_date' value={form.PermSec_sign_date}  onChange={handleChange} className="input_field" />
             </div>
           </Col>
-        </Row>
-
-        <label className="input_label mt-3">Recommendation Permanent Secretary</label>
+        <label className="input_label mt-3"><b>Recommendation Permanent Secretary</b></label>
         <div>
           <textarea
             type=""

@@ -589,6 +589,38 @@ export default function Sidebar2() {
                   Layout Policy
                 </span>
               </div>
+              <div className="d-flex">
+                <span
+                  className={
+                    location.pathname === 'yes'
+                      ? 'active_sidebar_item'
+                      : `sidebar_items `
+                  }
+                  onClick={() => navigate('yes')}
+                >
+                  {/* <AiOutlineUnorderedList
+                    size="1.2rem"
+                    className="sidebar_icon"
+                  /> */}
+                  Yes/No
+                </span>
+              </div>
+              <div className="d-flex">
+                <span
+                  className={
+                    location.pathname === '/survey-table'
+                      ? 'active_sidebar_item'
+                      : `sidebar_items `
+                  }
+                  onClick={() => navigate('/survey-table')}
+                >
+                  {/* <AiOutlineUnorderedList
+                    size="1.2rem"
+                    className="sidebar_icon"
+                  /> */}
+                  Survey Report
+                </span>
+              </div>
             </div>
           ) : (
             ''

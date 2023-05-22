@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
 })
 
 // Create Document Component
-export const KanoStateCadDeptPDF = () => (
+export const KanoStateCadDeptPDF = ({pdf={}}) => (
   <Document>
     <Page size="A4" style={styles.page}>
       <View
@@ -56,7 +56,7 @@ export const KanoStateCadDeptPDF = () => (
             <View style={{ display: 'flex', flexDirection: 'row', gap: 10 }}>
               <View style={{ border: '1px solid blue', padding: 5 }}></View>
               <View>
-                <Text>YES</Text>
+                <Text>YES {pdf&&pdf?.applicant_plan_sufficient}</Text>
               </View>
             </View>
             <View style={{ display: 'flex', flexDirection: 'row', gap: 10 }}>
@@ -77,7 +77,7 @@ export const KanoStateCadDeptPDF = () => (
             <View style={{ display: 'flex', flexDirection: 'row', gap: 10 }}>
               <View style={{ border: '1px solid blue', padding: 5 }}></View>
               <View>
-                <Text>YES</Text>
+                <Text>YES {pdf&&pdf?.is_ground_open}</Text>
               </View>
             </View>
             <View style={{ display: 'flex', flexDirection: 'row', gap: 10 }}>
@@ -99,7 +99,7 @@ export const KanoStateCadDeptPDF = () => (
             <View style={{ display: 'flex', flexDirection: 'row', gap: 10 }}>
               <View style={{ border: '1px solid blue', padding: 5 }}></View>
               <View>
-                <Text>YES</Text>
+                <Text>YES {pdf&&pdf?.is_the_plot_completely_beaconed}</Text>
               </View>
             </View>
             <View style={{ display: 'flex', flexDirection: 'row', gap: 10 }}>
@@ -129,14 +129,14 @@ export const KanoStateCadDeptPDF = () => (
             </View>
           </View>
         </View>
-        <Text style={{ marginLeft: 20 }}>(a) Tracking No:</Text>
-        <Text style={{ marginLeft: 20 }}>(b) Deposition Pan No:</Text>
-        <Text style={{ marginTop: 10 }}>IF NO:</Text>
+        <Text style={{ marginLeft: 20 }}>(a) Tracking No:{pdf&&pdf?.tracing_number}</Text>
+        <Text style={{ marginLeft: 20 }}>(b) Deposition Pan No:{pdf&&pdf?.deposition_no}</Text>
+        <Text style={{ marginTop: 10 }}>IF NO: </Text>
         <Text style={{ marginLeft: 20 }}>
           (a) It lies on unapproved town plan No.
         </Text>
-        <Text style={{ marginLeft: 20 }}>(b) It lies on Lay-out No.</Text>
-        <Text style={{ marginLeft: 20 }}>(c) Separate survey is required</Text>
+        <Text style={{ marginLeft: 20 }}>(b) It lies on Lay-out No. {pdf&&pdf?.lay_on_layout_no}</Text>
+        <Text style={{ marginLeft: 20 }}>(c) Separate survey is required {pdf&&pdf?.seperate_survey_required}</Text>
         <View style={{ display: 'flex', flexDirection: 'row', marginTop: 10 }}>
           <View style={{ width: '80%' }}>
             <Text style={{ marginTop: 10 }}>
@@ -147,7 +147,7 @@ export const KanoStateCadDeptPDF = () => (
             <View style={{ display: 'flex', flexDirection: 'row', gap: 10 }}>
               <View style={{ border: '1px solid blue', padding: 5 }}></View>
               <View>
-                <Text>YES</Text>
+                <Text>YES {pdf&&pdf?.does_it_lies_area_town_plan}</Text>
               </View>
             </View>
             <View style={{ display: 'flex', flexDirection: 'row', gap: 10 }}>
@@ -159,7 +159,7 @@ export const KanoStateCadDeptPDF = () => (
           </View>
         </View>
         <Text style={{ marginTop: 10 }}>IF YES:</Text>
-        <Text style={{ marginLeft: 20 }}>(a) Town plan No:</Text>
+        <Text style={{ marginLeft: 20 }}>(a) Town plan No: {pdf&&pdf?.Town_plan_no}</Text>
         <Text style={{ marginLeft: 20 }}>
           (b) Does the shape of the plot agree with the Town plan?
         </Text>
@@ -281,6 +281,7 @@ export const KanoStateCadDeptPDF = () => (
               <Text style={{ marginTop: 20 }}>
                 __________________________________
               </Text>
+              
               <Text style={{ marginLeft: 60 }}>For: Director Cadastral</Text>
             </View>
           </View>

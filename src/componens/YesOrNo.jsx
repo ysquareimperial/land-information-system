@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
-import { Card, Col, Input, Row } from 'reactstrap'
+import { Button, Card, Col, Input, Modal, ModalBody, ModalFooter, ModalHeader, Row } from 'reactstrap'
 import { _postApi } from '../helpers/helper'
+import KanoStateCadDeptPDFView from './PDF/KanoStateCadDeptPDFView'
 
 function YesOrNo() {
   const [radios,setRadio]=useState({
@@ -12,8 +13,28 @@ const handleChanges = ({target:{name,value}})=>{
 const handleSubmit = ()=>{
   _postApi('/api/report_on_application',radios,(res)=>{console.log(res)},(err)=>{console.log(err)})
 }
+const [modal3, setModal3] = useState(false)
+const toggle3 = () => setModal3(!modal3)
   return (
     <div>
+        <Modal isOpen={modal3} toggle={toggle3} size="lg">
+        <ModalHeader>Continue With</ModalHeader>
+        <ModalBody>
+          <KanoStateCadDeptPDFView pdf={radios}/>
+        </ModalBody>
+        <ModalFooter>
+          <Button
+
+            color="danger"
+            onClick={() => {
+              toggle3()
+              navigate(-1)
+            }}
+          >
+            Close
+          </Button>
+        </ModalFooter>
+      </Modal>
          <Card className="app_primary_card m-2 shadow p-4">
         <h5 className="mb-3">YES/NO Application</h5>
         {/* {JSON.stringify(radios)} */}
@@ -113,7 +134,7 @@ const handleSubmit = ()=>{
             <Col md={3}>YES:<Input className='p-2' type='radio' name='area_applied_for' value={'yes'}  onChange={handleChanges} /> NO:<Input className='p-2' type='radio' name='area_applied_for' value={'No'}  onChange={handleChanges} /></Col>
             <Col md={3} className='mb-3 mt-3'></Col>
         </Row>
-<center><button className='app_btn mt-3' onClick={handleSubmit}>Submit</button></center>
+<center><button className='app_btn mt-3' onClick={()=>{toggle3();handleSubmit}}>Submit</button></center>
         </Card>
     </div>
   )
