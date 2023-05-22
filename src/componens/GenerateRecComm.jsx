@@ -144,8 +144,9 @@ export default function GenerateRecComm() {
                   application for the following reasons:
                 </b>
               </label>
+              <h5>{newForm && newForm[0]?.recommendation_dland}</h5>
               {/* <h5>{newForm&&newForm[0]?.recommendation_dland}</h5> */}
-              <div>
+              {/* <div>
                 <textarea
                   // name='grant_approve_reject'
                   value={newForm && newForm[0]?.recommendation_dland}
@@ -156,14 +157,14 @@ export default function GenerateRecComm() {
                   placeholder="write recommendation here..."
                   rows={4}
                 />
-              </div>
+              </div> */}
             </Col>
           </Row>
           <hr />
           <Row>
             <Col lg={3}>
               <label className="input_label">Perm. Sec. Signature</label>
-              <h5>COMM/GOV.</h5>
+              <h5> Perm Sec</h5>
             </Col>
             <Col lg={3}>
               <label className="input_label">Perm. Sec. Signature Date</label>
@@ -177,8 +178,8 @@ export default function GenerateRecComm() {
                   Plot No: Plan No: Location:
                 </b>
               </label>
-
-              <div>
+              <h5>{newForm && newForm[0]?.recommendation_persec}</h5>
+              {/* <div>
                 <textarea
                   // name='grant_approve_reject'
                   value={newForm && newForm[0]?.recommendation_persec}
@@ -189,7 +190,7 @@ export default function GenerateRecComm() {
                   placeholder="write recommendation here..."
                   rows={4}
                 />
-              </div>
+              </div> */}
             </Col>
           </Row>
           <hr />
