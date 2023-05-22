@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
 })
 
 // Create Document Component
-export const RecForGrOfStatRightOfOccup = ({form={}}) => (
+export const RecForGrOfStatRightOfOccup = ({ form = {} }) => (
   <Document>
     <Page size="A4" style={styles.page}>
       {/* /////////////////////////////////////////////// */}
@@ -158,7 +158,10 @@ export const RecForGrOfStatRightOfOccup = ({form={}}) => (
             <Text>4. </Text>
           </View>
           <View style={{ width: '95%' }}>
-            <Text>Value of Purposed Development N:{form?.value_of_proposed_development} </Text>
+            <Text>
+              Value of Purposed Development N:
+              {form?.value_of_proposed_development}{' '}
+            </Text>
           </View>
         </View>
         <View
@@ -174,7 +177,8 @@ export const RecForGrOfStatRightOfOccup = ({form={}}) => (
           </View>
           <View style={{ width: '95%' }}>
             <Text>
-              Time for Competition of Proposed Development: within {form?.time_of_completion} years 
+              Time for Competition of Proposed Development: within{' '}
+              {form?.time_of_completion} years
             </Text>
           </View>
         </View>
@@ -205,7 +209,12 @@ export const RecForGrOfStatRightOfOccup = ({form={}}) => (
             <Text>7. </Text>
           </View>
           <View style={{ width: '95%' }}>
-            <Text>Development Charge (If any): {form?.development_charges===''?'To Follow':form?.development_charges}</Text>
+            <Text>
+              Development Charge (If any):{' '}
+              {form?.development_charges === ''
+                ? 'To Follow'
+                : form?.development_charges}
+            </Text>
           </View>
         </View>
         <View
@@ -236,7 +245,8 @@ export const RecForGrOfStatRightOfOccup = ({form={}}) => (
           </View>
           <View style={{ width: '95%' }}>
             <Text>
-              {form?.recommendation_dland}
+              The Director of Land recommends/does not recommend the application
+              for the following reasons: {form?.recommendation_dland}
             </Text>
           </View>
         </View>
@@ -323,7 +333,9 @@ export const RecForGrOfStatRightOfOccup = ({form={}}) => (
             <Text style={{ fontSize: 10, textAlign: 'center' }}>
               Hon. Commissioner
             </Text>
-            <Text style={{ marginTop: 30 }}>Date:{form?.comm_gov_signature_date}</Text>
+            <Text style={{ marginTop: 30 }}>
+              Date:{form?.comm_gov_signature_date}
+            </Text>
           </View>
         </View>
       </View>
