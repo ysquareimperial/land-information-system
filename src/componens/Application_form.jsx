@@ -27,7 +27,7 @@ export default function Application_form() {
     Applicant_full_name: '',
     registration_particulars: '',
     Business_location: '',
-    correspondance_address: '',
+    correspondence_address: '',
     age: '',
     sex: '',
     yes_no: '',
@@ -36,7 +36,6 @@ export default function Application_form() {
     location: '',
     marital_stataus: '',
     residential: '',
-    correspondance_address: '',
     email: '',
     phone_no: '',
     local_govt: '',
@@ -54,11 +53,20 @@ export default function Application_form() {
     type_of_building_erected: '',
     estimated_amount_to_spenr: '',
     source_financing: '',
+    proposed_value_of_building_to_be_created: '',
+    annual_income_or_anticipated_income: '',
     length_of_term_required: '',
+    type_of_plot_piece: '',
+    house_location: '',
+    house_type_of_building: '',
     do_you_have_biz_in_kano: '',
     address_of_local_rep: '',
+    do_you_operate_other_location_in_kano: '',
     power_of_attorney_if_any: '',
+    business_address: '',
     location_of_land_required: '',
+    do_you_own_a_house: '',
+    reg_of_particular_of_attorney: '',
     application_date: today,
     type: '',
     // query_type: "Insert",
@@ -160,8 +168,8 @@ export default function Application_form() {
           </div>
 
           <div>
-            <button 
-            className='app_btn'
+            <button
+              className="app_btn"
               onClick={() => {
                 toggle3()
                 navigate(-1)
@@ -210,7 +218,6 @@ export default function Application_form() {
             </div>
           </Col>
           <Col md={3}>
-            <label className="input_label">Applicantion Type</label>
             <label className="input_label">Application Type</label>
             <div>
               <select
@@ -245,7 +252,7 @@ export default function Application_form() {
           ) : (
             ''
           )}
-          {form.type === 'commercial' ? (
+          {selectType.type === 'Commercial' ? (
             <>
               {' '}
               <Col md={3}>
@@ -277,17 +284,35 @@ export default function Application_form() {
             ''
           )}
           <Col md={3}>
-            <label className="input_label">Correspondance Address</label>
+            <label className="input_label">Correspondence Address</label>
             <div>
               <input
                 className="input_field"
                 type="text"
-                name="correspondance_address"
-                value={form.correspondance_address}
+                name="correspondence_address"
+                value={form.correspondence_address}
                 onChange={handleChange}
               />
             </div>
           </Col>
+          {selectType.type === 'Commercial' ? (
+            <Col md={3}>
+              <label className="input_label">
+                Annual Income or Anticipated Income
+              </label>
+              <div>
+                <input
+                  className="input_field"
+                  type="text"
+                  name="annual_income_or_anticipated_income"
+                  value={form.annual_income_or_anticipated_income}
+                  onChange={handleChange}
+                />
+              </div>
+            </Col>
+          ) : (
+            ''
+          )}
           {/* CHANGESSSSSSSSSSS */}
           {form.type === 'Residential' ? (
             <>
@@ -343,7 +368,7 @@ export default function Application_form() {
           {form.marital_stataus === 'married' ? (
             <Col md={3}>
               <label className="input_label">
-                Name & Address of Your Husband
+                If married woman, give name & address of your husband
               </label>
               <div>
                 <input
@@ -358,56 +383,68 @@ export default function Application_form() {
           ) : (
             ''
           )}
-          <Col md={3}>
-            <label className="input_label">
-              Residential Address (P O Box must be given)
-            </label>
-            <div>
-              <input
-                className="input_field"
-                type="text"
-                name="residential"
-                value={form.residential}
-                onChange={handleChange}
-              />
-            </div>
-          </Col>
-          <Col md={3}>
-            <label className="input_label">Correspondence Address</label>
-            <div>
-              <input
-                className="input_field"
-                type="text"
-                name="correspondence_address"
-                value={form.correspondence_address}
-                onChange={handleChange}
-              />
-            </div>
-          </Col>
-          <Col md={3}>
-            <label className="input_label">Email(if any)</label>
-            <div>
-              <input
-                className="input_field"
-                type="email"
-                name="email"
-                value={form.email}
-                onChange={handleChange}
-              />
-            </div>
-          </Col>
-          <Col md={3}>
-            <label className="input_label">Phone No</label>
-            <div>
-              <input
-                className="input_field"
-                type="number"
-                name="phone_no"
-                value={form.phone_no}
-                onChange={handleChange}
-              />
-            </div>
-          </Col>
+          {selectType.type === 'Residential' ? (
+            <Col md={3}>
+              <label className="input_label">
+                Residential Address (P O Box must be given)
+              </label>
+              <div>
+                <input
+                  className="input_field"
+                  type="text"
+                  name="residential"
+                  value={form.residential}
+                  onChange={handleChange}
+                />
+              </div>
+            </Col>
+          ) : (
+            ''
+          )}
+          {selectType.type === 'Residential' ? (
+            <>
+              <Col md={3}>
+                <label className="input_label">Email(if any)</label>
+                <div>
+                  <input
+                    className="input_field"
+                    type="email"
+                    name="email"
+                    value={form.email}
+                    onChange={handleChange}
+                  />
+                </div>
+              </Col>
+              <Col md={3}>
+                <label className="input_label">Phone No</label>
+                <div>
+                  <input
+                    className="input_field"
+                    type="number"
+                    name="phone_no"
+                    value={form.phone_no}
+                    onChange={handleChange}
+                  />
+                </div>
+              </Col>
+              <Col md={3}>
+                <label className="input_label">
+                  Business Address if different from 3 above
+                </label>
+                <div>
+                  <input
+                    className="input_field"
+                    type="text"
+                    name="business_address"
+                    value={form.business_address}
+                    onChange={handleChange}
+                  />
+                </div>
+              </Col>
+            </>
+          ) : (
+            ''
+          )}
           <Col md={3}>
             <label className="input_label">State Of Origin</label>
             <div>
@@ -456,6 +493,22 @@ export default function Application_form() {
             </div>
           </Col>
           {/* CHANGESSSSSSSSSSS */}
+          {selectType.type === 'Commercial' ? (
+            <Col md={3}>
+              <label className="input_label">Home Domicile</label>
+              <div>
+                <input
+                  className="input_field"
+                  type="number"
+                  name="home_domicile"
+                  value={form.home_domicile}
+                  onChange={handleChange}
+                />
+              </div>
+            </Col>
+          ) : (
+            ''
+          )}
           <Col md={3}>
             <label className="input_label">Annual Income</label>
             <div>
@@ -468,9 +521,9 @@ export default function Application_form() {
               />
             </div>
           </Col>
-          <Col md={3}>
+          {/* <Col md={3}>
             <label className="input_label">
-              Have you been allocated any residential plot Before
+              Have you been allocated any residential plot before
             </label>
             <div>
               <input
@@ -481,7 +534,7 @@ export default function Application_form() {
                 onChange={handleChange}
               />
             </div>
-          </Col>
+          </Col> */}
           <Col md={3}>
             <label className="input_label">Applicant Nationality</label>
             <div>
@@ -499,7 +552,7 @@ export default function Application_form() {
             </div>
           </Col>
           <Col md={3}>
-            <label className="input_label">Occupation Business</label>
+            <label className="input_label">Occupation for Business</label>
             <div>
               <input
                 className="input_field"
@@ -510,10 +563,12 @@ export default function Application_form() {
               />
             </div>
           </Col>
-          {form.type === 'commercial' ? (
+          {selectType.type === 'Commercial' ? (
             <>
               <Col md={3}>
-                <label className="input_label">Nature Of Business</label>
+                <label className="input_label">
+                  Nature Of Commerce Activity
+                </label>
                 <div>
                   <input
                     className="input_field"
@@ -540,84 +595,137 @@ export default function Application_form() {
           ) : (
             ''
           )}
+          {selectType.type === 'Commercial' ? (
+            <Col md={3}>
+              <label className="input_label">
+                Have you been allocated commercial land before?
+              </label>
+              <div>
+                <select
+                  className="input_field"
+                  type="select"
+                  name="yes_no"
+                  value={form.yes_no}
+                  onChange={handleChange}
+                >
+                  <option>Select</option>
+                  <option>Yes</option>
+                  <option>No</option>
+                </select>
+              </div>
+            </Col>
+          ) : (
+            ''
+          )}
+          {form.yes_no === 'Yes' ? (
+            <Col md={3}>
+              <label className="input_label">
+                If answer to the above is yes, state when and where, and
+                certificate of occupancy Number
+              </label>
+              <div>
+                <input
+                  className="input_field"
+                  type="text"
+                  name="when_where_occupancy_no"
+                  value={form.when_where_occupancy_no}
+                  onChange={handleChange}
+                />
+              </div>
+            </Col>
+          ) : (
+            ''
+          )}
+          {selectType.type === 'Commercial' ? (
+            <>
+              <Col md={3}>
+                <label className="input_label">
+                  Purpose for which land above is being used
+                </label>
+                <div>
+                  <input
+                    className="input_field"
+                    type="text"
+                    name="purpose_of_land_use"
+                    value={form.purpose_of_land_use}
+                    onChange={handleChange}
+                  />
+                </div>
+              </Col>
+              <Col md={3}>
+                <label className="input_label">
+                  Purpose for which land applied for is required
+                </label>
+                <div>
+                  <input
+                    className="input_field"
+                    type="text"
+                    name="purpose_for_application_required"
+                    value={form.purpose_for_application_required}
+                    onChange={handleChange}
+                  />
+                </div>
+              </Col>
+            </>
+          ) : (
+            ''
+          )}
+          {selectType.type === 'Commercial' ? (
+            <>
+              <Col md={3}>
+                <label className="input_label">
+                  What type of activities are you intend to undertake
+                </label>
+                <div>
+                  <input
+                    className="input_field"
+                    type="text"
+                    name="acitivity_intended_to_undertake"
+                    value={form.acitivity_intended_to_undertake}
+                    onChange={handleChange}
+                  />
+                </div>
+              </Col>
+              <Col md={3}>
+                <label className="input_label">Type Of Building Erected</label>
+                <div>
+                  <input
+                    className="input_field"
+                    type="text"
+                    name="type_of_building_erected"
+                    value={form.type_of_building_erected}
+                    onChange={handleChange}
+                  />
+                </div>
+              </Col>
+              <Col md={3}>
+                <label className="input_label">
+                  Estimated amount to be spent on building
+                </label>
+                <div>
+                  <input
+                    className="input_field"
+                    type="number"
+                    name="estimated_amount_to_spenr"
+                    value={form.estimated_amount_to_spenr}
+                    onChange={handleChange}
+                  />
+                </div>
+              </Col>
+            </>
+          ) : (
+            ''
+          )}
           <Col md={3}>
-            <label className="input_label">When Where Occupancy N</label>
-            <div>
-              <input
-                className="input_field"
-                type="text"
-                name="when_where_occupancy_no"
-                value={form.when_where_occupancy_no}
-                onChange={handleChange}
-              />
-            </div>
-          </Col>{' '}
-          <Col md={3}>
-            <label className="input_label">Purpose Of Land Use</label>
-            <div>
-              <input
-                className="input_field"
-                type="text"
-                name="purpose_of_land_use"
-                value={form.purpose_of_land_use}
-                onChange={handleChange}
-              />
-            </div>
-          </Col>
-          <Col md={3}>
-            <label className="input_label">
-              Purpose For Application Required
-            </label>
-            <div>
-              <input
-                className="input_field"
-                type="text"
-                name="purpose_for_application_required"
-                value={form.purpose_for_application_required}
-                onChange={handleChange}
-              />
-            </div>
-          </Col>
-          <Col md={3}>
-            <label className="input_label">
-              Acitivity Intended To Undertake
-            </label>
-            <div>
-              <input
-                className="input_field"
-                type="text"
-                name="acitivity_intended_to_undertake"
-                value={form.acitivity_intended_to_undertake}
-                onChange={handleChange}
-              />
-            </div>
-          </Col>
-          <Col md={3}>
-            <label className="input_label">Type Of Building Erected</label>
-            <div>
-              <input
-                className="input_field"
-                type="text"
-                name="type_of_building_erected"
-                value={form.type_of_building_erected}
-                onChange={handleChange}
-              />
-            </div>
-          </Col>{' '}
-          <Col md={3}>
-            <label className="input_label">Estimated Amount To Spenr</label>
-            <div>
-              <input
-                className="input_field"
-                type="number"
-                name="estimated_amount_to_spenr"
-                value={form.estimated_amount_to_spenr}
-                onChange={handleChange}
-              />
-            </div>
-          </Col>
-          <Col md={3}>
-            <label className="input_label">Source Financing </label>
+            {selectType.type === 'Commercial' ? (
+              <label className="input_label">
+                Source of financing the building
+              </label>
+            ) : (
+              <label className="input_label">
+                Application's source of financing the building
+              </label>
+            )}
             <div>
               <input
                 className="input_field"
@@ -628,6 +736,50 @@ export default function Application_form() {
               />
             </div>
           </Col>
+
+          {selectType.type === 'Residential' ? (
+            <>
+              <Col md={3}>
+                <label className="input_label">
+                  Proposed value of building to be created
+                </label>
+
+                <div>
+                  <input
+                    className="input_field"
+                    type="text"
+                    name="proposed_value_of_building_to_be_created"
+                    value={form.proposed_value_of_building_to_be_created}
+                    onChange={handleChange}
+                  />
+                </div>
+              </Col>
+              <Col md={3}>
+                <label className="input_label">
+                  Type of plot/piece of land applied for (underline as
+                  appropriate)
+                </label>
+                <div>
+                  <select
+                    className="input_field"
+                    type="select"
+                    name="type_of_plot_piece"
+                    value={form.type_of_plot_piece}
+                    onChange={handleChange}
+                  >
+                    <option>Select</option>
+                    <option>Low Density</option>
+                    <option>Medium Density</option>
+                    <option>High Density</option>
+                    <option>Very High Density</option>
+                  </select>
+                </div>
+              </Col>
+            </>
+          ) : (
+            ''
+          )}
+
           <Col md={3}>
             <label className="input_label">Length Of Term Required</label>
             <div>
@@ -640,7 +792,44 @@ export default function Application_form() {
               />
             </div>
           </Col>
-          {form.type === 'commercial' ? (
+          {selectType.type === 'Commercial' ? (
+            <>
+              <Col md={3}>
+                <label className="input_label">
+                  Do you, or does the company operate this, or any other
+                  commercial business at any other location in Kano state
+                </label>
+                <div>
+                  <input
+                    className="input_field"
+                    type="text"
+                    name="do_you_operate_other_location_in_kano"
+                    value={form.do_you_operate_other_location_in_kano}
+                    onChange={handleChange}
+                  />
+                </div>
+              </Col>
+
+              <Col md={3}>
+                <label className="input_label">
+                  Registration of particular of power of attorney (if any)
+                </label>
+                <div>
+                  <input
+                    className="input_field"
+                    type="text"
+                    name="do_you_operate_other_location_in_kano"
+                    value={form.reg_of_particular_of_attorney}
+                    onChange={handleChange}
+                  />
+                </div>
+              </Col>
+            </>
+          ) : (
+            ''
+          )}
+
+          {/* {form.type === 'commercial' ? (
             <Col md={3}>
               <label className="input_label">Do You Have Biz In Kano</label>
               <div>
@@ -655,9 +844,11 @@ export default function Application_form() {
             </Col>
           ) : (
             ''
-          )}{' '}
+          )}{' '} */}
           <Col md={3}>
-            <label className="input_label">Address Of Local Rep</label>
+            <label className="input_label">
+              Name and address of local representative
+            </label>
             <div>
               <input
                 className="input_field"
@@ -680,18 +871,25 @@ export default function Application_form() {
               />
             </div>
           </Col>
-          <Col md={3}>
-            <label className="input_label">Location Of Land Required</label>
-            <div>
-              <input
-                className="input_field"
-                type="text"
-                name="location_of_land_required"
-                value={form.location_of_land_required}
-                onChange={handleChange}
-              />
-            </div>
-          </Col>
+          {selectType.type === 'Commercial' ? (
+            <Col md={3}>
+              <label className="input_label">
+                Location of the Land Required(state whether Kano Metropolitant
+                or any other urban center)
+              </label>
+              <div>
+                <input
+                  className="input_field"
+                  type="text"
+                  name="location_of_land_required"
+                  value={form.location_of_land_required}
+                  onChange={handleChange}
+                />
+              </div>
+            </Col>
+          ) : (
+            ''
+          )}
           <Col md={3}>
             <label className="input_label">Application Date</label>
             <div>
@@ -704,6 +902,58 @@ export default function Application_form() {
               />
             </div>
           </Col>
+          {selectType.type === 'Residential' ? (
+            <Col md={3}>
+              <label className="input_label">Do you own a house?</label>
+              <div>
+                <select
+                  className="input_field"
+                  type="select"
+                  name="do_you_own_a_house"
+                  value={form.do_you_own_a_house}
+                  onChange={handleChange}
+                >
+                  <option>Select</option>
+                  <option>Yes</option>
+                  <option>No</option>
+                </select>
+              </div>
+            </Col>
+          ) : (
+            ''
+          )}
+
+          {selectType.type === 'Residential' &&
+          form.do_you_own_a_house === 'Yes' ? (
+            <>
+              <Col md={3}>
+                <label className="input_label">Location</label>
+                <div>
+                  <input
+                    className="input_field"
+                    type="text"
+                    name="house_location"
+                    value={form.house_location}
+                    onChange={handleChange}
+                  />
+                </div>
+              </Col>
+              <Col md={3}>
+                <label className="input_label">Type of building</label>
+                <div>
+                  <input
+                    className="input_field"
+                    type="text"
+                    name="house_type_of_building"
+                    value={form.house_type_of_building}
+                    onChange={handleChange}
+                  />
+                </div>
+              </Col>
+            </>
+          ) : (
+            ''
+          )}
           {/* SECTIONNNNNNNNNNNNNNN */}
           <Col md={3}>
             <label className="input_label">
