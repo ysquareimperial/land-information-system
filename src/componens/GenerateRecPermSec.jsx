@@ -5,7 +5,7 @@ import { _fetchApi, _postApi, useQuery } from '../helpers/helper'
 import moment from 'moment'
 import { useNavigate } from 'react-router-dom'
 
-export default function GenerateRecPermsSec () {
+export default function GenerateRecPermsSec() {
   const [loading, setLoading] = useState()
   const [newForm, setNewForm] = useState([])
   const query = useQuery()
@@ -24,15 +24,19 @@ export default function GenerateRecPermsSec () {
     )
   }
 
-  useEffect(()=>{
+  useEffect(() => {
     getRecBy()
-  },[file_no])
+  }, [file_no])
 
-  const today = moment().format("YYYY-MM-DD");
-  const [form,setForm]=useState({PermSec_sign_date:today,recommendation_permsec:'',application_file_number:file_no})
-  const navigate=useNavigate()
-  const handleChange = ({target:{name,value}})=>{
-    setForm((p)=>({...p,[name]:value}))
+  // const today = moment().format('YYYY-MM-DD')
+  const [form, setForm] = useState({
+    PermSec_sign_date: '',
+    recommendation_permsec: '',
+    application_file_number: file_no,
+  })
+  const navigate = useNavigate()
+  const handleChange = ({ target: { name, value } }) => {
+    setForm((p) => ({ ...p, [name]: value }))
   }
   const handleSubmit = () => {
     // toggle()
@@ -60,47 +64,63 @@ export default function GenerateRecPermsSec () {
     <div>
       {/* {JSON.stringify(newForm)} */}
       <Card className="app_primary_card m-2 shadow p-4">
-        <h5 className="mb-3">Generate Recommendation Letter</h5>
+        <Row className='mb-2'>
+          <Col md={10}>
+            <h5 className="mb-3">Generate Recommendation Letter</h5>
+          </Col>
+          <Col md={2}>
+            <label className="input_label">Date</label>
+            <div>
+              <input
+                name="PermSec_sign_date"
+                value={form.PermSec_sign_date}
+                onChange={handleChange}
+                type="date"
+                className="input_field"
+              />
+            </div>
+          </Col>
+        </Row>
         <Row>
           <Col md={3}>
             <label className="input_label">Application File No</label>
-            <h5>{newForm&&newForm[0]?.application_file_number}</h5>
+            <h5>{newForm && newForm[0]?.application_file_number}</h5>
           </Col>
           <Col md={3}>
             <label className="input_label">Value of Proposed Dev</label>
-            <h5>{newForm&&newForm[0]?.value_of_proposed_development}</h5>
+            <h5>{newForm && newForm[0]?.value_of_proposed_development}</h5>
           </Col>
           <Col md={3}>
             <label className="input_label">Time of Completion</label>
-            <h5>{newForm&&newForm[0]?.time_of_completion}</h5>
+            <h5>{newForm && newForm[0]?.time_of_completion}</h5>
           </Col>
           <Col md={3}>
             <label className="input_label">Development Charges</label>
-            <h5>{newForm&&newForm[0]?.development_charges}</h5>
+            <h5>{newForm && newForm[0]?.development_charges}</h5>
           </Col>
           <Col md={3}>
             <label className="input_label">Survey Charges</label>
-            <h5>{newForm&&newForm[0]?.survey_charges}</h5>
+            <h5>{newForm && newForm[0]?.survey_charges}</h5>
           </Col>
           <Col md={3}>
             <label className="input_label">Location</label>
-            <h5>{newForm&&newForm[0]?.location}</h5>
+            <h5>{newForm && newForm[0]?.location}</h5>
           </Col>
           <Col md={3}>
             <label className="input_label">Plot No</label>
-            <h5>{newForm&&newForm[0]?.plot_no}</h5>
+            <h5>{newForm && newForm[0]?.plot_no}</h5>
           </Col>
           <Col md={3}>
             <label className="input_label">Plan No</label>
-            <h5>{newForm&&newForm[0]?.plan_no}</h5>
+            <h5>{newForm && newForm[0]?.plan_no}</h5>
           </Col>
           <Col md={3}>
             <label className="input_label">Term</label>
-            <h5>{newForm&&newForm[0]?.term}</h5>
+            <h5>{newForm && newForm[0]?.term}</h5>
           </Col>
           <Col md={3}>
             <label className="input_label">Annual Ground Rent</label>
-            <h5>{newForm&&newForm[0]?.annual_ground_rent}</h5>
+            <h5>{newForm && newForm[0]?.annual_ground_rent}</h5>
           </Col>
           <Col lg={3}>
             <label className="input_label">Director Land Signature</label>
@@ -108,39 +128,47 @@ export default function GenerateRecPermsSec () {
           </Col>
           <Col lg={3}>
             <label className="input_label">Director Land Signature Date</label>
-            <h5>{newForm&&newForm[0]?.dland_sign_date}</h5>
+            <h5>{newForm && newForm[0]?.dland_sign_date}</h5>
           </Col>
           <Col lg={12}>
             {/* <label className="input_label">Director Land Recommendation</label> */}
             {/* <h5>{newForm&&newForm[0]?.recommendation_dland}</h5> */}
-            <label className="input_label mt-3"><b>Director Land Recommendation</b></label>
-        <div>
-          <textarea
-            type=""
-            // name='recommendation_permsec'
-            value={newForm&&newForm[0]?.recommendation_dland}
-            // onChange={handleChange}
-            className="input_field"
-            disabled
-            placeholder="write recommendation here..."
-            rows={4}
-          />
-        </div>
-          </Col>
-          
-       
-        </Row>
-        <Col lg={3}>
-            <label className="input_label">Date</label>
+            <label className="input_label mt-3">
+              <b>Director Land Recommendation</b>
+            </label>
             <div>
-              <input type="date" name='PermSec_sign_date' value={form.PermSec_sign_date}  onChange={handleChange} className="input_field" />
+              <textarea
+                type=""
+                // name='recommendation_permsec'
+                value={newForm && newForm[0]?.recommendation_dland}
+                // onChange={handleChange}
+                className="input_field"
+                disabled
+                placeholder="write recommendation here..."
+                rows={4}
+              />
             </div>
           </Col>
-        <label className="input_label mt-3"><b>Recommendation Permanent Secretary</b></label>
+        </Row>
+        <Col lg={3}>
+          <label className="input_label">Date</label>
+          <div>
+            <input
+              type="date"
+              name="PermSec_sign_date"
+              value={form.PermSec_sign_date}
+              onChange={handleChange}
+              className="input_field"
+            />
+          </div>
+        </Col>
+        <label className="input_label mt-3">
+          <b>Recommendation Permanent Secretary</b>
+        </label>
         <div>
           <textarea
             type=""
-            name='recommendation_permsec'
+            name="recommendation_permsec"
             value={form.recommendation_permsec}
             onChange={handleChange}
             className="input_field"

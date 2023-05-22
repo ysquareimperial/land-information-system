@@ -144,9 +144,9 @@ export default function RecommendationLetter() {
       ? null
       : setRecLetterForm((p) => ({
           ...p,
-          value_of_proposed_development:
-            newForm[0]?.value_of_proposed_development,
-          time_of_completion: newForm[0]?.time_of_completion,
+          // value_of_proposed_development:
+          //   newForm[0]?.value_of_proposed_development,
+          // time_of_completion: newForm[0]?.time_of_completion,
           development_charges: newForm[0]?.development_charges,
           recommendation_dland: newForm[0]?.recommendation_dland,
           Dland_signature: newForm[0]?.Dland_signature,
@@ -185,7 +185,7 @@ export default function RecommendationLetter() {
         </ModalBody>
         <ModalFooter></ModalFooter>
       </Modal>
-      {JSON.stringify(newForm[0])}
+      {/* {JSON.stringify(recLetteForm)} */}
       <Card className="app_primary_card m-2 shadow p-4">
         <h5 className="mb-3">
           {type === 'conversion'

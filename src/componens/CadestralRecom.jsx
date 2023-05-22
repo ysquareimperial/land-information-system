@@ -33,12 +33,14 @@ export default function CadestralRecom() {
   const [modal3, setModal3] = useState(false)
   const toggle3 = () => setModal3(!modal3)
   const [newForm, setNewForm] = useState([])
-  const getRecBy = (num) => {
+  const getRecBy = (num, name) => {
+    let names = { name: name }
+    // alert(JSON.stringify(name))
     _fetchApi(
       `/api/getAppBYID?application_file_number=${num}`,
       (res) => {
         if (res.success) {
-          setNewForm(res.results[0])
+          setNewForm((p) => ({ ...p, ...res.results[0][0], name: name }))
         }
       },
       (err) => {
@@ -61,8 +63,7 @@ export default function CadestralRecom() {
         <ModalBody>
           {/* <Require_documents />
            */}
-           
-          <RecForGrOfStatRightOfOccupView form={newForm[0]} />
+          <RecForGrOfStatRightOfOccupView form={newForm} />
         </ModalBody>
         <ModalFooter>
           <Button
@@ -79,7 +80,7 @@ export default function CadestralRecom() {
       <h5 className="mb-4">
         {type === 'director-cadestral' ? 'Generate Recomendation Letter' : ''}
       </h5>
-      {/* {JSON.stringify(data[0])} */}
+      {/* {JSON.stringify(data)} */}
       <input type="search" placeholder="Search" className="input_field mb-3" />
       <div>
         <Table striped borderless size="sm" style={{ fontSize: 14 }}>
@@ -109,66 +110,85 @@ export default function CadestralRecom() {
                 <td>{item.occupation_business}</td>
                 <td>{item.length_of_term_required}</td>
                 <td>
-                  {item.cadestral_status === 'generated' ? (
-                    <>
-                      {type === 'comm-gov' || 'perm-sec' ? (
-                        <>
-                          <button
-                            className="paid"
-                            onClick={() =>
-                              navigate(
-                                `/${rout}?application_file_number=${item.file_no}&role=${type}`,
-                              )
-                            }
-                          >
-                            process
-                          </button>{' '}
-                          <button
-                            className="approved"
-                            onClick={() => {
-                              toggle3(), getRecBy(item.file_no)
-                            }}
-                          >
-                            View
-                          </button>
-                        </>
-                      ) : (
-                        <button
-                          className="approved"
-                          onClick={() => {
-                            toggle3(), getRecBy(item.file_no)
-                          }}
-                        >
-                          View
-                        </button>
-                      )}{' '}
-                    </>
+                  {type === 'dir-land' ? (
+                    item.land_status === null ? (
+                      <button
+                        className="paid"
+                        onClick={() =>
+                          navigate(
+                            `/${rout}?application_file_number=${item.file_no}&role=${type}`,
+                          )
+                        }
+                      >
+                        process
+                      </button>
+                    ) : (
+                      <button
+                        className="approved"
+                        onClick={() => {
+                          toggle3(),
+                            getRecBy(item.file_no, item.Applicant_full_name)
+                        }}
+                      >
+                        View
+                      </button>
+                    )
                   ) : (
-                    <>
-                      {type === 'comm-gov' || 'perm-sec' ? (
-                        <button
-                          className="paid"
-                          onClick={() =>
-                            navigate(
-                              `/${rout}?application_file_number=${item.file_no}&role=${type}`,
-                            )
-                          }
-                        >
-                          process
-                        </button>
-                      ) : (
-                        <button
-                          className="paid"
-                          onClick={() =>
-                            navigate(
-                              `/recommendation-letter?application_file_number=${item.file_no}&role=${type}`,
-                            )
-                          }
-                        >
-                          process
-                        </button>
-                      )}{' '}
-                    </>
+                    ''
+                  )}
+
+                  {type === 'perm-sec' ? (
+                    item.permsec_status === null ? (
+                      <button
+                        className="paid"
+                        onClick={() =>
+                          navigate(
+                            `/${rout}?application_file_number=${item.file_no}&role=${type}`,
+                          )
+                        }
+                      >
+                        process
+                      </button>
+                    ) : (
+                      <button
+                        className="approved"
+                        onClick={() => {
+                          toggle3(),
+                            getRecBy(item.file_no, item.Applicant_full_name)
+                        }}
+                      >
+                        View
+                      </button>
+                    )
+                  ) : (
+                    ''
+                  )}
+
+                  {type === 'comm-gov' ? (
+                    item.gov_status === null ? (
+                      <button
+                        className="paid"
+                        onClick={() =>
+                          navigate(
+                            `/${rout}?application_file_number=${item.file_no}&role=${type}`,
+                          )
+                        }
+                      >
+                        process
+                      </button>
+                    ) : (
+                      <button
+                        className="approved"
+                        onClick={() => {
+                          toggle3(),
+                            getRecBy(item.file_no, item.Applicant_full_name)
+                        }}
+                      >
+                        View
+                      </button>
+                    )
+                  ) : (
+                    ''
                   )}
                 </td>
               </tr>

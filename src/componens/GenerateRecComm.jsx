@@ -24,17 +24,21 @@ export default function GenerateRecComm() {
     )
   }
 
-  useEffect(()=>{
+  useEffect(() => {
     getRecBy()
-  },[file_no])
+  }, [file_no])
 
-  const today = moment().format("YYYY-MM-DD");
-  const [form,setForm]=useState({comm_gov_signature_date:today,grant_approve_reject:'',application_file_number:file_no})
+  // const today = moment().format('YYYY-MM-DD')
+  const [form, setForm] = useState({
+    comm_gov_signature_date: '',
+    grant_approve_reject: '',
+    application_file_number: file_no,
+  })
 
-  const handleChange = ({target:{name,value}})=>{
-    setForm((p)=>({...p,[name]:value}))
+  const handleChange = ({ target: { name, value } }) => {
+    setForm((p) => ({ ...p, [name]: value }))
   }
-  const navigate=useNavigate()
+  const navigate = useNavigate()
   const handleSubmit = () => {
     // toggle()
     setLoading(true)
@@ -60,53 +64,69 @@ export default function GenerateRecComm() {
   return (
     <div>
       <Card className="app_primary_card m-2 shadow p-4">
-        <h5 className="mb-3">Generate Recommendation Letter</h5>7
+        <Row>
+          <Col md={10}>
+            <h5 className="mb-3">Generate Recommendation Letter</h5>
+          </Col>
+          <Col md={2}>
+            <label className="input_label">Date</label>
+            <div>
+              <input
+                name="comm_gov_signature_date"
+                value={form.comm_gov_signature_date}
+                onChange={handleChange}
+                type="date"
+                className="input_field"
+              />
+            </div>
+          </Col>
+        </Row>
         {/* {JSON.stringify(newForm)} */}
         <Row>
           <Col md={3}>
             <label className="input_label">Application File No</label>
-            <h5>{newForm&&newForm[0]?.application_file_number}</h5>
+            <h5>{newForm && newForm[0]?.application_file_number}</h5>
           </Col>
           <Col md={3}>
             <label className="input_label">Value of Proposed Dev</label>
-            <h5>{newForm&&newForm[0]?.value_of_proposed_development}</h5>
+            <h5>{newForm && newForm[0]?.value_of_proposed_development}</h5>
           </Col>
           <Col md={3}>
             <label className="input_label">Time of Completion</label>
-            <h5>{newForm&&newForm[0]?.time_of_completion}</h5>
+            <h5>{newForm && newForm[0]?.time_of_completion}</h5>
           </Col>
           <Col md={3}>
             <label className="input_label">Development Charges</label>
-            <h5>{newForm&&newForm[0]?.development_charges}</h5>
+            <h5>{newForm && newForm[0]?.development_charges}</h5>
           </Col>
           <Col md={3}>
             <label className="input_label">Survey Charges</label>
-            <h5>{newForm&&newForm[0]?.survey_charges}</h5>
+            <h5>{newForm && newForm[0]?.survey_charges}</h5>
           </Col>
           <Col md={3}>
             <label className="input_label">Location</label>
-            <h5>{newForm&&newForm[0]?.location}</h5>
+            <h5>{newForm && newForm[0]?.location}</h5>
           </Col>
           <Col md={3}>
             <label className="input_label">Plot No</label>
-            <h5>{newForm&&newForm[0]?.plot_no}</h5>
+            <h5>{newForm && newForm[0]?.plot_no}</h5>
           </Col>
           <Col md={3}>
             <label className="input_label">Plan No</label>
-            <h5>{newForm&&newForm[0]?.plan_no}</h5>
+            <h5>{newForm && newForm[0]?.plan_no}</h5>
           </Col>
           <Col md={3}>
             <label className="input_label">Term</label>
-            <h5>{newForm&&newForm[0]?.term}</h5>
+            <h5>{newForm && newForm[0]?.term}</h5>
           </Col>
           <Col md={3}>
             <label className="input_label">Annual Ground Rent</label>
-            <h5>{newForm&&newForm[0]?.annual_ground_rent}</h5>
+            <h5>{newForm && newForm[0]?.annual_ground_rent}</h5>
           </Col>
           <hr />
 
           <Row>
-          <Col lg={3}>
+            <Col lg={3}>
               <label className="input_label">Director Land Signature</label>
               <h5>Dir. Land</h5>
             </Col>
@@ -114,74 +134,77 @@ export default function GenerateRecComm() {
               <label className="input_label">
                 Director Land Signature Date
               </label>
-              <h5>{newForm&&newForm[0]?.dland_sign_date}</h5>
-            </Col>      
+              <h5>{newForm && newForm[0]?.dland_sign_date}</h5>
+            </Col>
             <Col lg={12}>
               <label className="input_label">
                 Director Land Recommendation
               </label>
               {/* <h5>{newForm&&newForm[0]?.recommendation_dland}</h5> */}
               <div>
-          <textarea
-          // name='grant_approve_reject'
-          value={newForm&&newForm[0]?.recommendation_dland}
-          // onChange={handleChange}
-          disabled
-            type=""
-            className="input_field"
-            placeholder="write recommendation here..."
-            rows={4}
-          />
-        </div>
+                <textarea
+                  // name='grant_approve_reject'
+                  value={newForm && newForm[0]?.recommendation_dland}
+                  // onChange={handleChange}
+                  disabled
+                  type=""
+                  className="input_field"
+                  placeholder="write recommendation here..."
+                  rows={4}
+                />
+              </div>
             </Col>
-           
           </Row>
           <hr />
           <Row>
-          <Col lg={3}>
+            <Col lg={3}>
               <label className="input_label">Perm. Sec. Signature</label>
               <h5>COMM/GOV.</h5>
             </Col>
             <Col lg={3}>
               <label className="input_label">Perm. Sec. Signature Date</label>
-              <h5>{newForm&&newForm[0]?.persec_sign_date}</h5>
+              <h5>{newForm && newForm[0]?.persec_sign_date}</h5>
             </Col>
             <Col lg={12}>
               <label className="input_label">Perm. Sec. Recommendation</label>
-            
-        <div>
-          <textarea
-          // name='grant_approve_reject'
-          value={newForm&&newForm[0]?.recommendation_persec}
-          // onChange={handleChange}
-          disabled
-            type=""
-            className="input_field"
-            placeholder="write recommendation here..."
-            rows={4}
-          />
-        </div>
+
+              <div>
+                <textarea
+                  // name='grant_approve_reject'
+                  value={newForm && newForm[0]?.recommendation_persec}
+                  // onChange={handleChange}
+                  disabled
+                  type=""
+                  className="input_field"
+                  placeholder="write recommendation here..."
+                  rows={4}
+                />
+              </div>
             </Col>
-           
           </Row>
           <hr />
-
+          {/* 
           <Col lg={3}>
             <label className="input_label">Date</label>
             <div>
-              <input name='comm_gov_signature_date' value={form.comm_gov_signature_date} onChange={handleChange} type="date" className="input_field" />
+              <input
+                name="comm_gov_signature_date"
+                value={form.comm_gov_signature_date}
+                onChange={handleChange}
+                type="date"
+                className="input_field"
+              />
             </div>
-          </Col>
+          </Col> */}
         </Row>
-
         <label className="input_label mt-3">
           Recommendation Commissioner/Governor
         </label>
         <div>
           <textarea
-          name='grant_approve_reject'
-          value={form.grant_approve_reject}
-          onChange={handleChange}
+            name="grant_approve_reject"
+            value={form.grant_approve_reject}
+            onChange={handleChange}
             type=""
             className="input_field"
             placeholder="write recommendation here..."
