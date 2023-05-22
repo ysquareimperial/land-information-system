@@ -185,7 +185,7 @@ export default function RecommendationLetter() {
         </ModalBody>
         <ModalFooter></ModalFooter>
       </Modal>
-      {/* {JSON.stringify(data[0])} */}
+      {JSON.stringify(newForm[0])}
       <Card className="app_primary_card m-2 shadow p-4">
         <h5 className="mb-3">
           {type === 'conversion'
