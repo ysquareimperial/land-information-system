@@ -64,9 +64,10 @@ import GenerateRecDirLand from '../componens/GenerateRecDirLand'
 import GenerateRecPermsSec from '../componens/GenerateRecPermSec'
 import GenerateRecComm from '../componens/GenerateRecComm'
 import Plots from '../componens/Plots'
+import CertificateOfOccupancyPDFView from '../componens/PDF/CertificateOfOccupancyPDFView'
 
 function AppNavigation() {
-  let element = useRoutes([
+  let element = useRoutes([  
     {
       path: '/',
       element: <Landing />,
@@ -374,6 +375,10 @@ function AppNavigation() {
         {
           path: '/pdf7',
           element: <DescriptionOfRightOfOccPDFView />,
+        },
+        {
+          path: '/pdf8',
+          element: <CertificateOfOccupancyPDFView />,
         },
         //  1cda8d2b662
       ],

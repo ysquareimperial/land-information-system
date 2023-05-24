@@ -74,6 +74,7 @@ function FinanceForm() {
 
   const applicant_full_name = query.get('applicant_full_name')
   const application_id = query.get('application_id')
+  const application_Type= query.get("type")
 
   useEffect(() => {
     setList((p) => ({
@@ -107,14 +108,14 @@ function FinanceForm() {
               <select
                 className="input_field"
                 name="type"
-                value={list.type}
+                value={application_Type}
                 onChange={handleChange}
               >
                 <option>---select----</option>
-                <option>residential</option>
-                <option>commercial</option>
-                <option>grant</option>
-                <option>schedule payment</option>
+                <option>Residential</option>
+                <option>Commercial</option>
+                <option>Grant</option>
+                <option>Schedule payment</option>
                 <option>For information</option>
               </select>
             </div>
