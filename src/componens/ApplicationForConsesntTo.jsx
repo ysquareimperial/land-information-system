@@ -32,7 +32,7 @@ export default function ApplicationForConsesntTo() {
     purpose_for_application_required: "",
     acitivity_intended_to_undertake: "",
     type_of_building_erected: "",
-    estimated_amount_to_spenr: "",
+    estimated_amount_to_spenr: 0,
     source_financing: "",
     length_of_term_required: "",
     do_you_have_biz_in_kano: "",
