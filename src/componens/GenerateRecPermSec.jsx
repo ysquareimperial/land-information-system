@@ -62,7 +62,7 @@ export default function GenerateRecPermsSec() {
   }
   return (
     <div>
-      {/* {JSON.stringify(newForm)} */}
+      {JSON.stringify(newForm)}
       <Card className="app_primary_card m-2 shadow p-4">
         <Row className="mb-2">
           <Col md={10}>

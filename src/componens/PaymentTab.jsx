@@ -7,46 +7,53 @@ import { _fetchApi } from '../helpers/helper'
 
 function PaymentTable() {
   const navigate = useNavigate()
-    const [data,setData]=useState([])
-  const getID =()=>{
-    _fetchApi('/api/getSchedule',
-    (res)=>{
-      setData(res.results)
-    },(err)=>{
-      console.log(err)
-    }
+  const [data, setData] = useState([])
+  const getID = () => {
+    _fetchApi(
+      '/api/getSchedule',
+      (res) => {
+        setData(res.results)
+      },
+      (err) => {
+        console.log(err)
+      },
     )
   }
-  useEffect(
-    ()=>{
-      getID()
-    },
-    []
-  )
-  const [hello, setHello] = useState ('')
-  
+  useEffect(() => {
+    getID()
+  }, [])
+  const [hello, setHello] = useState('')
+
   const rows = []
-  data[0]?.forEach((item,i) => {
-    if (item.applicant_name
+  data[0]?.forEach((item, i) => {
+    if (
+      item.applicant_name
         .toString()
         .toLowerCase()
-        .indexOf(hello.toLowerCase())=== -1 &&
-        item.file_no
-        .toString()
-        .toLowerCase()
-        .indexOf(hello.toLowerCase())=== -1
-      ) {
+        .indexOf(hello.toLowerCase()) === -1 &&
+      item.file_no.toString().toLowerCase().indexOf(hello.toLowerCase()) === -1
+    ) {
       return
     }
     rows.push(
       <tr key={i} className="p-0 m-0">
-    <td>{item.applicant_name}</td>
-                          <td>{item.file_no}</td>
-                          <td>{item.amount}</td>
-                          <td>{item.purpose_payment}</td>
-                          <td><button className='app_btn' onClick={()=>navigate(`/finance-form?applicant_full_name=${item.applicant_name}&application_id=${item.file_no}&type=schedule payment`)}>Process Payment</button></td>
-   
-  </tr>
+        <td>{item.applicant_name}</td>
+        <td>{item.file_no}</td>
+        <td>{item.amount}</td>
+        <td>{item.purpose_payment}</td>
+        <td>
+          <button
+            className="app_btn"
+            onClick={() =>
+              navigate(
+                `/finance-form?applicant_full_name=${item.applicant_name}&application_id=${item.file_no}&type=schedule payment`,
+              )
+            }
+          >
+            Process Payment
+          </button>
+        </td>
+      </tr>,
     )
   })
   return (
@@ -62,27 +69,27 @@ function PaymentTable() {
         >
           <BsPlusLg /> Add New
         </button>
-            <Input type="text" className='mt-3' name="hello" value={hello}  
-      placeholder="Search by Application Number or Applicant Name" 
-      onChange={(e) =>setHello(e.target.value)} 
-      />
-    
-    
+        <Input
+          type="text"
+          className="mt-3"
+          name="hello"
+          value={hello}
+          placeholder="Search by Application Number or Applicant Name"
+          onChange={(e) => setHello(e.target.value)}
+        />
 
-        <Table striped >
-                  <thead>
-                    <tr>
-                      <th>Applicant Name</th>
-                      <th>Applicantion Number</th>
-                      <th>Amount</th>
-                      <th>Purpose Of Payment</th>
-                      <th>Action</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                  {rows}
-                  </tbody>
-                </Table>
+        <Table striped>
+          <thead>
+            <tr>
+              <th>Applicant Name</th>
+              <th>Applicantion Number</th>
+              <th>Amount</th>
+              <th>Purpose Of Payment</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>{rows}</tbody>
+        </Table>
       </Card>
     </div>
   )

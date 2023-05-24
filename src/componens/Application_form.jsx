@@ -51,7 +51,7 @@ export default function Application_form() {
     purpose_for_application_required: '',
     acitivity_intended_to_undertake: '',
     type_of_building_erected: '',
-    estimated_amount_to_spenr: '',
+    estimated_amount_to_spenr: 0,
     source_financing: '',
     proposed_value_of_building_to_be_created: '',
     annual_income_or_anticipated_income: '',
@@ -63,7 +63,7 @@ export default function Application_form() {
     address_of_local_rep: '',
     do_you_operate_other_location_in_kano: '',
     power_of_attorney_if_any: '',
-    business_address: '',
+    business_address: '', 
     location_of_land_required: '',
     do_you_own_a_house: '',
     reg_of_particular_of_attorney: '',
@@ -499,7 +499,7 @@ export default function Application_form() {
               <div>
                 <input
                   className="input_field"
-                  type="number"
+                  type="text"
                   name="home_domicile"
                   value={form.home_domicile}
                   onChange={handleChange}
@@ -818,7 +818,7 @@ export default function Application_form() {
                   <input
                     className="input_field"
                     type="text"
-                    name="do_you_operate_other_location_in_kano"
+                    name="reg_of_particular_of_attorney"
                     value={form.reg_of_particular_of_attorney}
                     onChange={handleChange}
                   />
