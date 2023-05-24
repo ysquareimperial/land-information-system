@@ -2,6 +2,7 @@ import React from 'react'
 import { Outlet } from 'react-router-dom'
 import { Col, Row } from 'reactstrap'
 import Sidebar2 from '../componens/Sidebar2'
+import Sidebar from '../componens/Sidebar'
 export default function AppIndex() {
   return (
     <div>

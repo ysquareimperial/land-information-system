@@ -8,7 +8,7 @@ export default function GrantTable() {
 
   const getList = () => {
     _fetchApi(
-      '/api/getCadestral?status=approved',
+      '/api/getTriple',
       (res) => {
         setData(res.results[0])
       },
@@ -42,9 +42,10 @@ export default function GrantTable() {
             <tr>
               <td style={{ fontWeight: 'bold' }}>S/N</td>
               <td style={{ fontWeight: 'bold' }}>Applicant File No</td>
-              <td style={{ fontWeight: 'bold' }}>Location</td>
-              <td style={{ fontWeight: 'bold' }}>Plot No</td>
-              <td style={{ fontWeight: 'bold' }}>Plan No</td>
+              <td style={{ fontWeight: 'bold' }}>Applicant Full Name</td>
+              <td style={{ fontWeight: 'bold' }}>Bussiness Location</td>
+              <td style={{ fontWeight: 'bold' }}>Occupation</td>
+              <td style={{ fontWeight: 'bold' }}>State</td>
               <td style={{ fontWeight: 'bold' }}>
                 {' '}
                 <div style={{ float: 'right' }}>Action</div>
@@ -55,10 +56,11 @@ export default function GrantTable() {
             {data?.map((item, index) => (
               <tr>
                 <td scope="row">{index + 1}</td>
-                <td>{item.application_file_number}</td>
-                <td>{item.location}</td>
-                <td>{item.plot_no}</td>
-                <td>{item.plan_no}</td>
+                <td>{item.file_no}</td>
+                <td>{item.Applicant_full_name}</td>
+                <td>{item.Business_location}</td>
+                <td>{item.occupation_business}</td>
+                <td>{item.State_of_origin}</td>
                 <td>
                   {/* {item.grant_status === 'generated' ? (
                     <div style={{ float: 'right' }}>
@@ -76,7 +78,7 @@ export default function GrantTable() {
                         className="blue paid "
                         onClick={() =>
                           navigate(
-                            `/${rout}?application_file_number=${item.application_file_number}`,
+                            `/${rout}?application_file_number=${item.file_no}`,
                           )
                         }
                       >
