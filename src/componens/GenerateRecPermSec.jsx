@@ -62,7 +62,7 @@ export default function GenerateRecPermsSec() {
   }
   return (
     <div>
-      {/* {JSON.stringify(newForm)} */}
+      {JSON.stringify(newForm)}
       <Card className="app_primary_card m-2 shadow p-4">
         <Row className="mb-2">
           <Col md={10}>
@@ -140,7 +140,8 @@ export default function GenerateRecPermsSec() {
                 application for the following reasons:
               </b>
             </label>
-            <div>
+            <h5>{newForm && newForm[0]?.recommendation_dland}</h5>
+            {/* <div>
               <textarea
                 type=""
                 // name='recommendation_permsec'
@@ -151,7 +152,7 @@ export default function GenerateRecPermsSec() {
                 placeholder="write recommendation here..."
                 rows={4}
               />
-            </div>
+            </div> */}
           </Col>
         </Row>
         {/* <Col lg={3}>

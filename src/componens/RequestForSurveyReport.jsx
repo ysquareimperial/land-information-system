@@ -31,7 +31,7 @@ function RequestForSurveyReport() {
         {/* {JSON.stringify(data)} */}
         <center>
           <h5 className="mb-3">Request For Survey Report</h5>
-        </center>
+        </center>   
 
         {/* <thead> */}
         <p>Please find enclosed herewith the following:</p>

@@ -99,7 +99,8 @@ export const RecForGrOfStatRightOfOccup = ({ form = {} }) => (
           </View>
           <View style={{ width: '95%' }}>
             <Text>
-              Name of Applicant:<Text style={{textDecoration:'underline'}}>{form?.name}</Text>
+              Name of Applicant:
+              <Text style={{ textDecoration: 'underline' }}>{form?.name}</Text>
             </Text>
           </View>
         </View>
@@ -117,25 +118,16 @@ export const RecForGrOfStatRightOfOccup = ({ form = {} }) => (
           <View style={{ width: '95%' }}>
             <View style={{ display: 'flex', flexDirection: 'row', gap: 10 }}>
               <Text>
-                (a) File Ref. No: <Text style={{textDecoration:'underline'}}>{form?.application_file_number}</Text>
+                (a) File Ref. No:{' '}
+                <Text style={{ textDecoration: 'underline' }}>
+                  {form?.application_file_number}
+                </Text>
               </Text>
               <Text>
-                (b) Purpose of Clause: <Text style={{textDecoration:'underline'}}>{form?.type}</Text>
-              </Text>
-            </View>
-            <View
-              style={{
-                display: 'flex',
-                flexDirection: 'row',
-                gap: 10,
-                marginTop: 5,
-              }}
-            >
-              <Text>
-                (c) Location: <Text style={{textDecoration:'underline'}}>{form?.location}</Text>
-              </Text>
-              <Text>
-                (d) Plot No: <Text style={{textDecoration:'underline'}}>{form?.plot_no}</Text>
+                (b) Purpose of Clause:{' '}
+                <Text style={{ textDecoration: 'underline' }}>
+                  {form?.type}
+                </Text>
               </Text>
             </View>
             <View
@@ -147,7 +139,31 @@ export const RecForGrOfStatRightOfOccup = ({ form = {} }) => (
               }}
             >
               <Text>
-                (e) Layout Plan No: <Text style={{textDecoration:'underline'}}>{form?.plan_no}</Text>
+                (c) Location:{' '}
+                <Text style={{ textDecoration: 'underline' }}>
+                  {form?.location}
+                </Text>
+              </Text>
+              <Text>
+                (d) Plot No:{' '}
+                <Text style={{ textDecoration: 'underline' }}>
+                  {form?.plot_no}
+                </Text>
+              </Text>
+            </View>
+            <View
+              style={{
+                display: 'flex',
+                flexDirection: 'row',
+                gap: 10,
+                marginTop: 5,
+              }}
+            >
+              <Text>
+                (e) Layout Plan No:{' '}
+                <Text style={{ textDecoration: 'underline' }}>
+                  {form?.plan_no}
+                </Text>
               </Text>
             </View>
           </View>
@@ -165,7 +181,8 @@ export const RecForGrOfStatRightOfOccup = ({ form = {} }) => (
           </View>
           <View style={{ width: '95%' }}>
             <Text>
-              Term: <Text style={{textDecoration:'underline'}}>{form?.term}</Text>
+              Term:{' '}
+              <Text style={{ textDecoration: 'underline' }}>{form?.term}</Text>
             </Text>
           </View>
         </View>
@@ -183,7 +200,9 @@ export const RecForGrOfStatRightOfOccup = ({ form = {} }) => (
           <View style={{ width: '95%' }}>
             <Text>
               Value of Purposed Development N:
-              <Text style={{textDecoration:'underline'}}>{form?.value_of_proposed_development}</Text>
+              <Text style={{ textDecoration: 'underline' }}>
+                {form?.value_of_proposed_development}
+              </Text>
             </Text>
           </View>
         </View>
@@ -201,7 +220,10 @@ export const RecForGrOfStatRightOfOccup = ({ form = {} }) => (
           <View style={{ width: '95%' }}>
             <Text>
               Time for Competition of Proposed Development: within{' '}
-              <Text style={{textDecoration:'underline'}}>{form?.time_of_completion}</Text> years
+              <Text style={{ textDecoration: 'underline' }}>
+                {form?.time_of_completion}
+              </Text>{' '}
+              years
             </Text>
           </View>
         </View>
@@ -218,7 +240,10 @@ export const RecForGrOfStatRightOfOccup = ({ form = {} }) => (
           </View>
           <View style={{ width: '95%' }}>
             <Text>
-              Annual Ground Rent: <Text style={{textDecoration:'underline'}}>{form?.annual_ground_rent}</Text>{' '}
+              Annual Ground Rent:{' '}
+              <Text style={{ textDecoration: 'underline' }}>
+                {form?.annual_ground_rent}
+              </Text>{' '}
               p.h.p.a
             </Text>
           </View>
@@ -258,7 +283,10 @@ export const RecForGrOfStatRightOfOccup = ({ form = {} }) => (
           </View>
           <View style={{ width: '95%' }}>
             <Text>
-              Survey and Processing Charges: <Text style={{textDecoration:'underline'}}>{form?.survey_charges}</Text>
+              Survey and Processing Charges:{' '}
+              <Text style={{ textDecoration: 'underline' }}>
+                {form?.survey_charges}
+              </Text>
             </Text>
           </View>
         </View>
@@ -277,7 +305,9 @@ export const RecForGrOfStatRightOfOccup = ({ form = {} }) => (
             <Text>
               The Director of Land recommends/does not recommend the application
               for the following reasons:{' '}
-              <Text style={{textDecoration:'underline'}}>{form?.recommendation_dland}</Text>
+              <Text style={{ textDecoration: 'underline' }}>
+                {form?.recommendation_dland}
+              </Text>
             </Text>
           </View>
         </View>
@@ -294,7 +324,10 @@ export const RecForGrOfStatRightOfOccup = ({ form = {} }) => (
           </View>
           <View style={{ width: '30%' }}>
             <Text>
-              Date:<Text style={{textDecoration:'underline'}}>{form?.dland_sign_date}</Text>
+              Date:
+              <Text style={{ textDecoration: 'underline' }}>
+                {form?.dland_sign_date}
+              </Text>
             </Text>
           </View>
         </View>
@@ -310,9 +343,26 @@ export const RecForGrOfStatRightOfOccup = ({ form = {} }) => (
             <Text>10. </Text>
           </View>
           <View style={{ width: '95%' }}>
-            <Text>RECOMMENDATION BY THE PERMANENT SECRETARY</Text>
+            <Text>
+              {' '}
+              I recommend/do not recommend the application for Grant over Plot
+              No:{' '}
+              <Text style={{ textDecoration: 'underline' }}>
+                {form?.plot_no}
+              </Text>{' '}
+              Plan No:{' '}
+              <Text style={{ textDecoration: 'underline' }}>
+                {form?.plan_no}
+              </Text>{' '}
+              Location:{' '}
+              <Text style={{ textDecoration: 'underline' }}>
+                {form?.location}
+              </Text>
+            </Text>
             <Text style={{ marginTop: 10 }}>
-              <Text style={{textDecoration:'underline'}}>{form?.recommendation_permsec}</Text>
+              <Text style={{ textDecoration: 'underline' }}>
+                {form?.recommendation_permsec}
+              </Text>
             </Text>
           </View>
         </View>
@@ -329,7 +379,10 @@ export const RecForGrOfStatRightOfOccup = ({ form = {} }) => (
           </View>
           <View style={{ width: '30%' }}>
             <Text>
-              Date:<Text style={{textDecoration:'underline'}}>{form?.persec_sign_date}</Text>
+              Date:
+              <Text style={{ textDecoration: 'underline' }}>
+                {form?.persec_sign_date}
+              </Text>
             </Text>
           </View>
         </View>
@@ -369,7 +422,10 @@ export const RecForGrOfStatRightOfOccup = ({ form = {} }) => (
               Hon. Commissioner
             </Text>
             <Text style={{ marginTop: 30 }}>
-              Date:<Text style={{textDecoration:'underline'}}>{form?.comm_gov_signature_date}</Text>
+              Date:
+              <Text style={{ textDecoration: 'underline' }}>
+                {form?.comm_gov_signature_date}
+              </Text>
             </Text>
           </View>
         </View>

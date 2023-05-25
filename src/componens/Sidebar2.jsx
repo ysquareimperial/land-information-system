@@ -105,9 +105,7 @@ export default function Sidebar2() {
                       ? 'active_sidebar_item'
                       : `sidebar_items `
                   }
-                  onClick={() =>
-                    navigate('/cadestral-recom?type=comm-gov')
-                  }
+                  onClick={() => navigate('/cadestral-recom?type=comm-gov')}
                   // onClick={() => navigate('/generate-recommendation-comm-gov')}
                 >
                   {/* <AiOutlineUnorderedList
@@ -150,9 +148,7 @@ export default function Sidebar2() {
                       ? 'active_sidebar_item'
                       : `sidebar_items `
                   }
-                  onClick={() =>
-                    navigate('/cadestral-recom?type=perm-sec')
-                  }
+                  onClick={() => navigate('/cadestral-recom?type=perm-sec')}
                   // onClick={() => navigate('/generate-recommendation-perm-sec')}
                 >
                   {/* <AiOutlineUnorderedList
@@ -227,9 +223,7 @@ export default function Sidebar2() {
                       ? 'active_sidebar_item'
                       : `sidebar_items `
                   }
-                  onClick={() =>
-                    navigate('/cadestral-recom?type=dir-land')
-                  }
+                  onClick={() => navigate('/cadestral-recom?type=dir-land')}
                 >
                   {/* <AiOutlineUnorderedList
                     size="1.2rem"
@@ -360,7 +354,6 @@ export default function Sidebar2() {
                       Genrate Letter of Grant
                     </span>
                   </div>
-                  
 
                   <div className="d-flex">
                     <span
@@ -370,13 +363,15 @@ export default function Sidebar2() {
                           ? 'active_sidebar_item'
                           : `sidebar_items `
                       }
-                      onClick={() => navigate('/for-information-table?type=d-land')}
+                      onClick={() =>
+                        navigate('/for-information-table?type=d-land')
+                      }
                     >
                       {/* <AiOutlineUnorderedList
                     size="1.2rem"
                     className="sidebar_icon"
                   /> */}
-                     For Information
+                      For Information
                     </span>
                   </div>
                 </div>
@@ -674,40 +669,40 @@ export default function Sidebar2() {
                 </span>
               </div>
               <div className="d-flex">
-                    <span
-                      style={{ fontSize: 11 }}
-                      className={
-                        location.pathname === '/for-information-table'
-                          ? 'active_sidebar_item'
-                          : `sidebar_items `
-                      }
-                      onClick={() => navigate('/for-information-table?type=finace')}
-                    >
-                      {/* <AiOutlineUnorderedList
+                <span
+                  style={{ fontSize: 11 }}
+                  className={
+                    location.pathname === '/for-information-table'
+                      ? 'active_sidebar_item'
+                      : `sidebar_items `
+                  }
+                  onClick={() => navigate('/for-information-table?type=finace')}
+                >
+                  {/* <AiOutlineUnorderedList
                     size="1.2rem"
                     className="sidebar_icon"
                   /> */}
-                     For Information
-                    </span>
-                  </div>
+                  For Information
+                </span>
+              </div>
 
-                  <div className="d-flex">
-                    <span
-                      style={{ fontSize: 11 }}
-                      className={
-                        location.pathname === '/finaces-grant'
-                          ? 'active_sidebar_item'
-                          : `sidebar_items `
-                      }
-                      onClick={() => navigate('/finaces-grant')}
-                    >
-                      {/* <AiOutlineUnorderedList
+              <div className="d-flex">
+                <span
+                  style={{ fontSize: 11 }}
+                  className={
+                    location.pathname === '/finaces-grant'
+                      ? 'active_sidebar_item'
+                      : `sidebar_items `
+                  }
+                  onClick={() => navigate('/finaces-grant')}
+                >
+                  {/* <AiOutlineUnorderedList
                     size="1.2rem"
                     className="sidebar_icon"
                   /> */}
-                     Grant Payment
-                    </span>
-                  </div>
+                  Grant Payment
+                </span>
+              </div>
               <div className="d-flex">
                 <span
                   className={
@@ -787,7 +782,7 @@ export default function Sidebar2() {
                       ? 'active_sidebar_item'
                       : `sidebar_items `
                   }
-                  //   onClick={() => navigate('')}
+                  onClick={() => navigate('/ValuationReport')}
                 >
                   {/* <AiOutlineUnorderedList
                     size="1.2rem"
