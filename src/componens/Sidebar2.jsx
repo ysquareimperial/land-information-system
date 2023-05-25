@@ -9,6 +9,7 @@ export default function Sidebar2() {
   const [showSubMenu, setShowSubMenu] = useState(false)
   const [showSubMenuS, setShowSubMenuS] = useState(false)
   const [showSubMenuC, setShowSubMenuC] = useState(false)
+  const [showSubMenuAss, setShowSubMenuAss] = useState(false)
   const [showSubMenuA, setShowSubMenuA] = useState(false)
   const [showSubMenuD, setShowSubMenuD] = useState(false)
   const [showSubMenuE, setShowSubMenuE] = useState(false)
@@ -789,6 +790,54 @@ export default function Sidebar2() {
                     className="sidebar_icon"
                   /> */}
                   Valuation
+                </span>
+              </div>
+            </div>
+          ) : (
+            ''
+          )}
+        </>
+        <>
+          {showSubMenuE ? (
+            <div>
+              <div className="d-flex">
+                <span
+                  className={
+                    location.pathname === ''
+                      ? 'active_sidebar_item'
+                      : `sidebar_items `
+                  }
+                  onClick={() => navigate('/ValuationReport')}
+                >
+                  {/* <AiOutlineUnorderedList
+                    size="1.2rem"
+                    className="sidebar_icon"
+                  /> */}
+                  Valuation
+                </span>
+              </div>
+            </div>
+          ) : (
+            ''
+          )}
+        </>
+        <>
+          {showSubMenuE ? (
+            <div>
+              <div className="d-flex">
+                <span
+                  className={
+                    location.pathname === ''
+                      ? 'active_sidebar_item'
+                      : `sidebar_items `
+                  }
+                  onClick={() => navigate('/assignment-list')}
+                >
+                  {/* <AiOutlineUnorderedList
+                    size="1.2rem"
+                    className="sidebar_icon"
+                  /> */}
+                  Assignment
                 </span>
               </div>
             </div>

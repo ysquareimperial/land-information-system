@@ -47,7 +47,7 @@ import ForInformationTable from '../componens/ForInformationTable'
 import RequestForSurveyReport from '../componens/RequestForSurveyReport'
 import CertificateOfOccupancyRentTable from '../componens/CertificateOfOccupancyRentTable'
 import CertificateOfOccupancyRent from '../componens/CertificateOfOccupancyRent'
-import ApplicationForConsesntTo from '../componens/ApplicationForConsesntTo'
+import Assignment from '../componens/Assignment'
 
 import ResAppPDFView from '../componens/PDF/ResAppPDFView'
 import RecForGrOfStatRightOfOccupView from '../componens/PDF/RecForGrOfStatRightOfOccupView'
@@ -65,9 +65,10 @@ import GenerateRecPermsSec from '../componens/GenerateRecPermSec'
 import GenerateRecComm from '../componens/GenerateRecComm'
 import Plots from '../componens/Plots'
 import CertificateOfOccupancyPDFView from '../componens/PDF/CertificateOfOccupancyPDFView'
+import AssignmentList from '../componens/AssignmentList'
 
 function AppNavigation() {
-  let element = useRoutes([  
+  let element = useRoutes([
     {
       path: '/',
       element: <Landing />,
@@ -172,8 +173,8 @@ function AppNavigation() {
           element: <ListTable />,
         },
         {
-       path:'/plots',
-       element:<Plots />
+          path: '/plots',
+          element: <Plots />,
         },
         //  11c241d1be86cd1598a5710aa9e4838c7c855562
 
@@ -280,8 +281,12 @@ function AppNavigation() {
           element: <CertificateOfOccupancyRent />,
         },
         {
-          path: '/application-for-consesnt-to',
-          element: <ApplicationForConsesntTo />,
+          path: '/assignment',
+          element: <Assignment />,
+        },
+        {
+          path: '/assignment-list',
+          element: <AssignmentList />,
         },
         { path: '/application-step', element: <Apps /> },
         {
