@@ -63,7 +63,7 @@ export default function Application_form() {
     address_of_local_rep: '',
     do_you_operate_other_location_in_kano: '',
     power_of_attorney_if_any: '',
-    business_address: '', 
+    business_address: '',
     location_of_land_required: '',
     do_you_own_a_house: '',
     reg_of_particular_of_attorney: '',

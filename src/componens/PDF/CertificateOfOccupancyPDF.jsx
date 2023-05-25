@@ -41,14 +41,14 @@ export const CertificateOfOccupancyPDF = () => (
           >
             <View>
               <Text>Ref No LKN. FAS/FF/22</Text>
-              <Text style={{ marginTop: 5 }}>
+              <Text style={{ marginTop: 10 }}>
                 Kano State Bureau of Land Management
               </Text>
-              <Text style={{ marginTop: 5 }}>
+              <Text style={{ marginTop: 10 }}>
                 Office of the Executive Governor
               </Text>
-              <Text style={{ marginTop: 5 }}>P.M.B 3083, Kano</Text>
-              <Text style={{ marginTop: 5 }}>Date:</Text>
+              <Text style={{ marginTop: 10 }}>P.M.B 3083, Kano</Text>
+              <Text style={{ marginTop: 10 }}>Date:</Text>
             </View>
           </View>
         </View>
@@ -60,37 +60,79 @@ export const CertificateOfOccupancyPDF = () => (
       </View>
       <View>
         <Text style={{ marginTop: 20 }}>Number</Text>
-        <Text style={{ marginTop: 5 }}>Date of Issue</Text>
-        <Text style={{ marginTop: 5 }}>Date of Expiry</Text>
-        <Text style={{ marginTop: 5 }}>Rent Per Annum</Text>
-        <Text style={{ marginTop: 5 }}>Location/Station</Text>
-        <Text style={{ marginTop: 5 }}>District</Text>
+        <Text style={{ marginTop: 10 }}>Date of Issue</Text>
+        <Text style={{ marginTop: 10 }}>Date of Expiry</Text>
+        <Text style={{ marginTop: 10 }}>Rent Per Annum</Text>
+        <Text style={{ marginTop: 10 }}>Location/Station</Text>
+        <Text style={{ marginTop: 10 }}>District</Text>
       </View>
       <View>
         <Text style={{ marginTop: 20 }}>
           The rent and fees payable are made as follows:-
         </Text>
-        <Text style={{ marginTop: 5 }}>
+        <Text style={{ marginTop: 10 }}>
           Rent from: <Text>22 Aug 2022</Text> To <Text>22 Aug 2030</Text>
         </Text>
-        <Text style={{ marginTop: 5 }}>
+        <Text style={{ marginTop: 10 }}>
           N: <Text>10000</Text> Per Annum N <Text>32323 </Text>
         </Text>
-        <Text style={{ marginTop: 5 }}>
+        <Text style={{ marginTop: 10 }}>
           Registration Fees: <Text>10000</Text> N<Text>32323 </Text>
         </Text>
-        <Text style={{ marginTop: 5 }}>
+        <Text style={{ marginTop: 10 }}>
           Survey Fees: <Text>10000</Text> N<Text>32323 </Text>
         </Text>
-        <Text style={{ marginTop: 5 }}>
+        <Text style={{ marginTop: 10 }}>
           Preparation Fees: <Text>10000</Text> N<Text>32323 </Text>
         </Text>
-        <Text style={{ marginTop: 5 }}>
+        <Text style={{ marginTop: 10 }}>
           Compensation Fees: <Text>10000</Text> N<Text>32323 </Text>
         </Text>
-        <Text style={{ marginTop: 5 }}>
+        <Text style={{ marginTop: 10 }}>
           Development Charges: <Text>10000</Text> N<Text>32323 </Text>
         </Text>
+        <Text style={{ marginTop: 10 }}>
+          <Text>Total</Text> N<Text>32323 </Text>
+        </Text>
+        <Text style={{ marginTop: 10 }}>
+          <Text>1. Amount deposited on Kano R.C.R./RIV No</Text>
+          <Text>32323 </Text> Of <Text></Text>
+          <Text>20</Text>
+          <Text>N</Text>
+        </Text>
+        <Text style={{ marginTop: 10 }}>
+          <Text>Balance due to Government/Applicant</Text>
+        </Text>
+        <Text style={{ marginTop: 10 }}>
+          2. Will you please remit this sum direct to this office not later than
+          a month from the date of this letter.
+        </Text>
+        <Text style={{ marginTop: 10 }}>
+          3. I would take this opportunity of reminding you that further annual
+          rent are payable.
+        </Text>
+        <View style={{ marginLeft: 30 }}>
+          <Text style={{ marginTop: 10 }}>
+            A){' '}
+            <Text style={{ marginLeft: 20 }}>
+              In advance on the 1st January
+            </Text>
+          </Text>
+          <Text style={{ marginTop: 10 }}>
+            B) <Text style={{ marginLeft: 20 }}>Without demand</Text>
+          </Text>
+          <Text style={{ marginTop: 10 }}>
+            B){' '}
+            <Text style={{ marginLeft: 20 }}>
+              Direct to the account Dicision of this
+            </Text>{' '}
+          </Text>
+        </View>
+
+        <View style={{ display: 'flex', flexDirection: 'row' }}>
+          <View style={{ width: '50%' }}></View>
+          <View style={{ width: '50%' }}></View>
+        </View>
       </View>
     </Page>
   </Document>
