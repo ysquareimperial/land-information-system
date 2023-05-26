@@ -797,6 +797,7 @@ export default function Sidebar2() {
             ''
           )}
         </>
+        
         <>
           {showSubMenuE ? (
             <div>
@@ -807,13 +808,37 @@ export default function Sidebar2() {
                       ? 'active_sidebar_item'
                       : `sidebar_items `
                   }
-                  onClick={() => navigate('/ValuationReport')}
+                  onClick={() => navigate('/head-of-valuation')}
                 >
                   {/* <AiOutlineUnorderedList
                     size="1.2rem"
                     className="sidebar_icon"
                   /> */}
-                  Valuation
+                  Head of Valuation
+                </span>
+              </div>
+            </div>
+          ) : (
+            ''
+          )}
+        </>
+        <>
+          {showSubMenuE ? (
+            <div>
+              <div className="d-flex">
+                <span
+                  className={
+                    location.pathname === ''
+                      ? 'active_sidebar_item'
+                      : `sidebar_items `
+                  }
+                  onClick={() => navigate('/head-of-registration')}
+                >
+                  {/* <AiOutlineUnorderedList
+                    size="1.2rem"
+                    className="sidebar_icon"
+                  /> */}
+                  Head of Registration
                 </span>
               </div>
             </div>

@@ -66,6 +66,12 @@ import GenerateRecComm from '../componens/GenerateRecComm'
 import Plots from '../componens/Plots'
 import CertificateOfOccupancyPDFView from '../componens/PDF/CertificateOfOccupancyPDFView'
 import AssignmentList from '../componens/AssignmentList'
+import ValuationAssignmentList from '../componens/ValuationAssignmentList'
+import ValuationAssignmentProcess from '../componens/ValuationAssignmentProcess'
+import HeadOfValuationList from '../componens/HeadOfValuationList'
+import HeadOfRegistrationList from '../componens/HeadOfRegistrationList'
+import HeadOfValuationProcess from '../componens/HeadOfValuationProcess'
+import HeadOfRegistrationProcess from '../componens/HeadOfRegistrationProcess'
 
 function AppNavigation() {
   let element = useRoutes([
@@ -352,6 +358,30 @@ function AppNavigation() {
         {
           path: '/ValuationReport',
           element: <ValuationReport />,
+        },
+        {
+          path: '/valuation-assignment',
+          element: <ValuationAssignmentList />,
+        },
+        {
+          path: '/valuation-assignment-process',
+          element: <ValuationAssignmentProcess />,
+        },
+        {
+          path: '/head-of-valuation',
+          element: <HeadOfValuationList />,
+        },
+        {
+          path: '/head-of-valuation-process',
+          element: <HeadOfValuationProcess />,
+        },
+        {
+          path: '/head-of-registration',
+          element: <HeadOfRegistrationList />,
+        },
+        {
+          path: '/head-of-registration-process',
+          element: <HeadOfRegistrationProcess />,
         },
         {
           path: '/pdf',

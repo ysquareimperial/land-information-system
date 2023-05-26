@@ -2,8 +2,10 @@ import React, { useState } from 'react'
 import { Button, Card, CardBody, Col, input, Label, Row } from 'reactstrap'
 import { _postApi } from '../helpers/helper'
 import { BsArrowLeft } from 'react-icons/bs'
+import { useNavigate } from 'react-router-dom'
 
 export default function Assignment() {
+  const navigate = useNavigate()
   const _form = {
     full_name_of_the_applicant: '',
     residential_address: '',
@@ -21,7 +23,7 @@ export default function Assignment() {
     date: '',
     signature_of_applicant: '',
     signature_of_assignees: '',
-    status:'Pending '
+    status: 'Pending ',
   }
   const [form, setForm] = useState(_form)
   const handleChange = ({ target: { name, value } }) => {
@@ -39,8 +41,8 @@ export default function Assignment() {
         setForm(_form)
       }
     }),
-    (err) => {
-      setLoading(false)
+      (err) => {
+        setLoading(false)
         console.log(err)
       }
     console.log(form)
