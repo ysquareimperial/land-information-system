@@ -7,17 +7,17 @@ import { _fetchApi } from '../helpers/helper'
 import ResAppPDFView from './PDF/ResAppPDFView'
 export default function AssignmentList() {
   const navigate = useNavigate()
-  const [data, setData] = useState([])
   const [modal, setModal] = useState(false)
   const toggleModal = () => {
     setModal(!modal)
   }
-  const getAssignments = () => {
+  const [data, setData] = useState([])
+
+  const getList = () => {
     _fetchApi(
-      '/app/get-all-assignments',
+      '/api/getTriple',
       (res) => {
-        console.log(res)
-        setData(res.results)
+        setData(res.results[0])
       },
       (err) => {
         console.log(err)
@@ -25,7 +25,7 @@ export default function AssignmentList() {
     )
   }
   useEffect(() => {
-    getAssignments()
+    getList()
   }, [])
   const [newData, setNewData] = useState({})
   return (
@@ -35,16 +35,16 @@ export default function AssignmentList() {
         <Row>
           <Col md={6}>
             {' '}
-            <h5 className="mb-3">List of Assignments</h5>
+            <h5 className="mb-3">Approved Applications</h5>
           </Col>
           <Col md={6}>
-            <button
+            {/* <button
               className="app_btn"
               style={{ float: 'right' }}
               onClick={() => navigate('/assignment')}
             >
               <BsPlusLg /> New Assignment
-            </button>
+            </button> */}
           </Col>
         </Row>
         <SearchBar />
@@ -53,42 +53,38 @@ export default function AssignmentList() {
           <thead>
             <tr>
               <td style={{ fontWeight: 'bold' }}>S/N</td>
-              <td style={{ fontWeight: 'bold' }}>Applicant Number</td>
+              <td style={{ fontWeight: 'bold' }}>Applicant File No</td>
               <td style={{ fontWeight: 'bold' }}>Applicant Full Name</td>
-              <td style={{ fontWeight: 'bold' }}>Applicant Address</td>
-              <td style={{ fontWeight: 'bold' }}>Assignee Full Name</td>
-              <td style={{ fontWeight: 'bold' }}>Assignee Address</td>
-              {/* <th style={{border:'1px solid #f1f1f1',width:'30%',height:"100%",textAlign:"center"}}>Company Registered Unde</th> */}
+              <td style={{ fontWeight: 'bold' }}>Business Location</td>
+              <td style={{ fontWeight: 'bold' }}>Occupation</td>
+              <td style={{ fontWeight: 'bold' }}>State</td>
               <td style={{ fontWeight: 'bold' }}>
                 {' '}
-                <div style={{ textAlign: 'right' }}>Status</div>
-              </td>
-              <td style={{ fontWeight: 'bold' }}>
-                <div style={{ textAlign: 'right' }}>Action</div>
+                <div style={{ float: 'right' }}>Action</div>
               </td>
             </tr>
           </thead>
           <tbody>
-            {data[0]?.map((item, index) => (
+            {data?.map((item, index) => (
               <tr>
-                <td>{index + 1}</td>
-                <td></td>
-                <td>{item.full_name_of_the_applicant}</td>
-                <td>{item.residential_address}</td>
-                <td>{item.full_name_of_assignee}</td>
-                <td>{item.residential_address_assignee}</td>
-                <td>{item.status}</td>
+                <td scope="row">{index + 1}</td>
+                <td>{item.file_no}</td>
+                <td>{item.Applicant_full_name}</td>
+                <td>{item.Business_location}</td>
+                <td>{item.occupation_business}</td>
+                <td>{item.State_of_origin}</td>
                 <td>
-                  <div style={{ textAlign: 'right' }}>
-                    {item.status === 'application' ? (
-                      <button className="pending">Pending</button>
-                    ) : item.status === 'file_no_generated' ? (
-                      <button className="approved">Approved</button>
-                    ) : item.status === 'application-fee-paid' ? (
-                      <button className="paid">paid</button>
-                    ) : (
-                      ''
-                    )}
+                  <div style={{ float: 'right' }}>
+                    <button
+                      className="blue paid "
+                      onClick={() =>
+                        navigate(
+                          `/assignment?application_file_number=${item.file_no}`,
+                        )
+                      }
+                    >
+                      New Assignment
+                    </button>
                   </div>
                 </td>
               </tr>

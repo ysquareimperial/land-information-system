@@ -72,7 +72,7 @@ export default function HeadOfValuationList() {
             {data[0]?.map((item, index) => (
               <tr>
                 <td>{index + 1}</td>
-                <td></td>
+                <td>{item.right_of_occupancy_number}</td>
                 <td>{item.full_name_of_the_applicant}</td>
                 <td>{item.residential_address}</td>
                 <td>{item.full_name_of_assignee}</td>
@@ -96,7 +96,7 @@ export default function HeadOfValuationList() {
                   <div style={{ textAlign: 'right' }}>
                     <button
                       className="paid"
-                      onClick={() => navigate('/head-of-valuation-process')}
+                      onClick={() => navigate(`/head-of-valuation-process?occupancy_number=${item.right_of_occupancy_number}`)}
                     >
                       Process
                     </button>

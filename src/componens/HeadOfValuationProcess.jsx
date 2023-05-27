@@ -1,11 +1,52 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Card, Col, Row } from 'reactstrap'
+import { _fetchApi, useQuery } from '../helpers/helper'
 
 export default function HeadOfValuationProcess() {
-  const handleSubmit = () => {}
+  const [occright, setOccright] = useState({})
   const [loading, setLoading] = useState()
+  const [data, setData] = useState([])
+  const [form, setForm] = useState({
+    type_of_building: '',
+    no_of_floors: '',
+    no_of_blocks: '',
+    stage_of_development: '',
+    value_of_development: '',
+    date: '',
+    head_of_valuation_signature: '',
+  })
+  const handleChange = ({ target: { name, value } }) => {
+    setForm((p) => ({ ...p, [name]: value }))
+  }
+  const query = useQuery()
+  const rightOfOccupancyNumber = query.get('occupancy_number')
+  const getAssignments = () => {
+    _fetchApi(
+      `/app/get-assignment?right_of_occupancy_number=${rightOfOccupancyNumber}`,
+      (res) => {
+        console.log(res)
+        // if (res && res.length) {
+        setData(res.results)
+        if (res.results.length > 0) {
+          setOccright(res.results[0][0])
+        }
+        // }
+      },
+      (err) => {
+        console.log(err)
+      },
+    )
+  }
+  useEffect(() => {
+    getAssignments()
+  }, [])
+  const handleSubmit = () => {
+    console.log(form)
+  }
+
   return (
     <div>
+      {/* {JSON.stringify(form)} */}
       <Card className="app_primary_card m-2 shadow p-4">
         <Row>
           <Col md={12}>
@@ -18,13 +59,13 @@ export default function HeadOfValuationProcess() {
         </Row>
         <div className="d-flex mb-2 mt-3" style={{ gap: 10 }}>
           <p className="m-0">
-            Applicant Name:<b>fasf</b>
+            Applicant Name: <b>{occright.full_name_of_the_applicant}</b>
           </p>
           <p className="m-0">
-            Assignee Name:<b>fasf</b>
+            Assignee Name: <b>{occright.full_name_of_assignee}</b>
           </p>
           <p className="m-0">
-            Right Of Occupancy No:<b>fasf</b>
+            Right Of Occupancy No: <b>{rightOfOccupancyNumber}</b>
           </p>
         </div>
         <Row>
@@ -34,9 +75,9 @@ export default function HeadOfValuationProcess() {
               <select
                 className="input_field"
                 type="text"
-                name="name_of_original_holder"
-                // value={form.name_of_original_holder}
-                // onChange={handleChange}
+                name="type_of_building"
+                value={form.type_of_building}
+                onChange={handleChange}
               >
                 <option>--select--</option>
                 <option>Office</option>
@@ -54,10 +95,10 @@ export default function HeadOfValuationProcess() {
             <div>
               <input
                 className="input_field"
-                type="text"
-                name="name_of_original_holder"
-                // value={form.name_of_original_holder}
-                // onChange={handleChange}
+                type="number"
+                name="no_of_floors"
+                value={form.no_of_floors}
+                onChange={handleChange}
               />
             </div>
           </Col>{' '}
@@ -66,10 +107,10 @@ export default function HeadOfValuationProcess() {
             <div>
               <input
                 className="input_field"
-                type="text"
-                name="name_of_original_holder"
-                // value={form.name_of_original_holder}
-                // onChange={handleChange}
+                type="number"
+                name="no_of_blocks"
+                value={form.no_of_blocks}
+                onChange={handleChange}
               />
             </div>
           </Col>{' '}
@@ -79,9 +120,9 @@ export default function HeadOfValuationProcess() {
               <select
                 className="input_field"
                 type="text"
-                name="name_of_original_holder"
-                // value={form.name_of_original_holder}
-                // onChange={handleChange}
+                name="stage_of_development"
+                value={form.stage_of_development}
+                onChange={handleChange}
               >
                 <option>--select--</option>
                 <option>Completed</option>
@@ -95,9 +136,9 @@ export default function HeadOfValuationProcess() {
               <input
                 className="input_field"
                 type="number"
-                name="name_of_original_holder"
-                // value={form.name_of_original_holder}
-                // onChange={handleChange}
+                name="value_of_development"
+                value={form.value_of_development}
+                onChange={handleChange}
               />
             </div>
           </Col>{' '}
@@ -107,9 +148,9 @@ export default function HeadOfValuationProcess() {
               <input
                 className="input_field"
                 type="date"
-                name="name_of_original_holder"
-                // value={form.name_of_original_holder}
-                // onChange={handleChange}
+                name="date"
+                value={form.date}
+                onChange={handleChange}
               />
             </div>
           </Col>
@@ -119,9 +160,9 @@ export default function HeadOfValuationProcess() {
               <input
                 className="input_field"
                 type="text"
-                name="name_of_original_holder"
-                // value={form.name_of_original_holder}
-                // onChange={handleChange}
+                name="head_of_valuation_signature"
+                value={form.head_of_valuation_signature}
+                onChange={handleChange}
               />
             </div>
           </Col>

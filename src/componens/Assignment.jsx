@@ -1,16 +1,18 @@
 import React, { useState } from 'react'
 import { Button, Card, CardBody, Col, input, Label, Row } from 'reactstrap'
-import { _postApi } from '../helpers/helper'
+import { _postApi, useQuery } from '../helpers/helper'
 import { BsArrowLeft } from 'react-icons/bs'
 import { useNavigate } from 'react-router-dom'
 
 export default function Assignment() {
+  const query = useQuery()
+  const rightOfOccupancyNo = query.get(`application_file_number`)
   const navigate = useNavigate()
   const _form = {
     full_name_of_the_applicant: '',
     residential_address: '',
     correspondence_address: '',
-    right_of_occupancy_number: '',
+    right_of_occupancy_number: `LKN/${rightOfOccupancyNo}`,
     purpose_of_right_of_occupancy: '',
     name_of_original_holder: '',
     full_name_of_assignee: '',
@@ -39,6 +41,7 @@ export default function Assignment() {
       if (res.success) {
         alert('success')
         setForm(_form)
+        navigate('/assignment-list')
       }
     }),
       (err) => {
