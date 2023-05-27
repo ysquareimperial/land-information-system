@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
 })
 
 // Create Document Component
-export const RequestForSurveyReport = () => (
+export const RequestForSurveyReport = ({form={}}) => (
   <Document>
     <Page size="A4" style={styles.page}>
       <View style={{ display: 'flex', flexDirection: 'row' }}>
@@ -104,7 +104,7 @@ export const RequestForSurveyReport = () => (
         }}
       >
         <View style={{ width: '50%' }}>
-          <Text>Date:</Text>
+          <Text>Date:{form&&form?.date}</Text>
         </View>
         <View style={{ width: '50%' }}>
           <View
@@ -133,7 +133,7 @@ export const RequestForSurveyReport = () => (
         </Text>
         <Text style={{ marginTop: 10, marginLeft: 10 }}>
           The above application has been allocated Right of Occupancy No:
-          RES/2008/5617
+          {form&&form?.file_no}
         </Text>
         <Text style={{ marginTop: 10, marginLeft: 25 }}>Item G. No.</Text>
         <Text style={{ marginTop: 10, marginLeft: 10 }}>
@@ -144,14 +144,13 @@ export const RequestForSurveyReport = () => (
           2. I have to report that:-
         </Text>
         <Text style={{ marginLeft: 30 }}>
-          a. The correct description of the plot is: 2214 Based an approved
-          TP/W307 at Dangwauro in Kumbotso
+          a. The correct description of the plot is: {form&&form?.plots_numbers} Based an approved
+          {form&&form?.plots_numbers}/{form&&form?.plan_number} at {form&&form?.location} in Kumbotso
         </Text>
         <Text style={{ marginLeft: 30 }}>b. Survey will be necessary: Yes</Text>
         <Text style={{ marginLeft: 30 }}>
           c. The application is required to confirm/note that the plot is
-          determined by the following property beacons number: KCF9548, KCF9547,
-          KCF9529, KCF9530
+          determined by the following property beacons number: {form&&form?.beacon_numbers}
         </Text>
       </View>
       <View

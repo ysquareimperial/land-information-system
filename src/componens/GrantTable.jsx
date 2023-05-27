@@ -74,7 +74,8 @@ export default function GrantTable() {
                     </div>
                   ) : ( */}
                     <div style={{ float: 'right' }}>
-                      <button
+                      {
+                        item.survey_status===null? <button
                         className="blue paid "
                         onClick={() =>
                           navigate(
@@ -83,7 +84,18 @@ export default function GrantTable() {
                         }
                       >
                         Process
+                      </button>: <button
+                        className="blue paid "
+                        // onClick={() =>
+                        //   navigate(
+                        //     `/${rout}?application_file_number=${item.file_no}`,
+                        //   )
+                        // }
+                      >
+                        view
                       </button>
+                      }
+                     
                     </div>
                   {/* )}  */}
                   {/* <button

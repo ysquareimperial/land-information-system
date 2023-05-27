@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import { Card, Input } from 'reactstrap'
-import { _fetchApi, useQuery } from '../helpers/helper';
+import { Button, Card, Input, Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap'
+import { _fetchApi, _postApi, useQuery } from '../helpers/helper';
 import moment from 'moment';
+import RequestForSurveyReportView from './PDF/RequestForSurveyReportView';
 
 export default function SurveyReport() {
     const query = useQuery();
+    const [newForm, setNewForm] = useState({})
   const application_file_number = query.get('application_file_number')
     const [app,setApp]=useState([])
     const getAppBYID = ()=>{
@@ -27,22 +29,66 @@ export default function SurveyReport() {
       }
       )
     }
-    // 
+    // newData
+
+    const newData = data?.filter(i=>i.plots_numbers===app[0]?.plot_no)
     useEffect(
       ()=>{
       
+     
+        // getID();
+        setNewForm((p)=>({...newData[0],file_no:application_file_number,date:app[0]?.persec_sign_date}))
+
+      },[application_file_number,newData])
+      useEffect(
+      ()=>{
+      
         getAppBYID();
-        getID()
-      },[]
+        getID();
+        // setNewForm((p)=>({...newData[0],file_no:application_file_number,date:app[0]?.persec_sign_date}))
+
+      },[application_file_number]
     )
-    const newData = data?.filter(i=>i.layout_number===app[0]?.plan_no)
+    const [modal3, setModal3] = useState(false)
+    const toggle3 = () => setModal3(!modal3)
+    const handleSubmit = ()=>{
+      _postApi(`/api/update_survey?file_no=${application_file_number}`,
+      (res)=>{
+        console.log(res)
+        if(res.success){
+          toggle3()
+        }
+      },(err)=>{
+        console.log(err)
+      }
+      )
+    }
   return (
     <div>
-        {/* {JSON.stringify(newData)} */}
-        {/* {JSON.stringify(app[0])} */}
+        <Modal isOpen={modal3} toggle={toggle3} size="lg">
+        <ModalHeader>Continue With</ModalHeader>
+        <ModalBody>
+          {/* <Require_documents />
+           */}
+          <RequestForSurveyReportView form={newForm} />
+        </ModalBody>
+        <ModalFooter>
+          <Button
+            color="danger"
+            onClick={() => {
+              toggle3()
+              // navigate(-1)
+            }}
+          >
+            Close
+          </Button>
+        </ModalFooter>
+      </Modal>
         <Card className="app_primary_card m-2 shadow p-4">
       <h5 className="mb-4">Survey Report</h5>
+        {/* {JSON.stringify(data)} */}
       <center><u>REQUEST FOR SURVEY REPORT</u></center>
+        {/* {JSON.stringify(newForm)} */}
       <ol><b>Please find enclosed herewith the following:</b>
         <li>Complete Application Form</li>
         <li>Four copies of site-plan and</li>
@@ -66,7 +112,7 @@ export default function SurveyReport() {
 <span className='mt-2'>following property beacons number : </span>
 <span className='mt-2'><b>{newData[0]?.beacon_numbers}</b></span>
 <div className='d-flex mt-3'><span>Date : <b>{moment().format('DD-MM-YY')}</b></span></div>
-<center><button className='app_btn'>Approve</button></center>
+<center><button className='app_btn' onClick={()=>{handleSubmit();toggle3()}}>Approve</button></center>
       </Card>
     </div>
   )

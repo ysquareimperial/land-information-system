@@ -791,6 +791,22 @@ export default function Sidebar2() {
                   Valuation
                 </span>
               </div>
+              <div className="d-flex">
+                <span
+                  className={
+                    location.pathname === ''
+                      ? 'active_sidebar_item'
+                      : `sidebar_items `
+                  }
+                  onClick={() => navigate('/pdf8')}
+                >
+                  {/* <AiOutlineUnorderedList
+                    size="1.2rem"
+                    className="sidebar_icon"
+                  /> */}
+                  Certificate of Occupancy
+                </span>
+              </div>
             </div>
           ) : (
             ''
