@@ -23,8 +23,8 @@ export default function GrantTable() {
   const location = useLocation()
   const rout =
     location.pathname === '/survey-table' ? 'SurveyReport' : 'letter-of-grant'
-    const [modal3, setModal3] = useState(false)
-    const toggle3 = () => setModal3(!modal3)
+  const [modal3, setModal3] = useState(false)
+  const toggle3 = () => setModal3(!modal3)
   return (
     <Card className="app_primary_card m-2 shadow p-4">
       <h5 className="mb-4">
@@ -43,7 +43,7 @@ export default function GrantTable() {
               <td style={{ fontWeight: 'bold' }}>S/N</td>
               <td style={{ fontWeight: 'bold' }}>Applicant File No</td>
               <td style={{ fontWeight: 'bold' }}>Applicant Full Name</td>
-              <td style={{ fontWeight: 'bold' }}>Bussiness Location</td>
+              <td style={{ fontWeight: 'bold' }}>Business Location</td>
               <td style={{ fontWeight: 'bold' }}>Occupation</td>
               <td style={{ fontWeight: 'bold' }}>State</td>
               <td style={{ fontWeight: 'bold' }}>

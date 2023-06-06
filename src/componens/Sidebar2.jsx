@@ -9,6 +9,7 @@ export default function Sidebar2() {
   const [showSubMenu, setShowSubMenu] = useState(false)
   const [showSubMenuS, setShowSubMenuS] = useState(false)
   const [showSubMenuC, setShowSubMenuC] = useState(false)
+  const [showSubMenuAss, setShowSubMenuAss] = useState(false)
   const [showSubMenuA, setShowSubMenuA] = useState(false)
   const [showSubMenuD, setShowSubMenuD] = useState(false)
   const [showSubMenuE, setShowSubMenuE] = useState(false)
@@ -706,6 +707,22 @@ export default function Sidebar2() {
               <div className="d-flex">
                 <span
                   className={
+                    location.pathname === '/shedule-table'
+                      ? 'active_sidebar_item'
+                      : `sidebar_items `
+                  }
+                  onClick={() => navigate('/shedule-table')}
+                >
+                  {/* <AiOutlineUnorderedList
+                    size="1.2rem"
+                    className="sidebar_icon"
+                  /> */}
+                  Schedule Of Payment
+                </span>
+              </div>
+              <div className="d-flex">
+                <span
+                  className={
                     location.pathname === ''
                       ? 'active_sidebar_item'
                       : `sidebar_items `
@@ -782,7 +799,7 @@ export default function Sidebar2() {
                       ? 'active_sidebar_item'
                       : `sidebar_items `
                   }
-                  onClick={() => navigate('/ValuationReport')}
+                  onClick={() => navigate('/valuation-table')}
                 >
                   {/* <AiOutlineUnorderedList
                     size="1.2rem"
@@ -805,6 +822,95 @@ export default function Sidebar2() {
                     className="sidebar_icon"
                   /> */}
                   Certificate of Occupancy
+                </span>
+              </div>
+              <div className="d-flex">
+                <span
+                  className={
+                    location.pathname === '/letter-consent'
+                      ? 'active_sidebar_item'
+                      : `sidebar_items `
+                  }
+                  onClick={() => navigate('/letter-consent')}
+                >
+                  {/* <AiOutlineUnorderedList
+                    size="1.2rem"
+                    className="sidebar_icon"
+                  /> */}
+                  Letter Of Consent
+                </span>
+              </div>
+            </div>
+          ) : (
+            ''
+          )}
+        </>
+        
+        <>
+          {showSubMenuE ? (
+            <div>
+              <div className="d-flex">
+                <span
+                  className={
+                    location.pathname === ''
+                      ? 'active_sidebar_item'
+                      : `sidebar_items `
+                  }
+                  onClick={() => navigate('/head-of-valuation')}
+                >
+                  {/* <AiOutlineUnorderedList
+                    size="1.2rem"
+                    className="sidebar_icon"
+                  /> */}
+                  Head of Valuation
+                </span>
+              </div>
+            </div>
+          ) : (
+            ''
+          )}
+        </>
+        <>
+          {showSubMenuE ? (
+            <div>
+              <div className="d-flex">
+                <span
+                  className={
+                    location.pathname === ''
+                      ? 'active_sidebar_item'
+                      : `sidebar_items `
+                  }
+                  onClick={() => navigate('/head-of-registration')}
+                >
+                  {/* <AiOutlineUnorderedList
+                    size="1.2rem"
+                    className="sidebar_icon"
+                  /> */}
+                  Head of Registration
+                </span>
+              </div>
+            </div>
+          ) : (
+            ''
+          )}
+        </>
+        <>
+          {showSubMenuE ? (
+            <div>
+              <div className="d-flex">
+                <span
+                  className={
+                    location.pathname === ''
+                      ? 'active_sidebar_item'
+                      : `sidebar_items `
+                  }
+                  onClick={() => navigate('/assignment-list')}
+                >
+                  {/* <AiOutlineUnorderedList
+                    size="1.2rem"
+                    className="sidebar_icon"
+                  /> */}
+                  Assignment
                 </span>
               </div>
             </div>

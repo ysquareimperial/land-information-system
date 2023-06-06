@@ -8,13 +8,14 @@ export default function SurveyReport() {
     const query = useQuery();
     const [newForm, setNewForm] = useState({})
   const application_file_number = query.get('application_file_number')
-    const [app,setApp]=useState([])
-    const getAppBYID = ()=>{
-      _fetchApi(`/api/getAppBYID?application_file_number=${application_file_number}`,
-      (res)=>{
+  const [app, setApp] = useState([])
+  const getAppBYID = () => {
+    _fetchApi(
+      `/api/getAppBYID?application_file_number=${application_file_number}`,
+      (res) => {
         setApp(res.results[0])
       },
-      (err)=>{
+      (err) => {
         console.log(err)
       }
       )

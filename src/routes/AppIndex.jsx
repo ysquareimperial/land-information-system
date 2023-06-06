@@ -13,7 +13,7 @@ export default function AppIndex() {
         <Col md={8} className="p-0 m-0 _outlet p-1">
           <Outlet />
         </Col>
-        <Col md={2} className="p-0 _outlet p-1">
+        <Col md={2} className="p-0">
           <CommentSection />
         </Col>
       </Row>

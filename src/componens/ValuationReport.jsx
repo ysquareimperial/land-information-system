@@ -1,7 +1,21 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Card, Col, Row } from 'reactstrap'
 
 export default function ValuationReport() {
+  const [form,setForm]=useState({
+    date_of_inspection:'',
+    purpose_of_inspection:'',
+    owner_name:'',
+    owner_address:'',
+    property_no:'',
+    street_name:'',
+    quarters:'',
+
+  })
+
+  const handleChange = ({target:{name,value}})=>{
+    setForm((p)=>({}))
+  }
   return (
     <div>
       <Card className="app_primary_card m-2 shadow p-4">

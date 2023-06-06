@@ -46,7 +46,7 @@ function Shedule_table() {
                           <td>{item.application_id}</td>
                           <td>{item.State_of_origin}</td>
                           <td>{item.occupation_business}</td>
-                          <td><button className='app_btn' onClick={()=>navigate(`/${role}/?file_no=${item.file_no}&name=${item.Applicant_full_name}&address=${item.correspondance_address}`)}>{type==='letter'?'process':'Schedule Payment'}</button>{type === 'letter'?'':<button className='app_btn m-2' onClick={()=>navigate(`/${role}/?file_no=${item.file_no}&name=${item.Applicant_full_name}&type=lol`)}>processing fee</button>}</td>
+                          <td className='d-flex'><button className='app_btn p-0' onClick={()=>navigate(`/${role}/?file_no=${item.file_no}&name=${item.Applicant_full_name}&address=${item.correspondance_address}`)}>{type==='letter'?'process':'Schedule Payment'}</button>{type === 'letter'?'':<button className='app_btn m-2 p-1' onClick={()=>navigate(`/${role}/?file_no=${item.file_no}&name=${item.Applicant_full_name}&type=lol`)}>processing fee</button>}</td>
    
   </tr>
     )

@@ -47,7 +47,7 @@ import ForInformationTable from '../componens/ForInformationTable'
 import RequestForSurveyReport from '../componens/RequestForSurveyReport'
 import CertificateOfOccupancyRentTable from '../componens/CertificateOfOccupancyRentTable'
 import CertificateOfOccupancyRent from '../componens/CertificateOfOccupancyRent'
-import ApplicationForConsesntTo from '../componens/ApplicationForConsesntTo'
+import Assignment from '../componens/Assignment'
 
 import ResAppPDFView from '../componens/PDF/ResAppPDFView'
 import RecForGrOfStatRightOfOccupView from '../componens/PDF/RecForGrOfStatRightOfOccupView'
@@ -65,9 +65,19 @@ import GenerateRecPermsSec from '../componens/GenerateRecPermSec'
 import GenerateRecComm from '../componens/GenerateRecComm'
 import Plots from '../componens/Plots'
 import CertificateOfOccupancyPDFView from '../componens/PDF/CertificateOfOccupancyPDFView'
+import AssignmentList from '../componens/AssignmentList'
+import ValuationAssignmentList from '../componens/ValuationAssignmentList'
+import ValuationAssignmentProcess from '../componens/ValuationAssignmentProcess'
+import HeadOfValuationList from '../componens/HeadOfValuationList'
+import HeadOfRegistrationList from '../componens/HeadOfRegistrationList'
+import HeadOfValuationProcess from '../componens/HeadOfValuationProcess'
+import HeadOfRegistrationProcess from '../componens/HeadOfRegistrationProcess'
+import LetterConsent from '../componens/LetterConsent'
+import LetterConsetFor from '../componens/LetterConsetFor'
+import ValuationTable from '../componens/ValuationTable'
 
 function AppNavigation() {
-  let element = useRoutes([  
+  let element = useRoutes([
     {
       path: '/',
       element: <Landing />,
@@ -172,8 +182,8 @@ function AppNavigation() {
           element: <ListTable />,
         },
         {
-       path:'/plots',
-       element:<Plots />
+          path: '/plots',
+          element: <Plots />,
         },
         //  11c241d1be86cd1598a5710aa9e4838c7c855562
 
@@ -280,8 +290,12 @@ function AppNavigation() {
           element: <CertificateOfOccupancyRent />,
         },
         {
-          path: '/application-for-consesnt-to',
-          element: <ApplicationForConsesntTo />,
+          path: '/assignment',
+          element: <Assignment />,
+        },
+        {
+          path: '/assignment-list',
+          element: <AssignmentList />,
         },
         { path: '/application-step', element: <Apps /> },
         {
@@ -349,6 +363,30 @@ function AppNavigation() {
           element: <ValuationReport />,
         },
         {
+          path: '/valuation-assignment',
+          element: <ValuationAssignmentList />,
+        },
+        {
+          path: '/valuation-assignment-process',
+          element: <ValuationAssignmentProcess />,
+        },
+        {
+          path: '/head-of-valuation',
+          element: <HeadOfValuationList />,
+        },
+        {
+          path: '/head-of-valuation-process',
+          element: <HeadOfValuationProcess />,
+        },
+        {
+          path: '/head-of-registration',
+          element: <HeadOfRegistrationList />,
+        },
+        {
+          path: '/head-of-registration-process',
+          element: <HeadOfRegistrationProcess />,
+        },
+        {
           path: '/pdf',
           element: <ResAppPDFView />,
         },
@@ -380,6 +418,18 @@ function AppNavigation() {
           path: '/pdf8',
           element: <CertificateOfOccupancyPDFView />,
         },
+        {
+          path:'/letter-consent',
+          element:<LetterConsent />
+        },
+        {
+          path:'/letter-consent-form',
+          element:<LetterConsetFor />
+        },
+        {
+          path:'/valuation-table',
+          element:<ValuationTable />
+        }
         //  1cda8d2b662
       ],
     },

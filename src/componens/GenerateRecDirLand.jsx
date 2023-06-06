@@ -4,12 +4,15 @@ import { useState } from 'react'
 import { _fetchApi, _postApi, useQuery } from '../helpers/helper'
 import moment from 'moment'
 import { useNavigate } from 'react-router-dom'
+import Commetmodal from './commetmodal'
 
 export default function GenerateRecDirLand() {
   const [loading, setLoading] = useState()
   const [newForm, setNewForm] = useState([])
   const query = useQuery()
   const file_no = query.get('application_file_number')
+  const role = query.get('role')
+  const [data,setData]=useState({file_no:file_no,role:role})
   const getRecBy = () => {
     _fetchApi(
       `/api/getAppBYID?application_file_number=${file_no}`,
@@ -59,9 +62,11 @@ export default function GenerateRecDirLand() {
         console.log(err)
       }
   }
+  const [modal3, setModal3] = useState(false)
+  const toggle3 = () => setModal3(!modal3)
   return (
     <div>
-      {/* {JSON.stringify(form)} */}
+      {JSON.stringify(data)}
       <Card className="app_primary_card m-2 shadow p-4">
         <Row className="mb-2">
           <Col md={10}>
@@ -145,6 +150,7 @@ export default function GenerateRecDirLand() {
             rows={4}
           />
         </div>
+        <div className='d-flex justify-content-between'>
         <div>
           {loading ? (
             <button
@@ -160,6 +166,19 @@ export default function GenerateRecDirLand() {
             </button>
           )}
         </div>
+
+        <div>
+        
+            <button className="app_btn mt-3" onClick={toggle3}>
+             Add a comment
+            </button>
+            {
+              modal3? <Commetmodal modal3={modal3} toggle3={toggle3}  data={data} />:''
+            }
+      
+        </div>
+        </div>
+        
       </Card>
     </div>
   )

@@ -61,7 +61,7 @@ export const RecForGrOfStatRightOfOccup = ({ form = {} }) => (
               justifyContent: 'flex-end',
             }}
           >
-            <Text style={{ fontSize: 10, marginTop: 30 }}>SERIAL: </Text>
+            <Text style={{ fontSize: 10, marginTop: 30 }}>SERIAL:{form&&form.serial_no} </Text>
           </View>
         </View>
       </View>

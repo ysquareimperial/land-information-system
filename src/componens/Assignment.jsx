@@ -1,76 +1,75 @@
-import React, { useState } from "react";
-import { Button, Card, CardBody, Col, input, Label, Row } from "reactstrap";
-import { _postApi } from "../helpers/helper";
-import { BsArrowLeft } from "react-icons/bs";
+import React, { useState } from 'react'
+import { Button, Card, CardBody, Col, input, Label, Row } from 'reactstrap'
+import { _postApi, useQuery } from '../helpers/helper'
+import { BsArrowLeft } from 'react-icons/bs'
+import { useNavigate } from 'react-router-dom'
 
-export default function ApplicationForConsesntTo() {
+export default function Assignment() {
+  const query = useQuery()
+  const rightOfOccupancyNo = query.get(`application_file_number`)
+  const navigate = useNavigate()
   const _form = {
-    full_name_of_the_applicant: "",
-    residential_address: "",
-    correspondence_address: "",
-    correspondance_address: "",
-    purpose_of_right_of_occupancy: "",
-    cert_of_occupany_no: "",
-    name_of_original_holder: "",
-    plot_no: "",
-    location: "",
-    marital_stataus: "",
-    residential: "",
-    postal_address: "",
-    natinality_state_of_origin: "",
-    stage_of_development: "",
-    amount_of_consideration: "",
-    Annual_income: "",
-    Allocated_before: "",
-    Applicant_nationality: "",
-    State_of_origin: "",
-    occupation_business: "",
-    nature_of_business: "",
-    company_registered_under: "",
-    when_where_occupancy_no: "",
-    purpose_of_land_use: "",
-    purpose_for_application_required: "",
-    acitivity_intended_to_undertake: "",
-    type_of_building_erected: "",
-    estimated_amount_to_spenr: 0,
-    source_financing: "",
-    length_of_term_required: "",
-    do_you_have_biz_in_kano: "",
-    address_of_local_rep: "",
-    power_of_attorney_if_any: "",
-    location_of_land_required: "",
-    application_date: "",
-    // query_type: "Insert",
-  };
-  const [form, setForm] = useState(_form);
+    full_name_of_the_applicant: '',
+    residential_address: '',
+    correspondence_address: '',
+    right_of_occupancy_number: `LKN/${rightOfOccupancyNo}`,
+    purpose_of_right_of_occupancy: '',
+    name_of_original_holder: '',
+    full_name_of_assignee: '',
+    residential_address_assignee: '',
+    postal_address: '',
+    nationality_state_of_origin: '',
+    stage_of_development: '',
+    plot_is_developed_or_not: '',
+    amount_of_consideration: '',
+    date: '',
+    signature_of_applicant: '',
+    signature_of_assignees: '',
+    status: 'Pending ',
+  }
+  const [form, setForm] = useState(_form)
   const handleChange = ({ target: { name, value } }) => {
-    setForm((p) => ({ ...p, [name]: value }));
-  };
-  const [loading, setLoading] = useState(false);
+    setForm((p) => ({ ...p, [name]: value }))
+  }
+  const [loading, setLoading] = useState(false)
 
   const handleSubmit = () => {
-    setLoading(true);
-    _postApi("/api/Application_form", form, (res) => {
-      setLoading(false);
-      console.log(res);
+    setLoading(true)
+    _postApi('/api/assignment', form, (res) => {
+      setLoading(false)
+      console.log(res)
       if (res.success) {
-        alert("success");
-        setForm(_form);
+        alert('success')
+        setForm(_form)
+        navigate('/assignment-list')
       }
     }),
       (err) => {
-        setLoading(false);
-        console.log(err);
-      };
-  };
+        setLoading(false)
+        console.log(err)
+      }
+    console.log(form)
+  }
 
   return (
     <div>
+      {/* {JSON.stringify(form)} */}
       <Card className="app_primary_card m-2 shadow p-4">
-      <button className="mt-2 app_btn col-md-2" onClick={()=>navigate(-1)}><BsArrowLeft />  Back</button>
-        <center><h5 className="mb-3">Application for Consent To Assign Statutory Right Of Occupancy</h5></center>
-        {/* {JSON.stringify(form)} */}
-
+        <div
+          className="mb-3"
+          style={{ height: 70, display: 'flex', alignItems: 'center', gap: 10 }}
+        >
+          <div>
+            <button className=" back" onClick={() => navigate(-1)}>
+              <BsArrowLeft size="1.5rem" />{' '}
+            </button>
+          </div>
+          <div>
+            <h5 className="m-0">
+              Application for Consent To Assign Statutory Right Of Occupancy
+            </h5>
+          </div>
+        </div>
         <Row>
           <Col md={3}>
             <label className="input_label">Full Name Of The Applicant</label>
@@ -114,7 +113,7 @@ export default function ApplicationForConsesntTo() {
             <div>
               <input
                 className="input_field"
-                type="number"
+                type="text"
                 name="right_of_occupancy_number"
                 value={form.right_of_occupancy_number}
                 onChange={handleChange}
@@ -135,7 +134,9 @@ export default function ApplicationForConsesntTo() {
             </div>
           </Col>
           <Col md={3}>
-            <label className="input_label">Name Of Original Holder (If Different From The Applicant)</label>
+            <label className="input_label">
+              Name Of Original Holder (If Different From The Applicant)
+            </label>
             <div>
               <input
                 className="input_field"
@@ -144,7 +145,6 @@ export default function ApplicationForConsesntTo() {
                 value={form.name_of_original_holder}
                 onChange={handleChange}
               />
-        
             </div>
           </Col>
           <Col md={3}>
@@ -160,13 +160,15 @@ export default function ApplicationForConsesntTo() {
             </div>
           </Col>
           <Col md={3}>
-            <label className="input_label">Residential Addreaa</label>
+            <label className="input_label">
+              Residential Address (Assignee)
+            </label>
             <div>
               <input
                 className="input_field"
                 type="text"
-                name="residential_address"
-                value={form.residential_address}
+                name="residential_address_assignee"
+                value={form.residential_address_assignee}
                 onChange={handleChange}
               />
             </div>
@@ -184,19 +186,33 @@ export default function ApplicationForConsesntTo() {
             </div>
           </Col>
           <Col md={3}>
-            <label className="input_label">Nationality State Of Origin</label>
+            <label className="input_label">Nationality/State Of Origin</label>
             <div>
               <input
                 className="input_field"
                 type="text"
-                name="natinality_state_of_origin"
-                value={form.natinality_state_of_origin}
+                name="nationality_state_of_origin"
+                value={form.nationality_state_of_origin}
                 onChange={handleChange}
               />
             </div>
           </Col>
           <Col md={3}>
-            <label className="input_label">stage Of Development</label>
+            <label className="input_label">
+              state whether plot is developed or not developed
+            </label>
+            <div>
+              <input
+                className="input_field"
+                type="text"
+                name="plot_is_developed_or_not"
+                value={form.plot_is_developed_or_not}
+                onChange={handleChange}
+              />
+            </div>
+          </Col>
+          <Col md={3}>
+            <label className="input_label">state Of Development</label>
             <div>
               <input
                 className="input_field"
@@ -212,22 +228,57 @@ export default function ApplicationForConsesntTo() {
             <div>
               <input
                 className="input_field"
-                type="number"
+                type="text"
                 name="amount_of_consideration"
                 value={form.amount_of_consideration}
                 onChange={handleChange}
               />
             </div>
           </Col>
-          {/* CHANGESSSSSSSSSSS */}
+          <Col md={3}>
+            <label className="input_label">Date</label>
+            <div>
+              <input
+                className="input_field"
+                type="date"
+                name="date"
+                value={form.date}
+                onChange={handleChange}
+              />
+            </div>
+          </Col>
+          <Col md={3}>
+            <label className="input_label">Signature of Applicant</label>
+            <div>
+              <input
+                className="input_field"
+                type="text"
+                name="signature_of_applicant"
+                value={form.signature_of_applicant}
+                onChange={handleChange}
+              />
+            </div>
+          </Col>
+          <Col md={3}>
+            <label className="input_label">Signature of assignees</label>
+            <div>
+              <input
+                className="input_field"
+                type="text"
+                name="signature_of_assignees"
+                value={form.signature_of_assignees}
+                onChange={handleChange}
+              />
+            </div>
+          </Col>
         </Row>
-       
+
         <div>
           {loading ? (
             <button
               className="app_btn mt-3"
               disabled
-              style={{ cursor: "not-allowed", backgroundColor: "#A9A9A9" }}
+              style={{ cursor: 'not-allowed', backgroundColor: '#A9A9A9' }}
             >
               Loading...
             </button>
@@ -239,5 +290,5 @@ export default function ApplicationForConsesntTo() {
         </div>
       </Card>
     </div>
-  );
+  )
 }
