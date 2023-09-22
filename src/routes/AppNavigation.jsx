@@ -75,6 +75,10 @@ import HeadOfRegistrationProcess from '../componens/HeadOfRegistrationProcess'
 import LetterConsent from '../componens/LetterConsent'
 import LetterConsetFor from '../componens/LetterConsetFor'
 import ValuationTable from '../componens/ValuationTable'
+import SubDivision from '../componens/sub_division/SubDivision'
+import Sub_division_form from '../componens/sub_division/Sub_division_form'
+import Merger from '../componens/merger/Merger'
+import MergerFOrm from '../componens/merger/MergerForm'
 
 function AppNavigation() {
   let element = useRoutes([
@@ -343,6 +347,10 @@ function AppNavigation() {
           element: <YesOrNo />,
         },
         {
+          path: '/yes-table',
+          element: <GrantTable />,
+        },
+        {
           path: '/schedule-payment',
           element: <Reschedule />,
         },
@@ -429,6 +437,21 @@ function AppNavigation() {
         {
           path:'/valuation-table',
           element:<ValuationTable />
+        },
+        {
+          path:'/sub-division',
+          element:<SubDivision  />
+        },{
+          element: <Sub_division_form />,
+          path:'/sub-division-form'
+        },
+        {
+          element:<Merger />,
+          path:'/merger'
+        },{
+          element:<MergerFOrm />,
+          path:'/merger-form'
+
         }
         //  1cda8d2b662
       ],

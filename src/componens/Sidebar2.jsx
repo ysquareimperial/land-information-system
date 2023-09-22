@@ -375,6 +375,46 @@ export default function Sidebar2() {
                       For Information
                     </span>
                   </div>
+
+                  <div className="d-flex">
+                    <span
+                      style={{ fontSize: 11 }}
+                      className={
+                        location.pathname === '/sub-division'
+                          ? 'active_sidebar_item'
+                          : `sidebar_items `
+                      }
+                      onClick={() =>
+                        navigate('/sub-division?type=d-land')
+                      }
+                    >
+                      {/* <AiOutlineUnorderedList
+                    size="1.2rem"
+                    className="sidebar_icon"
+                  /> */}
+                      Sub Division
+                    </span>
+                  </div>
+
+                  <div className="d-flex">
+                    <span
+                      style={{ fontSize: 11 }}
+                      className={
+                        location.pathname === '/merger'
+                          ? 'active_sidebar_item'
+                          : `sidebar_items `
+                      }
+                      onClick={() =>
+                        navigate('/merger?type=d-land')
+                      }
+                    >
+                      {/* <AiOutlineUnorderedList
+                    size="1.2rem"
+                    className="sidebar_icon"
+                  /> */}
+                      Merger
+                    </span>
+                  </div>
                 </div>
               ) : (
                 ''
@@ -588,11 +628,11 @@ export default function Sidebar2() {
               <div className="d-flex">
                 <span
                   className={
-                    location.pathname === 'yes'
+                    location.pathname === 'yes-table'
                       ? 'active_sidebar_item'
                       : `sidebar_items `
                   }
-                  onClick={() => navigate('yes')}
+                  onClick={() => navigate('yes-table')}
                 >
                   {/* <AiOutlineUnorderedList
                     size="1.2rem"

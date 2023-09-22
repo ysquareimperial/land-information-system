@@ -35,7 +35,7 @@ export default function Application_Table() {
         <Row>
           <Col md={6}>
             {' '}
-            <h5 className="mb-3">List of Application</h5>
+            <h5 className="mb-3">List of Applicationssss</h5>
           </Col>
           <Col md={6}>
             <button

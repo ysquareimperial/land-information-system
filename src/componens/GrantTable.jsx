@@ -22,7 +22,7 @@ export default function GrantTable() {
   }, [])
   const location = useLocation()
   const rout =
-    location.pathname === '/survey-table' ? 'SurveyReport' : 'letter-of-grant'
+    location.pathname === '/survey-table' ? 'SurveyReport' : location.pathname === '/grant-table'? 'letter-of-grant': location.pathname === '/yes-table'?'yes':''
   const [modal3, setModal3] = useState(false)
   const toggle3 = () => setModal3(!modal3)
   return (
@@ -32,9 +32,9 @@ export default function GrantTable() {
           ? 'Generate Letter Of Grant'
           : rout === 'SurveyReport'
           ? 'Survey Report'
-          : ''}
+          : rout === 'yes'?'Yes/NO':''}
       </h5>
-      {/* {JSON.stringify(data)} */}
+      {/* {JSON.stringify(location.pathname)} */}
       <input type="search" placeholder="Search" className="input_field mb-3" />
       <div>
         <Table striped borderless size="sm" style={{ fontSize: 14 }}>
@@ -46,6 +46,7 @@ export default function GrantTable() {
               <td style={{ fontWeight: 'bold' }}>Business Location</td>
               <td style={{ fontWeight: 'bold' }}>Occupation</td>
               <td style={{ fontWeight: 'bold' }}>State</td>
+              <td style={{ fontWeight: 'bold' }}>Type</td>
               <td style={{ fontWeight: 'bold' }}>
                 {' '}
                 <div style={{ float: 'right' }}>Action</div>
@@ -61,6 +62,7 @@ export default function GrantTable() {
                 <td>{item.Business_location}</td>
                 <td>{item.occupation_business}</td>
                 <td>{item.State_of_origin}</td>
+                <td>{item.app_status}</td>
                 <td>
                   {/* {item.grant_status === 'generated' ? (
                     <div style={{ float: 'right' }}>
@@ -75,11 +77,12 @@ export default function GrantTable() {
                   ) : ( */}
                     <div style={{ float: 'right' }}>
                       {
+                        rout === 'SurveyReport'?
                         item.survey_status===null? <button
                         className="blue paid "
                         onClick={() =>
                           navigate(
-                            `/${rout}?application_file_number=${item.file_no}`,
+                            `/${rout}?${item.app_status==='sub-division'?`application_file_number=${item.child_file_no}`:`application_file_number=${item.file_no}`}`,
                           )
                         }
                       >
@@ -93,6 +96,15 @@ export default function GrantTable() {
                         // }
                       >
                         view
+                      </button>:<button
+                        className="blue paid "
+                        onClick={() =>
+                          navigate(
+                            `/${rout}?${item.app_status==='sub-division'?`application_file_number=${item.child_file_no}`:`application_file_number=${item.file_no}`}`,
+                          )
+                        }
+                      >
+                        Process
                       </button>
                       }
                      

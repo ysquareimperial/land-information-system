@@ -1,11 +1,14 @@
 import React, { useState } from 'react'
 import { Button, Card, Col, Input, Modal, ModalBody, ModalFooter, ModalHeader, Row } from 'reactstrap'
-import { _postApi } from '../helpers/helper'
+import { _postApi, useQuery } from '../helpers/helper'
 import KanoStateCadDeptPDFView from './PDF/KanoStateCadDeptPDFView'
 
 function YesOrNo() {
+  const query = useQuery()
+const file= query.get('application_file_number')
   const [radios,setRadio]=useState({
     order:[],
+    file_no:file
 })
 const handleChanges = ({target:{name,value}})=>{
   setRadio((p)=>({...p, [name]:value}))
@@ -15,6 +18,7 @@ const handleSubmit = ()=>{
 }
 const [modal3, setModal3] = useState(false)
 const toggle3 = () => setModal3(!modal3)
+
   return (
     <div>
         <Modal isOpen={modal3} toggle={toggle3} size="lg">
@@ -37,10 +41,10 @@ const toggle3 = () => setModal3(!modal3)
       </Modal>
          <Card className="app_primary_card m-2 shadow p-4">
         <h5 className="mb-3">YES/NO Application</h5>
-        {/* {JSON.stringify(radios)} */}
+        {JSON.stringify(radios)}
         <Row>
             <Col md={6}>Right OF OCCUpancy No. LKN :</Col>
-            <Col md={3}><b>RE/2023/34</b></Col>
+            <Col md={3}><b>{file}</b></Col>
             <Col md={3}></Col>
 
             <Col  md={6}>Government item No. GKN :</Col>
